@@ -1,0 +1,42 @@
+body[layout='SQUARE'] {
+  [class*='rounded-']:not([class*='rounded-[50%]']):not([class*='rounded-full']) {
+    border-radius: 0 !important;
+  }
+
+  .rounded-dialog {
+    @media screen and (min-width: 768px) {
+      .mat-mdc-dialog-container .mdc-dialog__surface {
+        border-radius: 0 !important;
+      }
+    }
+  }
+
+  .thumb-carousel {
+    .thumb-image {
+      border-radius: 0 !important;
+    }
+  }
+
+  td {
+    &:not(.selected, .not-allow-checkin, .disabled) {
+      > div {
+        &.hovered {
+          border-radius: 0 !important;
+        }
+      }
+    }
+
+    &.not-allow-checkin,
+    &.disabled {
+      > div {
+        &.hovered {
+          border-radius: 0 !important;
+        }
+      }
+    }
+  }
+
+  .violated {
+    border-radius: 0 !important;
+  }
+}

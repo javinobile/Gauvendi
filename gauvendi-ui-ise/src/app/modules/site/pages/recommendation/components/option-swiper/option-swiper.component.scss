@@ -1,0 +1,30 @@
+:host ::ng-deep {
+  .swiper-pagination-bullet {
+    background: #f4f4f4 !important;
+    width: 16px !important;
+    height: 3px !important;
+    border-radius: 2px !important;
+    margin-inline: 2px !important;
+  }
+  .swiper-pagination-bullet-active {
+    background: #fff !important;
+  }
+}
+
+.stay-option-icon {
+  &__wrapper {
+    backdrop-filter: blur(5px) grayscale(30%);
+  }
+
+  &__icon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+
+    mask-image: var(--image-url);
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+  }
+}

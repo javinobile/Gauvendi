@@ -1,0 +1,140 @@
+<div class="p-[24px] bg-background-secondary-color rounded-[24px] sm:p-[16px]">
+  <div class="text-[20px] font-medium leading-[24px] text-primary-color mb-[20px]">
+    {{ 'TRIP_PURPOSE_MSG' | translate | async }}
+  </div>
+  <div class="flex items-center gap-[24px]">
+    <app-custom-radio-button
+      [allItems]="tripPurposes"
+      [customClass]="'!grid-cols-2 sm:!grid-cols-1'"
+      [customLabel]="'!text-[14px] !font-normal !text-primary-color ms-[8px]'"
+      [formControl]="purposeCtrl"
+    ></app-custom-radio-button>
+  </div>
+
+  <ng-container *ngIf="purposeCtrl?.value === 'Business'">
+    <div class="mt-[24px]" [formGroup]="rfCompany">
+      <div class="flex items-center gap-[12px] mb-[12px] sm:flex-col">
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">
+            {{ 'TAX_ID' | translate | async }}
+          </div>
+          <div class="">
+            <app-input [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'" [control]="rfCompany?.get('taxId')" formControlName="taxId" type="text"> </app-input>
+          </div>
+        </div>
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">
+            {{ 'COMPANY_NAME' | translate | async }}
+            <span *ngIf="hasRequired.getValue()" class="text-field-required">*</span>
+          </div>
+          <div class="">
+            <app-input [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'" [control]="rfCompany?.get('lastName')" formControlName="companyName" type="text">
+              <app-form-error *ngIf="rfCompany?.get('companyName').hasError('required') && rfCompany?.get('companyName').touched">
+                {{ 'COMPANY_NAME' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+              </app-form-error>
+            </app-input>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-[12px] mb-[12px] sm:flex-col">
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">
+            {{ 'COMPANY_EMAIL' | translate | async }}
+          </div>
+          <div class="">
+            <app-input [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'" [control]="rfCompany?.get('companyEmail')" formControlName="companyEmail" type="email">
+              <app-form-error *ngIf="rfCompany?.get('companyEmail').hasError('required') && rfCompany?.get('companyEmail').touched">
+                {{ 'EMAIL' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+              </app-form-error>
+              <app-form-error *ngIf="rfCompany?.get('companyEmail').hasError('email') && rfCompany?.get('companyEmail').touched">
+                {{ 'EMAIL' | translate | async }} {{ 'IS_NOT_VALID' | translate | async }}
+              </app-form-error>
+            </app-input>
+          </div>
+        </div>
+        <div class="flex-1"></div>
+      </div>
+
+      <div class="flex items-center gap-[12px] mb-[12px] sm:flex-col">
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">
+            {{ 'ADDRESS' | translate | async }}
+            <span *ngIf="hasRequired.getValue()" class="text-field-required">*</span>
+          </div>
+          <div class="">
+            <app-input [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'" [control]="rfCompany?.get('address')" formControlName="address" type="text">
+              <app-form-error *ngIf="rfCompany?.get('address').hasError('required') && rfCompany?.get('address').touched">
+                {{ 'ADDRESS' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+              </app-form-error>
+            </app-input>
+          </div>
+        </div>
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">
+            {{ 'CITY_OR_TOWN' | translate | async }}
+            <span *ngIf="hasRequired.getValue()" class="text-field-required">*</span>
+          </div>
+          <div class="">
+            <app-input [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'" [control]="rfCompany?.get('city')" formControlName="city" type="text">
+              <app-form-error *ngIf="rfCompany?.get('city').hasError('required') && rfCompany?.get('city').touched">
+                {{ 'CITY_OR_TOWN' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+              </app-form-error>
+            </app-input>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-[12px] mb-[12px] sm:flex-col">
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">
+            {{ 'COUNTRY' | translate | async }}
+            <span *ngIf="hasRequired.getValue()" class="text-field-required">*</span>
+          </div>
+          <div class="">
+            <app-select-single-control-country
+              [allItems]="countriesParse$ | async"
+              [control]="rfCompany?.get('country')"
+              [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+              formControlName="country"
+            >
+              <app-form-error *ngIf="rfCompany?.get('country').hasError('required') && rfCompany?.get('country').touched">
+                {{ 'COUNTRY' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+              </app-form-error>
+            </app-select-single-control-country>
+          </div>
+        </div>
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">
+            {{ 'POSTAL_CODE' | translate | async }}
+            <span *ngIf="hasRequired.getValue()" class="text-field-required">*</span>
+          </div>
+          <div class="">
+            <app-input [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'" [control]="rfCompany?.get('postalCode')" formControlName="postalCode" type="text">
+              <app-form-error *ngIf="rfCompany?.get('postalCode').hasError('required') && rfCompany?.get('postalCode').touched">
+                {{ 'POSTAL_CODE' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+              </app-form-error>
+            </app-input>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="mt-[24px]">
+    <div class="text-[20px] font-medium leading-[24px] text-primary-color mb-[16px]">{{ 'SPECIAL_REQUEST_MSG' | translate | async }}</div>
+
+    <div class="" [formGroup]="rfSpecialRequest">
+      <app-input-textarea
+        [control]="rfSpecialRequest?.get('specialRequest')"
+        [customClass]="'!h-[120px] !rounded-[10px] border !border-border-color text-primary-color'"
+        [placeHolder]="'SPECIAL_REQUEST_PLACEHOLDER' | translate | async"
+        formControlName="specialRequest"
+      >
+        <app-form-error *ngIf="rfSpecialRequest?.get('specialRequest')?.hasError('maxlength') && rfSpecialRequest?.get('specialRequest').touched">
+          {{ 'SPECIAL_REQUEST_IS_NOT_VALID_MAX_LENGTH' | translate | async }}
+        </app-form-error>
+      </app-input-textarea>
+    </div>
+  </div>
+</div>

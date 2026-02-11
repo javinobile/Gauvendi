@@ -1,0 +1,12 @@
+:host ::ng-deep {
+  .swiper-pagination-bullet {
+    background: #f4f4f4 !important;
+    width: 16px !important;
+    height: 3px !important;
+    border-radius: 2px !important;
+    margin-inline: 2px !important;
+  }
+  .swiper-pagination-bullet-active {
+    background: #fff !important;
+  }
+}

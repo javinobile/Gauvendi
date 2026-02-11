@@ -1,0 +1,424 @@
+@if (
+  {
+    items: items$ | async,
+    isLowestPriceOpaque: isLowestPriceOpaque$ | async,
+    specificRoom: specificRoom$ | async,
+    isMatchFlow: isMatchFlow$ | async,
+    taxDisplayDefault: taxDisplayDefault$ | async,
+    lowestPriceImageUrl: lowestPriceImageUrl$ | async,
+    filterType: filterType$ | async,
+    currencyRate: currencyRate$ | async,
+    currencyCode: currencyCode$ | async,
+    priceState: priceState$ | async,
+    priceRange: priceRange$ | async,
+    hotelRetailCategoryList: hotelRetailCategoryList$ | async,
+    hotelRetailFeatureList: hotelRetailFeatureList$ | async,
+    eventFeatureRecommendationList: eventFeatureRecommendationList$ | async,
+    promoCode: promoCode$ | async,
+    stayOptionSuggestionStatus: stayOptionSuggestionStatus$ | async,
+    bundleItems: bundleItems$ | async,
+    salesPlanList: salesPlanList$ | async,
+    roomSummary: roomSummary$ | async,
+    spaceTypeList: spaceTypeList$ | async,
+    isMobile: isMobile$ | async,
+    themeColors: themeColors$ | async
+  };
+  as vm
+) {
+  @if (vm.stayOptionSuggestionStatus === ELoadingStatus.loading) {
+    <!-- ise loading -->
+    <div class="">
+      <!--TODO: [title]="'LOADING_TITLE' | translate | async" [subTitle]="'LOADING_SUB_TITLE' | translate | async"  -->
+      <app-ise-loading
+        [customStyle]="
+          vm.isMobile ? 'min-h-[calc(100vh-350px)] flex justify-center items-center flex-col gap-4' : 'min-h-[calc(100vh-90px-88px)] pt-[100px] flex justify-center items-center flex-col gap-4'
+        "
+      />
+    </div>
+    <!-- end loading -->
+  } @else {
+    <!-- LIST OPTION -->
+    <!-- id for scroll -->
+    <div>
+      <div class="max-w-[1200px] mx-auto sm:px-4 md:px-6">
+        <ng-container *ngIf="!vm.isMatchFlow && vm?.specificRoom">
+          <!-- DIRECT STAY OPTION -->
+          <div class="mt-[24px]"></div>
+          <app-direct-stay-option
+            (selectRatePlan)="onSelectRatePlan($event, vm?.specificRoom, vm?.salesPlanList)"
+            [roomSummary]="vm.roomSummary"
+            [buttonBgColor]="vm.themeColors?.buttonNormalBackground"
+            [configuratorHoverBg]="vm.themeColors?.configuratorCategoryHoverBackground"
+            [isLowestPriceOpaque]="vm?.isLowestPriceOpaque"
+            [lowestPriceImageUrl]="vm.lowestPriceImageUrl"
+            [priceView]="vm.priceState"
+            [specificRoom]="vm.specificRoom"
+            [textColor]="vm.themeColors?.textPrimary"
+            [buttonTextColor]="vm.themeColors?.buttonNormalText"
+          />
+        </ng-container>
+
+        <div
+          class="flex items-start mt-[24px] mb-[16px] sm:mb-0"
+          [class.justify-end]="vm.stayOptionSuggestionStatus === ELoadingStatus.reloading"
+          [class.justify-between]="vm.stayOptionSuggestionStatus !== ELoadingStatus.reloading"
+        >
+          <ng-container *ngIf="!vm.isMatchFlow">
+            @if (vm.roomSummary; as roomSummary) {
+              @if (vm.stayOptionSuggestionStatus === ELoadingStatus.loaded) {
+                <div class="flex flex-col justify-center">
+                  <div class="text-[20px] font-medium leading-[24px] text-primary-color">
+                    @if (vm.promoCode?.trim()?.length > 0 ? (vm.items | filterPromotionItems: true) : vm.items; as newItems) {
+                      @if (newItems | filterPriceRangeItems: vm.priceRange : vm.priceState : vm.currencyRate; as filteredItems) {
+                        {{ 'AVAILABLE_OPTIONS' | translate | async }}
+                      }
+                    }
+                  </div>
+                  @if (vm.promoCode?.trim()?.length) {
+                    <div class="flex text-[14px] font-normal text-primary-color gap-2">
+                      <span>
+                        {{ 'FOR' | translate | async }}
+                      </span>
+                      <span class="text-hotel-primary-color flex gap-[4px]">
+                        <img appFilterSvg [color]="vm.themeColors?.primary" src="assets/icons/promotion.svg" width="14" height="14" alt="" />
+                        {{ vm.promoCode }}
+                      </span>
+                    </div>
+                  } @else {
+                    <app-room-summary-label [roomSummary]="roomSummary" labelClass="font-medium text-[14px] max-w-[290px] text-primary-color" />
+                  }
+                </div>
+              }
+            }
+          </ng-container>
+          <ng-container *ngIf="vm.isMatchFlow">
+            <div *ngIf="vm.stayOptionSuggestionStatus === ELoadingStatus.loaded">
+              <div class="text-[20px] font-medium leading-[24px] text-primary-color">
+                {{ (vm.items | filterMatchItems: true : vm.bundleItems)?.length > 30 ? 30 : (vm.items | filterMatchItems: true : vm.bundleItems)?.length }}
+                {{ 'MATCHES' | translate | async }}
+              </div>
+              <div class="inline-block me-[4px] text-[12px] font-medium leading-[24px] text-primary-color">
+                {{ 'HOW_ARE_MATCHES_AND_PRICE_CALCULATED' | translate | async }}
+              </div>
+              <img
+                loading="lazy"
+                appFilterSvg
+                [color]="vm.themeColors?.primary"
+                appCustomTooltip
+                [tooltipMessage]="tooltipLine1 | translate | async | concatTooltip: tooltipConcatBy : (tooltipLine2 | translate | async)"
+                class="inline-block"
+                src="assets/icons/info.svg"
+              />
+            </div>
+          </ng-container>
+
+          <div class="md:flex md:justify-end md:items-center md:gap-[8px]">
+            <ng-container *ngIf="vm.items; else filterSkeletonTpl">
+              <div class="flex gap-[4px] items-center">
+                @if (vm.spaceTypeList?.length > 1 && !vm.isMobile) {
+                  <div class="flex items-center">
+                    @for (item of vm.spaceTypeList; track $index) {
+                      <button class="flex items-center p-2 rounded-[8px] min-h-[43px] sm:mr-1 mr-3 bg-popover-background-color" (click)="selectSpaceType(item?.code)">
+                        <div
+                          class="text-center h-[24px] w-[24px] dynamic-color-icon"
+                          [style.background-color]="selectedSpaceType() === item?.code ? vm.themeColors?.primary : vm.themeColors?.textPrimary"
+                          style="--image-url: url({{ item?.retailFeatureImageList?.[0]?.imageUrl }})"
+                        ></div>
+                        <span
+                          class="ml-2 text-[14px] text-primary-color"
+                          [ngClass]="{
+                            'text-hotel-primary-color': selectedSpaceType() === item?.code,
+                            'text-primary-color': selectedSpaceType() !== item?.code
+                          }"
+                        >
+                          {{ item?.name }}
+                        </span>
+                      </button>
+                    }
+                  </div>
+                }
+
+                @if (!vm.isMobile) {
+                  <app-price-range-desktop
+                    *ngIf="vm.stayOptionSuggestionStatus !== ELoadingStatus.reloading"
+                    class="md:hidden"
+                    [stayOptionSuggestionList]="vm.items"
+                    [currencyRate]="vm.currencyRate"
+                    [currencyCode]="vm.currencyCode"
+                    [priceState]="vm.priceState"
+                  ></app-price-range-desktop>
+
+                  <app-choose-view-mode [(active)]="activeMode" [hotelPrimaryColor]="vm.themeColors?.primary" [colorText]="vm.themeColors?.textPrimary" />
+                }
+              </div>
+              <div
+                *ngIf="vm.items?.length && vm.stayOptionSuggestionStatus !== ELoadingStatus.reloading"
+                class="w-[36px] h-[36px] rounded-[100px] bg-popover-background-color items-center justify-center hidden sm:flex md:flex"
+                appOverlayMobile
+                [data]="{
+                  stayOptionSuggestionList: vm.items,
+                  currencyRate: vm.currencyRate,
+                  currencyCode: vm.currencyCode
+                }"
+                [component]="priceRangeComponent"
+              >
+                <img loading="lazy" src="assets/icons/sort.svg" appFilterSvg [color]="vm.themeColors?.textPrimary" />
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        @if (vm.spaceTypeList?.length > 1 && vm.isMobile) {
+          <div class="mt-[12px]"></div>
+          <app-space-type-mobile [spaceTypeList]="vm.spaceTypeList" [selectedSpaceType]="selectedSpaceType()" (selectSpaceType)="selectSpaceType($event)" />
+          <div class="mb-[24px]"></div>
+        }
+
+        @if (vm.items | filterSpaceTypeItems: !!selectedSpaceType() : true; as newItems) {
+          <ng-container *ngIf="newItems?.length && newItems?.length <= 3 && !vm.isMatchFlow && vm.stayOptionSuggestionStatus !== ELoadingStatus.reloading">
+            <div class="text-[14px] font-normal text-primary-color leading-[24px] mb-[8px]">
+              {{ newItems?.length | renderAccommodationLeft: ('ACCOMMODATION_LEFT' | translate | async) }}
+              .
+            </div>
+          </ng-container>
+        }
+
+        @if (vm.stayOptionSuggestionStatus === ELoadingStatus.reloading) {
+          <div class="">
+            <!-- TODO: [title]="'LOADING_TITLE' | translate | async" [subTitle]="'LOADING_SUB_TITLE' | translate | async" -->
+            <app-ise-loading
+              [customStyle]="
+                vm.isMobile ? 'min-h-[calc(100vh-500px)] flex justify-center items-center flex-col gap-4' : 'min-h-[calc(100vh-90px-88px)] pt-[100px] flex justify-center items-center flex-col gap-4'
+              "
+            />
+          </div>
+        } @else {
+          <ng-container *ngIf="vm.items?.length > 0 || vm.bundleItems?.length > 0; else tplNoOption">
+            @if (
+              vm.isMatchFlow
+                ? (vm.items | filterMatchItems: true)
+                : vm.promoCode?.trim()?.length > 0
+                  ? (vm.items | filterPromotionItems: true)
+                  : (vm.items | filterSpaceTypeItems: !!selectedSpaceType() : true);
+              as newItems
+            ) {
+              @if (newItems?.length || vm.bundleItems?.length) {
+                <app-option-list
+                  [items]="newItems | filterPriceRangeItems: vm.priceRange : vm.priceState : vm.currencyRate"
+                  [bundles]="vm.bundleItems"
+                  [limitNumber]="6"
+                  [displayMode]="activeMode"
+                  [isMatchFlow]="vm.isMatchFlow"
+                  [roomSummary]="vm.roomSummary"
+                  [priceView]="vm.priceState"
+                  [isLowestPriceOpaque]="vm.isLowestPriceOpaque"
+                  [lowestPriceImageUrl]="vm.lowestPriceImageUrl"
+                  [buttonTextColor]="vm.themeColors?.buttonNormalText"
+                  [buttonBgColor]="vm.themeColors?.buttonNormalBackground"
+                  [configuratorHoverBg]="vm.themeColors?.configuratorCategoryHoverBackground"
+                  (onSelectRatePlan)="onSelectRatePlan($event?.ratePlan, $event?.item, vm?.salesPlanList)"
+                />
+              } @else {
+                <ng-container [ngTemplateOutlet]="tplNoOption"></ng-container>
+              }
+            }
+            <ng-container
+              *ngIf="
+                !vm.isMatchFlow && ((vm.promoCode?.trim()?.length > 0 && (vm.items | filterPromotionItems: false)?.length) || (vm.items | filterSpaceTypeItems: !!selectedSpaceType() : false)?.length)
+              "
+            >
+              <div class="h-[1px] border-t border-dashed border-border-color mb-[32px]"></div>
+              @if (vm.promoCode?.trim()?.length) {
+                @if (vm.items | filterPromotionItems: false; as newItems) {
+                  <ng-container [ngTemplateOutlet]="alternativeOptionTpl" [ngTemplateOutletContext]="{ newItems }"></ng-container>
+                }
+              } @else {
+                @if (vm.items | filterSpaceTypeItems: !!selectedSpaceType() : false; as newItems) {
+                  <ng-container [ngTemplateOutlet]="alternativeOptionTpl" [ngTemplateOutletContext]="{ newItems }"></ng-container>
+                }
+              }
+
+              <ng-template #alternativeOptionTpl let-newItems="newItems">
+                @if (newItems | filterPriceRangeItems: vm.priceRange : vm.priceState : vm.currencyRate; as filteredItems) {
+                  <div class="text-[20px] font-medium leading-[24px] text-primary-color mb-[12px]" id="notMatchTitle">{{ filteredItems?.length }} {{ 'ALTERNATIVE_OPTIONS' | translate | async }}</div>
+                  <app-option-list
+                    [items]="filteredItems"
+                    [bundles]="vm.bundleItems"
+                    [limitNumber]="6"
+                    [displayMode]="activeMode"
+                    [isMatchFlow]="vm.isMatchFlow"
+                    [roomSummary]="vm.roomSummary"
+                    [priceView]="vm.priceState"
+                    [isLowestPriceOpaque]="vm.isLowestPriceOpaque"
+                    [lowestPriceImageUrl]="vm.lowestPriceImageUrl"
+                    [buttonTextColor]="vm.themeColors?.buttonNormalText"
+                    [buttonBgColor]="vm.themeColors?.buttonNormalBackground"
+                    [configuratorHoverBg]="vm.themeColors?.configuratorCategoryHoverBackground"
+                    (onSelectRatePlan)="onSelectRatePlan($event?.ratePlan, $event?.item, vm?.salesPlanList)"
+                  />
+                }
+              </ng-template>
+            </ng-container>
+
+            <ng-container *ngIf="vm.items | filterMatchItems: false as alternativeItems">
+              @if (alternativeItems?.length === vm.items?.length) {
+                @if (alternativeItems | filterPriceRangeItems: vm.priceRange : vm.priceState : vm.currencyRate; as filteredItems) {
+                  <ng-container *ngIf="vm.isMatchFlow && filteredItems?.length > 0">
+                    <div class="h-[1px] border-t border-dashed border-border-color mb-[56px]"></div>
+                    <div class="text-[20px] font-medium leading-[24px] text-primary-color" id="notMatchTitle">
+                      {{ filteredItems?.length }}
+                      {{ 'NOT_A_MATCH' | translate | async }} - {{ 'ALTERNATIVE_OPTIONS' | translate | async }}
+                    </div>
+                    <div class="text-[12px] font-normal leading-[16.8px] text-primary-color flex items-center gap-[4px] mb-[16px]">
+                      <img loading="lazy" src="assets/icons/dashed-check.svg" appFilterSvg [color]="vm.themeColors?.primary" />
+                      {{ 'NOT_MATCH_BUT_AVAILABLE' | translate | async }}
+                    </div>
+                    <ng-container *ngIf="filteredItems?.length > 0 && filteredItems?.length <= 3">
+                      <div class="text-[14px] font-normal text-primary-color leading-[24px] mb-[8px]">
+                        {{ filteredItems?.length | renderAccommodationLeft: ('ACCOMMODATION_LEFT' | translate | async) }}
+                        .
+                      </div>
+                    </ng-container>
+                    <app-option-list
+                      [items]="filteredItems"
+                      [bundles]="vm.bundleItems"
+                      [limitNumber]="6"
+                      [displayMode]="activeMode"
+                      [isMatchFlow]="false"
+                      [priceView]="vm.priceState"
+                      [roomSummary]="vm.roomSummary"
+                      [isLowestPriceOpaque]="vm.isLowestPriceOpaque"
+                      [lowestPriceImageUrl]="vm.lowestPriceImageUrl"
+                      [showTotal]="false"
+                      [isAlternativeOption]="true"
+                      [buttonTextColor]="vm.themeColors?.buttonNormalText"
+                      [buttonBgColor]="vm.themeColors?.buttonNormalBackground"
+                      [configuratorHoverBg]="vm.themeColors?.configuratorCategoryHoverBackground"
+                      (onSelectRatePlan)="onSelectRatePlan($event?.ratePlan, $event?.item, vm?.salesPlanList)"
+                    />
+                  </ng-container>
+                }
+              }
+            </ng-container>
+
+            <button
+              *ngIf="!vm.isMatchFlow"
+              class="sm:hidden md:hidden lg:hidden rounded-[12px] h-[44px] px-[24px] text-[14px] font-medium leading-[140%] bg-button-normal-background-color text-button-normal-color flex items-center transition-all duration-500 hover:opacity-80 mx-auto mb-[60px]"
+              (click)="openIseConfiguratorElement(vm.hotelRetailCategoryList)"
+            >
+              {{ 'SELECT_PREFERENCE_FOR_MORE_OPTIONS' | translate | async }}
+            </button>
+            <button
+              *ngIf="!vm.isMatchFlow"
+              class="hidden rounded-[12px] h-[44px] px-[24px] text-[14px] font-medium leading-[140%] bg-button-normal-background-color text-button-normal-color sm:flex md:flex lg:flex items-center transition-all duration-500 hover:opacity-80 mx-auto mb-[60px]"
+              (click)="openConfiguratorMobile()"
+            >
+              {{ 'SELECT_PREFERENCE_FOR_MORE_OPTIONS' | translate | async }}
+            </button>
+            <div class="w-0 h-0 opacity-0" #scrollTo>anchor</div>
+          </ng-container>
+        }
+
+        <!-- END LIST OPTION -->
+
+        <!-- COMBINED ACCOMMODATION -->
+        <div class="py-6 mt-6 border-t border-dashed" *ngIf="isAccommodationCombined | async">
+          <div class="flex items-center gap-2">
+            <img src="assets/icons/combined.svg" alt="" appFilterSvg [color]="primaryColor$ | async" width="40" height="40" />
+            <div>
+              <div class="text-xl font-medium">
+                <span>Staying Together? Combine Accommodation</span>
+                @for (item of allInCart; track $index) {
+                  <span class="bg-configurator-category-hover-background-color text-configurator-category-hover-icon-color px-2 py-1 ml-1 rounded-[4px]">#{{ $index + 1 }}</span>
+                }
+                <span class="mx-1">-</span>
+                <span>
+                  for
+                  <span>{{ countPeopleInCart('adult') }} {{ countPeopleInCart('adult') > 1 ? ('ADULTS' | translate | async) : ('ADULT' | translate | async) }}</span>
+                  <span *ngIf="countPeopleInCart('child') > 0">
+                    {{ countPeopleInCart('child') > 0 ? ', ' + countPeopleInCart('child') : '' }}
+                    {{ countPeopleInCart('child') > 1 ? ('CHILDREN' | translate | async) : countPeopleInCart('child') === 1 ? ('CHILD' | translate | async) : '' }}
+                  </span>
+                  <span *ngIf="countPeopleInCart('pet') > 0">
+                    {{ countPeopleInCart('pet') > 0 ? ', ' + countPeopleInCart('pet') : '' }}
+                    {{ countPeopleInCart('pet') > 1 ? ('PETS' | translate | async) : countPeopleInCart('pet') === 1 ? ('PET' | translate | async) : '' }}
+                  </span>
+                </span>
+              </div>
+              <div class="text-xs font-normal">This accommodation meets the total capacity for all travelers; no need to select units individually.</div>
+            </div>
+          </div>
+          <div class="mt-4" *ngIf="combinedAccommodationList | async as combinedList">
+            @if (vm.isMatchFlow ? (combinedList | filterMatchItems: true) : vm.promoCode?.trim()?.length > 0 ? (combinedList | filterPromotionItems: true) : combinedList; as newItems) {
+              <app-option-list
+                (onSelectRatePlan)="onSelectRatePlan($event?.ratePlan, $event?.item, vm?.salesPlanList)"
+                [buttonBgColor]="vm.themeColors?.buttonNormalBackground"
+                [buttonTextColor]="vm.themeColors?.buttonNormalText"
+                [configuratorHoverBg]="vm.themeColors?.configuratorCategoryHoverBackground"
+                [displayMode]="activeMode"
+                [isAlternativeOption]="true"
+                [isLowestPriceOpaque]="false"
+                [isMatchFlow]="vm.isMatchFlow"
+                [items]="newItems | filterPriceRangeItems: vm.priceRange : vm.priceState : vm.currencyRate"
+                [limitNumber]="3"
+                [lowestPriceImageUrl]="null"
+              ></app-option-list>
+            }
+          </div>
+          <ng-container *ngIf="combinedAccommodationListLoading | async">
+            <app-options-skeleton />
+          </ng-container>
+        </div>
+        <!-- END COMBINED ACCOMODATION -->
+
+        <!-- LOADING SKELETON -->
+        <ng-container *ngIf="!vm.items">
+          <app-options-skeleton />
+        </ng-container>
+      </div>
+    </div>
+  }
+}
+
+<ng-template #filterSkeletonTpl>
+  <div class="flex gap-[4px] items-center">
+    <!--    <div class="h-[36px] skeleton-ln rounded-[12px] w-[250px] sm:hidden md:hidden"></div>-->
+    <div class="h-[36px] skeleton-ln rounded-[12px] w-[200px] sm:hidden md:hidden"></div>
+    <div class="h-[36px] skeleton-ln rounded-[12px] w-[128px] sm:w-[50px]"></div>
+  </div>
+</ng-template>
+
+<ng-template #tplNoOption>
+  @if (stayOptionSuggestionLoaded$ | async; as stayOptionSuggestionLoaded) {
+    @if ((promoCode$ | async)?.length > 0) {
+      <div class="flex justify-center flex-col items-center pt-[30px]">
+        <div class="text-[17px] font-medium leading-[23.8px] text-primary-color flex items-center gap-[8px] sm:flex-col">
+          {{ 'NO_AVAILABLE_ACCOMMODATION_FOR' | translate | async }}
+          <div class="text-hotel-primary-color text-[17px] font-medium leading-[23.8px] flex items-center gap-[4px]">
+            <img loading="lazy" appFilterSvg [color]="(themeColors$ | async)?.primary" src="assets/icons/promotion.svg" width="24" height="24" alt="" />
+            {{ promoCode$ | async }}
+          </div>
+        </div>
+        <div class="text-[14px] font-normal leading-[19.6px] text-secondary-color mt-[8px]">{{ 'INPUT_ANOTHER_CODE' | translate | async }}</div>
+        <button
+          class="mt-[16px] rounded-[12px] h-[44px] px-[24px] text-[14px] font-medium leading-[140%] bg-button-normal-background-color text-button-normal-color sm:flex md:flex lg:flex items-center transition-all duration-500 hover:opacity-80 mx-auto mb-[60px]"
+          (click)="searchAlternativeOption()"
+        >
+          {{ 'CHANGE_YOUR_SEARCH' | translate | async }}
+        </button>
+      </div>
+    } @else {
+      <div class="flex flex-col items-center justify-center">
+        <img loading="lazy" src="assets/images/no-rooms.png" alt="no rooms" class="w-[100px] mb-[8px] sm:!w-[80px]" />
+        <div class="text-20 font-medium text-primary-color sm:!text-[17px]">{{ 'NO_ROOM_OPTION_AVAILABLE' | translate | async }}</div>
+        <div class="text-14 mb-[16px] text-primary-color sm:!text-[12px]">{{ 'PLEASE_CHOOSE_ANOTHER_DATE' | translate | async }}</div>
+        <button
+          class="rounded-[12px] h-[44px] px-[24px] text-[14px] font-medium leading-[140%] bg-button-normal-background-color text-button-normal-color sm:flex md:flex lg:flex items-center transition-all duration-500 hover:opacity-80 mx-auto mb-[60px]"
+          (click)="bookAnotherDate()"
+        >
+          {{ 'BOOK_ANOTHER_DATE' | translate | async }}
+        </button>
+      </div>
+    }
+  }
+</ng-template>

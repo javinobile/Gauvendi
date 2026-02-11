@@ -1,0 +1,14 @@
+<div #listPopup [@tooltip] [style.--max-width]="maxWidth" class="tooltip-content rounded-[8px]">
+  <ng-container *ngFor="let feature of content">
+    <div class="flex items-center gap-[4px]">
+      @if (isOtherFeature) {
+      <img [src]="'assets/icons/plus.svg'" alt="checked" />
+      } @else { @if (feature.matched === false) {
+      <img [src]="'assets/icons/unchecked.svg'" alt="unchecked" />
+      } @else {
+      <img [src]="isAlternativeOption ? 'assets/icons/dashed-check.svg' : 'assets/icons/checked.svg'" alt="checked" appFilterSvg [color]="hotelPrimaryColor$ | async" />
+      } }
+      <div class="text-[12px] leading-[140%] text-tooltip-color line-clamp-1">{{ feature?.name }}</div>
+    </div>
+  </ng-container>
+</div>

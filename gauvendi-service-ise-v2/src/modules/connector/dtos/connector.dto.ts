@@ -1,0 +1,14 @@
+import { IsOptional, IsString } from 'class-validator';
+import { Connector } from 'src/core/entities/hotel-entities/connector.entity';
+import { FindOptionsRelations } from 'typeorm';
+
+export class ConnectorDto {
+  @IsString()
+  hotelId: string;
+
+  @IsString()
+  @IsOptional()
+  connectorType?: string;
+  
+  relations?: FindOptionsRelations<Connector>;
+}

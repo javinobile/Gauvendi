@@ -1,0 +1,28 @@
+.item-box-feature {
+  position: relative;
+  overflow: hidden;
+
+  &-animation {
+    -webkit-filter: blur(0);
+    filter: blur(0); // fix blurry text when using rotation animation
+
+    &:before {
+      content: '';
+      height: 50px;
+      width: 30px;
+      background: linear-gradient(90deg, var(--color-feature-bg-selected), var(--color-feature-background));
+      position: absolute;
+      z-index: -1;
+      animation: rotate-feature 3s linear infinite;
+    }
+  }
+}
+
+@keyframes rotate-feature {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}

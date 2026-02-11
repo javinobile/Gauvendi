@@ -1,0 +1,172 @@
+<div class="w-full bg-popover-background-color shadow-panel-price sticky bottom-0 z-50 transition-all ease-in-out duration-500" [ngClass]="{ '!bottom-[90px]': isBottom }">
+  <!--  Single room-->
+  <ng-container *ngIf="!isCombinationRoom">
+    <div class="max-w-[1200px] mx-auto h-[99px] flex items-center justify-between sm:flex-col sm:w-full sm:items-stretch sm:h-auto sm:px-[16px] sm:py-[12px] md:p-[16px] md:h-auto lg:p-[12px]">
+      <div class="flex items-start sm:flex-col md:flex-col gap-[20px] sm:gap-0 md:gap-0">
+        <div class="text-[17px] font-light leading-[23.8px] text-primary-color sm:text-[12px] sm:leading-[14.4px] sm:font-medium md:text-[14px]">{{ 'TOTAL_CHARGES' | translate | async }}:</div>
+        <div class="flex items-start gap-[12px] sm:gap-[16px]">
+          <div class="">
+            <div class="text-[24px] font-medium leading-[28.8px] text-primary-color sm:text-[14px] sm:leading-[19.6px]">
+              {{
+                calculatePayment
+                  ? (reservationByIndex | pricingDisplay: hotelInclusive : includeTax : 'ACCOMMODATION' | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2')
+                  : '-.--'
+              }}
+            </div>
+            <div class="text-[14px] font-light leading-[19.6px] text-primary-color sm:text-[10px] sm:leading-[14px] md:text-[12px]">
+              ({{ 'PRICE_FOR' | translate | async }} {{ totalNights || '--' }} {{ (totalNights > 1 ? 'NIGHTS' : 'NIGHT') | translate | async }}
+              )
+            </div>
+          </div>
+          <div class="text-[24px] font-medium leading-[28.8px] text-primary-color sm:text-[14px] sm:leading-[19.6px]">+</div>
+          <div class="">
+            <div class="text-[24px] font-medium leading-[28.8px] text-primary-color sm:text-[14px] sm:leading-[19.6px]">
+              {{
+                calculatePayment ? (reservationByIndex | pricingDisplay: hotelInclusive : includeTax : 'AMENITY' | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2') : '-.--'
+              }}
+            </div>
+            <div class="text-[14px] font-light leading-[19.6px] text-primary-color sm:text-[10px] sm:leading-[14px] md:text-[12px]">({{ 'EXTRA_SERVICE' | translate | async }})</div>
+          </div>
+          <div class="text-[24px] font-medium leading-[28.8px] text-primary-color sm:hidden">=</div>
+          <div class="sm:hidden">
+            <div class="text-[24px] font-medium leading-[28.8px] text-hotel-primary-color">
+              {{
+                calculatePayment
+                  ? ((includeTax ? reservationByIndex?.totalGrossAmount : reservationByIndex?.totalBaseAmount) | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2')
+                  : '-.--'
+              }}
+            </div>
+            <div class="text-[14px] font-light leading-[19.6px] text-primary-color md:text-[12px]">
+              {{ (includeTax ? 'INCLUDES_TAXES_AND_FEES' : 'EXCLUSIVE_TAXES_AND_FEES') | translate | async }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="my-[8px] h-[1px] bg-border-color w-full hidden sm:block"></div>
+      <div class="flex items-center justify-between">
+        <div class="hidden sm:block">
+          <div class="text-[17px] font-medium leading-[23.8px] text-hotel-primary-color">
+            {{
+              calculatePayment
+                ? ((includeTax ? reservationByIndex?.totalGrossAmount : reservationByIndex?.totalBaseAmount) | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2')
+                : '-.--'
+            }}
+          </div>
+          <div class="text-[10px] font-light leading-[14px] text-primary-color">
+            {{ (includeTax ? 'INCLUDES_TAXES_AND_FEES' : 'EXCLUSIVE_TAXES_AND_FEES') | translate | async }}
+          </div>
+        </div>
+        <div class="">
+          <ng-container *ngIf="!isNextRoom">
+            <button
+              (click)="completeBooking()"
+              class="flex items-center gap-[8px] px-[24px] h-[40px] text-[14px] font-medium leading-[140%] bg-button-normal-background-color text-button-normal-color rounded-[12px] hover:opacity-80"
+            >
+              {{ 'COMPLETE_BOOKING' | translate | async }}
+              <mat-icon class="dir-mat-icon">chevron_right</mat-icon>
+            </button>
+          </ng-container>
+          <ng-container *ngIf="isNextRoom">
+            <button
+              (click)="goToNextRoom()"
+              class="flex items-center gap-[8px] px-[24px] h-[40px] text-[14px] font-medium leading-[140%] bg-button-normal-background-color text-button-normal-color rounded-[12px] hover:opacity-80"
+            >
+              {{ 'GO_TO_NEXT_ROOM' | translate | async }}
+              <mat-icon class="dir-mat-icon">chevron_right</mat-icon>
+            </button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <!--  Multiple room-->
+  <ng-container *ngIf="isCombinationRoom">
+    <div class="max-w-[1200px] mx-auto h-[99px] flex items-center justify-between sm:flex-col sm:w-full sm:items-stretch sm:h-auto sm:px-[16px] sm:py-[12px] md:p-[16px] md:h-auto md:items-start">
+      <div class="">
+        <div class="">
+          <span class="text-[17px] font-light leading-[23.8px] text-primary-color sm:text-[12px] sm:leading-[14.4px] sm:font-medium md:text-[14px] md:leading-[19.6px]">
+            {{ 'TOTAL_CHARGES_FOR_ROOM' | translate | async }}:
+          </span>
+          <span class="bg-button-secondary-fill rounded-[8px] px-[4px] text-[14px] font-normal leading-[19.6px] text-primary-color w-fit sm:text-[12px] mx-[12px] sm:mx-[4px] md:mx-[8px]">
+            #{{ roomIdxView + 1 }}
+          </span>
+          <span class="text-[17px] font-medium leading-[23.8px] text-primary-color sm:text-[12px] sm:leading-[14.4px] flex-1 md:text-[14px] md:leading-[19.6px]">
+            {{ roomName }}
+          </span>
+        </div>
+        <div class="flex items-start gap-[12px]">
+          <div class="">
+            <div class="text-[24px] font-medium leading-[28.8px] text-primary-color sm:text-[14px] sm:leading-[19.6px] md:text-[17px] md:leading-[23.8px]">
+              {{ calculatePayment ? (reservationByIndex?.totalAccommodationAmount | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2') : '-.--' }}
+            </div>
+            <div class="text-[14px] font-light leading-[19.6px] text-primary-color sm:text-[10px] sm:leading-[14px] md:text-[12px] md:leading-[16.8px]">
+              ({{ 'PRICE_FOR' | translate | async }}
+              <span class="sm:whitespace-nowrap text-[14px] font-light leading-[19.6px] text-primary-color sm:text-[10px] sm:leading-[14px] md:text-[12px] md:leading-[16.8px]"
+                >{{ totalNights || '--' }} {{ (totalNights > 1 ? 'NIGHTS' : 'NIGHT') | translate | async }})</span
+              >
+            </div>
+          </div>
+          <div class="text-[24px] font-medium leading-[28.8px] text-primary-color sm:text-[14px] sm:leading-[19.6px] md:text-[17px] md:leading-[23.8px]">+</div>
+          <div class="">
+            <div class="text-[24px] font-medium leading-[28.8px] text-primary-color sm:text-[14px] sm:leading-[19.6px] md:text-[17px] md:leading-[23.8px]">
+              {{ calculatePayment ? (reservationByIndex | getAmenityRate | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2') : '-.--' }}
+            </div>
+            <div class="text-[14px] font-light leading-[19.6px] text-primary-color sm:text-[10px] sm:leading-[14px] md:text-[12px] md:leading-[16.8px]">
+              ({{ 'EXTRA_SERVICE' | translate | async }})
+            </div>
+          </div>
+          <div class="text-[24px] font-medium leading-[28.8px] text-primary-color sm:text-[14px] sm:leading-[19.6px] md:text-[17px] md:leading-[23.8px]">=</div>
+          <div class="">
+            <div class="text-[24px] font-medium leading-[28.8px] text-hotel-primary-color sm:text-[14px] sm:leading-[19.6px] md:text-[17px] md:leading-[23.8px]">
+              {{ calculatePayment ? (reservationByIndex?.totalGrossAmount | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2') : '-.--' }}
+            </div>
+            <!--            <div class="text-[14px] font-light leading-[19.6px] text-primary-color sm:text-[10px] sm:leading-[14px] md:text-[12px] md:leading-[16.8px]">-->
+            <!--              {{ (hotelInclusive ? "INCLUDES_TAXES_AND_FEES" : "EXCLUSIVE_TAXES_AND_FEES") | translate | async}}-->
+            <!--            </div>-->
+            <div class="text-[14px] font-light leading-[19.6px] text-primary-color sm:text-[10px] sm:leading-[14px] md:text-[12px] md:leading-[16.8px]">
+              {{ 'INCLUDES_TAXES_AND_FEES' | translate | async }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="my-[8px] h-[1px] bg-border-color w-full hidden sm:block"></div>
+      <div class="flex items-end justify-end gap-[12px] md:flex-col sm:justify-between">
+        <div class="flex flex-col items-end sm:items-start">
+          <div class="text-[17px] font-light leading-[23.8px] text-primary-color mb-[4px] sm:text-[10px] sm:leading-[14px] md:text-[12px] md:leading-[16.8px] md:font-medium">
+            {{ 'TOTAL_CHARGES_FOR_ALL_ROOMS' | translate | async }}:
+          </div>
+          <div class="text-[24px] font-medium leading-[28.8px] text-hotel-primary-color sm:text-[17px] sm:leading-[23.8px] md:text-[20px] md:leading-[24px]">
+            {{ calculatePayment ? (calculatePayment?.totalSellingRate | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2') : '-.--' }}
+          </div>
+          <!--          <div class="text-[14px] font-light leading-[19.6px] text-primary-color sm:text-[10px] sm:leading-[14px] md:text-[12px] md:leading-[16.8px]">-->
+          <!--            {{ (hotelInclusive ? "INCLUDES_TAXES_AND_FEES" : "EXCLUSIVE_TAXES_AND_FEES") | translate | async}}-->
+          <!--          </div>-->
+          <div class="text-[14px] font-light leading-[19.6px] text-primary-color sm:text-[10px] sm:leading-[14px] md:text-[12px] md:leading-[16.8px]">
+            {{ 'INCLUDES_TAXES_AND_FEES' | translate | async }}
+          </div>
+        </div>
+        <div class="">
+          <ng-container *ngIf="!isNextRoom">
+            <button
+              (click)="completeBooking()"
+              class="flex items-center gap-[8px] px-[24px] h-[40px] text-[14px] font-medium leading-[140%] bg-button-normal-background-color text-button-normal-color rounded-[12px] hover:opacity-80"
+            >
+              {{ 'COMPLETE_BOOKING' | translate | async }}
+              <mat-icon class="dir-mat-icon">chevron_right</mat-icon>
+            </button>
+          </ng-container>
+          <ng-container *ngIf="isNextRoom">
+            <button
+              (click)="goToNextRoom()"
+              class="flex items-center gap-[8px] px-[24px] h-[40px] text-[14px] font-medium leading-[140%] bg-button-normal-background-color text-button-normal-color rounded-[12px] hover:opacity-80"
+            >
+              {{ 'GO_TO_NEXT_ROOM' | translate | async }}
+              <mat-icon class="dir-mat-icon">chevron_right</mat-icon>
+            </button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

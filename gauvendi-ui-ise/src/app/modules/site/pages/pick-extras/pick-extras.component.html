@@ -1,0 +1,138 @@
+<div class="relative md:pt-[150px]">
+  <ng-container
+    *ngIf="{
+      searchMatchingRfc: searchMatchingRfc$ | async,
+      roomsDetails: roomsDetails$ | async,
+      hotelAvailableAmenity: hotelAvailableAmenity$ | async,
+      hotelAvailableServices: hotelAvailableServices$ | async,
+      hotelAvailableMealPlan: hotelAvailableMealPlan$ | async,
+      hotelAmenityLoading: hotelAmenityLoading$ | async,
+      hotelAmenityIncluded: hotelAmenityIncluded$ | async,
+      isLowestPriceOpaque: isLowestPriceOpaque$ | async,
+      lowestPriceImageUrl: lowestPriceImageUrl$ | async,
+      priceState: priceState$ | async,
+      currencyRate: currencyRate$ | async,
+      currencyCode: currencyCode$ | async,
+      isIncludedTax: isIncludedTax$ | async,
+      isLowestPriceOption: isLowestPriceOption$ | async,
+      isMatchFlow: isMatchFlow$ | async,
+      scroll: scroll$ | async,
+      hotelInclusive: hotelInclusive$ | async,
+      pricing: pricing$ | async,
+      reservationPricing: (pricing$ | async)?.reservationPricingList | getReservationPricingByIndex: roomUUIDList[roomIdxView],
+      searchMatchingRfcStatus: searchMatchingRfcStatus$ | async,
+      roomSummary: roomSummary$ | async,
+      surchargeAmenityList: surchargeAmenityList$ | async,
+      salesPlanList: salesPlanList$ | async
+    } as vm"
+  >
+    @if (vm.searchMatchingRfcStatus !== ELoadingStatus.loaded) {
+      <app-ise-loading />
+    } @else {
+      <div class="pt-[40px] max-w-[1200px] mx-auto mb-[52px] sm:pt-[12px] lg:p-[24px]">
+        <div class="px-4">
+          <app-breadcrumb [breadcrumb]="breadcrumb" />
+        </div>
+
+        <ng-container *ngIf="vm.searchMatchingRfc; else tplLoadRoomDetail">
+          <ng-container *ngIf="vm.searchMatchingRfc?.items?.length === 1">
+            <div class="mt-[24px] sm:mt-[12px]">
+              <app-option-item
+                class="sm:hidden"
+                [item]="vm.searchMatchingRfc?.items?.[0]"
+                [displayMode]="EDisplayMode.List"
+                [isLowestPriceOpaque]="vm.isLowestPriceOpaque"
+                [lowestPriceImageUrl]="vm.lowestPriceImageUrl"
+                [restrictionValidationList]="vm.searchMatchingRfc?.metadata?.restrictionValidationList"
+                [priceView]="vm.priceState"
+                [isFromMatchingRfc]="true"
+                [showMatch]="vm.isMatchFlow"
+                [roomSummary]="vm.roomSummary"
+                [isStep2]="true"
+              ></app-option-item>
+              <app-option-item-detail
+                class="hidden sm:block bg-popover-background-color rounded-tl-[16px] rounded-tr-[16px] overflow-hidden"
+                [data]="vm.searchMatchingRfc?.items?.[0]"
+                [isFromMatchingRfc]="true"
+              ></app-option-item-detail>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="vm.searchMatchingRfc?.items?.length > 1">
+            <div class="mt-[24px] sm:mt-[12px]">
+              <app-combination-option-item
+                class="sm:hidden md:hidden"
+                [item]="vm.searchMatchingRfc"
+                [displayMode]="EDisplayMode.List"
+                [isLowestPriceOpaque]="vm.isLowestPriceOpaque"
+                [lowestPriceImageUrl]="vm.lowestPriceImageUrl"
+                [restrictionValidationList]="vm.searchMatchingRfc?.metadata?.restrictionValidationList"
+                [isFromMatchingRfc]="true"
+                [priceView]="vm.priceState"
+                [showMatch]="vm.isMatchFlow"
+                [roomIdxView]="roomIdxView"
+                [roomSummary]="vm.roomSummary"
+                (selectedIndex)="roomChange($event)"
+              ></app-combination-option-item>
+              <app-combination-option-item-mobile
+                class="hidden sm:block md:block"
+                [data]="vm.searchMatchingRfc"
+                [isFromMatchingRfc]="true"
+                [roomIdxView]="roomIdxView"
+                (selectedIndex)="roomChange($event)"
+              >
+              </app-combination-option-item-mobile>
+            </div>
+          </ng-container>
+        </ng-container>
+        <div class="sm:text-[20px] text-[24px] font-medium mt-6 px-4 text-primary-color">
+          @if (travelProfile$ | async; as travelProfile) {
+            {{ ('WHO_BOOKED_ALSO_CHOOSE' | translate | async)?.replace('{0}', travelProfile)?.replace('{1}', vm.searchMatchingRfc?.items?.[0]?.rfcRatePlan?.ratePlan?.name) }}
+          }
+        </div>
+        <ng-container *ngIf="!vm?.hotelAmenityLoading; else tplExtrasServiceLoading">
+          <mat-tab-group [selectedIndex]="roomIdxView" class="custom-tab-service">
+            <mat-tab *ngFor="let item of vm.roomsDetails[0]; index as i">
+              <ng-template matTabContent>
+                <app-extras-service-list
+                  [index]="roomIdxView"
+                  [roomName]="
+                    vm.isLowestPriceOption && vm.isLowestPriceOpaque ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) + ' #' + (i + 1) : vm.reservationPricing?.roomProduct?.name
+                  "
+                  [availableAmenities]="vm.hotelAvailableAmenity"
+                  [availableMealPlans]="vm.hotelAvailableMealPlan"
+                  [availableServices]="vm.hotelAvailableServices"
+                  [includedServices]="vm.hotelAmenityIncluded"
+                  [roomSummary]="item.people"
+                  (calculatePayment)="loadCalculatePaymentReservation()"
+                ></app-extras-service-list>
+              </ng-template>
+            </mat-tab>
+          </mat-tab-group>
+        </ng-container>
+      </div>
+      <app-total-price-section
+        [roomName]="
+          vm.isLowestPriceOption && vm.isLowestPriceOpaque ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) + ' #' + (roomIdxView + 1) : vm.reservationPricing?.roomProduct?.name
+        "
+        [calculatePayment]="vm.pricing"
+        [priceState]="vm.priceState"
+        [currencyRate]="vm.currencyRate"
+        [currencyCode]="vm.currencyCode"
+        [includeTax]="vm.isIncludedTax"
+        [isNextRoom]="roomIdxView < vm?.roomsDetails?.[0]?.length - 1"
+        [roomIdxView]="roomIdxView"
+        [reservationByIndex]="vm.reservationPricing"
+        [isCombinationRoom]="vm?.roomsDetails?.[0]?.length > 1"
+        [hotelInclusive]="vm.hotelInclusive"
+        (goNextRoom)="roomChange(roomIdxView + 1)"
+      ></app-total-price-section>
+    }
+  </ng-container>
+</div>
+<ng-template #tplExtrasServiceLoading>
+  <app-extra-service-list-loading></app-extra-service-list-loading>
+</ng-template>
+
+<ng-template #tplLoadRoomDetail>
+  <app-room-detail-loading></app-room-detail-loading>
+</ng-template>

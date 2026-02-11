@@ -1,0 +1,76 @@
+query AvailableRfc($bookingRequest: BookingRequest) {
+  response: availableRfc(bookingRequest: $bookingRequest) {
+    count
+    totalPage
+    data {
+      ... on Rfc {
+        numberOfBedrooms
+        space
+        id
+        name
+        code
+        capacityDefault
+        matchingPercentage
+        rfcType
+        allocatedAdultCount
+        allocatedChildCount
+        allocatedExtraBedAdultCount
+        allocatedExtraBedChildCount
+        restrictionValidationList {
+          code
+          value
+          fromDate
+          toDate
+        }
+        rfcImageList {
+          imageUrl
+          displaySequence
+          description
+        }
+        layoutFeatureList {
+          name
+          code
+        }
+        retailFeatureList {
+          name
+          code
+          matched
+          quantity
+          hotelRetailCategory {
+            name
+            code
+          }
+        }
+        additionalFeatureList {
+          name
+          code
+          matched
+          quantity
+        }
+        standardFeatureList {
+          name
+          code
+        }
+        rfcRatePlanList {
+          name
+          code
+          averageDailyRate
+          totalBaseAmount
+          totalGrossAmount
+          totalSellingRate
+          ratePlan {
+            code
+            name
+            description
+            includedHotelExtrasList {
+              id
+              code
+              name
+              description
+            }
+          }
+        }
+      }
+    }
+  }
+}

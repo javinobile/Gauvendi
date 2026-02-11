@@ -1,0 +1,17 @@
+query StayOptionList($filter: StayOptionFilter) {
+  response: stayOptionList(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on StayOption {
+        code
+        amenityList {
+          id
+          name
+          code
+          amenityType
+        }
+      }
+    }
+  }
+}

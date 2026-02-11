@@ -1,0 +1,61 @@
+<div id="anchor" class="mt-[24px] sm:mx-[16px] md:mx-[20px] pb-2">
+  <ng-container
+    *ngIf="{
+      currencyCode: currencyCode$ | async,
+      currencyRate: currencyRate$ | async,
+      isIncludedTax: isIncludedTax$ | async,
+      servicesChainByIdx: servicesChainByIdx$ | async
+    } as vm"
+  >
+    <!-- Meal Plans -->
+    <ng-container *ngIf="availableMealPlans?.length > 0">
+      <div class="text-[17px] font-medium leading-[140%] text-primary-color mb-[6px] mt-[24px]">{{ 'MEAL_PLAN' | translate | async }} ({{ availableMealPlans?.length }})</div>
+      <app-extras-service-by-category
+        (changeAmount)="handlerChangeAmount($event)"
+        (toggleServices)="handlerToggleService($event)"
+        [category]="'MEAL_PLAN' | translate | async"
+        [currencyCode]="vm.currencyCode"
+        [currencyRate]="vm.currencyRate"
+        [hotelAmenity]="availableMealPlans"
+        [includedHotelExtrasList]="includedServices"
+        [index]="index"
+        [isIncludedTax]="vm.isIncludedTax"
+        [roomServiceChain]="vm.servicesChainByIdx"
+      ></app-extras-service-by-category>
+    </ng-container>
+
+    <!-- Services -->
+    <ng-container *ngIf="availableServices?.length > 0">
+      <div class="text-[17px] font-medium leading-[140%] text-primary-color mb-[6px] mt-[24px]">{{ 'HOTEL_SERVICES' | translate | async }} ({{ availableServices?.length }})</div>
+      <app-extras-service-by-category
+        (changeAmount)="handlerChangeAmount($event)"
+        (toggleServices)="handlerToggleService($event)"
+        [category]="'HOTEL_SERVICES' | translate | async"
+        [currencyCode]="vm.currencyCode"
+        [currencyRate]="vm.currencyRate"
+        [hotelAmenity]="availableServices"
+        [includedHotelExtrasList]="includedServices"
+        [index]="index"
+        [isIncludedTax]="vm.isIncludedTax"
+        [roomServiceChain]="vm.servicesChainByIdx"
+      ></app-extras-service-by-category>
+    </ng-container>
+
+    <!-- Amenity -->
+    <ng-container *ngIf="availableAmenitiesMapped()?.length > 0">
+      <div class="text-[17px] font-medium leading-[140%] text-primary-color mb-[6px] mt-[24px]">{{ 'EXTRAS' | translate | async }} ({{ availableAmenitiesMapped()?.length }})</div>
+      <app-extras-service-by-category
+        (changeAmount)="handlerChangeAmount($event)"
+        (toggleServices)="handlerToggleService($event)"
+        [category]="'EXTRAS' | translate | async"
+        [currencyCode]="vm.currencyCode"
+        [currencyRate]="vm.currencyRate"
+        [hotelAmenity]="availableAmenitiesMapped()"
+        [includedHotelExtrasList]="includedServices"
+        [index]="index"
+        [isIncludedTax]="vm.isIncludedTax"
+        [roomServiceChain]="vm.servicesChainByIdx"
+      ></app-extras-service-by-category>
+    </ng-container>
+  </ng-container>
+</div>

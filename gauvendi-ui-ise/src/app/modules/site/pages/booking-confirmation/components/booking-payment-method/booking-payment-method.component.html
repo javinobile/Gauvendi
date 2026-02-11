@@ -1,0 +1,29 @@
+@if (bookingInfo(); as bookingInfo) {
+  <div class="flex flex-col gap-[24px] bg-background-secondary-color rounded-[8px] p-[24px]">
+    <div class="flex flex-col gap-[12px]">
+      <div class="text-[20px] font-medium text-primary-color">
+        {{ 'PAYMENT_METHOD' | translate | async }}
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-1 gap-[16px] gap-x-[8px] gap-y-[16px]">
+        <div class="col-span-2 sm:grid-cols-1">
+          @if ((bookingInfo.hotelPaymentModeCode | mappingPaymentCode) === 'CREDIT_CARD') {
+            <div class="text-[12px] font-light text-primary-color">{{ 'GUARANTEE_WITH' | translate | async }} {{ bookingInfo.hotelPaymentModeCode | mappingPaymentCode | translate | async }}</div>
+            <div class="flex items-center justify-between">
+              <div class="text-[14px] font-normal text-primary-color">{{ bookingInfo.hotelPaymentModeCode | mappingPaymentCode | translate | async }}</div>
+              <div class="text-[14px] font-normal text-primary-color flex items-center gap-[8px]">
+                <img class="max-w-[32px]" [src]="bookingInfo.bookingTransactionList?.[0]?.cardType | mappingPaymentTypeIcon" alt="card type icon" />
+                {{ bookingInfo.bookingTransactionList?.[0]?.accountNumber }}
+              </div>
+            </div>
+          } @else {
+            <div class="flex items-center gap-[4px]">
+              <img class="max-w-[32px]" [src]="bookingInfo.bookingTransactionList?.[0]?.cardType | mappingPaymentTypeIcon" alt="card type icon" />
+              <div class="text-[14px] font-normal text-primary-color">{{ bookingInfo.hotelPaymentModeCode | mappingPaymentCode | translate | async }}</div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}

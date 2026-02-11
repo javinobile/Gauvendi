@@ -1,0 +1,23 @@
+<div
+  (click)="toggleItem.emit()"
+  class="flex h-full w-full cursor-pointer items-center border px-4 py-3 border-configurator-feature-default-background-color gap-[16px] bg-configurator-feature-default-background-color rounded-[8px] hover:opacity-80"
+  [ngClass]="{ '!border-configurator-feature-hover-icon-color !bg-configurator-feature-hover-background-color': isSelected }"
+>
+  <app-image-hovering
+    class="w-[32px] h-[36px] min-h-[36px] min-w-[32px]"
+    [src]="image"
+    [color]="isSelected ? featureHoverIcon : featureDefaultIcon"
+    [colorHovering]="isSelected ? featureHoverIcon : featureDefaultIcon"
+    [defaultClass]="'group-hover:!hidden'"
+    [hoveringClass]="'group-hover:!block'"
+  />
+  <div class="content d-flex d-flex-column">
+    <div class="font-medium flex items-center gap-[4px] text-primary-color text-[12px] line-clamp-1 leading-[120%]">
+      {{ title }}
+      @if (isSpecial) {
+        <img loading="lazy" src="assets/icons/special.svg" width="16" height="16" alt="special" appFilterSvg [color]="hotelPrimaryColor" />
+      }
+    </div>
+    <div class="font-light pt-[4px] text-[12px] line-clamp-2 leading-[120%] text-secondary-color">{{ description }}</div>
+  </div>
+</div>

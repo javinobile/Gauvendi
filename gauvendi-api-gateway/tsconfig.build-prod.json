@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "removeComments": true,
+    "sourceMap": false,
+    "declaration": false,
+    "module": "commonjs",
+    "incremental": false
+  },
+  "exclude": [
+    "node_modules",
+    "test",
+    "dist",
+    "**/*spec.ts",
+    "**/*.test.ts",
+    "**/*.mock.ts",
+    "**/__mocks__/**"
+  ]
+}

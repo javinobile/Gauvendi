@@ -1,0 +1,17 @@
+<div class="bg-popover-background-color rounded-[12px] px-[8px] h-[36px] flex items-center">
+  <div class="flex items-center gap-[8px] md:hidden lg:hidden">
+    <ng-container *ngFor="let i of displayModes">
+      <div class="cursor-pointer" (click)="activeChange.emit(i.mode)">
+        <img loading="lazy" [src]="i?.icon" class="" appFilterSvg [color]="active === i.mode ? hotelPrimaryColor : colorText" />
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="items-center gap-[8px] hidden md:flex lg:flex">
+    <ng-container *ngFor="let i of displayTabletModes">
+      <div class="cursor-pointer" (click)="activeChange.emit(i.mode)">
+        <img loading="lazy" [src]="i?.icon" class="" appFilterSvg [color]="active === i.mode ? hotelPrimaryColor : colorText" />
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+mutation ConfirmBookingProposal($input: ConfirmBookingProposalInput) {
+  response: confirmBookingProposal(input: $input) {
+    code
+    status
+    message
+    data {
+      ... on ConfirmBookingResponse {
+        booking {
+          id
+          bookingNumber
+        }
+        action {
+          data {
+            MD
+            paReq
+            termUrl
+          }
+          type
+          url
+          paymentData
+          method
+        }
+      }
+    }
+  }
+}

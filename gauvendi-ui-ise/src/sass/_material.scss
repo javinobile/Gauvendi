@@ -1,0 +1,31 @@
+.mat-mdc-select-panel {
+  background-color: var(--color-background-primary) !important;
+}
+
+.mat-expansion-panel {
+  box-shadow: none !important;
+}
+
+.mat-mdc-option.mdc-list-item {
+  color: var(--color-text-primary) !important;
+}
+
+.cdk-overlay-container {
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 599px) {
+  .cdk-overlay-pane.mat-mdc-dialog-panel {
+    max-width: 95vw !important;
+  }
+}
+
+.rounded-dialog {
+  @media screen and (min-width: 768px) {
+    .mat-mdc-dialog-container .mdc-dialog__surface {
+      border-radius: 16px !important;
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+  }
+}

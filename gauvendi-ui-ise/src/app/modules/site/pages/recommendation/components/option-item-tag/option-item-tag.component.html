@@ -1,0 +1,36 @@
+<ng-container *ngIf="tag | optionIcon">
+  <div class="relative">
+    <div
+      class="h-[44px] w-fit px-[16px] flex items-center gap-[12px] rounded-e-[12px] rounded-s-[6px] z-[10] relative"
+      [class]="{
+        'bg-lowest-price-background-color': tag === BookingFlow.LowestPrice,
+        'bg-most-popular-background-color': tag === BookingFlow.MostPopular,
+        'bg-our-tip-background-color': tag === BookingFlow.Recommended
+      }"
+    >
+      <img loading="lazy" [src]="tag | optionIcon" alt="tag" *ngIf="!isBundle" />
+      <img loading="lazy" src="assets/beta/promotion.svg" alt="tag" *ngIf="isBundle" />
+      <div class="flex flex-col">
+        <div
+          *ngIf="!isBundle"
+          class="text-[14px] font-medium leading-[140%]"
+          [class]="{
+            'text-lowest-price-color': tag === BookingFlow.LowestPrice,
+            'text-most-popular-color': tag === BookingFlow.MostPopular,
+            'text-our-tip-color': tag === BookingFlow.Recommended
+          }"
+        >
+          {{ tag | optionTag | translate | async }}
+        </div>
+        <div *ngIf="isBundle" class="text-[14px] font-medium leading-[140%] text-our-tip-color">Promotion</div>
+      </div>
+    </div>
+
+    @if (!hideExtra) {
+      <div class="absolute top-[-6px] ltr:left-0 rtl:right-0 z-[0]">
+        <img loading="lazy" src="assets/icons/extra-tag.svg" alt="extra-tag" class="ltr:block rtl:hidden" appFilterSvg [color]="tag | tagColor" />
+        <img loading="lazy" src="assets/icons/extra-tag.svg" alt="extra-tag" class="ltr:hidden rtl:block rotate-y-180" appFilterSvg [color]="tag | tagColor" />
+      </div>
+    }
+  </div>
+</ng-container>

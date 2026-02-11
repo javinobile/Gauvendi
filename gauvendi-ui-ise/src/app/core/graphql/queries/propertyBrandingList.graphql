@@ -1,0 +1,10 @@
+query PropertyBrandingList($filter: PropertyBrandingFilter) {
+  response: propertyBrandingList(filter: $filter) {
+    data {
+      ... on PropertyBranding {
+        key
+        value
+      }
+    }
+  }
+}

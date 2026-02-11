@@ -1,0 +1,11 @@
+:host {
+  ::ng-deep {
+    .mat-expansion-panel-body {
+      padding: 0 !important;
+    }
+  }
+
+  .more-image-count {
+    background: rgba(0, 0, 0, 0.55);
+  }
+}

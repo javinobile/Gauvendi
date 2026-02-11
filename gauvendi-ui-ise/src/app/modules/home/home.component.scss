@@ -1,0 +1,17 @@
+.wrapper {
+  text-align: center;
+  transform: translateY(-50px);
+
+  img {
+    cursor: pointer;
+    width: 40vw;
+
+    @media(max-width: 1024px) {
+      width: 70vw;
+    }
+
+    @media(max-width: 600px) {
+      width: 90vw;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<img
+	class="w-full object-cover transition-all duration-300"
+	[src]="src"
+	[ngClass]="ngClass"
+	[alt]="alt"
+	[class]="customClass + (loaded ? ' opacity-100' : ' opacity-0')"
+  #image
+/>
+<img
+	src="assets/icons/loading-buffering-1.gif"
+	class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300"
+	width="24"
+	height="24"
+	[ngClass]="{'opacity-0': loaded}"
+/>
+

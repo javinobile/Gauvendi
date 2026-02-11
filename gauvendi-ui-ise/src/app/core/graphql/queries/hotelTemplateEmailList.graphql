@@ -1,0 +1,17 @@
+query HotelTemplateEmailList($filter: IbeHotelTemplateEmailFilter) {
+  response: hotelTemplateEmailList(filter: $filter) {
+    count
+    totalPage
+    data {
+      ...on HotelTemplateEmail {
+        closingSection
+        languageCode
+        code
+        name
+        templateId
+        isDefault
+        signature
+      }
+    }
+  }
+}

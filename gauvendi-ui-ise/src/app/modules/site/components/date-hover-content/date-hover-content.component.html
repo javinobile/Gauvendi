@@ -1,0 +1,16 @@
+<div
+  [@tooltip]
+  [style.--max-width]="maxWidth"
+  class="dialog-show-more rounded-[8px] relative"
+>
+  <div class="absolute bottom-[-4px] left-[50%] -translate-x-[50%]">
+    <img src="assets/icons/polygon.svg">
+  </div>
+  <div class="content text-[12px] font-normal leading-[140%] text-tooltip-color">
+    <div class="number-of-nights" *ngIf="numberOfNightsMsg">{{numberOfNightsMsg}}</div>
+    <div class="restriction flex items-center" *ngIf="restrictionMsg">
+      <img src="assets/icons/restriction-warning.svg" *ngIf="showWarning"/>
+      <span class="text-[12px] font-normal leading-[140%] text-tooltip-color ml-[4px]">{{restrictionMsg}}</span>
+    </div>
+  </div>
+</div>

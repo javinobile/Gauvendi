@@ -1,0 +1,27 @@
+query HotelTagList($filter: HotelTagFilter) {
+  response: hotelTagList(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on HotelTag {
+        id
+        hotelId
+        type
+        name
+        code
+        assignedFeatureList {
+          id
+          code
+          hotelRetailCategory {
+            id
+            name
+            code
+          }
+          retailFeatureImageList {
+            imageUrl
+          }
+        }
+      }
+    }
+  }
+}

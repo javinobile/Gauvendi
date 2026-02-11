@@ -1,0 +1,17 @@
+.dropdown-position {
+  height: 1px;
+  width: auto;
+
+  .mat-mdc-select-trigger {
+    height: 1px !important;
+  }
+
+  .mat-mdc-select-arrow {
+    display: none;
+  }
+
+  .mat-mdc-select-arrow-wrapper,
+  .mat-mdc-select-value {
+    display: none !important;
+  }
+}

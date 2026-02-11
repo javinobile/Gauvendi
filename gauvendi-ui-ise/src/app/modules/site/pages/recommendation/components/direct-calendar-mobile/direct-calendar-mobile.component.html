@@ -1,0 +1,110 @@
+<ng-container
+  *ngIf="{
+    calendarDailyRates: calendarDailyRates$ | async,
+    currencyRate: currencyRate$ | async,
+    currencyCode: currencyCode$ | async,
+    isLoadingCalendar: isLoadingCalendar$ | async,
+    locale: locale$ | async,
+    lowestPriceStayOption: lowestPriceStayOption$ | async,
+    colorText: colorText$ | async
+  } as vm"
+>
+  <div class="p-[20px] pb-[8px] bg-popover-background-color dialog-content relative h-screen" [class.animation--fadeUp]="isOpen" [class.animation--fadeDown]="!isOpen">
+    <div class="max-h-[75vh] overflow-y-auto">
+      <div class="text-[14px] font-medium text-primary-color leading-[140%] text-center mb-[24px]">Choose another check-in & check-out date</div>
+      <div class="p-[12px] mb-[16px]">
+        <div class="flex items-center justify-between" (click)="expansionPanel.toggle()">
+          <div class="flex items-center gap-[8px]">
+            <div class="text-[17px] font-medium leading-[140%] text-primary-color">{{ 'EXPLAIN' | translate | async }}</div>
+            <div class="flex items-center gap-[8px]" *ngIf="expansionPanel?._getExpandedState() === 'collapsed'">
+              <img loading="lazy" src="assets/icons/ctd.svg" alt="" appFilterSvg [color]="vm.colorText" />
+              <img loading="lazy" src="assets/icons/cta.svg" alt="" appFilterSvg [color]="vm.colorText" />
+              <!--            <img loading="lazy" src="assets/icons/deal.svg" alt="">-->
+              <img loading="lazy" [src]="(layoutSetting$ | async) === 'SQUARE' ? 'assets/icons/sold-out-square.svg' : 'assets/icons/sold-out.svg'" alt="" />
+            </div>
+          </div>
+          <div class="flex items-center">
+            <mat-icon class="text-primary-color !w-auto !h-auto">{{ expansionPanel?._getExpandedState() === 'expanded' ? 'expand_less' : 'expand_more' }}</mat-icon>
+          </div>
+        </div>
+        <mat-expansion-panel id="explain-panel" #expansionPanel>
+          <div class="flex flex-col gap-[16px] mt-[16px]">
+            <div class="flex items-center gap-[12px]">
+              <img loading="lazy" src="assets/icons/ctd.svg" alt="" />
+              <div class="text-[14px] font-normal leading-[140%] text-primary-color">{{ 'CTA_MESSAGE' | translate | async }}</div>
+            </div>
+            <div class="flex items-center gap-[12px]">
+              <img loading="lazy" src="assets/icons/cta.svg" alt="" />
+              <div class="text-[14px] font-normal leading-[140%] text-primary-color">{{ 'CTD_MESSAGE' | translate | async }}</div>
+            </div>
+            <!--          <div class="flex items-center gap-[12px]">-->
+            <!--            <img loading="lazy" src="assets/icons/deal.svg" alt="">-->
+            <!--            <div class="text-[14px] font-normal leading-[140%] text-primary-color">{{'SPECIAL_DEAL' | translate | async}}</div>-->
+            <!--          </div>-->
+            <div class="flex items-center gap-[12px]">
+              <img loading="lazy" [src]="(layoutSetting$ | async) === 'SQUARE' ? 'assets/icons/sold-out-square.svg' : 'assets/icons/sold-out.svg'" alt="" />
+              <div class="text-[14px] font-normal leading-[140%] text-primary-color">{{ 'SOLD_OUT' | translate | async }}</div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </div>
+      <div class="">
+        <app-calendar-mobile-renderer
+          [isStartDate]="true"
+          [calendarDailyRates]="vm.calendarDailyRates"
+          [activeDate]="activeDate[0]"
+          [selectedValue]="datesSelected"
+          [currencyRate]="vm.currencyRate"
+          [currencyCode]="vm.currencyCode"
+          [minDate]="minDate"
+          [maxDate]="maxDate"
+          [isLoadingPrice]="vm.isLoadingCalendar"
+          [locale]="vm.locale"
+          [lowestPriceOption]="vm.lowestPriceStayOption"
+          [checkInDateInfo]="checkInDateInfo"
+          [colorText]="vm.colorText"
+          [calendarSetting]="calendarSetting$ | async"
+          [layoutSetting]="layoutSetting$ | async"
+          (valueChange)="selectedChange($event)"
+          (clearSelectedDate)="clearSelectedDate()"
+          (changeDate)="changeDate($event)"
+        ></app-calendar-mobile-renderer>
+      </div>
+      <div class="">
+        <app-calendar-mobile-renderer
+          [isStartDate]="false"
+          [calendarDailyRates]="vm.calendarDailyRates"
+          [activeDate]="activeDate[1]"
+          [selectedValue]="datesSelected"
+          [currencyRate]="vm.currencyRate"
+          [currencyCode]="vm.currencyCode"
+          [minDate]="minDate"
+          [maxDate]="maxDate"
+          [isLoadingPrice]="vm.isLoadingCalendar"
+          [locale]="vm.locale"
+          [lowestPriceOption]="vm.lowestPriceStayOption"
+          [checkInDateInfo]="checkInDateInfo"
+          [colorText]="vm.colorText"
+          [calendarSetting]="calendarSetting$ | async"
+          [layoutSetting]="layoutSetting$ | async"
+          (valueChange)="selectedChange($event)"
+          (clearSelectedDate)="clearSelectedDate()"
+          (changeDate)="changeDate($event)"
+        ></app-calendar-mobile-renderer>
+      </div>
+    </div>
+    <div class="mt-[16px] flex items-center gap-[8px]">
+      <button (click)="onCancel()" class="flex-1 h-[44px] px-[24px] rounded-[12px] bg-background-secondary-color border border-button-fill text-button-fill text-[14px] font-medium leading-[140%]">
+        {{ 'CANCEL' | translate | async }}
+      </button>
+      <button
+        (click)="onApply()"
+        [disabled]="!datesSelected[1]"
+        [ngClass]="{ 'opacity-50 !cursor-not-allowed': !datesSelected[1] }"
+        class="flex-1 h-[44px] px-[24px] rounded-[12px] text-button-normal-color bg-button-normal-background-color text-[14px] font-medium leading-[140%]"
+      >
+        {{ 'APPLY' | translate | async }}
+      </button>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,113 @@
+@if (
+  {
+    themeColors: themeColors$ | async
+  };
+  as vm
+) {
+  <div cdkTrapFocus [@tooltip] class="dialog-content bg-popover-background-color rounded-[16px] relative p-[12px] min-w-[345px]" #travelers>
+    <div class="">
+      <ng-container *ngIf="data">
+        <div class="max-h-[278px] overflow-y-auto scroll-container" #scrollContainer>
+          <ng-container *ngFor="let item of rfNumberOfRoom.controls; index as i; let last = last">
+            <div [formGroup]="item | parseFormGroup" class="bg-background-secondary-color p-3 rounded-[12px]" [ngClass]="{ 'mb-[12px]': !last }">
+              <div class="flex justify-between mb-[12px]">
+                <div class="flex items-center">
+                  <img loading="lazy" src="assets/beta/key.svg" alt="Unit" width="24" height="24" appFilterSvg [color]="vm.themeColors.textPrimary" />
+                  <div class="text-[14px] font-medium text-primary-color ml-2">{{ 'UNIT' | translate | async | titlecase }} #{{ i + 1 }}</div>
+                </div>
+                <button *ngIf="rfNumberOfRoom.controls.length > 1" class="flex" (click)="rfNumberOfRoom.controls.length > 1 && removeRoom(i)">
+                  <mat-icon class="!w-auto !h-auto text-[20px] cursor-pointer text-primary-color"> close </mat-icon>
+                </button>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="">
+                  <div class="text-[14px] leading-[140%] font-medium text-primary-color">
+                    {{ 'ADULTS' | translate | async | titlecase }}
+                  </div>
+                  <div class="text-[12px] leading-[140%] font-normal text-secondary-color">
+                    {{ 'ADULT_POLICY' | translate | async | replaceStr: '18' : ((childPolicy$ | async)?.maxChildrenAge | calculateAge: 1) }}
+                  </div>
+                </div>
+                <div class="">
+                  <app-numeric-step formControlName="adult" class="" [max]="maxAdultInRoom" (valueChange)="updateRouteQueryParams()"></app-numeric-step>
+                </div>
+              </div>
+              <ng-container *ngIf="isAllowedChildren$ | async">
+                <div class="flex items-center justify-between mt-[12px]">
+                  <div class="">
+                    <div class="text-[14px] leading-[140%] font-medium text-primary-color">
+                      {{ 'CHILDREN' | translate | async | titlecase }}
+                    </div>
+                    <div class="text-[12px] leading-[140%] font-normal text-secondary-color">
+                      {{ 'AGES' | translate | async }} {{ (childPolicy$ | async)?.minChildrenAge }} - {{ (childPolicy$ | async)?.maxChildrenAge }}
+                    </div>
+                  </div>
+                  <div class="">
+                    <app-numeric-step
+                      formControlName="children"
+                      [min]="0"
+                      [max]="(childPolicy$ | async).maxChildrenCapacity"
+                      (typeChange)="updateChildInRoom($event, item.get('childrenAge'))"
+                    ></app-numeric-step>
+                  </div>
+                </div>
+                <div class="">
+                  <ng-container formArrayName="childrenAge" *ngFor="let childAge of item.get('childrenAge')['controls']; let index = index; let last = last; let first = first">
+                    <div class="flex items-center justify-between" [ngClass]="{ 'mb-[12px]': !last, 'mt-[12px]': first }">
+                      <div class="text-[14px] leading-[140%] font-medium text-primary-color">{{ 'AGE_OF_CHILD' | translate | async }} #{{ index + 1 }}</div>
+                      <div class="">
+                        <app-dropdown-children-age
+                          [min]="(childPolicy$ | async).minChildrenAge"
+                          [max]="(childPolicy$ | async).maxChildrenAge"
+                          [formControl]="childAge"
+                          (valueChange)="updateRouteQueryParams()"
+                        >
+                        </app-dropdown-children-age>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                @if (petPolicy()?.isAllowed) {
+                  <div class="flex items-center justify-between mt-[12px]">
+                    <div class="">
+                      <div class="text-[14px] leading-[140%] font-medium text-primary-color">
+                        {{ 'PETS' | translate | async | titlecase }}
+                      </div>
+                    </div>
+                    <div class="">
+                      <app-numeric-step formControlName="pets" [min]="0" [max]="petPolicy()?.maximumPets" (valueChange)="updateRouteQueryParams()"></app-numeric-step>
+                    </div>
+                  </div>
+                }
+                @if (item.get('children').value) {
+                  <div class="text-[12px] font-light text-primary-color mt-[12px]">
+                    {{ 'AGE_REQUIRED' | translate | async }}
+                  </div>
+                }
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+        <div class="flex justify-end items-center gap-[8px] mt-[16px]">
+          <button
+            [disabled]="rfNumberOfRoom.controls.length === 5"
+            (click)="addRoom()"
+            [ngClass]="{ '!bg-[#E4E4E4] cursor-not-allowed !text-button-normal-color !border-none': rfNumberOfRoom.controls.length === 5 }"
+            class="h-[36px] w-fit px-[12px] text-outline-button-normal-color bg-outline-button-normal-background-color border border-outline-button-normal-color rounded-[20px] flex items-center justify-center text-[12px] font-medium leading-[140%]"
+          >
+            {{ 'ADD_UNIT' | translate | async }}
+          </button>
+          <button
+            (click)="onApply()"
+            [disabled]="rfNumberOfRoom?.invalid"
+            [ngClass]="{ 'opacity-50 !cursor-not-allowed': rfNumberOfRoom?.invalid }"
+            class="w-[36px] h-[36px] text-button-normal-color bg-button-normal-background-color rounded-full flex items-center justify-center text-[12px] font-medium leading-[140%]"
+            [attr.aria-label]="'PICK_ARRIVAL_AND_DEPARTURE_DATES' | translate | async"
+          >
+            <mat-icon class="text-button-normal-color dir-mat-icon">arrow_forward</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+}

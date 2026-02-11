@@ -1,0 +1,38 @@
+<!-- <div class="flex items-center">
+  @for (item of spaceTypeList; track $index) {
+    <div
+      class="flex items-center p-2 bg-popover-background-color rounded-[8px] min-h-[43px] sm:mr-1 mr-3 cursor-pointer"
+      (click)="selectSpaceType.emit(item?.code)"
+      [class.!bg-button-hover-background-color]="selectedSpaceType === item?.code"
+      [class.!text-button-hover-color]="selectedSpaceType === item?.code"
+    >
+      <img loading="lazy" [src]="item?.retailFeatureImageList?.[0]?.imageUrl" [alt]="item?.name" width="24" appFilterSvg [color]="selectedSpaceType === item?.code ? featureSelectedText : textColor" />
+      <span class="ml-2 text-[14px]">{{ item?.name }}</span>
+    </div>
+  }
+</div> -->
+
+@if (themeColors$ | async; as themeColors) {
+  <swiper [config]="config" class="space-type-mobile" #swiperComponent>
+    @for (item of spaceTypeList(); track $index) {
+      <ng-template swiperSlide>
+        <button class="flex items-center p-2 rounded-[8px] min-h-[43px] sm:mr-1 mr-3 bg-popover-background-color" (click)="selectSpaceType.emit(item?.code)">
+          <div
+            class="text-center h-[24px] w-[24px] dynamic-color-icon"
+            [style.background-color]="selectedSpaceType() === item?.code ? themeColors?.primary : themeColors?.textPrimary"
+            style="--image-url: url({{ item?.retailFeatureImageList?.[0]?.imageUrl }})"
+          ></div>
+          <span
+            class="ml-2 text-[14px] text-primary-color"
+            [ngClass]="{
+              'text-hotel-primary-color': selectedSpaceType() === item?.code,
+              'text-primary-color': selectedSpaceType() !== item?.code
+            }"
+          >
+            {{ item?.name }}
+          </span>
+        </button>
+      </ng-template>
+    }
+  </swiper>
+}

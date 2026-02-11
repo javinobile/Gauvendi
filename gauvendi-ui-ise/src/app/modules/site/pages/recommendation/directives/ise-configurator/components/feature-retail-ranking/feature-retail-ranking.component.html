@@ -1,0 +1,30 @@
+<div class="ranking-list" cdkDropList (cdkDropListDropped)="drop($event)">
+  <ng-container *ngFor="let rank of ranks; index as i">
+    <div
+      class="relative flex w-full items-center mb-[4px] h-[46px] border border-primary-color px-[4px] gap-[6px] rounded-[8px]"
+      *ngIf="rank.category?.features?.length > 0"
+      cdkDragLockAxis="y"
+      cdkDrag
+    >
+      <!--      <div class="ranking-review" *cdkDragPlaceholder></div>-->
+      <img loading="lazy" cdkDragHandle appFilterSvg [color]="colorText" class="cursor-all-scroll" src="assets/icons/drag.svg" width="16" height="16" alt="" />
+      <div class="flex w-full cursor-pointer items-center gap-[4px] hover:opacity-80">
+        <!--        <div-->
+        <!--          class="flex items-center justify-center item-bg w-[24px] h-[24px] bg-feature-background rounded-[4px]"-->
+        <!--          [ngClass]="{'bg-feature-selected-bg': selectedCategory?.code === rank?.category?.code}"-->
+        <!--        >-->
+        <!--          <img loading="lazy"-->
+        <!--            [src]="rank?.category?.iconImageUrl" width="12" height="12"-->
+        <!--            appFilterSvg-->
+        <!--            [color]="selectedCategory?.code === rank?.category?.code ? featureBgColor : featureBgSelectedColor"-->
+        <!--          />-->
+        <!--        </div>-->
+
+        <div class="w-[calc(100%-28px)] line-clamp-2 text-[12px] text-primary-color font-[400] leading-[16.8px]">
+          <span class="font-semibold"> {{ rank?.category?.name }}: </span>
+          {{ rank?.category?.features | parseRankFeatureName }}
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

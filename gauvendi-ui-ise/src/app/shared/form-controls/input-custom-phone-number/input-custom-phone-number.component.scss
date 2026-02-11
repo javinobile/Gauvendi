@@ -1,0 +1,12 @@
+:host::ng-deep .element-value {
+  .mat-icon {
+    font-size: 20px !important;
+    width: 20px;
+  }
+}
+
+svg {
+  path {
+    stroke: var(--color-text);
+  }
+}

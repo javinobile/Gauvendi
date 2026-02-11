@@ -1,0 +1,212 @@
+<ng-container
+  *ngIf="{
+    bookingInformation: bookingInformation$ | async,
+    hotelEmailTemplate: hotelEmailTemplate$ | async,
+    hotelName: hotelName$ | async,
+    state: state$ | async,
+    address: address$ | async,
+    phoneNumber: phoneNumber$ | async,
+    hotelUrl: hotelUrl$ | async,
+    countries: countries$ | async,
+    taxInformation: taxInformation$ | async,
+    locale: locale$ | async,
+    currencyCode: currencyCode$ | async,
+    currencyRate: currencyRate$ | async,
+    isLowestPriceOpaque: isLowestPriceOpaque$ | async,
+    lowestPriceImageUrl: lowestPriceImageUrl$ | async,
+    availableAmenityByDistributionChannel: availableAmenityByDistributionChannel$ | async,
+    isHotelInclusive: isHotelInclusive$ | async,
+    hotelCountry: hotelCountry$ | async,
+    colorText: colorText$ | async,
+    timezone: timezone$ | async,
+    city: city$ | async,
+    postalCode: postalCode$ | async,
+    colorPrimary: colorPrimary$ | async,
+    colorSecondaryText: colorSecondaryText$ | async
+  } as vm"
+>
+  <ng-container *ngIf="vm.bookingInformation; else tplLoading">
+    <div class="py-[40px] sm:mt-[50px] md:px-[20px]">
+      <div class="text-center mb-[48px]">
+        <div class="text-[24px] font-medium leading-[140%] mb-[24px] text-primary-color sm:text-[17px]">{{ 'BOOKING_SUCCESS_MESSAGE' | translate | async }}</div>
+        <div class="bg-no-repeat bg-cover bg-center w-[120px] h-[120px] mb-[24px] mx-auto rotate-y" [style.backgroundImage]="'url(assets/icons/success.svg)'"></div>
+        <!-- <div
+          class="text-[17px] font-medium mb-[4px] text-primary-color sm:text-[14px]">{{'BOOKING_CONFIRMATION' | translate | async}}</div> -->
+        <div class="text-[20px] font-semibold mb-[4px] text-primary-color sm:text-[14px]">{{ 'BOOKING_NUMBER' | translate | async }}</div>
+        <span class="text-[29px] text-hotel-primary-color font-normal">{{ vm.bookingInformation?.bookingNumber }}</span>
+      </div>
+
+      <div class="max-w-[1200px] mx-auto">
+        <div class="rounded-[8px] bg-background-secondary-color py-[24px] px-[32px] mb-[16px] sm:flex-col sm:m-[16px] sm:p-[24px] md:flex-col">
+          <div class="flex items-stretch gap-[32px] pb-[16px] sm:flex-col md:flex-col">
+            <div class="flex-1">
+              <div class="flex items-center gap-[24px]">
+                <ng-container *ngTemplateOutlet="arrivalTpl; context: { $implicit: true }"></ng-container>
+                <ng-container *ngTemplateOutlet="arrivalTpl; context: { $implicit: false }"></ng-container>
+              </div>
+            </div>
+            <div class="flex justify-center flex-1 sm:justify-start">
+              <div class="flex items-center justify-between">
+                <div class="">
+                  <div class="flex items-center gap-[4px] mb-[4px]">
+                    <div class="text-[14px] font-thin leading-[19.6px] text-primary-color sm:text-[12px]">{{ 'ACCOMMODATIONS' | translate | async }}</div>
+                  </div>
+
+                  <div class="flex gap-[24px]">
+                    @if (unitInfoConfigs().length > 0) {
+                      @for (unitInfoConfig of unitInfoConfigs(); track unitInfoConfig) {
+                        @if (unitInfoConfig.isDivider) {
+                          <div class="w-[1px] bg-[#E9E9E9]"></div>
+                        } @else {
+                          <div *ngIf="unitInfoConfig.value" class="flex flex-col">
+                            <div class="flex items-center gap-[4px] h-[24px]">
+                              <img [src]="unitInfoConfig.icon" width="20" height="20" appFilterSvg [color]="vm.colorText" />
+                              <div class="text-[20px] font-medium text-primary-color sm:text-[18px]">
+                                {{ unitInfoConfig.value }}
+                              </div>
+                            </div>
+                            <div class="text-[14px] font-light text-primary-color sm:text-[12px]">
+                              {{ (unitInfoConfig.isPluralLabel ? unitInfoConfig.pluralLabel : unitInfoConfig.label) | translate | async }}
+                            </div>
+                          </div>
+                        }
+                      }
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-1">
+              <ng-container *ngTemplateOutlet="headerTpl; context: { $implicit: { label: 'DESTINATION' | translate | async, title: vm.hotelName, description: destinationTpl } }"></ng-container>
+              <ng-template #destinationTpl>
+                <div class="flex items-center flex-wrap gap-[2px]">
+                  <span *ngIf="vm.address" class="flex items-center gap-[2px]">
+                    {{ vm.address }}
+                  </span>
+                  <span *ngIf="vm.city"> | {{ vm.city }}</span>
+                  <span *ngIf="vm.hotelCountry?.translationList | getHotelCountry: vm.locale"> | {{ vm.hotelCountry?.translationList | getHotelCountry: vm.locale }}</span>
+                  <span *ngIf="vm.postalCode"> | {{ vm.postalCode }}</span>
+                  <span class="flex items-center gap-[2px]"> | {{ vm.phoneNumber }} </span>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-[24px] flex-wrap">
+          <div class="sm:mx-[16px] w-[54%] sm:w-full">
+            <div class="mb-[16px] flex flex-col gap-[12px]">
+              <!-- Booker information -->
+              <app-booker-information [booker]="vm.bookingInformation?.booker" [countries]="vm.countries"></app-booker-information>
+
+              <!-- Guest information -->
+              <app-guest-information [reservationGuestsList]="vm.bookingInformation?.reservationList | groupGuestsByReservation" [countries]="vm.countries"></app-guest-information>
+
+              <!-- Company information -->
+              <!-- *ngIf="vm.bookingInformation?.booker | checkInfoCompany" -->
+              @if (vm.bookingInformation | checkInfoCompany) {
+                <app-booking-company-info [bookingInfo]="vm.bookingInformation" [countries]="vm.countries"></app-booking-company-info>
+              }
+
+              <!-- Payment method -->
+              <app-booking-payment-method [bookingInfo]="vm.bookingInformation"></app-booking-payment-method>
+            </div>
+            <div class="flex items-center justify-end mt-[12px] sm:mt-[28px] sm:fixed sm:bottom-[24px] sm:right-[16px]">
+              <button class="flex items-center gap-[4px] h-[44px] rounded-[12px] px-[24px] cursor-pointer bg-button-normal-background-color justify-center hover:opacity-80" (click)="backToHomePage()">
+                <div class="text-[14px] font-medium leading-[140%] text-button-normal-color">{{ 'BACK_TO_HOMEPAGE' | translate | async }}</div>
+                <div class="flex items-center">
+                  <mat-icon class="!w-auto !h-auto text-[24px] text-button-normal-color rotate-y">chevron_right</mat-icon>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Booking reservation panel -->
+          <div class="sm:mx-[16px] flex-1 flex flex-col gap-[12px]">
+            <app-booking-summary-panel
+              [hotelName]="vm.hotelName"
+              [bookingInformation]="vm.bookingInformation"
+              [locale]="vm.locale"
+              [isLowestPriceOpaque]="vm.isLowestPriceOpaque"
+              [currencyCode]="vm.currencyCode"
+              [currencyRate]="vm.currencyRate"
+              [lowestPriceImageUrl]="vm.lowestPriceImageUrl"
+              [colorText]="vm.colorText"
+              [timezone]="vm.timezone"
+              [colorPrimary]="vm.colorPrimary"
+              [colorSecondaryText]="vm.colorSecondaryText"
+              [isHotelInclusive]="vm.isHotelInclusive"
+              [cancellationPolicy]="vm.bookingInformation?.cxlPolicy?.description"
+              [hotelCountry]="vm.hotelCountry"
+              [hotelTaxInformationSetting]="vm.taxInformation"
+            >
+            </app-booking-summary-panel>
+
+            @if (vm.bookingInformation; as info) {
+              <app-payment-and-cancellation-template
+                [data]="{
+                  payOnConfirmationAmount: info.payOnConfirmationAmount,
+                  payAtHotelAmount: info.payAtHotelAmount,
+                  payOnConfirmationDescription: info.reservationList?.[0]?.paymentTerm?.payOnConfirmationDescription,
+                  payAtHotelDescription: info.reservationList?.[0]?.paymentTerm?.payAtHotelDescription,
+                  cxlPolicyDescription: info.reservationList?.[0]?.cxlPolicy?.description || '--'
+                }"
+              ></app-payment-and-cancellation-template>
+            }
+            <!-- Tax information -->
+            <div *ngIf="vm.bookingInformation?.cityTaxList?.length" class="rounded-[16px] bg-background-secondary-color py-[24px] px-[32px]">
+              <div class="text-[17px] font-medium mb-[4px] text-primary-color">{{ 'TAX_INFORMATION' | translate | async }}</div>
+              <div class="text-[12px] font-light">
+                <div class="text-primary-color">{{ vm.taxInformation | getTaxInformationConfigByLocale: vm.locale }}</div>
+                <ng-container *ngFor="let tax of vm.bookingInformation?.cityTaxList">
+                  <div class="text-primary-color" [innerHTML]="tax | displayTaxInformation: vm.locale"></div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #arrivalTpl let-isArrival>
+      <div class="flex-1 flex flex-col gap-[8px]">
+        <div class="text-[14px] font-light leading-[19.6px] text-primary-color sm:text-[12px]">
+          {{ (isArrival ? 'ARRIVAL' : 'DEPARTURE') | translate | async }}
+        </div>
+        <div class="flex flex-col">
+          <div class="text-[17px] font-medium leading-[23.8px] text-primary-color sm:text-[14px]">
+            {{ (isArrival ? (vm.bookingInformation | getArrival) : (vm.bookingInformation | getDeparture)) | dateWithLocaleAndTimezone: (locale$ | async) : (timezone$ | async) : 'ddd' : true }},
+            <span>
+              {{
+                (isArrival ? (vm.bookingInformation | getArrival) : (vm.bookingInformation | getDeparture)) | dateWithLocaleAndTimezone: (locale$ | async) : (timezone$ | async) : 'DD MMM yyyy' : true
+              }}
+            </span>
+          </div>
+          <div class="text-[14px] font-light leading-[19.6px] text-primary-color sm:text-[12px]">
+            {{ (isArrival ? (vm.bookingInformation | getArrival) : (vm.bookingInformation | getDeparture)) | dateWithLocaleAndTimezone: (locale$ | async) : (timezone$ | async) : 'hh:mm A' : true }}
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #headerTpl let-data>
+      <div class="flex flex-col gap-[8px]">
+        <div class="text-[14px] font-light leading-[19.6px] text-primary-color sm:text-[12px]">
+          {{ data.label }}
+        </div>
+        <div class="flex flex-col">
+          <div class="text-[17px] font-medium leading-[23.8px] text-primary-color sm:text-[14px]">
+            {{ data.title }}
+          </div>
+          <div class="text-[14px] font-light leading-[19.6px] text-primary-color sm:text-[12px]">
+            <ng-container *ngTemplateOutlet="data.description"></ng-container>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ng-container>
+</ng-container>
+
+<ng-template #tplLoading>
+  <app-payment-result-loading></app-payment-result-loading>
+</ng-template>

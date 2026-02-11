@@ -1,0 +1,57 @@
+<!-- Main guest information -->
+<div class="text-[17px] font-medium leading-[140%] text-primary-color mb-[8px]">{{ 'GUEST_INFORMATION' | translate | async }}</div>
+
+<div class="p-[16px] bg-background-primary-color rounded-[16px]">
+  <div class="text-[17px] font-medium leading-[140%] text-primary-color mb-[8px]">{{ mainGuestInfo?.firstName }} {{ mainGuestInfo?.lastName }}</div>
+  <div class="flex items-center gap-[24px] sm:flex-col sm:items-start sm:justify-start sm:gap-[8px] mb-[8px]">
+    <div class="flex items-center gap-[8px]">
+      <div class="text-[14px] font-light leading-[140%] text-primary-color">{{ 'PHONE_NUMBER' | translate | async }}</div>
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">+{{ mainGuestInfo?.countryNumber }} {{ mainGuestInfo?.phoneNumber }}</div>
+    </div>
+    <div class="flex items-center gap-[8px]">
+      <div class="text-[14px] font-light leading-[140%] text-primary-color">{{ 'EMAIL' | translate | async }}</div>
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">{{ mainGuestInfo?.emailAddress }}</div>
+    </div>
+  </div>
+
+  <div class="mb-[8px] flex items-center gap-[8px]" *ngIf="mainGuestInfo?.address">
+    <div class="text-[14px] font-light leading-[140%] text-primary-color">{{ 'ADDRESS' | translate | async }}</div>
+    <div class="text-[14px] font-medium leading-[140%] text-primary-color">{{ mainGuestInfo?.address }}</div>
+  </div>
+
+  <div class="flex gap-[24px]">
+    <div *ngIf="mainGuestInfo?.city" class="flex items-center gap-[8px]">
+      <div class="text-[14px] font-light leading-[140%] text-primary-color">{{ 'CITY' | translate | async }}</div>
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">{{ mainGuestInfo?.city }}</div>
+    </div>
+
+    <div *ngIf="countries | getCountry: mainGuestInfo?.countryId" class="flex items-center gap-[8px]">
+      <div class="text-[14px] font-light leading-[140%] text-primary-color">{{ 'COUNTRY' | translate | async }}</div>
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+        {{ countries | getCountry: mainGuestInfo?.countryId }}
+      </div>
+    </div>
+    <div *ngIf="mainGuestInfo?.postalCode" class="flex items-center gap-[8px]">
+      <div class="text-[14px] font-light leading-[140%] text-primary-color">{{ 'POSTAL_CODE' | translate | async }}</div>
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">{{ mainGuestInfo?.postalCode }}</div>
+    </div>
+  </div>
+</div>
+
+<!-- Additional guest information -->
+<ng-container *ngIf="additionalGuest?.length > 0">
+  <div class="my-[28px] border-b border-border-color sm:my-[16px]"></div>
+  <div class="text-[17px] font-medium leading-[140%] text-primary-color mb-[8px]">
+    {{ 'ADDITIONAL_GUEST' | translate | async }}
+  </div>
+  <div class="p-[16px] bg-booker-fill rounded-[16px]">
+    <div class="flex flex-col gap-[8px]">
+      <ng-container *ngFor="let guest of additionalGuest; let index = index">
+        <div class="flex items-center gap-[12px]">
+          <div class="text-[12px] font-light leading-[140%] text-primary-color">#{{ index + 2 }}</div>
+          <div class="text-[14px] font-normal leading-[140%] text-primary-color">{{ guest?.firstName }} {{ guest?.lastName }}</div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

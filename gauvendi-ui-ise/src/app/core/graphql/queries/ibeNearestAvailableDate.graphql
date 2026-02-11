@@ -1,0 +1,10 @@
+query IbeNearestAvailableDate($filter: IbeNearestAvailableDateFilter) {
+  response: ibeNearestAvailableDate(filter: $filter) {
+    data {
+      ... on IbeNearestAvailableDate {
+        arrival
+        departure
+      }
+    }
+  }
+}

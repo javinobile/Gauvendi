@@ -1,0 +1,118 @@
+<div
+  [@tooltip] class="dialog-content bg-popover-background-color rounded-[16px] relative p-[16px] lg:px-[8px] sm:hidden w-[385px] lg:w-[336px]"
+  [style.--color-selected]="(hotelPrimary$ | async) | hexToRgba: 0.25"
+>
+  <ng-container *ngIf="data">
+    <div class="flex items-stretch gap-[16px] lg:gap-[8px]">
+      <div class="min-w-[120px] lg:min-w-[100px]">
+        <div
+          class="text-[14px] font-medium leading-[140%] text-popover-primary-color mb-[12px]">{{'LANGUAGE' | translate | async}}</div>
+        <div class="text-[12px] font-normal leading-[140%] text-popover-primary-color">
+          <ng-container *ngFor="let lang of data?.langList; let last = last">
+            <div
+              class="px-[8px] h-[36px] cursor-pointer flex items-center"
+              [ngClass]="{'mb-[4px]' : !last, 'justify-between bg-selected rounded-[8px]' : selectedLang === lang?.code}"
+              (click)="selectLang(lang)"
+            >
+              <div class="">{{lang?.label}}</div>
+              <ng-container *ngIf="selectedLang === lang?.code">
+                <div class="flex items-center">
+                  <img src="assets/icons/tick.svg" width="16" height="16">
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="w-[1px] bg-border-color"></div>
+      <div class="min-w-[200px]">
+        <div
+          class="text-[14px] font-medium leading-[140%] text-popover-primary-color mb-[12px]">{{'CURRENCY' | translate | async}}</div>
+        <div class="text-[12px] font-normal leading-[140%] text-popover-primary-color">
+          <ng-container *ngFor="let currency of data?.currencies; let last = last">
+            <div
+              (click)="selectCurrency(currency)"
+              class="px-[8px] h-[36px] cursor-pointer flex items-center "
+              [ngClass]="{'mb-[4px]' : !last, 'justify-between bg-selected rounded-[8px]' : selectedCurrency === currency?.code}"
+            >
+              <div class="">({{currency?.code}}) {{currency?.name}}</div>
+              <ng-container *ngIf="selectedCurrency === currency?.code">
+                <div class="flex items-center">
+                  <img src="assets/icons/tick.svg" width="16" height="16">
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center justify-end mt-[16px]">
+      <button
+        (click)="onApply()"
+        class="flex items-center justify-center text-[12px] w-[120px] h-[32px] font-medium leading-[140%] p-[8px] bg-button-normal-background-color text-button-normal-color rounded-[12px] hover:opacity-80">
+        {{'APPLY' | translate | async}}
+      </button>
+    </div>
+  </ng-container>
+</div>
+
+<div
+  class="p-[20px] pb-[8px] rounded-tl-[16px] rounded-tr-[16px] bg-popover-background-color hidden sm:block"
+  [class.animation--fadeUp]="isOpen"
+  [class.animation--fadeDown]="!isOpen"
+  [style.--color-selected]="(hotelPrimary$ | async) | hexToRgba: 0.25"
+>
+  <div class="flex items-center justify-between mb-[20px]">
+    <div class=""></div>
+    <div
+      class="text-[17px] font-medium leading-[140%] text-popover-primary-color">{{'LANGUAGE_AND_CURRENCY' | translate | async}}</div>
+    <div class="flex items-center">
+      <mat-icon class="text-primary-color" (click)="closePopover()">close</mat-icon>
+    </div>
+  </div>
+  <div class="max-h-[50vh] overflow-y-auto">
+    <div
+      class="text-[14px] font-medium leading-[140%] text-popover-primary-color mb-[12px]">{{'LANGUAGE' | translate | async}}</div>
+    <div class="text-[12px] font-normal leading-[140%] text-popover-primary-color">
+      <ng-container *ngFor="let lang of data?.langList; let last = last">
+        <div
+          class="px-[8px] h-[36px] cursor-pointer flex items-center"
+          [ngClass]="{'mb-[4px]' : !last, 'justify-between bg-selected rounded-[8px]' : selectedLang === lang?.code}"
+          (click)="selectLang(lang)"
+        >
+          <div class="">{{lang?.label}}</div>
+          <ng-container *ngIf="selectedLang === lang?.code">
+            <div class="flex items-center">
+              <img src="assets/icons/tick.svg" width="16" height="16">
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+    <div
+      class="text-[14px] font-medium leading-[140%] text-popover-primary-color sm:mt-[16px] mb-[12px]">{{'CURRENCY' | translate | async}}</div>
+    <div class="text-[12px] font-normal leading-[140%] text-popover-primary-color">
+      <ng-container *ngFor="let currency of data?.currencies; let last = last">
+        <div
+          (click)="selectCurrency(currency)"
+          class="px-[8px] h-[36px] cursor-pointer flex items-center "
+          [ngClass]="{'mb-[4px]' : !last, 'justify-between bg-selected rounded-[8px]' : selectedCurrency === currency?.code}"
+        >
+          <div class="">({{currency?.code}}) {{currency?.name}}</div>
+          <ng-container *ngIf="selectedCurrency === currency?.code">
+            <div class="flex items-center">
+              <img src="assets/icons/tick.svg" width="16" height="16">
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="flex items-center justify-end mt-[16px]">
+    <button
+      (click)="onApplyMobile()"
+      class="flex items-center justify-center text-[12px] w-full h-[44px] font-medium leading-[140%] p-[8px] bg-button-normal-background-color text-button-normal-color rounded-[12px] hover:opacity-80">
+      {{'APPLY' | translate | async}}
+    </button>
+  </div>
+</div>

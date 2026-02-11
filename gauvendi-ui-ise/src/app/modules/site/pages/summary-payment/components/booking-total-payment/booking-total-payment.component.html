@@ -1,0 +1,156 @@
+<div class="pb-[16px] px-[24px] bg-background-secondary-color rounded-b-[16px]">
+  <ng-container *ngIf="isInclusive; else tplTotalPaymentExclusive">
+    <div class="">
+      <div class="flex items-center justify-between">
+        <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+          {{ 'SUB_TOTAL' | translate | async }}
+        </div>
+        <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+          {{ subTotalPrice }}
+        </div>
+      </div>
+
+      <ng-container *ngIf="serviceChargeAmount > 0">
+        <div class="flex items-center justify-between">
+          <div class="text-[14px] font-light leading-[140%] text-secondary-color">
+            {{ 'INCLUDES_TAX' | translate | async }}:
+            {{ 'SERVICE_CHARGE' | translate | async }}
+          </div>
+          <div class="text-[14px] font-light leading-[140%] text-secondary-color">
+            {{ serviceCharge }}
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="cityTaxList?.length > 0 || bookingTaxList?.length > 0">
+        <div class="flex items-start gap-[8px]">
+          <div class="text-[14px] font-light leading-[140%] text-secondary-color">{{ 'INCLUDES_TAX' | translate | async }}:</div>
+          <div class="mt-[2px] px-4 included_tax__list">
+            <ng-container *ngIf="bookingTaxList?.length > 0">
+              <ng-container *ngFor="let tax of bookingTaxList">
+                <div class="text-[12px] font-light leading-[140%] text-secondary-color included_tax__item">
+                  {{ tax?.name }} ({{ tax?.amount | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2' }})
+                </div>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="cityTaxAmount > 0">
+              <ng-container *ngIf="cityTaxList?.length > 0">
+                <ng-container *ngFor="let tax of cityTaxList">
+                  <div class="text-[12px] font-light leading-[140%] text-secondary-color included_tax__item">
+                    {{ tax?.name }} ({{ tax?.amount | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2' }})
+                  </div>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="h-[1px] w-full bg-border-color my-[12px]"></div>
+
+    <div class="flex items-center justify-between">
+      <div class="text-[14px] font-medium leading-[120%] text-primary-color sm:text-[17px]">
+        {{ 'TOTAL_CHARGES' | translate | async }}
+        <!-- Total Charge -->
+      </div>
+      <div class="text-[20px] font-medium leading-[120%] text-primary-color">
+        {{ totalPrice }}
+      </div>
+    </div>
+    <div class="flex items-center justify-between mt-2">
+      <div class="text-[14px] font-medium leading-[120%] text-primary-color sm:text-[17px]">
+        {{ 'PREPAID_AMOUNT' | translate | async }}
+        <!-- Prepaid amount -->
+      </div>
+      <div class="text-[20px] font-medium leading-[120%] text-primary-color">
+        {{ payOnConfirmationAmount | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2' }}
+      </div>
+    </div>
+    <div class="flex items-center justify-between mt-2">
+      <div class="text-[20px] font-medium leading-[120%] text-primary-color sm:text-[17px]">
+        {{ 'TOTAL_REMAINING' | translate | async }}
+        <!-- Total remaining -->
+      </div>
+      <div class="text-[29px] font-medium leading-[120%] text-hotel-primary-color">
+        {{ payAtHotelAmount | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2' }}
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #tplTotalPaymentExclusive>
+  <div class="flex items-center justify-between mb-[16px]">
+    <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+      {{ 'SUB_TOTAL' | translate | async }}
+    </div>
+    <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+      {{ subTotalPrice }}
+    </div>
+  </div>
+  <ng-container *ngIf="serviceChargeAmount > 0">
+    <div class="flex items-center justify-between mb-[16px]">
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+        {{ 'SERVICE_CHARGE' | translate | async }}
+      </div>
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+        {{ serviceCharge }}
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="bookingTaxList?.length > 0">
+    <ng-container *ngFor="let tax of bookingTaxList">
+      <div class="flex items-center justify-between">
+        <div class="text-[14px] font-light leading-[140%] text-primary-color max-w-[70%]">
+          {{ tax?.name }}
+        </div>
+        <div class="text-[14px] font-light leading-[140%] text-primary-color">
+          {{ tax?.amount | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2' }}
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="cityTaxList?.length > 0">
+    <ng-container *ngFor="let tax of cityTaxList">
+      <div class="flex items-center justify-between">
+        <div class="text-[14px] font-light leading-[140%] text-primary-color max-w-[70%]">
+          {{ tax?.name }}
+        </div>
+        <div class="text-[14px] font-light leading-[140%] text-primary-color">
+          {{ tax?.amount | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2' }}
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <div class="h-[1px] w-full bg-border-color my-[12px]"></div>
+
+  <div class="flex items-center justify-between">
+    <div class="text-[14px] font-medium leading-[120%] text-primary-color">
+      {{ 'TOTAL_CHARGES' | translate | async }}
+      <!-- Total Charge -->
+    </div>
+    <div class="text-[20px] font-medium leading-[120%] text-primary-color">
+      {{ totalPrice }}
+    </div>
+  </div>
+  <div class="flex items-center justify-between mt-2">
+    <div class="text-[14px] font-medium leading-[120%] text-primary-color">
+      {{ 'PREPAID_AMOUNT' | translate | async }}
+      <!-- Prepaid amount -->
+    </div>
+    <div class="text-[20px] font-medium leading-[120%] text-primary-color">
+      {{ payOnConfirmationAmount | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2' }}
+    </div>
+  </div>
+  <div class="flex items-center justify-between mt-2">
+    <div class="text-[20px] font-medium leading-[120%] text-primary-color">
+      {{ 'TOTAL_REMAINING' | translate | async }}
+      <!-- Total remaining -->
+    </div>
+    <div class="text-[29px] font-medium leading-[120%] text-hotel-primary-color">
+      {{ payAtHotelAmount | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2' }}
+    </div>
+  </div>
+</ng-template>

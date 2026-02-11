@@ -1,0 +1,27 @@
+<div class="panelClass">
+  <div class="item cell auto">
+    <span
+    >{{ label }} <span class="text-error" *ngIf="isRequired">*</span></span
+    >
+    <div *ngIf="label" class="mb-2"></div>
+    <textarea
+      class="w-full rounded border px-4 outline-none py-[10px] border-black-1 text-[14px] leading-[150%] bg-popover-background-color"
+      [class.border-error]="errors && control?.touched"
+      [class.text-error]="errors && control?.touched"
+      [class]="customClass"
+      type="text"
+      [readOnly]="isReadonly"
+      [disabled]="isDisabled"
+      [placeholder]="placeHolder || ''"
+      [minLength]="minLength"
+      [maxLength]="maxLength"
+      (blur)="onTouched()"
+      [ngModel]="value"
+      (ngModelChange)="changeValue($event)"
+      [rows]="rows"
+    ></textarea>
+  </div>
+  <div class="w-full">
+    <ng-content></ng-content>
+  </div>
+</div>

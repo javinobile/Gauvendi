@@ -1,0 +1,24 @@
+.tooltip-content {
+  background-color: #FFFFFF;
+  max-width: var(--max-width);
+  position: relative;
+  padding: 5px 12px;
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.20);
+
+  .content {
+    color: #000000;
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 5px;
+
+    ::ng-deep {
+      .restriction {
+        .mat-icon {
+          height: auto;
+          font-size: 1.2em;
+          color: #f9b61a;
+        }
+      }
+    }
+  }
+}

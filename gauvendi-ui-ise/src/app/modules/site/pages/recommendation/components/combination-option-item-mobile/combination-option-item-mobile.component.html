@@ -1,0 +1,246 @@
+<ng-container
+  *ngIf="{
+    isLowestPriceOpaque: isLowestPriceOpaque$ | async,
+    isMatchFlow: isMatchFlow$ | async,
+    roomSummary: roomSummary$ | async,
+    priceState: priceState$ | async,
+    includeTax: includeTax$ | async,
+    lowestPriceImageUrl: lowestPriceImageUrl$ | async,
+    colorText: colorText$ | async,
+    promoCode: promoCode$ | async,
+    isPromoted:
+      (data?.items?.[0]?.baseOption?.availableRfcRatePlanList?.length > 0 ? data?.items?.[0]?.baseOption?.availableRfcRatePlanList : data?.items?.[0]?.baseOption?.unavailableRfcRatePlanList)
+      | checkOptionPromoted
+  } as vm"
+>
+  <div class="z-10 w-full bg-popover-background-color">
+    <div
+      class="absolute top-[10px] z-10 ltr:right-[12px] rtl:left-[12px] bg-[#fff] w-[28px] h-[28px] shadow-ml rounded-[100px] flex justify-center items-center"
+      *ngIf="!isRecommendationDetail"
+      (click)="closeConfigurator.emit()"
+    >
+      <img loading="lazy" src="assets/icons/close.svg" alt="close icon" width="20" height="20" />
+    </div>
+    <div class="flex w-full flex-col items-start md:relative  lalal{{ (data?.tag | tagColor)?.length }}">
+      <div class="flex justify-between items-start w-full ltr:pr-[8px] rtl:pl-[8px]">
+        <div>
+          <app-option-item-tag
+            *ngIf="(data?.tag | tagColor)?.length > 0"
+            class="relative ltr:left-[-4px] rtl:right-[-4px] min-w-fit md:absolute md:top-0 md:ltr:left-[-4px] md:rtl:right-0"
+            [tag]="data?.tag"
+            [data]="vm.roomSummary"
+          />
+        </div>
+        <!-- promo tag -->
+        <ng-container *ngIf="vm.isPromoted">
+          <div class="w-fit flex items-center rounded-[8px] py-[4px] px-[8px] bg-[#C2EAE5] max-w-[120px]">
+            <img loading="lazy" appFilterSvg [color]="'#00A991'" src="assets/icons/promotion.svg" width="16" height="16" alt="" />
+            <div class="ms-[5px] text-[14px] font-normal leading-[140%] text-[#00A991] truncate">{{ vm.promoCode }}</div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="flex w-full items-center justify-between px-[16px] gap-[18px] pt-[12px] md:flex-col md:justify-center md:gap-0 md:!pt-[16px] sm:block">
+        <div class="font-medium text-[14px] leading-[140%] text-primary-color line-clamp-1 md:text-[17px] sm:text-[17px]">
+          {{
+            vm.isLowestPriceOpaque && data?.tag === BookingFlow.LowestPrice
+              ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async)
+              : (data?.title | renderCombinationTitle: ('COMBINATION_UNITS' | translate | async))
+          }}
+        </div>
+        <div class="block sm:hidden">
+          <app-option-units-info [showSpace]="true" [full]="false" [item]="data" />
+        </div>
+        <div class="hidden sm:block">
+          <app-option-units-info [showSpace]="true" [full]="true" [item]="data" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-popover-background-color rounded-[16px]">
+    <div class="pb-0 pt-[13px] bg-suggestion-fill px-[16px]">
+      <div class="relative h-[160px] md:h-[220px] mb-[16px]">
+        <ng-container *ngFor="let singleOption of data?.items; index as index">
+          <!-- mobile -->
+          <div
+            class="absolute bottom-0 transition-all duration-500 bg-popover-background-color border border-[#E9E9E9] shadow-combination-item rounded-[16px] md:hidden"
+            [ngClass]="{
+              'translate-x-1/2': activeIndex === index && direction() !== 'rtl',
+              '-translate-x-1/2': activeIndex === index && direction() === 'rtl'
+            }"
+            [style]="activeIndex | combinationOptionCarouselItemStyle: index : data?.items?.length : EDeviceType.Mobile : direction()"
+            (click)="setActiveIndex(index)"
+          >
+            <ng-container
+              [ngTemplateOutlet]="slideContent"
+              [ngTemplateOutletContext]="{
+                isMatchFlow: vm.isMatchFlow,
+                singleOption: singleOption,
+                isLowestPriceOpaque: vm.isLowestPriceOpaque,
+                lowestPriceImageUrl: vm.lowestPriceImageUrl,
+                index
+              }"
+            />
+          </div>
+          <!-- END mobile -->
+          <!-- tablet-->
+          <div
+            class="absolute bottom-0 transition-all duration-500 bg-suggestion-fill border border-[#E9E9E9] shadow-combination-item rounded-[16px] hidden md:block"
+            [ngClass]="{
+              'translate-x-1/2': activeIndex === index && direction() !== 'rtl',
+              '-translate-x-1/2': activeIndex === index && direction() === 'rtl'
+            }"
+            [style]="activeIndex | combinationOptionCarouselItemStyle: index : data?.items?.length : EDeviceType.Tablet : direction()"
+            (click)="setActiveIndex(index)"
+          >
+            <ng-container
+              [ngTemplateOutlet]="slideContent"
+              [ngTemplateOutletContext]="{
+                isMatchFlow: vm.isMatchFlow,
+                singleOption: singleOption,
+                isLowestPriceOpaque: vm.isLowestPriceOpaque,
+                lowestPriceImageUrl: vm.lowestPriceImageUrl,
+                index
+              }"
+            ></ng-container>
+          </div>
+          <!-- END tablet-->
+        </ng-container>
+      </div>
+
+      <!-- pagination for slides -->
+      <div class="flex items-center justify-center m-[14px]">
+        <img
+          loading="lazy"
+          appFilterSvg
+          [color]="vm.colorText"
+          class="cursor-pointer hover:scale-105 dir-mat-icon"
+          (click)="activeIndex = activeIndex - 1 >= 0 ? activeIndex - 1 : data?.items?.length - 1"
+          src="assets/icons/arrow-left.svg"
+          alt=""
+        />
+        <div class="bg-button-secondary-fill rounded-[8px] px-[12px] py-[2px] text-[14px] font-medium leading-[19px] text-primary-color">{{ activeIndex + 1 }}/{{ data?.items?.length }}</div>
+        <img
+          loading="lazy"
+          class="ltr:rotate-180 rtl:rotate-0 cursor-pointer hover:scale-105"
+          appFilterSvg
+          [color]="vm.colorText"
+          (click)="activeIndex = activeIndex + 1 <= data?.items?.length - 1 ? activeIndex + 1 : 0"
+          src="assets/icons/arrow-left.svg"
+          alt=""
+        />
+      </div>
+      <!-- END -  pagination for slides -->
+
+      <!-- DETAIL -->
+      <div class="w-full bg-popover-background-color rounded-[16px]">
+        <div class="border border-[#E9E9E9] rounded-[16px] w-full md:flex md:justify-between">
+          <div class="relative w-full h-[233px] md:h-[284px] md:w-[calc(100%-340px)]">
+            <!-- zoom -->
+            <div
+              *ngIf="!data?.isLocked"
+              class="absolute bottom-[8px] ltr:right-[8px] rtl:left-[8px] z-10 rounded-full bg-[rgba(0,0,0,0.4)] p-[4px] cursor-zoom-in hover:scale-[1.01] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.24)]"
+              (click)="zoomIn(data?.items?.[activeIndex]?.imgUrls, vm.isLowestPriceOpaque && data?.tag === BookingFlow.LowestPrice, vm.lowestPriceImageUrl)"
+            >
+              <img loading="lazy" src="assets/icons/zoom-in.svg" alt="" />
+            </div>
+            <!-- end zoom -->
+            <app-option-swiper
+              [imgUrls]="vm.isLowestPriceOpaque && data?.tag === BookingFlow.LowestPrice ? [vm.lowestPriceImageUrl] : data?.items?.[activeIndex]?.imgUrls"
+              [customClass]="'h-[233px] md:h-[284px] md:rounded-[16px] rounded-t-[16px]'"
+            />
+          </div>
+          <div class="flex flex-col justify-between p-[16px] md:w-[320px] md:h-[284px] md:p-0 md:pt-[8px]">
+            <!-- -->
+            <div class="flex gap-[4px] items-center mb-[4px]">
+              <div class="bg-button-secondary-fill rounded-[8px] px-[4px] text-[14px] font-medium leading-[19px] text-primary-color">#{{ activeIndex + 1 }}</div>
+              <div class="font-medium text-[17px] leading-[19px] text-primary-color line-clamp-1">
+                {{ vm.isLowestPriceOpaque && data?.tag === BookingFlow.LowestPrice ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) : data?.items?.[activeIndex]?.title }}
+              </div>
+            </div>
+            <app-option-units-info [item]="data?.items?.[activeIndex]" [showSpace]="true" [full]="true" />
+            @if (data?.items?.[activeIndex]?.metadata?.description; as description) {
+              <div class="text-[12px] font-light text-primary-color mt-[12px]" [innerHTML]="description"></div>
+            }
+            <ng-container *ngIf="!(vm.isLowestPriceOpaque && data?.tag === BookingFlow.LowestPrice)">
+              <div class="mt-[8px] md:h-[calc(100%-114px)] md:overflow-y-auto md:overflow-x-hidden detail-scrollbar">
+                <app-feature-included-match-flow
+                  *ngIf="vm.isMatchFlow && data?.items?.[activeIndex].matchFeatures?.length > 0"
+                  [matchFeatures]="data?.items?.[activeIndex]?.matchFeatures"
+                  [notMatchFeatures]="data?.items?.[activeIndex]?.notMatchFeatures"
+                  [anotherFeatures]="data?.items?.[activeIndex]?.features"
+                  [maxFeatureShowed]="999"
+                  [displayMode]="EDisplayMode.List"
+                />
+                <app-feature-included
+                  *ngIf="!vm.isMatchFlow || data?.items?.[activeIndex]?.matchFeatures?.length === 0"
+                  [features]="data?.items?.[activeIndex]?.features"
+                  [maxFeatureShowed]="999"
+                  [displayMode]="EDisplayMode.List"
+                  [isAlternativeOption]="isAlternativeOption"
+                />
+                <div class="mt-[16px]">
+                  <app-standard-features [standardFeatures]="data?.items?.[activeIndex]?.standardFeatures" [maxFeatureShowed]="999" />
+                </div>
+              </div>
+            </ng-container>
+            <div class="mt-[16px]">
+              <app-option-price
+                [price]="data | calUnitCombinationOptionPrice: activeIndex : vm.priceState : vm.includeTax : isFromMatchingRfc"
+                [priceView]="vm.priceState"
+                [parentClass]="'!text-[12px]'"
+                [rooms]="1"
+                [isDeal]="(data?.items?.[0]?.rfcRatePlanList | getDealCode) === data?.items[0]?.rfcRatePlan?.ratePlan?.code"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="px-[20px] my-[24px]">
+      <div class="h-[1px] bg-[#E9E9E9]"></div>
+    </div>
+    <!-- rfc-rate list -->
+    <ng-container *ngIf="data?.items?.[activeIndex]?.rfcRatePlanList as list">
+      <div class="flex w-full flex-col gap-[12px] px-[16px]" [ngClass]="{ 'pb-[24px] ': list?.length > 0 }">
+        <ng-container *ngFor="let rfcRatePlan of list; index as i">
+          <app-rfc-rate-plan
+            (selectRatePlan)="selectRatePlan.emit($event)"
+            [bedRooms]="data?.items[0]?.bedRooms"
+            [dealCode]="list | getDealCode"
+            [displayMode]="EDisplayMode.List"
+            [isBook]="isHighLight"
+            [isCombination]="true"
+            [isFromMatchingRfc]="isFromMatchingRfc"
+            [isIncludedTax]="vm.includeTax"
+            [item]="rfcRatePlan"
+            [name]="data?.items?.[activeIndex]?.title"
+            [priceView]="vm.priceState"
+            [promoCode]="vm.promoCode"
+            [roomProduct]="data?.items[0]?.baseOption?.availableRfcList?.[0]"
+            [rooms]="data?.items?.length"
+          />
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
+
+<ng-template #slideContent let-isMatchFlow="isMatchFlow" let-singleOption="singleOption" let-isLowestPriceOpaque="isLowestPriceOpaque" let-lowestPriceImageUrl="lowestPriceImageUrl" let-index="index">
+  <div class="relative">
+    <div class="absolute top-[12px] ltr:left-[-8px] rtl:right-[-8px]">
+      <app-matching-percent-tag *ngIf="isMatchFlow" [matchPercent]="singleOption.matchPercent" />
+    </div>
+    <div
+      class="w-full bg-cover bg-center bg-no-repeat rounded-t-[16px]"
+      [class]="index === activeIndex ? 'h-[124px]' : 'h-[104px]'"
+      [style.backgroundImage]="(isLowestPriceOpaque && data?.tag === BookingFlow.LowestPrice ? lowestPriceImageUrl : singleOption?.imgUrls[0]) | parseImageUrl"
+      alt="option img"
+    ></div>
+    <div class="py-[4px] px-[8px] flex gap-[4px] items-center">
+      <div class="bg-button-secondary-fill rounded-[8px] px-[4px] text-[14px] font-medium leading-[19px] text-primary-color">#{{ index + 1 }}</div>
+      <div class="truncate font-medium text-[14px] text-primary-color">
+        {{ isLowestPriceOpaque && data?.tag === BookingFlow.LowestPrice ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) : singleOption?.title }}
+      </div>
+    </div>
+  </div>
+</ng-template>

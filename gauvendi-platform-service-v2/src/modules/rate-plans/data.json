@@ -1,0 +1,1626 @@
+[
+  {
+    "id": "39ecd144-009a-48d1-9e95-8959b178e8fd",
+    "code": "DAILYRATE",
+    "name": "Daily Rate German",
+    "roundingMode": "NO_ROUNDING",
+    "status": "ACTIVE",
+    "description": "<p><strong><span style=\"color:rgb(0, 0, 0);\"><span style=\"background-color:rgb(255, 255, 255);\">Lorem Ipsum</span></span></strong><span style=\"color:rgb(0, 0, 0);\"><span style=\"background-color:rgb(255, 255, 255);\"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span></span></p>",
+    "promoCodeList": [],
+    "type": "PUBLIC",
+    "paymentTermCode": "POC",
+    "payAtHotel": null,
+    "payOnConfirmation": null,
+    "hotelCxlPolicyCode": "FLEX_6H_0P",
+    "hourPrior": 0,
+    "displayUnit": "DAY",
+    "cancellationFeeValue": null,
+    "cancellationFeeUnit": "PERCENTAGE",
+    "mappingRatePlanCode": "CARDTERC-DAILYRATE_MRFC001-VCTGS",
+    "adjustmentValue": 0,
+    "adjustmentUnit": null,
+    "isPrimary": true,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": false,
+    "rfcAttributeMode": false,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": {
+      "id": "6c1b47f6-65ad-4a13-b286-3bc2e45854f9",
+      "code": "FLEX_6H_0P",
+      "name": "Flexible 6 hours hours / Free of charge",
+      "cancellationType": null,
+      "hourPrior": 6,
+      "displayUnit": "HOUR",
+      "cancellationFeeValue": 0,
+      "cancellationFeeUnit": "PERCENTAGE",
+      "description": "Flexible 6 hours hours / Free of charge"
+    },
+    "hotelPaymentTerm": {
+      "code": "POC",
+      "description": "<p>Payment on confirmation</p>"
+    },
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 20
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 10
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 21
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [
+      "GV_SALES_ENGINE",
+      "GV_VOICE"
+    ],
+    "salesPlanFollowList": [
+      {
+        "id": "d7e3a358-c62b-49aa-b2c0-99f0166c64e7",
+        "code": "DERIVED_SALES_PLAN",
+        "name": "Derived Sales Plan",
+        "roundingMode": "NO_ROUNDING",
+        "status": "ACTIVE",
+        "description": "<p>123</p>",
+        "promoCodeList": [],
+        "type": "PUBLIC",
+        "paymentTermCode": "",
+        "payAtHotel": 0,
+        "payOnConfirmation": 0,
+        "hotelCxlPolicyCode": "",
+        "hourPrior": 0,
+        "displayUnit": "DAY",
+        "cancellationFeeValue": 0,
+        "cancellationFeeUnit": "PERCENTAGE",
+        "mappingRatePlanCode": "",
+        "adjustmentValue": 0,
+        "adjustmentUnit": "FIXED",
+        "isPrimary": false,
+        "pricingMethodology": "DERIVED_PRICING",
+        "mrfcPositioningMode": false,
+        "rfcAttributeMode": false,
+        "sellingStrategyType": "DEFAULT",
+        "marketSegment": null,
+        "ratePlanDerivedSetting": {
+          "id": "a42e6e70-43a0-4fbf-bfc6-8e56e75e1202",
+          "createdAt": "2025-03-19T04:54:23.000Z",
+          "updatedAt": "2025-03-19T04:54:23.000Z",
+          "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+          "ratePlanId": "d7e3a358-c62b-49aa-b2c0-99f0166c64e7",
+          "derivedRatePlanId": "39ecd144-009a-48d1-9e95-8959b178e8fd",
+          "followDailyPaymentTerm": true,
+          "followDailyCxlPolicy": true,
+          "followDailyIncludedAmenity": true,
+          "followDailyRoomProductAvailability": true,
+          "followDailyRestriction": true
+        },
+        "hotelCancellationPolicy": null,
+        "hotelPaymentTerm": null,
+        "ratePlanRfcCountList": [
+          {
+            "rfcType": "RFC",
+            "count": 17
+          },
+          {
+            "rfcType": "MRFC",
+            "count": 11
+          },
+          {
+            "rfcType": "ERFC",
+            "count": 19
+          }
+        ],
+        "hotelExtrasList": [],
+        "distributionChannelList": [
+          "GV_SALES_ENGINE",
+          "GV_VOICE"
+        ],
+        "salesPlanFollowList": [],
+        "translationList": []
+      },
+      {
+        "id": "784d30ad-9391-4aa3-a78f-07e582914bc2",
+        "code": "DERIVED_SALES_PLAN_2",
+        "name": "Derived Sales Plan 2",
+        "roundingMode": "NO_ROUNDING",
+        "status": "ACTIVE",
+        "description": "",
+        "promoCodeList": [],
+        "type": "PUBLIC",
+        "paymentTermCode": null,
+        "payAtHotel": null,
+        "payOnConfirmation": null,
+        "hotelCxlPolicyCode": "FLEXIBLE",
+        "hourPrior": null,
+        "displayUnit": null,
+        "cancellationFeeValue": null,
+        "cancellationFeeUnit": null,
+        "mappingRatePlanCode": "CARDTERC-GVD_ERFC001_FLEX-VCTGS",
+        "adjustmentValue": -10,
+        "adjustmentUnit": "PERCENTAGE",
+        "isPrimary": false,
+        "pricingMethodology": "DERIVED_PRICING",
+        "mrfcPositioningMode": null,
+        "rfcAttributeMode": null,
+        "sellingStrategyType": "DEFAULT",
+        "marketSegment": null,
+        "ratePlanDerivedSetting": {
+          "id": "2cc9a2b2-dc85-40cd-999a-014ec98b8372",
+          "createdAt": "2025-03-19T05:47:12.000Z",
+          "updatedAt": "2025-03-19T05:47:12.000Z",
+          "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+          "ratePlanId": "784d30ad-9391-4aa3-a78f-07e582914bc2",
+          "derivedRatePlanId": "39ecd144-009a-48d1-9e95-8959b178e8fd",
+          "followDailyPaymentTerm": true,
+          "followDailyCxlPolicy": true,
+          "followDailyIncludedAmenity": false,
+          "followDailyRoomProductAvailability": true,
+          "followDailyRestriction": true
+        },
+        "hotelCancellationPolicy": {
+          "id": "4584b553-240c-4b88-b872-4b9fca47c19e",
+          "code": "FLEXIBLE",
+          "name": "Flexible",
+          "cancellationType": null,
+          "hourPrior": 18,
+          "displayUnit": "HOUR",
+          "cancellationFeeValue": 0,
+          "cancellationFeeUnit": "PERCENTAGE",
+          "description": "Flexible up to 6pm of day of arrival"
+        },
+        "hotelPaymentTerm": null,
+        "ratePlanRfcCountList": [
+          {
+            "rfcType": "RFC",
+            "count": 19
+          },
+          {
+            "rfcType": "MRFC",
+            "count": 11
+          },
+          {
+            "rfcType": "ERFC",
+            "count": 18
+          }
+        ],
+        "hotelExtrasList": [],
+        "distributionChannelList": [
+          "GV_SALES_ENGINE",
+          "GV_VOICE"
+        ],
+        "salesPlanFollowList": [],
+        "translationList": []
+      },
+      {
+        "id": "3d735976-07aa-40c7-95e2-8772858148d5",
+        "code": "DERIVEDSP",
+        "name": "Derived SP Test ",
+        "roundingMode": "UP",
+        "status": "ACTIVE",
+        "description": "",
+        "promoCodeList": [
+          "contracted"
+        ],
+        "type": "GROUP",
+        "paymentTermCode": "POA",
+        "payAtHotel": null,
+        "payOnConfirmation": null,
+        "hotelCxlPolicyCode": "NON_CANCEL",
+        "hourPrior": null,
+        "displayUnit": null,
+        "cancellationFeeValue": null,
+        "cancellationFeeUnit": null,
+        "mappingRatePlanCode": "fsd",
+        "adjustmentValue": 0,
+        "adjustmentUnit": "FIXED",
+        "isPrimary": false,
+        "pricingMethodology": "DERIVED_PRICING",
+        "mrfcPositioningMode": null,
+        "rfcAttributeMode": null,
+        "sellingStrategyType": "DEFAULT",
+        "marketSegment": null,
+        "ratePlanDerivedSetting": {
+          "id": "a654282d-bef6-4061-a8d5-1813bc48232e",
+          "createdAt": "2024-04-11T02:59:44.000Z",
+          "updatedAt": "2024-04-11T02:59:44.000Z",
+          "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+          "ratePlanId": "3d735976-07aa-40c7-95e2-8772858148d5",
+          "derivedRatePlanId": "39ecd144-009a-48d1-9e95-8959b178e8fd",
+          "followDailyPaymentTerm": true,
+          "followDailyCxlPolicy": true,
+          "followDailyIncludedAmenity": true,
+          "followDailyRoomProductAvailability": true,
+          "followDailyRestriction": true
+        },
+        "hotelCancellationPolicy": {
+          "id": "3899624f-3bed-4375-98c8-b7a296818b81",
+          "code": "NON_CANCEL",
+          "name": "No cancellation possible after booking",
+          "cancellationType": null,
+          "hourPrior": 0,
+          "displayUnit": "HOUR",
+          "cancellationFeeValue": 0,
+          "cancellationFeeUnit": "PERCENTAGE",
+          "description": "Total amount of the booking"
+        },
+        "hotelPaymentTerm": {
+          "code": "POA",
+          "description": "<p><strong>Payment at the hotel description. Your payment method will be charged as soon as your reservation is confirmed (excluding security deposits)</strong></p>"
+        },
+        "ratePlanRfcCountList": [
+          {
+            "rfcType": "RFC",
+            "count": 17
+          },
+          {
+            "rfcType": "MRFC",
+            "count": 11
+          },
+          {
+            "rfcType": "ERFC",
+            "count": 18
+          }
+        ],
+        "hotelExtrasList": [],
+        "distributionChannelList": [
+          "GV_SALES_ENGINE",
+          "GV_VOICE"
+        ],
+        "salesPlanFollowList": [],
+        "translationList": []
+      },
+      {
+        "id": "263c9816-e345-41f6-bb41-f4e07af40cd5",
+        "code": "HUE",
+        "name": "Hue",
+        "roundingMode": "NO_ROUNDING",
+        "status": "ACTIVE",
+        "description": "",
+        "promoCodeList": [],
+        "type": "PUBLIC",
+        "paymentTermCode": "POA",
+        "payAtHotel": null,
+        "payOnConfirmation": null,
+        "hotelCxlPolicyCode": "NON_CANCEL",
+        "hourPrior": null,
+        "displayUnit": null,
+        "cancellationFeeValue": null,
+        "cancellationFeeUnit": null,
+        "mappingRatePlanCode": "1",
+        "adjustmentValue": 0,
+        "adjustmentUnit": "FIXED",
+        "isPrimary": false,
+        "pricingMethodology": "DERIVED_PRICING",
+        "mrfcPositioningMode": null,
+        "rfcAttributeMode": null,
+        "sellingStrategyType": "DEFAULT",
+        "marketSegment": null,
+        "ratePlanDerivedSetting": {
+          "id": "ff757ecb-bae0-49b8-9cb4-d5da1a49b4fe",
+          "createdAt": "2024-06-20T04:55:31.000Z",
+          "updatedAt": "2024-06-20T04:55:31.000Z",
+          "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+          "ratePlanId": "263c9816-e345-41f6-bb41-f4e07af40cd5",
+          "derivedRatePlanId": "39ecd144-009a-48d1-9e95-8959b178e8fd",
+          "followDailyPaymentTerm": false,
+          "followDailyCxlPolicy": false,
+          "followDailyIncludedAmenity": false,
+          "followDailyRoomProductAvailability": false,
+          "followDailyRestriction": false
+        },
+        "hotelCancellationPolicy": {
+          "id": "3899624f-3bed-4375-98c8-b7a296818b81",
+          "code": "NON_CANCEL",
+          "name": "No cancellation possible after booking",
+          "cancellationType": null,
+          "hourPrior": 0,
+          "displayUnit": "HOUR",
+          "cancellationFeeValue": 0,
+          "cancellationFeeUnit": "PERCENTAGE",
+          "description": "Total amount of the booking"
+        },
+        "hotelPaymentTerm": {
+          "code": "POA",
+          "description": "<p><strong>Payment at the hotel description. Your payment method will be charged as soon as your reservation is confirmed (excluding security deposits)</strong></p>"
+        },
+        "ratePlanRfcCountList": [
+          {
+            "rfcType": "RFC",
+            "count": 0
+          },
+          {
+            "rfcType": "MRFC",
+            "count": 0
+          },
+          {
+            "rfcType": "ERFC",
+            "count": 7
+          }
+        ],
+        "hotelExtrasList": [],
+        "distributionChannelList": [
+          "GV_SALES_ENGINE",
+          "GV_VOICE"
+        ],
+        "salesPlanFollowList": [],
+        "translationList": []
+      },
+      {
+        "id": "951bdf4a-9cee-4f44-a19a-080f402273ec",
+        "code": "TEST_ADJUSTMENT",
+        "name": "Test Adjustment",
+        "roundingMode": "NO_ROUNDING",
+        "status": "ACTIVE",
+        "description": "",
+        "promoCodeList": [
+          "123Test"
+        ],
+        "type": "PROMOTION",
+        "paymentTermCode": null,
+        "payAtHotel": null,
+        "payOnConfirmation": null,
+        "hotelCxlPolicyCode": "NON_CANCEL",
+        "hourPrior": null,
+        "displayUnit": null,
+        "cancellationFeeValue": null,
+        "cancellationFeeUnit": null,
+        "mappingRatePlanCode": "123",
+        "adjustmentValue": 0,
+        "adjustmentUnit": "FIXED",
+        "isPrimary": false,
+        "pricingMethodology": "DERIVED_PRICING",
+        "mrfcPositioningMode": null,
+        "rfcAttributeMode": null,
+        "sellingStrategyType": "DEFAULT",
+        "marketSegment": null,
+        "ratePlanDerivedSetting": {
+          "id": "bfcabe6f-de2e-409d-9fe0-d935f7548166",
+          "createdAt": "2025-05-20T08:36:31.000Z",
+          "updatedAt": "2025-05-20T08:36:31.000Z",
+          "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+          "ratePlanId": "951bdf4a-9cee-4f44-a19a-080f402273ec",
+          "derivedRatePlanId": "39ecd144-009a-48d1-9e95-8959b178e8fd",
+          "followDailyPaymentTerm": false,
+          "followDailyCxlPolicy": false,
+          "followDailyIncludedAmenity": false,
+          "followDailyRoomProductAvailability": false,
+          "followDailyRestriction": true
+        },
+        "hotelCancellationPolicy": {
+          "id": "3899624f-3bed-4375-98c8-b7a296818b81",
+          "code": "NON_CANCEL",
+          "name": "No cancellation possible after booking",
+          "cancellationType": null,
+          "hourPrior": 0,
+          "displayUnit": "HOUR",
+          "cancellationFeeValue": 0,
+          "cancellationFeeUnit": "PERCENTAGE",
+          "description": "Total amount of the booking"
+        },
+        "hotelPaymentTerm": null,
+        "ratePlanRfcCountList": [
+          {
+            "rfcType": "RFC",
+            "count": 1
+          },
+          {
+            "rfcType": "MRFC",
+            "count": 0
+          },
+          {
+            "rfcType": "ERFC",
+            "count": 0
+          }
+        ],
+        "hotelExtrasList": [],
+        "distributionChannelList": [],
+        "salesPlanFollowList": [],
+        "translationList": []
+      }
+    ],
+    "translationList": [
+      {
+        "id": "91a577d4-b5ee-4c2b-9684-10565ba5a0b8",
+        "createdAt": "2024-02-21T09:09:17.000Z",
+        "updatedAt": "2024-02-21T09:09:17.000Z",
+        "ratePlanId": "39ecd144-009a-48d1-9e95-8959b178e8fd",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "FR",
+        "name": "Daily Rate French",
+        "description": "<p>Daily Rate description French</p>"
+      },
+      {
+        "id": "cce15330-cc56-45b0-b5fe-86fe3ccd8648",
+        "createdAt": "2024-02-21T09:09:17.000Z",
+        "updatedAt": "2024-08-27T05:01:55.000Z",
+        "ratePlanId": "39ecd144-009a-48d1-9e95-8959b178e8fd",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "DE",
+        "name": "Daily Rate Tieng Duc",
+        "description": "<p>Daily Rate description Tieng Duc</p>"
+      },
+      {
+        "id": "58ab480c-3254-4389-9fc1-a4a054762029",
+        "createdAt": "2024-02-21T09:09:17.000Z",
+        "updatedAt": "2024-02-21T09:09:17.000Z",
+        "ratePlanId": "39ecd144-009a-48d1-9e95-8959b178e8fd",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "ES",
+        "name": "Daily Rate Spanish",
+        "description": "<p>Daily Rate description Spanish</p>"
+      },
+      {
+        "id": "6c58a301-31b3-4a6c-b19c-f39803aa3c86",
+        "createdAt": "2024-04-03T16:46:20.000Z",
+        "updatedAt": "2024-04-03T16:46:20.000Z",
+        "ratePlanId": "39ecd144-009a-48d1-9e95-8959b178e8fd",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "AR",
+        "name": "بخير، شكرًا. وأنت؟",
+        "description": "<p><strong><span style=\"color:rgb(17, 17, 17);\"><span style=\"background-color:rgb(255, 255, 255);\">بخير، شكرًا. وأنت؟بخير، شكرًا. وأنت؟بخير، شكرًا. وأنت؟بخير، شكرًا. وأنت؟بخير، شكرًا. وأنت؟بخير، شكرًا. وأنت؟بخير، شكرًا. وأنت؟بخير، شكرًا. وأنت؟بخير، شكرًا. وأنت؟بخير، شكرًا. وأنت؟بخير، شكرًا. وأنت؟</span></span></strong></p>"
+      },
+      {
+        "id": "73574610-6bbc-4d09-b6c0-4f1085e5cf34",
+        "createdAt": "2024-02-21T09:09:17.000Z",
+        "updatedAt": "2024-02-21T09:09:17.000Z",
+        "ratePlanId": "39ecd144-009a-48d1-9e95-8959b178e8fd",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "IT",
+        "name": "Daily Rate Italian",
+        "description": "<p>Daily Rate description Italian</p>"
+      }
+    ]
+  },
+  {
+    "id": "e7d72b9a-c06d-45d5-9d6f-3d2fcb47cae9",
+    "code": "COSP",
+    "name": "Corporate sale plan",
+    "roundingMode": "HALF_ROUND_UP",
+    "status": "ACTIVE",
+    "description": "<p>Corporate sale plan Description</p><p>Cancellation conditions apply, and we STRICTLY adhere to our cancellation policy.&nbsp;We strongly recommend all guests purchase trip cancellation coverage from a third party for unforeseen cancellations.</p><p></p>",
+    "promoCodeList": [
+      "Cor",
+      "QTEST"
+    ],
+    "type": "CORPORATE",
+    "paymentTermCode": "POA",
+    "payAtHotel": null,
+    "payOnConfirmation": null,
+    "hotelCxlPolicyCode": "NON_CANCEL",
+    "hourPrior": null,
+    "displayUnit": null,
+    "cancellationFeeValue": null,
+    "cancellationFeeUnit": null,
+    "mappingRatePlanCode": "CARDTERC-PERRATE-PERSONAL",
+    "adjustmentValue": -25,
+    "adjustmentUnit": "PERCENTAGE",
+    "isPrimary": false,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": null,
+    "rfcAttributeMode": null,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": {
+      "id": "3899624f-3bed-4375-98c8-b7a296818b81",
+      "code": "NON_CANCEL",
+      "name": "No cancellation possible after booking",
+      "cancellationType": null,
+      "hourPrior": 0,
+      "displayUnit": "HOUR",
+      "cancellationFeeValue": 0,
+      "cancellationFeeUnit": "PERCENTAGE",
+      "description": "Total amount of the booking"
+    },
+    "hotelPaymentTerm": {
+      "code": "POA",
+      "description": "<p><strong>Payment at the hotel description. Your payment method will be charged as soon as your reservation is confirmed (excluding security deposits)</strong></p>"
+    },
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 9
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 9
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 3
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [
+      "GV_SALES_ENGINE",
+      "GV_VOICE"
+    ],
+    "salesPlanFollowList": [],
+    "translationList": [
+      {
+        "id": "f2c8ffd3-7bac-4aec-84c7-b1d707a7e16b",
+        "createdAt": "2024-02-23T04:25:48.000Z",
+        "updatedAt": "2024-02-23T04:25:48.000Z",
+        "ratePlanId": "e7d72b9a-c06d-45d5-9d6f-3d2fcb47cae9",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "ES",
+        "name": "plan de venta corporativa",
+        "description": "<p>Plan de venta corporativo Descripción</p>"
+      },
+      {
+        "id": "1ae8f1f6-f707-4cc4-9592-7e8ce2b7992b",
+        "createdAt": "2024-02-23T04:25:48.000Z",
+        "updatedAt": "2024-02-23T04:25:48.000Z",
+        "ratePlanId": "e7d72b9a-c06d-45d5-9d6f-3d2fcb47cae9",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "FR",
+        "name": "Plan de vente d'entreprise",
+        "description": "<p>Plan de vente d'entreprise Description</p>"
+      },
+      {
+        "id": "529feeb5-3bdc-4eca-8b8a-26b053076520",
+        "createdAt": "2024-02-23T04:25:48.000Z",
+        "updatedAt": "2024-02-23T04:25:48.000Z",
+        "ratePlanId": "e7d72b9a-c06d-45d5-9d6f-3d2fcb47cae9",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "IT",
+        "name": "Piano di vendita aziendale",
+        "description": "<p>Descrizione del piano di vendita aziendale</p>"
+      },
+      {
+        "id": "d8a1c037-0557-497e-b82d-2e30c936adee",
+        "createdAt": "2024-02-23T04:25:48.000Z",
+        "updatedAt": "2024-02-23T04:25:48.000Z",
+        "ratePlanId": "e7d72b9a-c06d-45d5-9d6f-3d2fcb47cae9",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "DE",
+        "name": "Unternehmensverkaufsplan",
+        "description": "<p>Beschreibung des Unternehmensverkaufsplans</p>"
+      }
+    ]
+  },
+  {
+    "id": "c5d2fcba-4027-44e7-ab1a-88f05eea50a2",
+    "code": "DEV_TEST_ASSIGN_PRODUCT",
+    "name": "Dev Test Assign Product",
+    "roundingMode": "NO_ROUNDING",
+    "status": "ACTIVE",
+    "description": "",
+    "promoCodeList": [],
+    "type": "PUBLIC",
+    "paymentTermCode": "",
+    "payAtHotel": 0,
+    "payOnConfirmation": 0,
+    "hotelCxlPolicyCode": "",
+    "hourPrior": 0,
+    "displayUnit": "DAY",
+    "cancellationFeeValue": 0,
+    "cancellationFeeUnit": "PERCENTAGE",
+    "mappingRatePlanCode": "123",
+    "adjustmentValue": 0,
+    "adjustmentUnit": "FIXED",
+    "isPrimary": false,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": false,
+    "rfcAttributeMode": false,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": null,
+    "hotelPaymentTerm": null,
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 20
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 11
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 21
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [
+      "GV_SALES_ENGINE",
+      "GV_VOICE",
+      "SITEMINDER"
+    ],
+    "salesPlanFollowList": [
+      {
+        "id": "831bfbfa-f0e8-42ab-a9db-af6e4ce67321",
+        "code": "DEV_TEST_SALES_PLAN_ADJUSTMENT",
+        "name": "Dev Test Sales Plan Adjustment",
+        "roundingMode": "NO_ROUNDING",
+        "status": "ACTIVE",
+        "description": "",
+        "promoCodeList": [],
+        "type": "PUBLIC",
+        "paymentTermCode": null,
+        "payAtHotel": null,
+        "payOnConfirmation": null,
+        "hotelCxlPolicyCode": "NON_CANCEL",
+        "hourPrior": null,
+        "displayUnit": null,
+        "cancellationFeeValue": null,
+        "cancellationFeeUnit": null,
+        "mappingRatePlanCode": "123",
+        "adjustmentValue": 0,
+        "adjustmentUnit": "FIXED",
+        "isPrimary": false,
+        "pricingMethodology": "DERIVED_PRICING",
+        "mrfcPositioningMode": null,
+        "rfcAttributeMode": null,
+        "sellingStrategyType": "DEFAULT",
+        "marketSegment": null,
+        "ratePlanDerivedSetting": {
+          "id": "15017420-43d0-4f70-8777-afc8b4639b5f",
+          "createdAt": "2025-05-20T08:26:38.000Z",
+          "updatedAt": "2025-05-20T08:26:38.000Z",
+          "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+          "ratePlanId": "831bfbfa-f0e8-42ab-a9db-af6e4ce67321",
+          "derivedRatePlanId": "c5d2fcba-4027-44e7-ab1a-88f05eea50a2",
+          "followDailyPaymentTerm": true,
+          "followDailyCxlPolicy": true,
+          "followDailyIncludedAmenity": false,
+          "followDailyRoomProductAvailability": true,
+          "followDailyRestriction": true
+        },
+        "hotelCancellationPolicy": {
+          "id": "3899624f-3bed-4375-98c8-b7a296818b81",
+          "code": "NON_CANCEL",
+          "name": "No cancellation possible after booking",
+          "cancellationType": null,
+          "hourPrior": 0,
+          "displayUnit": "HOUR",
+          "cancellationFeeValue": 0,
+          "cancellationFeeUnit": "PERCENTAGE",
+          "description": "Total amount of the booking"
+        },
+        "hotelPaymentTerm": null,
+        "ratePlanRfcCountList": [
+          {
+            "rfcType": "RFC",
+            "count": 20
+          },
+          {
+            "rfcType": "MRFC",
+            "count": 11
+          },
+          {
+            "rfcType": "ERFC",
+            "count": 21
+          }
+        ],
+        "hotelExtrasList": [],
+        "distributionChannelList": [],
+        "salesPlanFollowList": [],
+        "translationList": []
+      },
+      {
+        "id": "b9c9e8f8-69e9-41b5-b2a9-d30f8de4f3cd",
+        "code": "DEV_TEST_SALES_PLAN_ADJUSTMENT_2",
+        "name": "Dev Test Sales Plan Adjustment 2",
+        "roundingMode": "NO_ROUNDING",
+        "status": "ACTIVE",
+        "description": "",
+        "promoCodeList": [],
+        "type": "PUBLIC",
+        "paymentTermCode": null,
+        "payAtHotel": null,
+        "payOnConfirmation": null,
+        "hotelCxlPolicyCode": "NON_CANCEL",
+        "hourPrior": null,
+        "displayUnit": null,
+        "cancellationFeeValue": null,
+        "cancellationFeeUnit": null,
+        "mappingRatePlanCode": "123",
+        "adjustmentValue": 0,
+        "adjustmentUnit": "FIXED",
+        "isPrimary": false,
+        "pricingMethodology": "DERIVED_PRICING",
+        "mrfcPositioningMode": null,
+        "rfcAttributeMode": null,
+        "sellingStrategyType": "DEFAULT",
+        "marketSegment": null,
+        "ratePlanDerivedSetting": {
+          "id": "f585d3c9-36f8-4d5c-b4c0-cb5a29d7d856",
+          "createdAt": "2025-05-20T08:31:29.000Z",
+          "updatedAt": "2025-05-20T08:31:29.000Z",
+          "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+          "ratePlanId": "b9c9e8f8-69e9-41b5-b2a9-d30f8de4f3cd",
+          "derivedRatePlanId": "c5d2fcba-4027-44e7-ab1a-88f05eea50a2",
+          "followDailyPaymentTerm": false,
+          "followDailyCxlPolicy": false,
+          "followDailyIncludedAmenity": false,
+          "followDailyRoomProductAvailability": false,
+          "followDailyRestriction": true
+        },
+        "hotelCancellationPolicy": {
+          "id": "3899624f-3bed-4375-98c8-b7a296818b81",
+          "code": "NON_CANCEL",
+          "name": "No cancellation possible after booking",
+          "cancellationType": null,
+          "hourPrior": 0,
+          "displayUnit": "HOUR",
+          "cancellationFeeValue": 0,
+          "cancellationFeeUnit": "PERCENTAGE",
+          "description": "Total amount of the booking"
+        },
+        "hotelPaymentTerm": null,
+        "ratePlanRfcCountList": [
+          {
+            "rfcType": "RFC",
+            "count": 1
+          },
+          {
+            "rfcType": "MRFC",
+            "count": 0
+          },
+          {
+            "rfcType": "ERFC",
+            "count": 0
+          }
+        ],
+        "hotelExtrasList": [],
+        "distributionChannelList": [],
+        "salesPlanFollowList": [],
+        "translationList": []
+      }
+    ],
+    "translationList": []
+  },
+  {
+    "id": "6dab2450-4cb8-4460-9a04-be36c6b0973b",
+    "code": "CORPORATE",
+    "name": "Group sale plan",
+    "roundingMode": "NO_ROUNDING",
+    "status": "ACTIVE",
+    "description": "<p>Cancellation conditions apply, and we STRICTLY adhere to our cancellation policy.&nbsp;We strongly recommend all guests purchase trip cancellation coverage from a third party for unforeseen cancellations.</p><p></p>",
+    "promoCodeList": [
+      "Group1",
+      "Group 2",
+      "Promotiontest123",
+      "Promocode long name",
+      "QTEST"
+    ],
+    "type": "GROUP",
+    "paymentTermCode": "POA",
+    "payAtHotel": null,
+    "payOnConfirmation": null,
+    "hotelCxlPolicyCode": "NON_CANCEL",
+    "hourPrior": null,
+    "displayUnit": null,
+    "cancellationFeeValue": null,
+    "cancellationFeeUnit": null,
+    "mappingRatePlanCode": "CARDTERC-PERRATE-PERSONAL",
+    "adjustmentValue": -10,
+    "adjustmentUnit": "PERCENTAGE",
+    "isPrimary": false,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": null,
+    "rfcAttributeMode": null,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": {
+      "id": "3899624f-3bed-4375-98c8-b7a296818b81",
+      "code": "NON_CANCEL",
+      "name": "No cancellation possible after booking",
+      "cancellationType": null,
+      "hourPrior": 0,
+      "displayUnit": "HOUR",
+      "cancellationFeeValue": 0,
+      "cancellationFeeUnit": "PERCENTAGE",
+      "description": "Total amount of the booking"
+    },
+    "hotelPaymentTerm": {
+      "code": "POA",
+      "description": "<p><strong>Payment at the hotel description. Your payment method will be charged as soon as your reservation is confirmed (excluding security deposits)</strong></p>"
+    },
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 8
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 5
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 2
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [
+      "GV_SALES_ENGINE",
+      "GV_VOICE"
+    ],
+    "salesPlanFollowList": [],
+    "translationList": [
+      {
+        "id": "582551c2-a1db-4d6e-ae91-8c6bde89687b",
+        "createdAt": "2024-02-21T09:32:54.000Z",
+        "updatedAt": "2024-02-23T04:31:59.000Z",
+        "ratePlanId": "6dab2450-4cb8-4460-9a04-be36c6b0973b",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "IT",
+        "name": "Group sale plan Italian",
+        "description": "<p>Group sale plan <strong><span style=\"color:rgb(51, 51, 51);\"><span style=\"background-color:rgb(255, 255, 255);\">Description Italian</span></span></strong></p>"
+      },
+      {
+        "id": "809b410d-bd0e-45d9-a796-15d9b76eaec2",
+        "createdAt": "2024-02-21T09:32:54.000Z",
+        "updatedAt": "2024-02-23T04:31:59.000Z",
+        "ratePlanId": "6dab2450-4cb8-4460-9a04-be36c6b0973b",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "FR",
+        "name": "Group sale plan French",
+        "description": "<p>Group sale plan <strong><span style=\"color:rgb(51, 51, 51);\"><span style=\"background-color:rgb(255, 255, 255);\">Description French</span></span></strong></p>"
+      },
+      {
+        "id": "9f04df3b-c1a2-4e1f-8863-37d53ae92454",
+        "createdAt": "2024-02-21T09:32:54.000Z",
+        "updatedAt": "2024-02-23T04:31:59.000Z",
+        "ratePlanId": "6dab2450-4cb8-4460-9a04-be36c6b0973b",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "ES",
+        "name": "Group sale plan Spanish",
+        "description": "<p>Group sale plan <strong><span style=\"color:rgb(51, 51, 51);\"><span style=\"background-color:rgb(255, 255, 255);\">Description Spanish</span></span></strong></p>"
+      },
+      {
+        "id": "f616cb09-cb2b-4972-97da-9a59bd307d45",
+        "createdAt": "2024-02-21T09:32:54.000Z",
+        "updatedAt": "2024-02-23T04:31:59.000Z",
+        "ratePlanId": "6dab2450-4cb8-4460-9a04-be36c6b0973b",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "DE",
+        "name": "Group sale plan German",
+        "description": "<p>Group sale plan <strong><span style=\"color:rgb(51, 51, 51);\"><span style=\"background-color:rgb(255, 255, 255);\">Description German</span></span></strong></p>"
+      },
+      {
+        "id": "f6a0a609-8d0f-432b-bbd3-0f43941a50dd",
+        "createdAt": "2024-03-25T06:50:33.000Z",
+        "updatedAt": "2024-03-25T06:50:33.000Z",
+        "ratePlanId": "6dab2450-4cb8-4460-9a04-be36c6b0973b",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "AR",
+        "name": "خطة بيع جماعية",
+        "description": "<p>خطة بيع جماعية</p>"
+      }
+    ]
+  },
+  {
+    "id": "4e320639-7621-442d-bc59-c558995b06f8",
+    "code": "GVD-3014_1",
+    "name": "GVD-3014_1",
+    "roundingMode": "NO_ROUNDING",
+    "status": "ACTIVE",
+    "description": "",
+    "promoCodeList": [],
+    "type": "PUBLIC",
+    "paymentTermCode": "",
+    "payAtHotel": 0,
+    "payOnConfirmation": 0,
+    "hotelCxlPolicyCode": "",
+    "hourPrior": 0,
+    "displayUnit": "DAY",
+    "cancellationFeeValue": 0,
+    "cancellationFeeUnit": "PERCENTAGE",
+    "mappingRatePlanCode": "x",
+    "adjustmentValue": 0,
+    "adjustmentUnit": "FIXED",
+    "isPrimary": false,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": false,
+    "rfcAttributeMode": false,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": null,
+    "hotelPaymentTerm": null,
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 19
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 10
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 19
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [
+      "GV_SALES_ENGINE",
+      "GV_VOICE",
+      "SITEMINDER"
+    ],
+    "salesPlanFollowList": [],
+    "translationList": []
+  },
+  {
+    "id": "54d3fc82-e1c1-448d-a115-8affa26eaf18",
+    "code": "NO_TAX",
+    "name": "No Tax Information",
+    "roundingMode": "NO_ROUNDING",
+    "status": "ACTIVE",
+    "description": "",
+    "promoCodeList": [],
+    "type": "PUBLIC",
+    "paymentTermCode": null,
+    "payAtHotel": null,
+    "payOnConfirmation": null,
+    "hotelCxlPolicyCode": "NON_CANCEL",
+    "hourPrior": null,
+    "displayUnit": null,
+    "cancellationFeeValue": null,
+    "cancellationFeeUnit": null,
+    "mappingRatePlanCode": "CARDTERC-DAILYRATE_MRFC001-VCTGS",
+    "adjustmentValue": 0,
+    "adjustmentUnit": "FIXED",
+    "isPrimary": false,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": null,
+    "rfcAttributeMode": null,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": {
+      "id": "3899624f-3bed-4375-98c8-b7a296818b81",
+      "code": "NON_CANCEL",
+      "name": "No cancellation possible after booking",
+      "cancellationType": null,
+      "hourPrior": 0,
+      "displayUnit": "HOUR",
+      "cancellationFeeValue": 0,
+      "cancellationFeeUnit": "PERCENTAGE",
+      "description": "Total amount of the booking"
+    },
+    "hotelPaymentTerm": null,
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 3
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 11
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 0
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [
+      "GV_SALES_ENGINE",
+      "GV_VOICE"
+    ],
+    "salesPlanFollowList": [],
+    "translationList": []
+  },
+  {
+    "id": "bfc0b887-49fc-4242-af25-00fb833cdac5",
+    "code": "BUNDLE_PP",
+    "name": "Pool and Party",
+    "roundingMode": "NO_ROUNDING",
+    "status": "ACTIVE",
+    "description": "",
+    "promoCodeList": [],
+    "type": "PUBLIC",
+    "paymentTermCode": "",
+    "payAtHotel": 0,
+    "payOnConfirmation": 0,
+    "hotelCxlPolicyCode": "FLEX_3D_0P",
+    "hourPrior": 0,
+    "displayUnit": "DAY",
+    "cancellationFeeValue": 0,
+    "cancellationFeeUnit": "PERCENTAGE",
+    "mappingRatePlanCode": "",
+    "adjustmentValue": 0,
+    "adjustmentUnit": "FIXED",
+    "isPrimary": false,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": false,
+    "rfcAttributeMode": false,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": {
+      "id": "994fc946-ec2c-42fe-9cd8-045a9d8c4bfb",
+      "code": "FLEX_3D_0P",
+      "name": "Flexible 3 days / Free of charge",
+      "cancellationType": null,
+      "hourPrior": 72,
+      "displayUnit": "DAY",
+      "cancellationFeeValue": 0,
+      "cancellationFeeUnit": "PERCENTAGE",
+      "description": "Flexible 3 days / Free of charge"
+    },
+    "hotelPaymentTerm": null,
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 2
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 4
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 0
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [
+      "GV_SALES_ENGINE",
+      "GV_VOICE"
+    ],
+    "salesPlanFollowList": [],
+    "translationList": [
+      {
+        "id": "3d76b1bd-06c5-4657-8480-16a338389bc6",
+        "createdAt": "2025-10-01T02:31:03.860Z",
+        "updatedAt": "2025-10-01T02:46:46.034Z",
+        "ratePlanId": "bfc0b887-49fc-4242-af25-00fb833cdac5",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "DE",
+        "name": "German 123",
+        "description": "<p><strong><span style=\"color:rgb(51, 51, 51);\"><span style=\"background-color:rgb(255, 255, 255);\">German </span></span></strong><span style=\"color:rgba(128, 128, 128, 0.8);\">Description</span><span style=\"background-color:rgb(255, 255, 255);\"><br></span></p>"
+      },
+      {
+        "id": "c989153d-a924-47bd-bff7-d8c26987551c",
+        "createdAt": "2025-10-01T02:39:55.183Z",
+        "updatedAt": "2025-10-01T02:46:46.034Z",
+        "ratePlanId": "bfc0b887-49fc-4242-af25-00fb833cdac5",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "FR",
+        "name": "French Name 2121",
+        "description": "<p>French <span style=\"color:rgba(128, 128, 128, 0.8);\">Description</span></p><p><span style=\"background-color:rgb(255, 255, 255);\"><br></span></p>"
+      },
+      {
+        "id": "0996697e-a41e-43b9-8af8-519a28049793",
+        "createdAt": "2025-10-01T02:46:46.034Z",
+        "updatedAt": "2025-10-01T02:46:46.034Z",
+        "ratePlanId": "bfc0b887-49fc-4242-af25-00fb833cdac5",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "ES",
+        "name": "Spanish name",
+        "description": ""
+      },
+      {
+        "id": "eabfbeca-abda-44e2-9aff-543135754c00",
+        "createdAt": "2025-10-01T02:46:46.034Z",
+        "updatedAt": "2025-10-01T02:46:46.034Z",
+        "ratePlanId": "bfc0b887-49fc-4242-af25-00fb833cdac5",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "IT",
+        "name": "Italian name 123",
+        "description": "<p><strong><span style=\"color:rgb(51, 51, 51);\"><span style=\"background-color:rgb(255, 255, 255);\">Italian </span></span></strong><span style=\"color:rgba(128, 128, 128, 0.8);\">Description</span></p><p><br></p>"
+      }
+    ]
+  },
+  {
+    "id": "635e6a2f-5c49-4d81-8218-62c75406b442",
+    "code": "PRSP",
+    "name": "Promotion sale plan",
+    "roundingMode": "UP",
+    "status": "ACTIVE",
+    "description": "<p>Cancellation conditions apply, and we STRICTLY adhere to our cancellation policy.&nbsp;We strongly recommend all guests purchase trip cancellation coverage from a third party for unforeseen cancellations.</p><p></p>",
+    "promoCodeList": [
+      "test123"
+    ],
+    "type": "PROMOTION",
+    "paymentTermCode": "POA",
+    "payAtHotel": null,
+    "payOnConfirmation": null,
+    "hotelCxlPolicyCode": "FLEXIBLE",
+    "hourPrior": null,
+    "displayUnit": null,
+    "cancellationFeeValue": null,
+    "cancellationFeeUnit": null,
+    "mappingRatePlanCode": "CARDTERC-PERRATE-PERSONAL",
+    "adjustmentValue": -100,
+    "adjustmentUnit": "FIXED",
+    "isPrimary": false,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": null,
+    "rfcAttributeMode": null,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": {
+      "id": "4584b553-240c-4b88-b872-4b9fca47c19e",
+      "code": "FLEXIBLE",
+      "name": "Flexible",
+      "cancellationType": null,
+      "hourPrior": 18,
+      "displayUnit": "HOUR",
+      "cancellationFeeValue": 0,
+      "cancellationFeeUnit": "PERCENTAGE",
+      "description": "Flexible up to 6pm of day of arrival"
+    },
+    "hotelPaymentTerm": {
+      "code": "POA",
+      "description": "<p><strong>Payment at the hotel description. Your payment method will be charged as soon as your reservation is confirmed (excluding security deposits)</strong></p>"
+    },
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 20
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 9
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 14
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [
+      "GV_SALES_ENGINE",
+      "GV_VOICE"
+    ],
+    "salesPlanFollowList": [],
+    "translationList": [
+      {
+        "id": "bda397f7-c713-461a-81e4-7591929e5351",
+        "createdAt": "2024-02-23T03:51:41.000Z",
+        "updatedAt": "2024-02-23T03:51:41.000Z",
+        "ratePlanId": "635e6a2f-5c49-4d81-8218-62c75406b442",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "FR",
+        "name": "Plan de vente promotionnel",
+        "description": "<p>Description du plan de vente promotionnelle</p>"
+      },
+      {
+        "id": "03133783-de5f-4774-973d-53342e9f7bf0",
+        "createdAt": "2024-02-23T03:51:41.000Z",
+        "updatedAt": "2024-02-23T03:51:41.000Z",
+        "ratePlanId": "635e6a2f-5c49-4d81-8218-62c75406b442",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "IT",
+        "name": "Piano di vendita promozionale",
+        "description": "<p>Descrizione del piano di vendita promozionale</p>"
+      },
+      {
+        "id": "e1c0f1d7-6f72-4078-8add-b0f59ee7b14b",
+        "createdAt": "2024-02-23T03:51:41.000Z",
+        "updatedAt": "2024-02-23T03:51:41.000Z",
+        "ratePlanId": "635e6a2f-5c49-4d81-8218-62c75406b442",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "DE",
+        "name": "Aktionsverkaufsplan",
+        "description": "<p>Beschreibung des Aktionsverkaufsplans</p>"
+      },
+      {
+        "id": "3e254d94-922b-42fd-834d-e2b7362ff666",
+        "createdAt": "2024-02-23T03:51:41.000Z",
+        "updatedAt": "2024-02-23T03:51:41.000Z",
+        "ratePlanId": "635e6a2f-5c49-4d81-8218-62c75406b442",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "ES",
+        "name": "Plan de venta de promoción",
+        "description": "<p>Descripción del plan de venta de promoción.</p>"
+      }
+    ]
+  },
+  {
+    "id": "089292ff-3ba2-4fa6-a097-1e04e7fce7eb",
+    "code": "QUOC_LONG_STAY",
+    "name": "Quoc Long Stay",
+    "roundingMode": "NO_ROUNDING",
+    "status": "ACTIVE",
+    "description": "",
+    "promoCodeList": [],
+    "type": "PUBLIC",
+    "paymentTermCode": "",
+    "payAtHotel": 0,
+    "payOnConfirmation": 0,
+    "hotelCxlPolicyCode": "",
+    "hourPrior": 0,
+    "displayUnit": "DAY",
+    "cancellationFeeValue": 0,
+    "cancellationFeeUnit": "PERCENTAGE",
+    "mappingRatePlanCode": "",
+    "adjustmentValue": 0,
+    "adjustmentUnit": "FIXED",
+    "isPrimary": false,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": false,
+    "rfcAttributeMode": false,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": null,
+    "hotelPaymentTerm": null,
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 0
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 1
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 0
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [
+      "GV_SALES_ENGINE",
+      "GV_VOICE"
+    ],
+    "salesPlanFollowList": [],
+    "translationList": []
+  },
+  {
+    "id": "ef769e2b-7422-4369-b6d6-b9640e037db6",
+    "code": "TESTFLEX",
+    "name": "Sale Plan Test Pricing",
+    "roundingMode": "NO_ROUNDING",
+    "status": "ACTIVE",
+    "description": "",
+    "promoCodeList": [],
+    "type": "PUBLIC",
+    "paymentTermCode": null,
+    "payAtHotel": null,
+    "payOnConfirmation": null,
+    "hotelCxlPolicyCode": "NON_CANCEL",
+    "hourPrior": null,
+    "displayUnit": null,
+    "cancellationFeeValue": null,
+    "cancellationFeeUnit": null,
+    "mappingRatePlanCode": "   ",
+    "adjustmentValue": 0,
+    "adjustmentUnit": "FIXED",
+    "isPrimary": false,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": null,
+    "rfcAttributeMode": null,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": {
+      "id": "3899624f-3bed-4375-98c8-b7a296818b81",
+      "code": "NON_CANCEL",
+      "name": "No cancellation possible after booking",
+      "cancellationType": null,
+      "hourPrior": 0,
+      "displayUnit": "HOUR",
+      "cancellationFeeValue": 0,
+      "cancellationFeeUnit": "PERCENTAGE",
+      "description": "Total amount of the booking"
+    },
+    "hotelPaymentTerm": null,
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 0
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 4
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 15
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [],
+    "salesPlanFollowList": [],
+    "translationList": []
+  },
+  {
+    "id": "e791b26d-2bd9-4056-84d1-04d2dc5cd55e",
+    "code": "TEST1",
+    "name": "t",
+    "roundingMode": "NO_ROUNDING",
+    "status": "ACTIVE",
+    "description": "",
+    "promoCodeList": [],
+    "type": "PUBLIC",
+    "paymentTermCode": null,
+    "payAtHotel": null,
+    "payOnConfirmation": null,
+    "hotelCxlPolicyCode": "NON_CANCEL",
+    "hourPrior": null,
+    "displayUnit": null,
+    "cancellationFeeValue": null,
+    "cancellationFeeUnit": null,
+    "mappingRatePlanCode": "x",
+    "adjustmentValue": 0,
+    "adjustmentUnit": "FIXED",
+    "isPrimary": false,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": null,
+    "rfcAttributeMode": null,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": {
+      "id": "3899624f-3bed-4375-98c8-b7a296818b81",
+      "code": "NON_CANCEL",
+      "name": "No cancellation possible after booking",
+      "cancellationType": null,
+      "hourPrior": 0,
+      "displayUnit": "HOUR",
+      "cancellationFeeValue": 0,
+      "cancellationFeeUnit": "PERCENTAGE",
+      "description": "Total amount of the booking"
+    },
+    "hotelPaymentTerm": null,
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 0
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 0
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 0
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [],
+    "salesPlanFollowList": [],
+    "translationList": []
+  },
+  {
+    "id": "2ef67af4-6c0e-4c89-a2f4-3cfad759f254",
+    "code": "TEST",
+    "name": "Test",
+    "roundingMode": "NO_ROUNDING",
+    "status": "ACTIVE",
+    "description": "",
+    "promoCodeList": [],
+    "type": "PUBLIC",
+    "paymentTermCode": null,
+    "payAtHotel": null,
+    "payOnConfirmation": null,
+    "hotelCxlPolicyCode": "NON_CANCEL",
+    "hourPrior": null,
+    "displayUnit": null,
+    "cancellationFeeValue": null,
+    "cancellationFeeUnit": null,
+    "mappingRatePlanCode": "x",
+    "adjustmentValue": 0,
+    "adjustmentUnit": "FIXED",
+    "isPrimary": false,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": null,
+    "rfcAttributeMode": null,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": {
+      "id": "3899624f-3bed-4375-98c8-b7a296818b81",
+      "code": "NON_CANCEL",
+      "name": "No cancellation possible after booking",
+      "cancellationType": null,
+      "hourPrior": 0,
+      "displayUnit": "HOUR",
+      "cancellationFeeValue": 0,
+      "cancellationFeeUnit": "PERCENTAGE",
+      "description": "Total amount of the booking"
+    },
+    "hotelPaymentTerm": null,
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 0
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 1
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 0
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [],
+    "salesPlanFollowList": [],
+    "translationList": []
+  },
+  {
+    "id": "2b5aa8d1-ccc8-4674-a501-71cd54f27d5f",
+    "code": "TESTARABIC",
+    "name": "testarabic",
+    "roundingMode": "NO_ROUNDING",
+    "status": "ACTIVE",
+    "description": "<p></p>",
+    "promoCodeList": [],
+    "type": "PUBLIC",
+    "paymentTermCode": "POA",
+    "payAtHotel": null,
+    "payOnConfirmation": null,
+    "hotelCxlPolicyCode": "NON_CANCEL",
+    "hourPrior": null,
+    "displayUnit": null,
+    "cancellationFeeValue": null,
+    "cancellationFeeUnit": null,
+    "mappingRatePlanCode": "testarabic",
+    "adjustmentValue": 0,
+    "adjustmentUnit": "FIXED",
+    "isPrimary": false,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": null,
+    "rfcAttributeMode": null,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": {
+      "id": "3899624f-3bed-4375-98c8-b7a296818b81",
+      "code": "NON_CANCEL",
+      "name": "No cancellation possible after booking",
+      "cancellationType": null,
+      "hourPrior": 0,
+      "displayUnit": "HOUR",
+      "cancellationFeeValue": 0,
+      "cancellationFeeUnit": "PERCENTAGE",
+      "description": "Total amount of the booking"
+    },
+    "hotelPaymentTerm": {
+      "code": "POA",
+      "description": "<p><strong>Payment at the hotel description. Your payment method will be charged as soon as your reservation is confirmed (excluding security deposits)</strong></p>"
+    },
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 0
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 1
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 0
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [
+      "GV_SALES_ENGINE",
+      "GV_VOICE"
+    ],
+    "salesPlanFollowList": [],
+    "translationList": [
+      {
+        "id": "303dbc1a-6a19-4421-9314-8141a08441f6",
+        "createdAt": "2024-03-25T06:49:26.000Z",
+        "updatedAt": "2024-03-25T06:49:26.000Z",
+        "ratePlanId": "2b5aa8d1-ccc8-4674-a501-71cd54f27d5f",
+        "hotelId": "b0318bb1-e50d-4177-8b67-2c7a651adebd",
+        "languageCode": "AR",
+        "name": "testarabic",
+        "description": "<p>testarabic</p>"
+      }
+    ]
+  },
+  {
+    "id": "10e25c33-fbbc-4c6c-bd02-11992d305ffa",
+    "code": "TESTFLEX_2",
+    "name": "TESTFLEX_2",
+    "roundingMode": "NO_ROUNDING",
+    "status": "ACTIVE",
+    "description": "",
+    "promoCodeList": [],
+    "type": "PUBLIC",
+    "paymentTermCode": "",
+    "payAtHotel": 0,
+    "payOnConfirmation": 0,
+    "hotelCxlPolicyCode": "",
+    "hourPrior": 0,
+    "displayUnit": "DAY",
+    "cancellationFeeValue": 0,
+    "cancellationFeeUnit": "PERCENTAGE",
+    "mappingRatePlanCode": "",
+    "adjustmentValue": 0,
+    "adjustmentUnit": "FIXED",
+    "isPrimary": false,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": false,
+    "rfcAttributeMode": false,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": null,
+    "hotelPaymentTerm": null,
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 0
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 2
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 3
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [
+      "GV_SALES_ENGINE",
+      "GV_VOICE"
+    ],
+    "salesPlanFollowList": [],
+    "translationList": []
+  },
+  {
+    "id": "752ad20d-dd17-4615-8f93-57693e9f805d",
+    "code": "NEWMARCUS",
+    "name": "Test Markus",
+    "roundingMode": "NO_ROUNDING",
+    "status": "ACTIVE",
+    "description": "",
+    "promoCodeList": [],
+    "type": "PUBLIC",
+    "paymentTermCode": "",
+    "payAtHotel": 0,
+    "payOnConfirmation": 0,
+    "hotelCxlPolicyCode": "",
+    "hourPrior": 0,
+    "displayUnit": "DAY",
+    "cancellationFeeValue": 0,
+    "cancellationFeeUnit": "PERCENTAGE",
+    "mappingRatePlanCode": "",
+    "adjustmentValue": 0,
+    "adjustmentUnit": "FIXED",
+    "isPrimary": false,
+    "pricingMethodology": "FEATURE_BASED_PRICING",
+    "mrfcPositioningMode": false,
+    "rfcAttributeMode": false,
+    "sellingStrategyType": "DEFAULT",
+    "marketSegment": null,
+    "ratePlanDerivedSetting": null,
+    "hotelCancellationPolicy": null,
+    "hotelPaymentTerm": null,
+    "ratePlanRfcCountList": [
+      {
+        "rfcType": "RFC",
+        "count": 6
+      },
+      {
+        "rfcType": "MRFC",
+        "count": 1
+      },
+      {
+        "rfcType": "ERFC",
+        "count": 4
+      }
+    ],
+    "hotelExtrasList": [],
+    "distributionChannelList": [
+      "GV_SALES_ENGINE",
+      "GV_VOICE"
+    ],
+    "salesPlanFollowList": [],
+    "translationList": []
+  }
+]

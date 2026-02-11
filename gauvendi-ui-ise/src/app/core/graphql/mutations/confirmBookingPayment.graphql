@@ -1,0 +1,35 @@
+mutation ConfirmBookingPayment($input: ConfirmBookingPaymentInput) {
+  response: confirmBookingPayment(input: $input) {
+    status
+    code
+    message
+    data {
+      ... on BookingPaymentResponse {
+        booking {
+          id
+          bookingNumber
+          totalBaseAmount
+          taxAmount
+          cityTaxAmount
+          totalGrossAmount
+          balance
+          totalAdult
+          totalChildren
+          reservationList {
+            reservationNumber
+            adult
+            childrenAgeList
+            totalBaseAmount
+            totalGrossAmount
+            rfc {
+              code
+            }
+            matchedFeatureList {
+              code
+            }
+          }
+        }
+      }
+    }
+  }
+}

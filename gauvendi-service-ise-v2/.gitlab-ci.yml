@@ -1,0 +1,13 @@
+include:
+  - remote: 'https://gitlab.com/api/v4/projects/58449927/repository/files/.gitlab%2Fci%2Fpublish-image-tags.gitlab-ci.yml/raw?ref=main&private_token=glpat-g9P63CVou9G2HsldHusLfG86MQp1OmNuenFvCw.01.121dmumnc&ext=.yml'
+  - remote: 'https://gitlab.com/api/v4/projects/58449927/repository/files/.gitlab%2Fci%2Fcreate-release.gitlab-ci.yml/raw?ref=main&private_token=glpat-g9P63CVou9G2HsldHusLfG86MQp1OmNuenFvCw.01.121dmumnc&ext=.yml'
+
+workflow:
+  rules:
+    - if: '$CI_COMMIT_TAG'
+      when: always
+    - when: never
+
+stages:
+  - publish_image_tag
+  - create_release

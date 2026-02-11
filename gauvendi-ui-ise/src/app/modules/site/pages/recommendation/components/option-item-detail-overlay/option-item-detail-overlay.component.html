@@ -1,0 +1,5 @@
+<div class="h-screen w-screen bg-popover-background-color" [class.animation--fadeUp]="isOpen" [class.animation--fadeDown]="!isOpen">
+  <div class="h-full overflow-y-auto detail-scrollbar max-h-[calc(100vh-120px)] md:overflow-hidden" [ngClass]="{ 'max-h-[calc(100vh-70px)]': !isIOS }">
+    <app-option-item-detail [data]="data" (closeConfigurator)="closeConfigurator()" (selectRatePlan)="selectRatePlan($event)"></app-option-item-detail>
+  </div>
+</div>

@@ -1,0 +1,289 @@
+<div *ngIf="allowDisplayView()" id="iseConfiguratorElement" class="flex justify-center w-full mt-5">
+  <ng-container
+    *ngIf="{
+      hotelPrimaryColor: hotelPrimaryColor$ | async,
+      colorText: colorText$ | async,
+      categoryHoverText: categoryHoverText$ | async,
+      categoryHoverBg: categoryHoverBg$ | async,
+      categoryDefaultText: categoryDefaultText$ | async,
+      categoryDefaultBg: categoryDefaultBg$ | async,
+      buttonTextColor: buttonTextColor$ | async,
+      featureDefaultIcon: featureDefaultIcon$ | async,
+      featureHoverIcon: featureHoverIcon$ | async
+    } as vm"
+  >
+    <div class="bg-configurator-background-color w-full rounded-[8px] flex flex-col gap-4">
+      <!-- Selected feature -->
+      @if (featureSelected()?.length) {
+        <div class="flex items-stretch justify-between h-[28px]">
+          <div class="flex items-center flex-1 pr-4 overflow-x-hidden">
+            <div class="mr-2 text-[14px] whitespace-nowrap text-header-color font-medium">
+              <span>{{ 'FEATURE_SELECTED' | translate | async }}:</span>
+            </div>
+
+            <div class="flex items-center overflow-hidden">
+              @if (isOverflowing() && scrollFeatureDirection() === 'LEFT') {
+                <div class="w-[18px] h-[18px] relative mr-2" (click)="scrollFeature(featureSelectedEl)">
+                  <div class="inset-0 hexagon">
+                    <img
+                      [color]="vm.hotelPrimaryColor"
+                      [tooltipMessage]="'PREV'"
+                      alt=""
+                      appCustomTooltip
+                      appFilterSvg
+                      class="w-[14px] h-[14px] translate-x-[2px] translate-y-[2px] rotate-180 cursor-pointer"
+                      src="assets/icons/keyboard-right.svg"
+                    />
+                  </div>
+                </div>
+              }
+
+              <div class="flex-1 flex items-center relative overflow-x-hidden h-[28px]" #featureSelectedEl>
+                <ng-container *ngFor="let feat of hotelRetailFeatureList() | filterRetailFeatureSelected: featureSelected()">
+                  @if (feat) {
+                    <div
+                      class="flex items-center text-[12px] text-primary-color bg-configurator-feature-hover-background-color px-2 rounded-[8px] mr-2 border border-solid border-configurator-feature-default-icon-color"
+                    >
+                      <span class="mr-2 cursor-pointer whitespace-nowrap" (click)="expandConfigurator()">{{ feat.name }}</span>
+                      <button class="flex" [attr.aria-label]="'REMOVE' | translate | async">
+                        <mat-icon class="!w-[14px] !h-[14px] text-[14px] cursor-pointer" (click)="removeSelectedFeat(feat.code)">close</mat-icon>
+                      </button>
+                    </div>
+                  }
+                </ng-container>
+              </div>
+
+              @if (isOverflowing() && scrollFeatureDirection() === 'RIGHT') {
+                <div class="w-[18px] h-[18px] relative ml-2" (click)="scrollFeature(featureSelectedEl)">
+                  <div class="inset-0 hexagon">
+                    <img
+                      [color]="vm.hotelPrimaryColor"
+                      [tooltipMessage]="'NEXT'"
+                      alt=""
+                      appCustomTooltip
+                      appFilterSvg
+                      class="w-[14px] h-[14px] translate-x-[3px] translate-y-[2px] cursor-pointer"
+                      src="assets/icons/keyboard-right.svg"
+                    />
+                  </div>
+                </div>
+              }
+
+              <button class="text-[14px] font-medium text-header-color underline whitespace-nowrap cursor-pointer ml-2 mb-[2px]" (click)="removeAllSelectedFeat()">
+                {{ 'CLEAR_ALL' | translate | async }}
+              </button>
+            </div>
+          </div>
+          <button class="flex items-center cursor-pointer" *ngIf="!!configuratorService.minimalView() && featureSelected().length" (click)="expandConfigurator()">
+            <span class="text-[14px] text-header-color font-medium">{{ 'CUSTOMIZE' | translate | async }}</span>
+            <mat-icon class="text-header-color">keyboard_arrow_down</mat-icon>
+          </button>
+        </div>
+        <div *ngIf="!(!!configuratorService.minimalView() && featureSelected().length)" class="flex items-center flex-1 pr-4 mb-2 overflow-hidden border-b border-solid border-border-color"></div>
+      }
+
+      <div *ngIf="!(!!configuratorService.minimalView() && featureSelected().length)" class="flex w-full items-start justify-between gap-x-[12px] gap-y-[16px] transition-all duration-200">
+        <!--left side-->
+        @if (loadWidgetRecommendation$ | async) {
+          <ng-container *ngIf="eventFeatureRecommendationList() && hotelRetailFeatureList(); else tplLoadingSuggested">
+            <div class="transition-all duration-200" [class]="isCollapse() ? 'w-[45%]' : 'w-[300px] h-[364px]'">
+              <div
+                class="w-max max-w-full event-label flex justify-start items-center gap-[4px] mb-[12px] bg-button-normal-background-color pl-6 pr-12 py-1 rounded-r-[8px] -translate-x-7 drop-shadow-lg"
+                appCustomTooltip
+                [tooltipMessage]="eventFeatureRecommendationList()?.event"
+              >
+                <div class="w-[24px] h-[24px] dynamic-color-icon bg-button-normal-color" style="--image-url: url(assets/icons/special.svg)"></div>
+                <div class="text-14 text-button-normal-color line-clamp-2 ml-2 lg:text-[12px] font-medium">{{ eventFeatureRecommendationList()?.event?.trim() }}</div>
+              </div>
+              <div class="grid gap-x-[8px] gap-y-[12px]" [class.grid-cols-3]="isCollapse()" [class.grid-cols-1]="!isCollapse()">
+                @for (suggest of eventFeatureRecommendationList()?.popularRetailFeatureList; track suggest) {
+                  <button
+                    class="border border-solid border-[transparent] col-span-1 cursor-pointer bg-configurator-feature-default-background-color group hover:bg-configurator-feature-hover-background-color px-[12px] py-[8.5px] rounded-[12px] gap-[8px] flex items-center"
+                    [ngClass]="{ '!border-configurator-feature-default-icon-color !bg-configurator-feature-hover-background-color': suggestSelected()?.includes(suggest?.code) }"
+                    appFeatureDescriptionTooltip
+                    [featureName]="suggest?.name"
+                    [featureCode]="suggest?.code"
+                    [featureDescription]="suggest?.description"
+                    [isDisplayIcon]="false"
+                    (click)="addSuggestFeature(suggest?.code)"
+                  >
+                    <div class="flex-1 flex items-center gap-[8px] h-[36px]">
+                      <app-image-hovering
+                        [src]="suggest?.retailFeatureImageList[0]?.imageUrl"
+                        [color]="vm.featureDefaultIcon"
+                        [colorHovering]="vm.featureHoverIcon"
+                        [defaultClass]="'w-[24px] group-hover:!hidden'"
+                        [hoveringClass]="'w-[24px] group-hover:!block'"
+                      />
+                      <div class="flex-1 overflow-y-hidden line-clamp-2 text-12 text-primary-color ltr:text-left rtl:text-right">
+                        {{ suggest?.name }}
+                      </div>
+                    </div>
+                    @if (suggestSelected()?.includes(suggest?.code)) {
+                      <app-image-hovering
+                        [src]="'assets/icons/check.svg'"
+                        [color]="vm.hotelPrimaryColor"
+                        [colorHovering]="vm.hotelPrimaryColor"
+                        [defaultClass]="'w-[24px] group-hover:!hidden'"
+                        [hoveringClass]="'w-[24px] group-hover:!block'"
+                      />
+                    } @else {
+                      <app-image-hovering
+                        [src]="'assets/icons/plus-circle.svg'"
+                        [color]="vm.featureDefaultIcon"
+                        [colorHovering]="vm.featureHoverIcon"
+                        [defaultClass]="'w-[24px] group-hover:!hidden'"
+                        [hoveringClass]="'w-[24px] group-hover:!block'"
+                      />
+                    }
+                  </button>
+                }
+              </div>
+            </div>
+          </ng-container>
+        }
+
+        <!--border-->
+        <div class="self-stretch border-l-[0.5px] border-solid border-border-color sm:hidden"></div>
+
+        <!--right side-->
+        <ng-container *ngIf="hotelRetailCategoryList(); else tplLoadingFeature">
+          <div class="transition-all duration-200" [class]="isCollapse() ? 'w-[610px]' : 'w-[858px] h-[364px] overflow-hidden'">
+            <div class="font-medium text-header-color text-17 lg:text-[12px] flex items-center justify-between min-h-[32px]">
+              <div>{{ 'MORE_PERSONALIZATION' | translate | async }}</div>
+              <button class="flex items-center cursor-pointer" *ngIf="!isCollapse()" (click)="isCollapse.set(true)">
+                <span class="text-[14px] text-header-color">{{ 'CLOSE' | translate | async }}</span>
+                <mat-icon class="text-header-color">keyboard_arrow_up</mat-icon>
+              </button>
+            </div>
+            <div class="relative w-full" [class]="isNext() ? 'ps-[40px]' : 'pe-[40px]'">
+              <button
+                *ngIf="isNext()"
+                class="w-[28px] h-[28px] absolute top-1/2 -translate-y-1/2 ltr:left-0 rtl:right-0"
+                (click)="nextFeature(category)"
+                appCustomTooltip
+                [tooltipMessage]="'PREVIOUS'"
+              >
+                <div class="hexagon transition-all duration-200 z-[21] top-0 left-0 right-0 bottom-0">
+                  <div class="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                    <img loading="lazy" alt="" [class]="'ltr:rotate-180 rtl:rotate-0'" src="assets/icons/keyboard-right.svg" appFilterSvg [color]="vm.hotelPrimaryColor" />
+                  </div>
+                </div>
+              </button>
+              <div #category class="flex w-full gap-[12px] overflow-hidden pt-[12px]" [ngClass]="{ 'max-w-[565px]': isCollapse() }">
+                @for (cFeature of hotelRetailCategoryList() | orderBySelectedFeatures: featureSelected(); track cFeature) {
+                  <button
+                    class="h-[55px] border border-solid border-[transparent] min-w-[120px] p-3 relative group bg-configurator-category-default-background-color hover:bg-configurator-category-hover-background-color flex cursor-pointer items-center justify-center rounded-[8px] feature-item"
+                    (click)="selectCategory(cFeature, '.configurator-category-selected')"
+                    [tooltipMessage]="cFeature | categoryHoveringMsg: hotelRetailFeatureList() | async"
+                    appCustomTooltip
+                    [ngClass]="{
+                      '!bg-configurator-category-hover-background-color configurator-category-selected': categorySelected()?.code === cFeature.code && !isCollapse(),
+                      '!border-configurator-category-default-icon-color': cFeature.totalSelectedfeatures > 0 || (categorySelected()?.code === cFeature.code && isCollapse())
+                    }"
+                  >
+                    <ng-container *ngIf="cFeature.totalSelectedfeatures as featCount">
+                      <div class="absolute z-20 ltr:-right-[6px] rtl:-left-[6px] -top-[5px] drop-shadow-lg">
+                        <div class="w-[17.6px] h-[20.9px] relative">
+                          <div class="absolute z-[22] top-1/2 text-button-normal-color text-11 font-medium -translate-x-1/2 left-1/2 -translate-y-1/2">
+                            {{ featCount }}
+                          </div>
+                          <div class="hexagon !bg-button-normal-background-color z-[21]"></div>
+                        </div>
+                      </div>
+                    </ng-container>
+                    <div class="flex items-center justify-center">
+                      <div class="w-[24px] h-[24px] flex justify-center items-center">
+                        <app-image-hovering
+                          class="w-[24px]"
+                          [src]="cFeature?.iconImageUrl"
+                          [color]="categorySelected()?.code === cFeature.code && !isCollapse() ? vm.colorText : vm.categoryDefaultText"
+                          [colorHovering]="categorySelected()?.code === cFeature.code && !isCollapse() ? vm.colorText : vm.categoryHoverText"
+                          [defaultClass]="'group-hover:!hidden'"
+                          [hoveringClass]="'group-hover:!block'"
+                        />
+                      </div>
+                    </div>
+                    <div class="ml-2 text-12 text-primary-color">{{ cFeature?.name }}</div>
+                  </button>
+                }
+              </div>
+              <button *ngIf="!isNext()" class="w-[28px] h-[28px] absolute top-1/2 -translate-y-1/2 ltr:right-0 rtl:left-0" (click)="nextFeature(category)" appCustomTooltip [tooltipMessage]="'NEXT'">
+                <div class="hexagon transition-all duration-200 z-[21] top-0 left-0 right-0 bottom-0">
+                  <div class="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                    <img loading="lazy" alt="" [class]="'dir-mat-icon'" src="assets/icons/keyboard-right.svg" appFilterSvg [color]="vm.hotelPrimaryColor" />
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div cdkTrapFocus class="mt-[16px] me-[9px] h-[222px] overflow-auto scroll-feature" #elementFeature *ngIf="!isCollapse()">
+              <div class="grid grid-cols-3 gap-[12px] pe-[4px] lg:grid-cols-2">
+                @for (retailFeature of hotelRetailFeatureList() | featureByCategoryCode: categorySelected()?.code; track retailFeature) {
+                  <button
+                    [id]="retailFeature?.code"
+                    (click)="handleFeature(retailFeature?.code)"
+                    class="col-span-1 border py-[11.5px] px-[16px] border-configurator-feature-default-background-color bg-configurator-feature-default-background-color cursor-pointer hover:bg-configurator-feature-hover-background-color flex justify-start items-center rounded-[8px] gap-[16px] group"
+                    [ngClass]="{ '!border-configurator-feature-default-icon-color !bg-configurator-feature-hover-background-color': featureSelected()?.includes(retailFeature?.code) }"
+                    appFeatureDescriptionTooltip
+                    [featureName]="retailFeature?.name"
+                    [featureCode]="retailFeature?.code"
+                    [featureDescription]="retailFeature?.description"
+                    [isDisplayIcon]="false"
+                  >
+                    <app-image-hovering
+                      class="w-[34px] h-[39px]"
+                      [src]="retailFeature?.retailFeatureImageList?.[0]?.imageUrl"
+                      [color]="featureSelected()?.includes(retailFeature?.code) ? vm.featureHoverIcon : vm.featureDefaultIcon"
+                      [colorHovering]="vm.featureHoverIcon"
+                      [defaultClass]="'group-hover:!hidden'"
+                      [hoveringClass]="'group-hover:!block'"
+                    />
+
+                    <div class="flex-1">
+                      <div
+                        class="font-medium flex items-center gap-[4px] text-primary-color line-clamp-1 text-12 ltr:text-left rtl:text-right"
+                        [class]="'pym_feature pym_feature_' + retailFeature?.code"
+                      >
+                        {{ retailFeature?.name }}
+                        @if (hotelSuggestedFeatureCodeList()?.includes(retailFeature?.code)) {
+                          <img loading="lazy" src="assets/icons/special.svg" width="16" height="16" alt="special" appFilterSvg [color]="vm.hotelPrimaryColor" />
+                        }
+                      </div>
+                      <div class="font-light pt-[4px] text-[12px] line-clamp-2 leading-[120%] text-secondary-color ltr:text-left rtl:text-right">
+                        {{ retailFeature?.description }}
+                      </div>
+                    </div>
+                  </button>
+                }
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #tplLoadingFeature>
+  <div class="w-[568px]">
+    <div class="h-8 rounded-[8px] skeleton-ln mb-[12px]"></div>
+    <div class="w-[568px] gap-[12px] grid grid-cols-5">
+      <div class="col-span-1 w-[82px] h-[56px] rounded-[8px] skeleton-ln"></div>
+      <div class="col-span-1 w-[82px] h-[56px] rounded-[8px] skeleton-ln"></div>
+      <div class="col-span-1 w-[82px] h-[56px] rounded-[8px] skeleton-ln"></div>
+      <div class="col-span-1 w-[82px] h-[56px] rounded-[8px] skeleton-ln"></div>
+      <div class="col-span-1 w-[82px] h-[56px] rounded-[8px] skeleton-ln"></div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #tplLoadingSuggested>
+  <div class="w-[568px]">
+    <div class="h-8 rounded-[8px] skeleton-ln mb-[12px]"></div>
+    <div class="gap-[12px] grid grid-cols-3">
+      <div class="col-span-1 h-[56px] rounded-[8px] skeleton-ln"></div>
+      <div class="col-span-1 h-[56px] rounded-[8px] skeleton-ln"></div>
+      <div class="col-span-1 h-[56px] rounded-[8px] skeleton-ln"></div>
+    </div>
+  </div>
+</ng-template>

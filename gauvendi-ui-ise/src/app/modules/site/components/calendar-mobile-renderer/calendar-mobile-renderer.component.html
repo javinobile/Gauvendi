@@ -1,0 +1,157 @@
+<div class="bg-background-secondary-color rounded-[16px] p-[8px] pt-[12px] overflow-hidden" [ngClass]="{ 'mb-[16px]': isStartDate }">
+  <div class="flex items-center sm:mb-[10px] mb-[24px] relative">
+    <div class="absolute left-0 top-0 flex items-center" *ngIf="isStartDate">
+      <mat-icon class="text-primary-color !w-auto !h-auto dir-mat-icon" (click)="changeDate.emit('left')">chevron_left</mat-icon>
+    </div>
+    <div class="text-[17px] font-medium leading-[140%] text-primary-color w-full text-center">{{ activeDate | dateWithLocale: locale : 'MMM yyyy' }}</div>
+    <div class="absolute right-0 top-0 flex items-center" *ngIf="!isStartDate">
+      <mat-icon class="text-primary-color !w-auto !h-auto dir-mat-icon" (click)="changeDate.emit('right')">chevron_right</mat-icon>
+    </div>
+  </div>
+  <table class="calendar-table table-fixed md:w-full">
+    <thead>
+      <tr>
+        <th class="w-[72px] h-[17px] text-[12px] font-medium leading-[140%] text-primary-color">{{ 'MON' | translate | async }}</th>
+        <th class="w-[72px] h-[17px] text-[12px] font-medium leading-[140%] text-primary-color">{{ 'TUE' | translate | async }}</th>
+        <th class="w-[72px] h-[17px] text-[12px] font-medium leading-[140%] text-primary-color">{{ 'WED' | translate | async }}</th>
+        <th class="w-[72px] h-[17px] text-[12px] font-medium leading-[140%] text-primary-color">{{ 'THU' | translate | async }}</th>
+        <th class="w-[72px] h-[17px] text-[12px] font-medium leading-[140%] text-primary-color">{{ 'FRI' | translate | async }}</th>
+        <th class="w-[72px] h-[17px] text-[12px] font-medium leading-[140%] text-primary-color">{{ 'SAT' | translate | async }}</th>
+        <th class="w-[72px] h-[17px] text-[12px] font-medium leading-[140%] text-primary-color">{{ 'SUN' | translate | async }}</th>
+      </tr>
+    </thead>
+    <tr class="sm:h-[10px] h-[24px]"></tr>
+    <tbody>
+      <ng-container *ngFor="let row of bodyRows; last as isLast; trackBy: trackByBodyRow">
+        <tr *ngIf="!isLast || row.isSameMonth">
+          <td
+            #calendarCell
+            *ngFor="let cell of row.dateCells; index as i; trackBy: trackByBodyColumn"
+            [class.disabled]="cell.isInsideRange ? false : cell.isDisable || cell.isCTD"
+            [class.not-allow-checkin]="cell.isInsideRange ? false : cell.isCTA || cell.canNotCheckIn"
+            [class.hide]="cell.isHidden"
+            [class.hover]="cell.isHover"
+            [class.selected]="cell.isSelected"
+            [class.today]="cell.isToday"
+            (click)="onSelectedDate(cell)"
+            appMobileDateSelect
+            [checkInDate]="selectedValue?.[0]"
+            [dateHover]="cell?.value"
+            [calendarDailyRates]="calendarDailyRates"
+            (dateViolated)="dateViolated = $event"
+            class="w-[72px] sm:h-[30px] h-[60px] cursor-pointer relative calendarCell"
+            [ngClass]="{
+              '!cursor-not-allowed': cell.isInsideRange ? false : cell.isDisable || cell.isCTD,
+              'bg-calendar-hover-background-color !text-calendar-hover-color': !cell.isHidden && (cell?.isHover || cell?.isSelected),
+              '!rounded-tl-[8px] !rounded-bl-[8px]': cell?.isCheckIn && !cell.isHidden,
+              '!rounded-tr-[8px] !rounded-br-[8px]': cell?.isCheckOut && !cell.isHidden
+            }"
+          >
+            <ng-container *ngIf="cell.isCheckOut && !cell.isHidden">
+              <div
+                class="dialog-show-more z-10 rounded-[8px] absolute ltr:left-[-35px] rtl:right-[-35px] top-[-35px] md:left-1/2 md:-translate-x-1/2 md:w-[90px] md:text-center"
+                [ngClass]="{ 'sm:ltr:!left-0 sm:rtl:!right-0 sm:!w-[80px] sm:!text-center': cell.idxRow === 0 }"
+                *ngIf="selectedValue?.[0] | renderNumberOfNightsTooltip: cell?.value : 'ddd, MMM DD' : locale | async as numberOfNightMsg"
+              >
+                <div class="absolute bottom-[-4px] left-[50%] -translate-x-[50%]" [ngClass]="{ 'sm:!left-[27%]': cell.idxRow === 0 }">
+                  <img src="assets/icons/polygon.svg" />
+                </div>
+                <div class="content text-[12px] font-normal leading-[140%] text-primary-color">
+                  <div class="number-of-nights">{{ numberOfNightMsg }}</div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="cell?.value | isSameDay: dateViolated">
+              <ng-container *ngIf="cell | renderTooltipMessage: calendarDailyRates : selectedValue[0] : selectedValue[1] : checkInDateInfo | async as restrictionMsg">
+                <div
+                  class="restriction-box z-10 rounded-[8px] absolute left-[-35px] top-[-35px] md:left-1/2 md:-translate-x-1/2 w-[130px] md:w-[150px] text-center"
+                  [ngClass]="{
+                    '!left-0': cell.idxRow === 0,
+                    '!left-[-70px]': cell.idxRow === 6
+                  }"
+                  *ngIf="selectedValue?.[0] | renderNumberOfNightsTooltip: cell?.value : 'ddd, MMM DD' : locale | async as numberOfNightMsg"
+                >
+                  <div
+                    class="absolute bottom-[-4px] left-[50%] -translate-x-[50%]"
+                    [ngClass]="{
+                      'sm:!left-[27%]': cell.idxRow === 0,
+                      'sm:!left-[80%]': cell.idxRow === 6
+                    }"
+                  >
+                    <img src="assets/icons/polygon.svg" />
+                  </div>
+                  <div class="content text-[12px] font-normal leading-[140%] text-primary-color">
+                    <div class="number-of-nights">{{ numberOfNightMsg }}</div>
+                    <div class="restriction flex items-center" *ngIf="restrictionMsg">
+                      <img src="assets/icons/restriction-warning.svg" class="!w-[14px] !h-auto" />
+                      <span class="text-[10px] md:text-[12px] font-normal leading-[140%] text-[#000] ms-[4px]">{{ restrictionMsg }}</span>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="cell?.isCheckOut && !cell.isHidden">
+              <div class="absolute clear-date-range ltr:-right-[10px] rtl:-left-[10px] -top-[10px] cursor-pointer" (click)="$event.stopPropagation(); clearSelectedDate.emit()">
+                <mat-icon class="text-[#000]">close</mat-icon>
+              </div>
+            </ng-container>
+            <div
+              *ngIf="!cell.isHidden"
+              class="flex flex-col items-center justify-center w-full h-full relative py-1"
+              [ngClass]="{
+                'bg-calendar-selected-background-color !rounded-[8px] border border-calendar-selected-background-color !text-calendar-selected-color overflow-hidden': cell?.isSelected
+              }"
+            >
+              <ng-container *ngIf="cell?.dealPrice && !isLoadingPrice">
+                <!--              <div-->
+                <!--                class="absolute ltr:right-0 rtl:left-0 top-0"-->
+                <!--              >-->
+                <!--                <img [src]="'assets/icons/deal.svg'" width="11">-->
+                <!--              </div>-->
+              </ng-container>
+              <div
+                class="text-[14px] font-medium leading-[140%] text-primary-color text-center"
+                [ngClass]="{
+                  '!text-secondary-color': cell.isInsideRange ? false : cell.isDisable || cell.isCTD || cell?.canNotCheckIn,
+                  '!text-calendar-selected-color': cell?.isSelected
+                }"
+              >
+                {{ cell.value | date: 'd' }}
+              </div>
+              <div *ngIf="!cell?.isInsideRange && cell?.canNotCheckIn && !isLoadingPrice" class="flex justify-center">
+                <img [src]="'assets/icons/ctd.svg'" width="24" height="24" appFilterSvg [color]="colorText" />
+              </div>
+              <div *ngIf="!cell?.isInsideRange && cell?.isCTD && !cell.isSoldOut && !isLoadingPrice" class="flex justify-center">
+                <img [src]="'assets/icons/cta.svg'" width="24" height="24" appFilterSvg [color]="colorText" />
+              </div>
+              <ng-container *ngIf="isLoadingPrice; else tmplPrice">
+                <app-calendar-price-loading></app-calendar-price-loading>
+              </ng-container>
+              <ng-template #tmplPrice>
+                <div
+                  class="text-[10px] font-normal leading-[120%] text-primary-color sm:mt-[2px] mt-[4px] text-center"
+                  *ngIf="(cell?.isInsideRange || !cell?.canNotCheckIn) && !cell.isCTD && !!calendarSetting.includeRate"
+                  [ngClass]="{
+                    '!text-calendar-selected-color': cell?.isSelected,
+                    '!text-secondary-color': cell.isInsideRange ? false : cell.isDisable || cell.isCTD || cell?.canNotCheckIn
+                  }"
+                >
+                  {{
+                    cell?.isCheckOut
+                      ? ('CHECK_OUT' | translate | async)
+                      : cell?.grossPrice !== null
+                        ? (cell | renderDailyPrice: lowestPriceOption : (isIncludedTax | async) : selectedValue?.[0] : selectedValue?.[1] | currencyRate: currencyRate | formatPrice)
+                        : ''
+                  }}
+                </div>
+                <div *ngIf="!cell?.isInsideRange && cell?.isSoldOut && cell.isDisable" class="flex justify-center">
+                  <img [src]="layoutSetting === 'SQUARE' ? 'assets/icons/sold-out-square.svg' : 'assets/icons/sold-out.svg'" width="44" height="18" />
+                </div>
+              </ng-template>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

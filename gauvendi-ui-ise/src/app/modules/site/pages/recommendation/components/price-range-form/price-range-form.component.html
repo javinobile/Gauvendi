@@ -1,0 +1,42 @@
+<div [formGroup]="priceRangeFrm" class="flex flex-col gap-6">
+  <!-- <div class="flex flex-col gap-2">
+    <div class="font-medium text-[14px] leading-[140%] text-primary-color">{{ 'PRICE_VIEW' | translate | async }}</div>
+    <app-custom-radio-button [allItems]="allItems" formControlName="priceType"></app-custom-radio-button>
+  </div> -->
+  <div class="flex flex-col gap-2">
+    <div class="flex items-center justify-between">
+      <div class="font-medium text-[14px] leading-[140%] text-primary-color">{{ 'PRICE_RANGE' | translate | async }}</div>
+      <div class="flex w-fit cursor-pointer items-center text-[12px] leading-[140%] text-primary-color gap-[2px] hover:opacity-80" (click)="reset()">
+        <img loading="lazy" appFilterSvg [color]="colorText$ | async" src="assets/icons/reset.svg" class="clear-img" alt="" />
+        {{ 'RESET' | translate | async }}
+      </div>
+    </div>
+
+    <app-custom-range-slider [maxDrag]="defaultPriceRangeFilter?.max" [minDrag]="defaultPriceRangeFilter?.min" [currencyCode]="currencyCode()" formControlName="sliderRange"></app-custom-range-slider>
+
+    <div class="flex items-center justify-between mt-[12px] h-[32px]">
+      <div class="flex items-center border rounded-[12px] border-border-color h-[32px] min-w-[100px] px-[12px] text-[12px] py-[10px] text-primary-color md:w-[45%]">
+        {{ priceRangeFrm.get('sliderRange').value.min | myCurrency: currencyCode() : 'symbol' : '1.2' }}
+      </div>
+      <div class="w-[8px] h-[1px] bg-border-color"></div>
+      <div class="flex items-center border rounded-[12px] border-border-color h-[32px] min-w-[100px] px-[12px] text-[12px] py-[10px] text-primary-color md:w-[45%]">
+        {{ priceRangeFrm.get('sliderRange').value.max | myCurrency: currencyCode() : 'symbol' : '1.2' }}
+      </div>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-between pt-[24px] gap-3">
+    <button
+      (click)="closeMobile.emit(); overlayRef?.detach()"
+      class="flex-1 h-10 flex items-center justify-center border border-solid font-medium text-outline-button-normal-color bg-outline-button-normal-background-color border-outline-button-normal-color rounded-[12px] text-sm leading-[140%] hover:!text-outline-button-hover-color hover:!bg-outline-button-hover-background-color"
+    >
+      {{ 'CANCEL' | translate | async }}
+    </button>
+    <button
+      (click)="submit()"
+      class="flex-1 h-10 flex items-center justify-center border-solid font-medium border-button-color rounded-[12px] bg-button-normal-background-color text-button-normal-color text-sm leading-[140%] hover:opacity-80"
+    >
+      {{ 'APPLY' | translate | async }}
+    </button>
+  </div>
+</div>

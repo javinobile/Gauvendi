@@ -1,0 +1,7 @@
+mutation DeclineProposalBooking($input: DeclineProposalBookingInput) {
+  response: declineProposalBooking(input: $input) {
+    code
+    status
+    message
+  }
+}

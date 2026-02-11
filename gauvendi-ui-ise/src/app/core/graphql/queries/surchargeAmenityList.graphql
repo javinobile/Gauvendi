@@ -1,0 +1,30 @@
+query SurchargeAmenityList($filter: HotelAmenityFilter) {
+  response: surchargeAmenityList(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on HotelAmenity {
+        id
+        name
+        code
+        description
+        amenityType
+        pricingUnit
+        iconImageUrl
+        totalBaseAmount
+        totalGrossAmount
+        baseRate
+        isePricingDisplayMode
+        hotelAmenityPriceList {
+          hotelAgeCategory {
+            code
+            name
+            fromAge
+            toAge
+          }
+          price
+        }
+      }
+    }
+  }
+}

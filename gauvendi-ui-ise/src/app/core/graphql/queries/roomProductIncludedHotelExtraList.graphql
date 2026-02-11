@@ -1,0 +1,13 @@
+query RoomProductIncludedHotelExtraList($filter: IbeRoomProductIncludedHotelExtraListFilter) {
+  response: roomProductIncludedHotelExtraList(filter: $filter) {
+    count
+    data {
+      ... on HotelAmenity {
+        id
+        name
+        code
+        amenityType
+      }
+    }
+  }
+}

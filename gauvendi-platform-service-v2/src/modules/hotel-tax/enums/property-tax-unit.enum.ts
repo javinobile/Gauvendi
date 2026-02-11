@@ -1,0 +1,8 @@
+export enum PropertyTaxUnit {
+  PERCENTAGE = 'PERCENTAGE',
+  FIXED_AMOUNT = 'FIXED_AMOUNT',
+  PER_PERSON = 'PER_PERSON',
+  PER_NIGHT = 'PER_NIGHT',
+  PER_ROOM = 'PER_ROOM',
+  PER_STAY = 'PER_STAY'
+}

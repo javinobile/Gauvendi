@@ -1,0 +1,19 @@
+query AvailableDailyRate($filter: CalendarRateFilter) {
+  response: availableDailyRate(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on DailyRate {
+        date
+        totalBaseAmount
+        totalGrossAmount
+        hotelRestrictionList {
+          code
+          value
+          fromDate
+          toDate
+        }
+      }
+    }
+  }
+}

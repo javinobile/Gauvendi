@@ -1,0 +1,178 @@
+<ng-container *ngIf="{isMobile: isMobile$ | async} as vm">
+  <!-- don't merge EDisplayMode.Grid & EDisplayMode.Tiles -->
+  <ng-container *ngIf="displayMode === EDisplayMode.Grid">
+    <div appLimitFeatures
+      class="flex gap-y-[2px] gap-x-[4px] flex-wrap max-h-[69px] overflow-auto sm:max-h-[52px] sm:mb-[8px]">
+      <ng-container [ngTemplateOutlet]="featureListTpl"></ng-container>
+    </div>
+  </ng-container>
+
+  <!-- don't merge EDisplayMode.Grid & EDisplayMode.Tiles -->
+  <ng-container *ngIf="displayMode === EDisplayMode.Tiles">
+    <div appLimitFeatures
+      class="flex gap-y-[2px] gap-x-[4px] flex-wrap max-h-[69px] overflow-auto sm:max-h-[52px] sm:mb-[8px]">
+      <ng-container [ngTemplateOutlet]="featureListTpl"></ng-container>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="displayMode === EDisplayMode.List">
+    <ng-container *ngIf="vm.isMobile">
+      <div class="flex items-center justify-between mb-[6px] cursor-pointer" (click)="featuresIncludedToggle.toggle()">
+        <div class="font-medium text-[14px] leading-[140%] mb-[8px] mt-[16px] text-primary-color sm:text-[14px]">{{ 'FEATURES_INCLUDED' | translate | async }}</div>
+        <mat-icon class="text-primary-color">{{ featuresIncludedToggle?._getExpandedState() === 'expanded' ?
+          'expand_less' :
+          'expand_more' }}</mat-icon>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="!vm.isMobile">
+      <div class="font-medium text-[14px] leading-[140%] mb-[8px] mt-[16px] text-primary-color sm:text-[14px]">{{ 'FEATURES_INCLUDED' | translate | async }}</div>
+    </ng-container>
+
+    <div
+      class="grid gap-y-[6px] gap-x-[12px] grid-cols-3 sm:grid-cols-2 md:grid-cols-2 overflow-x-hidden sm:gap-y-[2px]">
+      <ng-container [ngTemplateOutlet]="featureListTpl"></ng-container>
+    </div>
+  </ng-container>
+
+  <ng-template #featureListTpl>
+    <ng-container *ngIf="vm.isMobile">
+      <ng-container *ngFor="let feature of displayedFeatures() | slice: 0 : 4; index as featureIdx">
+        <div class="featureItem flex items-center gap-[4px] h-fit">
+          <!-- recommendation -->
+          <ng-container *ngIf="feature.recommendation">
+            <div class="bg-our-tip-background-color rounded-[12px] h-fit flex items-center gap-[4px] px-[6px]">
+              <img loading="lazy" src="assets/icons/star.svg" class="w-[12px]" alt="star" />
+              <div class="text-[12px] !leading-[13px] font-normal text-our-tip-color line-clamp-1"
+                appFeatureDescriptionTooltip [isDisabled]="false" [featureName]="feature?.name"
+                [featureCode]="feature?.metadata?.code" [featureDescription]="feature?.metadata?.description">
+                {{ feature?.name }}
+              </div>
+              <div
+                class="py-[2px] px-[3px] border border-border-color rounded-[4px] text-[11px] leading-[12px] text-primary-color"
+                *ngIf="feature?.metadata?.quantity > 1">
+                x{{ feature?.metadata?.quantity }}
+              </div>
+            </div>
+          </ng-container>
+  
+          <!--! recommendation -->
+          <ng-container *ngIf="!feature?.recommendation">
+            <div class="flex items-center gap-[4px]">
+              <!-- <img loading="lazy" [src]="'assets/icons/checked.svg'" class="rotate-y w-[17px]" alt="checked" appFilterSvg [color]="hotelPrimaryColor$ | async" /> -->
+              <img loading="lazy"
+                [src]="isAlternativeOption ? 'assets/icons/dashed-check.svg' : 'assets/icons/checked.svg'"
+                class="w-[17px]" alt="checked" appFilterSvg [color]="hotelPrimaryColor$ | async" />
+              <div class="text-[12px] text-primary-color line-clamp-2" appFeatureDescriptionTooltip
+                [isDisabled]="false" [featureName]="feature?.name" [featureCode]="feature?.metadata?.code"
+                [featureDescription]="feature?.metadata?.description">
+                {{ feature?.name }}
+              </div>
+              <div
+                class="py-[2px] px-[3px] border border-border-color rounded-[4px] text-[11px] leading-[12px] text-primary-color"
+                *ngIf="feature?.metadata?.quantity > 1">
+                x{{ feature?.metadata?.quantity }}
+              </div>
+            </div>
+          </ng-container>
+  
+        </div>
+      </ng-container>
+  
+      <mat-expansion-panel hideToggle #featuresIncludedToggle>
+        <ng-container *ngFor="let feature of displayedFeatures() | slice: 4; index as featureIdx">
+          <div class="featureItem flex items-center gap-[4px] h-fit">
+  
+            <!-- recommendation -->
+            <ng-container *ngIf="feature.recommendation">
+              <div class="bg-our-tip-background-color rounded-[12px] h-fit flex items-center gap-[4px] px-[6px]">
+                <img loading="lazy" src="assets/icons/star.svg" class="w-[12px]" alt="star" />
+                <div class="text-[12px] !leading-[13px] font-normal text-our-tip-color line-clamp-1"
+                  appFeatureDescriptionTooltip [isDisabled]="false" [featureName]="feature?.name"
+                  [featureCode]="feature?.metadata?.code" [featureDescription]="feature?.metadata?.description">
+                  {{ feature?.name }}
+                </div>
+                <div
+                  class="py-[2px] px-[3px] border border-border-color rounded-[4px] text-[11px] leading-[12px] text-primary-color"
+                  *ngIf="feature?.metadata?.quantity > 1">
+                  x{{ feature?.metadata?.quantity }}
+                </div>
+              </div>
+            </ng-container>
+  
+            <!--! recommendation -->
+            <ng-container *ngIf="!feature?.recommendation">
+              <div class="flex items-center gap-[4px]">
+                <!-- <img loading="lazy" [src]="'assets/icons/checked.svg'" class="rotate-y w-[17px]" alt="checked" appFilterSvg [color]="hotelPrimaryColor$ | async" /> -->
+                <img loading="lazy"
+                  [src]="isAlternativeOption ? 'assets/icons/dashed-check.svg' : 'assets/icons/checked.svg'"
+                  class="w-[17px]" alt="checked" appFilterSvg [color]="hotelPrimaryColor$ | async" />
+                <div class="text-[12px] text-primary-color line-clamp-2" appFeatureDescriptionTooltip
+                  [isDisabled]="false" [featureName]="feature?.name" [featureCode]="feature?.metadata?.code"
+                  [featureDescription]="feature?.metadata?.description">
+                  {{ feature?.name }}
+                </div>
+                <div
+                  class="py-[2px] px-[3px] border border-border-color rounded-[4px] text-[11px] leading-[12px] text-primary-color"
+                  *ngIf="feature?.metadata?.quantity > 1">
+                  x{{ feature?.metadata?.quantity }}
+                </div>
+              </div>
+            </ng-container>
+  
+          </div>
+        </ng-container>
+      </mat-expansion-panel>
+    </ng-container>
+    
+    <ng-container *ngIf="!vm.isMobile">
+      <ng-container *ngFor="let feature of displayedFeatures(); index as featureIdx">
+        <div class="featureItem flex items-center gap-[4px] h-fit">
+          <!-- recommendation -->
+          <ng-container *ngIf="feature.recommendation">
+            <div class="bg-our-tip-background-color rounded-[12px] h-fit flex items-center gap-[4px] px-[6px]">
+              <img loading="lazy" src="assets/icons/star.svg" class="w-[12px]" alt="star" />
+              <div class="text-[12px] !leading-[13px] font-normal text-our-tip-color line-clamp-1"
+                appFeatureDescriptionTooltip [isDisabled]="false" [featureName]="feature?.name"
+                [featureCode]="feature?.metadata?.code" [featureDescription]="feature?.metadata?.description">
+                {{ feature?.name }}
+              </div>
+              <div
+                class="py-[2px] px-[3px] border border-border-color rounded-[4px] text-[11px] leading-[12px] text-primary-color"
+                *ngIf="feature?.metadata?.quantity > 1">
+                x{{ feature?.metadata?.quantity }}
+              </div>
+            </div>
+          </ng-container>
+  
+          <!--! recommendation -->
+          <ng-container *ngIf="!feature?.recommendation">
+            <div class="flex items-center gap-[4px]">
+              <!-- <img loading="lazy" [src]="'assets/icons/checked.svg'" class="rotate-y w-[17px]" alt="checked" appFilterSvg [color]="hotelPrimaryColor$ | async" /> -->
+              <img loading="lazy"
+                [src]="isAlternativeOption ? 'assets/icons/dashed-check.svg' : 'assets/icons/checked.svg'"
+                class="w-[17px]" alt="checked" appFilterSvg [color]="hotelPrimaryColor$ | async" />
+              <div class="text-[12px] text-primary-color line-clamp-2" appFeatureDescriptionTooltip
+                [isDisabled]="false" [featureName]="feature?.name" [featureCode]="feature?.metadata?.code"
+                [featureDescription]="feature?.metadata?.description">
+                {{ feature?.name }}
+              </div>
+              <div
+                class="py-[2px] px-[3px] border border-border-color rounded-[4px] text-[11px] leading-[12px] text-primary-color"
+                *ngIf="feature?.metadata?.quantity > 1">
+                x{{ feature?.metadata?.quantity }}
+              </div>
+            </div>
+          </ng-container>
+  
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <div *ngIf="displayMode !== EDisplayMode.List" class="more flex items-end pl-[4px]" (click)="moreClicked.emit()">
+      <div class="font-medium text-[12px] leading-[140%] text-primary-color cursor-pointer hover:underline">+{{
+        moreCount
+        }} {{ 'MORE' | translate | async }}</div>
+    </div>
+  </ng-template>
+</ng-container>

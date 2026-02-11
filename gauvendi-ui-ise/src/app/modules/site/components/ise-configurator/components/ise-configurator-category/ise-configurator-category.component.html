@@ -1,0 +1,63 @@
+<div
+  class="w-full grid grid-cols-8 gap-[18px] pt-[4px] pb-[13px] sm:hidden md:grid lg:grid pe-[16px]"
+  [ngClass]="{
+    'grid-cols-8': hotelRetailCategoryList?.length === 8,
+    'grid-cols-7': hotelRetailCategoryList?.length === 7,
+    'grid-cols-6': hotelRetailCategoryList?.length === 6,
+    'grid-cols-5': hotelRetailCategoryList?.length === 5,
+    'grid-cols-4': hotelRetailCategoryList?.length === 4,
+    'grid-cols-3': hotelRetailCategoryList?.length === 3,
+    'grid-cols-2': hotelRetailCategoryList?.length === 2,
+    '!pt-[9px] !pb-0': viewOnly
+  }"
+>
+  @for (category of hotelRetailCategoryList; track category) {
+    <div
+      class="relative col-span-1 h-[65px] group hover:bg-configurator-category-hover-background-color flex cursor-pointer items-center flex-col justify-center rounded-[8px] bg-configurator-category-default-background-color feature-item"
+      [ngClass]="{
+        '!bg-button-normal-background-color': ((category?.code | featureCountConfigurator: featureSelected : hotelRetailFeatureList) || category?.code === categorySelected?.code) && !viewOnly
+      }"
+      (click)="selectCategory.emit(category)"
+    >
+      @if (category?.code | featureCountConfigurator: featureSelected : hotelRetailFeatureList; as number) {
+        <div class="absolute z-20 ltr:-right-[6px] rtl:-left-[6px] -top-[5px]">
+          <div class="w-[17.6px] h-[20.9px] relative">
+            <div class="absolute z-[22] top-1/2 text-11 font-semibold -translate-x-1/2 left-1/2 -translate-y-1/2" [class]="viewOnly ? 'text-button-normal-color' : 'text-[#000]'">
+              {{ number }}
+            </div>
+            <div class="hexagon z-[21]" [class]="viewOnly ? '!bg-button-normal-background-color' : ''"></div>
+          </div>
+        </div>
+      }
+
+      <div class="flex items-center justify-center item-bg item-box-feature w-full h-[44px]">
+        <app-image-hovering
+          [src]="category?.iconImageUrl"
+          [color]="
+            ((category?.code | featureCountConfigurator: featureSelected : hotelRetailFeatureList) || category?.code === categorySelected?.code) && !viewOnly
+              ? colorButtonText
+              : categoryDefaultIconColor
+          "
+          [colorHovering]="
+            ((category?.code | featureCountConfigurator: featureSelected : hotelRetailFeatureList) || category?.code === categorySelected?.code) && !viewOnly ? colorButtonText : categoryHoverIconColor
+          "
+          [defaultClass]="'w-[22px] group-hover:!hidden'"
+          [hoveringClass]="'w-[22px] group-hover:!block'"
+        />
+      </div>
+      <div
+        class="text-12"
+        [class]="
+          ((category?.code | featureCountConfigurator: featureSelected : hotelRetailFeatureList) || category?.code === categorySelected?.code) && !viewOnly
+            ? 'text-button-normal-color font-medium'
+            : 'text-primary-color'
+        "
+      >
+        {{ category?.name }}
+      </div>
+      @if (categorySelected?.code === category?.code && !viewOnly) {
+        <div class="-bottom-[9px] absolute left-0 right-0 bg-hotel-primary-color h-[5px] rounded-[12px]"></div>
+      }
+    </div>
+  }
+</div>

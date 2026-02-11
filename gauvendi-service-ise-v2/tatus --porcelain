@@ -1,0 +1,26 @@
+[1mdiff --git a/src/core/entities/booking-entities/reservation.entity.ts b/src/core/entities/booking-entities/reservation.entity.ts[m
+[1mindex 49ea514..3241187 100644[m
+[1m--- a/src/core/entities/booking-entities/reservation.entity.ts[m
+[1m+++ b/src/core/entities/booking-entities/reservation.entity.ts[m
+[36m@@ -1,10 +1,11 @@[m
+[31m-import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany } from 'typeorm';[m
+[32m+[m[32mimport { Column, Entity, Index, JoinColumn, ManyToMany, ManyToOne, OneToMany } from 'typeorm';[m
+ import { BaseEntityWithDeleted } from '../../database/entities/base.entity';[m
+ import { Booking } from './booking.entity';[m
+ import { ReservationTimeSlice } from './reservation-time-slice.entity';[m
+ import { RoomProduct } from '../room-product.entity';[m
+ import { RatePlan } from '../pricing-entities/rate-plan.entity';[m
+ import { ReservationAmenity } from './reservation-amenity.entity';[m
+[32m+[m[32mimport { Guest } from './guest.entity';[m
+ [m
+ export enum ReservationStatusEnum {[m
+   CONFIRMED = 'CONFIRMED',[m
+[36m@@ -342,4 +343,8 @@[m [mexport class Reservation extends BaseEntityWithDeleted {[m
+   @OneToMany(() => ReservationAmenity, (reservationAmenity) => reservationAmenity.reservation)[m
+   @JoinColumn({ name: 'id' })[m
+   reservationAmenities: ReservationAmenity[];[m
+[32m+[m
+[32m+[m[32m  @ManyToMany(() => Guest, (guest) => guest)[m
+[32m+[m[32m  @JoinColumn([{ name: 'primary_guest_id', referencedColumnName: 'id' }])[m
+[32m+[m[32m  primaryGuest: Guest;[m
+ }[m

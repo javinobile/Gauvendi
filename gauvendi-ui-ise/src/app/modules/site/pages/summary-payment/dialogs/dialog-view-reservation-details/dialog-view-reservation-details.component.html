@@ -1,0 +1,279 @@
+<div [style.height.px]="isMobile && viewport()" class="lg-popup-scroll">
+  <ng-container
+    *ngIf="{
+      secondaryTextColor: secondaryTextColor$ | async,
+      hotelPrimaryColor: hotelPrimaryColor$ | async,
+      colorText: colorText$ | async,
+      currentRatePlan: ratePlanList$ | async | getCurrentRatePlan: MAT_DIALOG_DATA.item?.roomProductSalesPlan?.ratePlan?.code
+    } as vm"
+  >
+    <div class="relative overflow-hidden pe-[24px] pt-[24px] sm:p-0 md:p-0 sm:bg-popover-background-color sm:overflow-y-auto md:bg-popover-background-color">
+      <div class="absolute right-[-7px] top-[-8px] z-10 cursor-pointer hover:scale-105" mat-dialog-close>
+        <img loading="lazy" src="assets/icons/close-hexagon.png" alt="" />
+      </div>
+      <div class="overflow-x-hidden w-[720px] rounded-[16px] bg-popover-background-color py-[24px] sm:rounded-none sm:w-full md:w-full sm:pt-0">
+        <div class="flex items-center gap-[24px] px-[24px] sm:flex-col sm:p-0 sm:gap-0 pr-[8px]">
+          <div class="w-[255px] sm:w-full">
+            <app-option-swiper [customClass]="'w-[255px] h-[236px] rounded-[12px] sm:!w-full sm:rounded-none'" [imgUrls]="imgUrls" />
+          </div>
+          <div class="max-w-[calc(100%-255px+16px)] flex-1 sm:max-w-none sm:p-[16px]">
+            <div class="text-[20px] font-medium leading-[24px] text-popover-primary-color mb-[8px]">
+              #{{ MAT_DIALOG_DATA.index + 1 }} . {{ !MAT_DIALOG_DATA.isLowestPrice ? MAT_DIALOG_DATA.item?.roomProduct?.name : ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) }}
+            </div>
+            <div class="flex items-center gap-[6px]">
+              <div class="flex items-center gap-[4px]">
+                <img loading="lazy" src="assets/icons/adults.svg" appFilterSvg [color]="vm.secondaryTextColor" />
+                <div class="text-[12px] font-normal leading-[16.8px] text-popover-secondary-color">
+                  {{ MAT_DIALOG_DATA.item?.adults }} {{ (MAT_DIALOG_DATA.item?.adults > 1 ? 'ADULTS' : 'ADULT') | translate | async }}
+                </div>
+              </div>
+              <div class="flex items-center gap-[4px]" *ngIf="MAT_DIALOG_DATA.item?.childrenAgeList?.length > 0">
+                <img loading="lazy" src="assets/icons/kid.svg" appFilterSvg [color]="vm.secondaryTextColor" />
+                <div class="text-[12px] font-normal leading-[16.8px] text-popover-secondary-color">
+                  {{ MAT_DIALOG_DATA.item?.childrenAgeList?.length }} {{ (MAT_DIALOG_DATA.item?.childrenAgeList?.length > 1 ? 'CHILDREN' : 'CHILD') | translate | async }}
+                </div>
+              </div>
+              <!-- <div class="flex items-center gap-[4px]">
+                <img loading="lazy" src="assets/icons/pet.svg" appFilterSvg [color]="vm.secondaryTextColor" />
+                <div class="text-[12px] font-normal leading-[16.8px] text-popover-secondary-color">0 {{ "PET" | translate | async }}</div>
+              </div> -->
+              <div class="flex items-center gap-[4px]">
+                <img loading="lazy" src="assets/icons/key.svg" appFilterSvg [color]="vm.secondaryTextColor" />
+                <div class="text-[12px] font-normal leading-[16.8px] text-popover-secondary-color">1 {{ 'STAY_UNIT' | translate | async }}</div>
+              </div>
+              <div class="flex items-center gap-[4px]">
+                <img loading="lazy" src="assets/icons/space.svg" appFilterSvg [color]="vm.secondaryTextColor" />
+                <div class="text-[12px] font-normal leading-[16.8px] text-popover-secondary-color">
+                  {{ MAT_DIALOG_DATA.item?.roomProduct?.space }}
+                  <ng-container *ngIf="measureMetrics === 'sqm'"> m<sup>2</sup></ng-container>
+                  <ng-container *ngIf="measureMetrics === 'sqft'"> ft<sup>2</sup></ng-container>
+                </div>
+              </div>
+            </div>
+            <div class="max-h-[171px] overflow-y-auto pr-[10px] sm:max-h-full md:max-h-full sm:pr-0 md:pr-0">
+              <ng-container *ngIf="!MAT_DIALOG_DATA.isLowestPrice">
+                <div class="mt-[16px]">
+                  <div class="text-[12px] font-medium leading-[16.8px] text-popover-primary-color mb-[8px] sm:text-[14px]">
+                    {{ 'FEATURES_INCLUDED' | translate | async }}
+                  </div>
+                  <div class="grid grid-cols-3 gap-[8px]">
+                    <ng-container *ngFor="let feature of MAT_DIALOG_DATA.item?.roomProduct?.retailFeatureList; index as featureIdx">
+                      <div class="col-span-1 flex items-center gap-[4px]">
+                        <img loading="lazy" [src]="'assets/icons/checked.svg'" alt="checked" appFilterSvg [color]="vm.hotelPrimaryColor" />
+                        <div
+                          class="text-[12px] font-light leading-[16.8px] text-popover-primary-color line-clamp-1"
+                          appFeatureDescriptionTooltip
+                          [isDisabled]="isMobile"
+                          [featureName]="feature?.name"
+                          [featureCode]="feature?.code"
+                          [featureDescription]="feature?.description"
+                        >
+                          {{ feature?.name }}
+                        </div>
+                        <div class="py-[2px] px-[3px] border border-border-color rounded-[4px] text-[11px] leading-[12px] text-popover-primary-color" *ngIf="feature?.quantity > 1">
+                          x{{ feature?.quantity }}
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="mt-[16px]">
+                  <div class="text-[12px] font-medium leading-[16.8px] text-popover-primary-color mb-[8px] sm:text-[14px]">
+                    {{ 'STANDARD_FEATURES' | translate | async }}
+                  </div>
+                  <div class="grid grid-cols-3 gap-[8px]">
+                    <ng-container *ngFor="let stFeature of MAT_DIALOG_DATA.item?.roomProduct?.standardFeatureList">
+                      <div class="col-span-1 flex items-center gap-[4px]">
+                        <img loading="lazy" class="w-[24px]" [src]="stFeature?.iconImageUrl" alt="" appFilterSvg [color]="vm.colorText" />
+                        <div
+                          class="text-[12px] font-light leading-[16.8px] text-popover-primary-color line-clamp-1"
+                          appFeatureDescriptionTooltip
+                          [isDisabled]="isMobile"
+                          [featureName]="stFeature?.name"
+                          [featureCode]="stFeature?.code"
+                          [featureDescription]="stFeature?.description"
+                        >
+                          {{ stFeature?.name }}
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <div class="w-full h-[1px] bg-hotel-primary-color my-[24px]"></div>
+        <div class="px-[24px] overflow-y-auto max-h-[40vh] lg-body-scroll me-[5px] sm:max-h-none sm:overflow-hidden sm:px-[16px] md:max-h-[40vh]">
+          <div class="text-[24px] font-medium leading-[28.8px] text-popover-primary-color mb-[24px] sm:text-[17px] sm:leading-[23.8px]">
+            {{ MAT_DIALOG_DATA.item?.roomProductSalesPlan?.ratePlan?.name }}
+          </div>
+          <div class="">
+            <div class="flex items-center gap-[8px] mb-[4px]">
+              <div class="w-[8px] h-[8px] rounded-[50%] bg-hotel-primary-color"></div>
+              <div class="text-[17px] font-medium leading-[23.8px] text-popover-primary-color sm:text-[14px] sm:leading-[19.6px]">{{ 'DESCRIPTION' | translate | async }}</div>
+            </div>
+            <div class="text-[14px] font-normal leading-[19.6px] text-popover-primary-color ps-[15px]" [innerHTML]="vm.currentRatePlan?.description"></div>
+          </div>
+          <ng-container *ngIf="MAT_DIALOG_DATA.item?.roomProductSalesPlan?.ratePlan?.includedHotelExtrasList?.length > 0">
+            <div class="mt-[24px]">
+              <div class="flex items-center gap-[8px] mb-[4px]">
+                <div class="w-[8px] h-[8px] rounded-[50%] bg-hotel-primary-color"></div>
+                <div class="text-[17px] font-medium leading-[23.8px] text-popover-primary-color sm:text-[14px] sm:leading-[19.6px]">
+                  {{ 'MEAL_PLANS_AND_SERVICES' | translate | async }}
+                </div>
+              </div>
+              <div class="ps-[15px] grid grid-cols-2 gap-[8px]">
+                <ng-container *ngFor="let extra of MAT_DIALOG_DATA.item?.roomProductSalesPlan?.ratePlan?.includedHotelExtrasList">
+                  <div class="col-span-1">
+                    <div class="font-normal text-[14px] leading-[19.6px] text-popover-primary-color">{{ extra.name }}</div>
+                    <div class="font-light text-popover-secondary-color text-[14px] leading-[19.6px]">
+                      {{
+                        summary?.adult
+                          | displayIncludedServiceDesc
+                            : summary?.children
+                            : MAT_DIALOG_DATA.item?.roomProduct?.numberOfBedrooms
+                            : extra?.includedDates
+                            : bookingDuration
+                            : extra?.pricingUnit
+                            : ''
+                            : checkInDate
+                          | async
+                      }}
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+          <div class="mt-[24px]">
+            <div class="flex items-center gap-[8px] mb-[4px]">
+              <div class="w-[8px] h-[8px] rounded-[50%] bg-hotel-primary-color"></div>
+              <div class="text-[17px] font-medium leading-[23.8px] text-popover-primary-color sm:text-[14px] sm:leading-[19.6px]">{{ 'CANCELLATION_POLICY' | translate | async }}</div>
+            </div>
+            <div class="text-[14px] font-normal leading-[19.6px] text-popover-primary-color ps-[15px]" [innerHTML]="vm.currentRatePlan?.strongestCxlPolicy?.description"></div>
+          </div>
+          <div class="mt-[24px]">
+            <div class="flex items-center gap-[8px] mb-[4px]">
+              <div class="w-[8px] h-[8px] rounded-[50%] bg-hotel-primary-color"></div>
+              <div class="text-[17px] font-medium leading-[23.8px] text-popover-primary-color sm:text-[14px] sm:leading-[19.6px]">{{ 'PAYMENT_TERM' | translate | async }}</div>
+            </div>
+            <div class="text-[14px] font-normal leading-[19.6px] text-popover-primary-color ps-[15px]" [innerHTML]="vm.currentRatePlan?.strongestPaymentTerms?.description"></div>
+          </div>
+
+          <div class="mt-[24px]">
+            <div class="flex items-center justify-between mb-[8px] gap-[12px]">
+              <div class="flex items-center gap-[8px]">
+                <div class="w-[8px] h-[8px] rounded-[50%] bg-hotel-primary-color min-w-[8px]"></div>
+                <div class="text-[17px] font-medium leading-[23.8px] text-popover-primary-color sm:text-[14px] sm:leading-[19.6px]">
+                  {{ 'TOTAL_PRICE_FOR' | translate | async }}
+                  : {{ !MAT_DIALOG_DATA.isLowestPrice ? MAT_DIALOG_DATA.item?.roomProduct?.name : ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) }}
+                </div>
+              </div>
+              <div class="text-[24px] font-medium leading-[28.8px] text-hotel-primary-color whitespace-nowrap sm:text-[14px] sm:leading-[19.6px]">
+                {{ MAT_DIALOG_DATA.item?.totalSellingRate | currencyRate: MAT_DIALOG_DATA.currencyRate | myCurrency: MAT_DIALOG_DATA.currencyCode : 'symbol' : '1.2' }}
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between ps-[15px]">
+              <div class="text-[17px] font-medium leading-[23.8px] text-popover-primary-color sm:text-[14px] sm:leading-[19.6px]">
+                {{ 'PRICE_FOR' | translate | async }} {{ bookingDuration }} {{ (bookingDuration > 1 ? 'NIGHTS' : 'NIGHT') | translate | async }}
+              </div>
+              <div class="text-[20px] font-medium leading-[24px] text-popover-primary-color sm:text-[14px] sm:leading-[19.6px]">
+                {{ MAT_DIALOG_DATA.item?.totalAccommodationAmountBySetting | currencyRate: MAT_DIALOG_DATA.currencyRate | myCurrency: MAT_DIALOG_DATA.currencyCode : 'symbol' : '1.2' }}
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between ps-[15px]">
+              <div class="text-[14px] font-normal leading-[19.6px] text-popover-secondary-color sm:text-[12px] sm:leading-[16.8px]">
+                {{ 'EACH_ROOM_PER_NIGHT' | translate | async }}
+              </div>
+              <div class="text-[17px] font-light leading-[23.8px] text-popover-secondary-color sm:text-[14px] sm:leading-[19.6px]">
+                {{ MAT_DIALOG_DATA.item?.totalSellingRateBySetting / bookingDuration | currencyRate: MAT_DIALOG_DATA.currencyRate | myCurrency: MAT_DIALOG_DATA.currencyCode : 'symbol' : '1.2' }}
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between mt-[8px] ps-[15px]">
+              <div class="text-[17px] font-medium leading-[23.8px] text-popover-primary-color sm:text-[14px] sm:leading-[19.6px]">
+                {{ 'EXTRAS' | translate | async }}
+              </div>
+              <div class="text-[20px] font-medium leading-[24px] text-popover-primary-color sm:text-[14px] sm:leading-[19.6px]">
+                {{ MAT_DIALOG_DATA.item?.amenityPricingList | totalAmenity | currencyRate: MAT_DIALOG_DATA.currencyRate | myCurrency: MAT_DIALOG_DATA.currencyCode : 'symbol' : '1.2' }}
+              </div>
+            </div>
+
+            <ng-container *ngFor="let item of MAT_DIALOG_DATA.item?.amenityPricingList">
+              <ng-container *ngIf="item?.hotelAmenity?.pricingUnit === pricingUnit.Person || item?.hotelAmenity?.pricingUnit === pricingUnit.PerPersonPerRoom; else tplShowAmenityWithoutAge">
+                <ng-container *ngIf="!serviceIncluded?.includes(item?.hotelAmenity?.code) && !item?.isSalesPlanIncluded; else tmplIncludedService">
+                  <div class="ps-[15px]">
+                    <ng-container *ngFor="let amenityReservation of item?.ageCategoryPricingList">
+                      <div class="flex items-center justify-between">
+                        <div class="font-medium text-[14px] leading-[19.6px] text-popover-primary-color flex items-center gap-[4px] line-clamp-1 sm:text-[12px] sm:leading-[16.8px]">
+                          <span class="whitespace-nowrap font-medium">{{ amenityReservation?.count }} x</span>
+                          <span class="text-popover-secondary-color"
+                            >{{ item?.hotelAmenity?.name }} ({{
+                              amenityReservation?.ageCategoryCode === 'DEFAULT'
+                                ? ('ADULT' | translate | async)
+                                : (MAT_DIALOG_DATA.item?.childrenAgeList | getChildrenAge: amenityReservation : ('CHILD' | translate | async) : ('YEARS' | translate | async))
+                            }}
+                            )</span
+                          >
+                        </div>
+                        <div class="font-light text-[17px] leading-[23.8px] text-popover-secondary-color sm:text-[14px] sm:leading-[19.6px]">
+                          {{
+                            !serviceIncluded?.includes(item?.hotelAmenity?.code)
+                              ? (amenityReservation?.totalSellingRate | currencyRate: MAT_DIALOG_DATA.currencyRate | myCurrency: MAT_DIALOG_DATA.currencyCode : 'symbol' : '1.2')
+                              : ('INCLUDED' | translate | async)
+                          }}
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </ng-container>
+
+                <!-- included amenity -->
+                <ng-template #tmplIncludedService>
+                  <div class="flex items-center justify-between ps-[15px]">
+                    <div class="font-medium text-[14px] leading-[19.6px] text-popover-primary-color flex items-center gap-[4px] line-clamp-1 sm:text-[12px] sm:leading-[16.8px]">
+                      <span class="whitespace-nowrap font-medium"> {{ item?.ageCategoryPricingList | getAmenityCountByAge }} x</span>
+                      <span class="text-popover-secondary-color">{{ item?.hotelAmenity?.name }} ({{ 'ADULT' | translate | async }} )</span>
+                    </div>
+                    <div class="font-light text-[17px] leading-[23.8px] text-popover-secondary-color sm:text-[14px] sm:leading-[19.6px]">{{ 'INCLUDED' | translate | async }}</div>
+                  </div>
+                  <ng-container *ngIf="MAT_DIALOG_DATA.item?.childrenAgeList?.length > 0">
+                    <div class="flex items-center justify-between ps-[15px]">
+                      <div class="font-medium text-[14px] leading-[19.6px] text-popover-primary-color flex items-center gap-[4px] line-clamp-1 sm:text-[12px] sm:leading-[16.8px]">
+                        <span class="whitespace-nowrap font-medium"> {{ item?.ageCategoryPricingList | getAmenityCountByAge: false }} x</span>
+                        <span class="text-popover-secondary-color"
+                          >{{ item?.hotelAmenity?.name }} ({{ MAT_DIALOG_DATA.item?.childrenAgeList | getChildrenAgeIncluded: ('YEARS' | translate | async) : ('CHILD' | translate | async) }} )</span
+                        >
+                      </div>
+                      <div class="font-light text-[17px] leading-[23.8px] text-popover-secondary-color sm:text-[14px] sm:leading-[19.6px]">{{ 'INCLUDED' | translate | async }}</div>
+                    </div>
+                  </ng-container>
+                </ng-template>
+              </ng-container>
+
+              <!-- amenity list without age -->
+              <ng-template #tplShowAmenityWithoutAge>
+                <div class="flex items-center justify-between ps-[15px]">
+                  <div class="font-medium text-[14px] leading-[19.6px] text-popover-primary-color flex items-center gap-[4px] line-clamp-1 sm:text-[12px] sm:leading-[16.8px]">
+                    <span class="whitespace-nowrap font-medium">{{ item?.count }} x</span>
+                    <span class="text-popover-secondary-color">{{ item?.hotelAmenity?.name }}</span>
+                  </div>
+                  <div class="font-light text-[17px] leading-[23.8px] text-popover-secondary-color sm:text-[14px] sm:leading-[19.6px]">
+                    {{
+                      !item?.isSalesPlanIncluded
+                        ? (item?.totalSellingRate | currencyRate: MAT_DIALOG_DATA.currencyRate | myCurrency: MAT_DIALOG_DATA.currencyCode : 'symbol' : '1.2')
+                        : ('INCLUDED' | translate | async)
+                    }}
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,14 @@
+query IncludedHotelExtrasList($filter: IncludedHotelExtrasFilter) {
+  response: includedHotelExtrasList(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on HotelAmenity {
+        name
+        code
+        amenityType
+        isIncluded
+      }
+    }
+  }
+}

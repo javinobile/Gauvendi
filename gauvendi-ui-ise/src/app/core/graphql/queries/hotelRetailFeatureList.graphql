@@ -1,0 +1,24 @@
+query HotelRetailFeatureList($filter: HotelRetailFeatureFilter) {
+  response: hotelRetailFeatureList(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on HotelRetailFeature {
+        name
+        code
+        description
+        shortDescription
+        displaySequence
+        hotelRetailCategory {
+          code
+          name
+        }
+        retailFeatureImageList {
+          description
+          imageUrl
+        }
+        measurementUnit
+      }
+    }
+  }
+}

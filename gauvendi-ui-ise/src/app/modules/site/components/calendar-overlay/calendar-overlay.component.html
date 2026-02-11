@@ -1,0 +1,157 @@
+<ng-container
+  *ngIf="{
+    currencyRate: currencyRate$ | async,
+    currencyCode: currencyCode$ | async,
+    isLoadingCalendar: isLoadingCalendar$ | async,
+    locale: locale$ | async,
+    lowestPriceOption: lowestPriceOption$ | async,
+    calendarDailyRates: calendarDailyRates$ | async,
+    themeColors: themeColors$ | async
+  } as vm"
+>
+  <div cdkTrapFocus [@tooltip] class="dialog-content bg-popover-background-color rounded-[16px] relative p-[24px] w-[1136px] md:w-full lg:w-full" [class.sm:mx-2]="true" [class.overflow-y-auto]="true">
+    <div class="flex items-center justify-between mb-[24px]">
+      <div class="flex items-center justify-between flex-1">
+        <button class="flex" (click)="changeDate('left')">
+          <mat-icon class="text-primary-color cursor-pointer dir-mat-icon">chevron_left</mat-icon>
+        </button>
+        <div class="text-[14px] font-semibold leading-[140%] text-primary-color">
+          <span class="hidden sm:block">
+            {{ activeDate[0] | dateWithLocale: (locale$ | async) : 'MMMM yyyy' }}
+          </span>
+          <span class="sm:hidden">
+            {{ activeDate[0] | dateWithLocale: (locale$ | async) : 'MMM yyyy' }}
+          </span>
+        </div>
+        <div></div>
+      </div>
+      <div class="flex items-center justify-between flex-1 sm:hidden">
+        <div></div>
+        <div class="text-[14px] font-semibold leading-[140%] text-primary-color">{{ activeDate[1] | dateWithLocale: (locale$ | async) : 'MMM yyyy' }}</div>
+        <button class="flex" (click)="changeDate('right')">
+          <mat-icon class="text-primary-color cursor-pointer dir-mat-icon">chevron_right</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="flex items-start gap-[32px] sm:flex-col">
+      <div class="flex-1">
+        <app-calendar-renderer
+          [calendarDailyRates]="vm.calendarDailyRates"
+          [activeDate]="activeDate[0]"
+          [selectedValue]="datesSelected"
+          [currencyRate]="vm.currencyRate"
+          [currencyCode]="vm.currencyCode"
+          [minDate]="minDate"
+          [maxDate]="maxDate"
+          [isLoadingPrice]="vm.isLoadingCalendar"
+          [locale]="vm.locale"
+          [lowestPriceOption]="vm.lowestPriceOption"
+          [isMonthChanged]="isMonthChanged"
+          [checkInDateInfo]="checkInDateInfo"
+          [colorText]="vm.themeColors?.textPrimary"
+          [calendarSetting]="calendarSetting$ | async"
+          [layoutSetting]="layoutSetting$ | async"
+          (valueChange)="selectedChange($event)"
+          (clearSelectedDate)="clearSelectedDate()"
+          (recalculateMaxCheckoutDate)="onRecalculateMaxCheckoutDate()"
+        ></app-calendar-renderer>
+      </div>
+      <div class="flex-1">
+        <div class="hidden items-center justify-between flex-1 mb-4 sm:flex">
+          <div class="text-[14px] font-semibold leading-[140%] text-primary-color">{{ activeDate[1] | dateWithLocale: (locale$ | async) : 'MMMM yyyy' }}</div>
+          <mat-icon (click)="changeDate('right')" class="text-primary-color cursor-pointer dir-mat-icon">chevron_right</mat-icon>
+        </div>
+        <app-calendar-renderer
+          [calendarDailyRates]="vm.calendarDailyRates"
+          [activeDate]="activeDate[1]"
+          [selectedValue]="datesSelected"
+          [currencyRate]="vm.currencyRate"
+          [currencyCode]="vm.currencyCode"
+          [locale]="vm.locale"
+          [minDate]="minDate"
+          [maxDate]="maxDate"
+          [isLoadingPrice]="vm.isLoadingCalendar"
+          [lowestPriceOption]="vm.lowestPriceOption"
+          [isMonthChanged]="isMonthChanged"
+          [checkInDateInfo]="checkInDateInfo"
+          [colorText]="vm.themeColors?.textPrimary"
+          [calendarSetting]="calendarSetting$ | async"
+          [layoutSetting]="layoutSetting$ | async"
+          (valueChange)="selectedChange($event)"
+          (clearSelectedDate)="clearSelectedDate()"
+          (recalculateMaxCheckoutDate)="onRecalculateMaxCheckoutDate()"
+        ></app-calendar-renderer>
+      </div>
+    </div>
+    <div class="w-full h-[1px] bg-[#C9C9C9] my-[24px]"></div>
+    <div class="flex items-center justify-center gap-[32px]">
+      <div class="flex items-center gap-[8px]">
+        <img loading="lazy" src="assets/icons/ctd.svg" alt="" appFilterSvg [color]="vm.themeColors?.textPrimary" />
+        <div class="text-[14px] font-normal leading-[140%] text-primary-color">{{ 'CTA_MESSAGE' | translate | async }}</div>
+      </div>
+      <div class="flex items-center gap-[8px]">
+        <img loading="lazy" src="assets/icons/cta.svg" alt="" appFilterSvg [color]="vm.themeColors?.textPrimary" />
+        <div class="text-[14px] font-normal leading-[140%] text-primary-color">{{ 'CTD_MESSAGE' | translate | async }}</div>
+      </div>
+      <!--      <div class="flex items-center gap-[8px]">-->
+      <!--        <img loading="lazy" src="assets/icons/deal.svg" alt="">-->
+      <!--        <div-->
+      <!--          class="text-[14px] font-normal leading-[140%] text-primary-color">{{'SPECIAL_DEAL' | translate | async}}</div>-->
+      <!--      </div>-->
+      <div class="flex items-center gap-[8px]">
+        <img loading="lazy" [src]="(layoutSetting$ | async) === 'SQUARE' ? 'assets/icons/sold-out-square.svg' : 'assets/icons/sold-out.svg'" alt="" />
+        <div class="text-[14px] font-normal leading-[140%] text-primary-color">{{ 'SOLD_OUT' | translate | async }}</div>
+      </div>
+    </div>
+    <div class="w-full h-[1px] bg-[#C9C9C9] my-[24px]"></div>
+    <div class="flex justify-between items-center mt-[24px] sm:flex-col">
+      <div class="">
+        <div class="text-[14px] font-medium leading-[140%] text-primary-color">{{ vm.locale | renderIndicatePrice: travelerSelected$?.getValue() | async }}</div>
+        <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+          {{ datesSelected | renderSummaryDate: vm.locale : 'dddd DD MMMM' | async }}
+        </div>
+      </div>
+      <ng-container *ngIf="minLOS">
+        <div class="px-[15px] py-[10px] ms-[10px] text-center bg-[#FFF7E8] border border-dashed border-[#FFB524]">
+          <!--          <div class="flex justify-center items-center">-->
+          <!--            <img loading="lazy" [src]="'assets/icons/deal.svg'" width="14" height="14">-->
+          <!--            <div class="ms-[10px] text-[14px] leading-[150%] font-semibold text-[#F9B619]">-->
+          <!--              {{(isGotDeal ? 'YOU_GOT_A_DEAL' : 'DEAL_AVAILABLE') | translate | async}}-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <div class="text-[12px] leading-[150%] font-normal text-[#F9B619] mt-[5px]">
+            {{ 'DEAL_MESSAGE' | translate | async }} {{ minLOS }} {{ (minLOS > 1 ? 'NIGHTS' : 'NIGHT') | translate | async }}
+            <span *ngIf="maxLOS"> {{ 'DEAL_MAX_LOS_MESSAGE' | translate | async }} {{ maxLOS }} {{ (maxLOS > 1 ? 'NIGHTS' : 'NIGHT') | translate | async }} </span>
+          </div>
+        </div>
+      </ng-container>
+      <div class="flex items-center sm:w-full sm:mt-4">
+        <button
+          (click)="onDone()"
+          [disabled]="!datesSelected[0] || !datesSelected[1]"
+          [class.disabled]="!datesSelected[0] || !datesSelected[1]"
+          [ngClass]="{ 'opacity-50 !cursor-not-allowed': !datesSelected[0] || !datesSelected[1] }"
+          class="h-[40px] px-[16px] py-[8px] mr-4 rounded-[12px] bg-button-normal-background-color text-[14px] font-medium leading-[140%] text-button-normal-color hover:opacity-80 sm:flex-1 sm:flex sm:justify-center"
+        >
+          <div class="flex items-center">
+            <img loading="lazy" [src]="'assets/icons/search.svg'" alt="search" width="16" height="16" appFilterSvg [color]="vm.themeColors?.buttonNormalText" />
+            <span class="ml-2">{{ 'SEARCH' | translate | async }}</span>
+          </div>
+        </button>
+        <button
+          (click)="onPickFeature()"
+          [disabled]="!datesSelected[0] || !datesSelected[1]"
+          [class.disabled]="!datesSelected[0] || !datesSelected[1]"
+          [ngClass]="{ 'opacity-50 !cursor-not-allowed': !datesSelected[0] || !datesSelected[1] }"
+          class="h-[40px] px-[16px] py-[8px] rounded-[12px] bg-calendar-hover-background-color text-calendar-hover-color text-[14px] font-medium leading-[140%] sm:flex-1 sm:flex sm:justify-center"
+          [ngClass]="{ 'hover:opacity-80': true }"
+        >
+          <div class="flex items-center">
+            <span class="mr-2">{{ 'PICK_FEATURES' | translate | async }}</span>
+            <img loading="lazy" [src]="'assets/icons/arrow-right.svg'" alt="search" width="16" height="16" appFilterSvg [color]="vm.themeColors?.calendarHoverText" />
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>

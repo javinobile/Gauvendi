@@ -1,0 +1,7 @@
+mutation UpdateBookingInformation($input: BookingInput) {
+  response: updateBookingInformation(input: $input) {
+    code
+    status
+    message
+  }
+}

@@ -1,0 +1,26 @@
+@if (useOldVersion) {
+  <div
+    class="h-[48px] pl-[12px] pr-[16px] flex items-center gap-[12px] ltr:rounded-r-[16px] rtl:rounded-l-[16px] ltr:rounded-tl-[16px] rtl:rounded-tr-[16px] bg-matched-background-color relative z-[10]"
+  >
+    <div class="w-[27px] h-[27px] dynamic-color-icon bg-matched-color" style="--image-url: url(assets/icons/match.svg)"></div>
+    <div class="flex flex-col">
+      <div class="text-[14px] text-matched-color font-medium leading-[19px]">{{ 'MATCH' | translate | async }}</div>
+      <span class="text-[12px] text-matched-color font-medium leading-[16px] text-center" *ngIf="matchPercent >= 50"> {{ matchPercent?.toFixed(0) }}% </span>
+    </div>
+  </div>
+} @else {
+  <div class="relative">
+    <div class="h-[44px] px-[16px] flex items-center gap-[12px] ltr:rounded-r-[12px] ltr:rounded-l-[6px] rtl:rounded-l-[12px] rtl:rounded-r-[6px] bg-matched-background-color relative z-[10]">
+      <div class="w-[27px] h-[27px] dynamic-color-icon bg-matched-color" style="--image-url: url(assets/icons/match.svg)"></div>
+      <div class="flex flex-col">
+        <div class="text-[14px] text-matched-color font-medium leading-[16px]">{{ 'MATCH' | translate | async }}</div>
+        <span class="pym_match text-[12px] text-matched-color font-medium leading-[12px] text-center" *ngIf="matchPercent >= 50"> {{ matchPercent?.toFixed(0) }}% </span>
+      </div>
+    </div>
+
+    <div class="absolute top-[-6px] ltr:left-0 rtl:right-0 z-[-1]">
+      <div class="dynamic-color-icon w-[12px] h-[51px] bg-matched-background-color ltr:block rtl:hidden" style="--image-url: url(assets/icons/extra-tag.svg)"></div>
+      <div class="dynamic-color-icon w-[12px] h-[51px] bg-matched-background-color ltr:hidden rtl:block" style="--image-url: url(assets/icons/extra-tag.svg)"></div>
+    </div>
+  </div>
+}

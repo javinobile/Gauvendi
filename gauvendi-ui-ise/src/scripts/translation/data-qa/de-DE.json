@@ -1,0 +1,1565 @@
+{
+    "id": "6122338d-4a29-11ef-bc33-0223397f383d",
+    "attribute": [
+        {
+            "key": "ADULT",
+            "value": "Erwachsener"
+        },
+        {
+            "key": "ADULTS",
+            "value": "Erwachsene"
+        },
+        {
+            "key": "ROOM_AND_GUEST",
+            "value": "Gäste"
+        },
+        {
+            "key": "ROOM",
+            "value": "Zimmer"
+        },
+        {
+            "key": "ROOMS",
+            "value": "Zimmer"
+        },
+        {
+            "key": "CHILDREN",
+            "value": "Kinder"
+        },
+        {
+            "key": "CHILD",
+            "value": "Kind"
+        },
+        {
+            "key": "ADULT_POLICY",
+            "value": "Ab 18 Jahren"
+        },
+        {
+            "key": "AGES",
+            "value": "Alter"
+        },
+        {
+            "key": "CHILDREN_POLICY",
+            "value": "Alter 0-17"
+        },
+        {
+            "key": "YEAR",
+            "value": "Jahr"
+        },
+        {
+            "key": "YEARS",
+            "value": "Jahre"
+        },
+        {
+            "key": "AGE_NEEDED",
+            "value": "Alter erforderlich"
+        },
+        {
+            "key": "AGE_REQUIRED",
+            "value": "Um die richtige Unterkunft zu finden, müssen wir das Alter der Kinder kennen."
+        },
+        {
+            "key": "ADD_ROOM",
+            "value": "Zimmer hinzufügen"
+        },
+        {
+            "key": "APPLY",
+            "value": "Bestätigen"
+        },
+        {
+            "key": "CHECK_IN",
+            "value": "Einchecken"
+        },
+        {
+            "key": "CHECK_OUT",
+            "value": "Abreisen"
+        },
+        {
+            "key": "DONE",
+            "value": "Bestätigen"
+        },
+        {
+            "key": "PROMO",
+            "value": "Buchungscode"
+        },
+        {
+            "key": "SEARCH",
+            "value": "Suchen"
+        },
+        {
+            "key": "CHECK_IN_DATE",
+            "value": "Check-in Datum"
+        },
+        {
+            "key": "CHECK_OUT_DATE",
+            "value": "Überprüfe das Datum"
+        },
+        {
+            "key": "PROMOTION_CODE",
+            "value": "Code eingeben"
+        },
+        {
+            "key": "NIGHTS",
+            "value": "Nächte"
+        },
+        {
+            "key": "NIGHT",
+            "value": "Nacht"
+        },
+        {
+            "key": "STAY",
+            "value": "Aufenthalt"
+        },
+        {
+            "key": "MON",
+            "value": "Mo"
+        },
+        {
+            "key": "TUE",
+            "value": "Di"
+        },
+        {
+            "key": "WED",
+            "value": "Mi"
+        },
+        {
+            "key": "THU",
+            "value": "Do"
+        },
+        {
+            "key": "FRI",
+            "value": "Fr"
+        },
+        {
+            "key": "SAT",
+            "value": "Sa"
+        },
+        {
+            "key": "SUN",
+            "value": "So"
+        },
+        {
+            "key": "NOT_ALLOWED_CHECK_IN",
+            "value": "Keine Anreise"
+        },
+        {
+            "key": "HOTEL_OPERATION_VIOLATED_MESSAGE",
+            "value": "Für diesen Tag sind keine Reservierungen mehr möglich."
+        },
+        {
+            "key": "STAY_IN_ONLY",
+            "value": "Keine Abreise"
+        },
+        {
+            "key": "CTA_MESSAGE",
+            "value": "Nur Check-out"
+        },
+        {
+            "key": "CTD_MESSAGE",
+            "value": "Nur Check-in"
+        },
+        {
+            "key": "NIGHT_MINIMUM",
+            "value": "Nacht Minimum"
+        },
+        {
+            "key": "SELECTED_FEATURED",
+            "value": "Ausgewählte Merkmale"
+        },
+        {
+            "key": "SUGGESTED_FOR",
+            "value": "Häufig gewählt bei"
+        },
+        {
+            "key": "TRAVELLING_AS_GROUP",
+            "value": "Gruppenreisen"
+        },
+        {
+            "key": "SOLO_TRAVELLER",
+            "value": "Alleinreisenden"
+        },
+        {
+            "key": "TWO_TRAVELLERS",
+            "value": "zwei Reisenden"
+        },
+        {
+            "key": "THREE_TRAVELLERS",
+            "value": "drei Reisenden"
+        },
+        {
+            "key": "SMALL_GROUPS",
+            "value": "Kleingruppen"
+        },
+        {
+            "key": "TRAVELLING_WITH_KIDS",
+            "value": "Reisen mit Kindern"
+        },
+        {
+            "key": "FAMILY_TRIP",
+            "value": "Familientrips"
+        },
+        {
+            "key": "PERSONALIZE_YOUR_TRIP",
+            "value": "Unterkunft personalisieren"
+        },
+        {
+            "key": "NO_FEATURE_SELECTED",
+            "value": "Keine Merkmale ausgewählt"
+        },
+        {
+            "key": "CLEAR",
+            "value": "Löschen"
+        },
+        {
+            "key": "CLEAR_SELECTION",
+            "value": "Auswahl löschen"
+        },
+        {
+            "key": "FIND_MATCH",
+            "value": "Match finden"
+        },
+        {
+            "key": "YOUR_CHOICE",
+            "value": "Deine Wahl"
+        },
+        {
+            "key": "MATCH",
+            "value": "Match"
+        },
+        {
+            "key": "LOWEST_PRICE",
+            "value": "Niedrigster Preis"
+        },
+        {
+            "key": "MOST_POPULAR",
+            "value": "Gäste Favorit"
+        },
+        {
+            "key": "RECOMMENDED",
+            "value": "Unser Tipp"
+        },
+        {
+            "key": "RESTRICTION_AVAILABLE_FROM",
+            "value": "Dieses Zimmer ist verfügbar ab"
+        },
+        {
+            "key": "TO",
+            "value": "Zu"
+        },
+        {
+            "key": "RESTRICTION_LENGTH_OF_STAY",
+            "value": "Der Mindestaufenthalt beträgt"
+        },
+        {
+            "key": "RESTRICTION_CLOSE_TO_DEPARTURE",
+            "value": "Zu diesem Datum kann nicht ausgecheckt werden."
+        },
+        {
+            "key": "RESTRICTION_CLOSE_TO_ARRIVAL",
+            "value": "Der Check-in ist am ausgewählten Datum nicht möglich."
+        },
+        {
+            "key": "THROUGH",
+            "value": "durch"
+        },
+        {
+            "key": "RESTRICTION_MAX_LENGTH_OF_STAY",
+            "value": "Maximaler Aufenthalt "
+        },
+        {
+            "key": "NO_PREFERENCES_OR_FEATURES_GUARANTEED",
+            "value": "Keine Präferenzen"
+        },
+        {
+            "key": "YOUR_ROOM_WILL_BE_ASSIGNED_AS_PER_AVAILABILITY",
+            "value": "Die Zimmervergabe erfolgt nach Verfügbarkeit."
+        },
+        {
+            "key": "MORE",
+            "value": "mehr"
+        },
+        {
+            "key": "MATCHED_FEATURES",
+            "value": "Bestätigte Merkmale"
+        },
+        {
+            "key": "NOT_A_MATCH",
+            "value": "Kein Match"
+        },
+        {
+            "key": "OTHER_FEATURES_INCLUDED",
+            "value": "Weitere Merkmale enthalten"
+        },
+        {
+            "key": "CHANGE_DATE",
+            "value": "Datum bestätigen"
+        },
+        {
+            "key": "FROM",
+            "value": "Ab"
+        },
+        {
+            "key": "INCLUDES",
+            "value": "beinhaltet"
+        },
+        {
+            "key": "EXCLUSIVE",
+            "value": "exklusiv"
+        },
+        {
+            "key": "VIEW",
+            "value": "Wählen"
+        },
+        {
+            "key": "SHOW_DETAILS",
+            "value": "Zeige Details"
+        },
+        {
+            "key": "DURING_STAY",
+            "value": "während des Aufenthalts"
+        },
+        {
+            "key": "PER_STAY",
+            "value": "pro Aufenthalt"
+        },
+        {
+            "key": "KIDS",
+            "value": "Kinder"
+        },
+        {
+            "key": "KID",
+            "value": "Kind"
+        },
+        {
+            "key": "FOR",
+            "value": "für"
+        },
+        {
+            "key": "EVERYDAY",
+            "value": "täglich"
+        },
+        {
+            "key": "EXCEPT",
+            "value": "außer"
+        },
+        {
+            "key": "DAYS",
+            "value": "Tage"
+        },
+        {
+            "key": "DAY",
+            "value": "Tag"
+        },
+        {
+            "key": "BEDROOMS",
+            "value": "Schlafzimmer"
+        },
+        {
+            "key": "BEDROOM",
+            "value": "Schlafzimmer"
+        },
+        {
+            "key": "ONLY",
+            "value": "nur"
+        },
+        {
+            "key": "DAILY",
+            "value": "täglich"
+        },
+        {
+            "key": "PRICE_FOR",
+            "value": "Preis für"
+        },
+        {
+            "key": "ACCOMMODATION",
+            "value": "Unterkunft"
+        },
+        {
+            "key": "PER_NIGHT",
+            "value": "pro Nacht"
+        },
+        {
+            "key": "MESSAGE_NO_ROOM_OPTION_MATCH",
+            "value": "Zu den gewünschten Reiseterminen kommt es zu einer hohen Auslastung – bitte versuchen Sie es mit einem anderen Termin."
+        },
+        {
+            "key": "MESSAGE_NO_ROOM_OPTION",
+            "value": "Leider ist keine Zimmeroption verfügbar."
+        },
+        {
+            "key": "SELECT_PREFERENCE_FOR_MORE_OPTIONS",
+            "value": "Mehr Personalisierung"
+        },
+        {
+            "key": "ACCOMMODATION_OPTIONS",
+            "value": "Unterkunftsmöglichkeiten"
+        },
+        {
+            "key": "MATCHES",
+            "value": "Match(es)"
+        },
+        {
+            "key": "HOW_ARE_MATCHES_AND_PRICE_CALCULATED",
+            "value": "Wie werden Matches und Preise berechnet?"
+        },
+        {
+            "key": "SHOW_PRICE_WITH_ALL_TAXES_AND_FEES",
+            "value": "Preis mit allen Steuern und Gebühren anzeigen"
+        },
+        {
+            "key": "ALTERNATIVE_OPTIONS",
+            "value": "Alternative Optionen"
+        },
+        {
+            "key": "PER_NIGHT_PRICE",
+            "value": "Preis pro Nacht"
+        },
+        {
+            "key": "PRICE_PER_STAY",
+            "value": "Preis pro Aufenthalt"
+        },
+        {
+            "key": "PRICE_VIEW",
+            "value": "Preisansicht"
+        },
+        {
+            "key": "PRICE_RANGE",
+            "value": "Preisklasse"
+        },
+        {
+            "key": "RESET",
+            "value": "Zurücksetzen"
+        },
+        {
+            "key": "CANCEL",
+            "value": "Schließen"
+        },
+        {
+            "key": "OPTIONS_BASED_ON_SELECTED_PREFERENCES",
+            "value": "Optionen basierend auf ausgewählten Präferenzen und Reisedatum."
+        },
+        {
+            "key": "NO",
+            "value": "Keine"
+        },
+        {
+            "key": "FEATURES_INCLUEDED",
+            "value": "Standartmerkmale"
+        },
+        {
+            "key": "STANDARD_FEATURES",
+            "value": "Grundausstattung"
+        },
+        {
+            "key": "CANCELLATION_POLICY",
+            "value": "Stornierungsbedingungen"
+        },
+        {
+            "key": "PAYMENT_TERM",
+            "value": "Zahlungsziel"
+        },
+        {
+            "key": "SELECT",
+            "value": "Wählen"
+        },
+        {
+            "key": "ADD_SERVICES",
+            "value": "Services hinzufügen"
+        },
+        {
+            "key": "YOU_ARE_SELECTING",
+            "value": "Aktuelle Auswahl:"
+        },
+        {
+            "key": "INCLUDES_TAXES_AND_FEES",
+            "value": "inklusive Steuern und Gebühren"
+        },
+        {
+            "key": "EXCLUSIVE_TAXES_AND_FEES",
+            "value": "exklusive Steuern und Gebühren"
+        },
+        {
+            "key": "FEATURES_INCLUDED",
+            "value": "Merkmale inkludiert"
+        },
+        {
+            "key": "BACK",
+            "value": "Zurück"
+        },
+        {
+            "key": "ENHANCE_YOUR_STAY",
+            "value": "Aufenthalt verschönern"
+        },
+        {
+            "key": "SELECT_ADDITIONAL_EXTRAS_FOR",
+            "value": "Zusätzliche Leistungen auswählen für"
+        },
+        {
+            "key": "MEAL_PLAN",
+            "value": "Kulinarische Auswahl"
+        },
+        {
+            "key": "HOTEL_SERVICES",
+            "value": "Zusatzleistungen"
+        },
+        {
+            "key": "EXTRAS",
+            "value": "Extras"
+        },
+        {
+            "key": "INCLUDED",
+            "value": "Inbegriffen"
+        },
+        {
+            "key": "SELECTED",
+            "value": "Ausgewählt"
+        },
+        {
+            "key": "REMOVE",
+            "value": "Entfernen"
+        },
+        {
+            "key": "TOTAL_PRICE_FOR",
+            "value": "Gesamtpreis für"
+        },
+        {
+            "key": "COMPLETE_BOOKING",
+            "value": "Buchung abschließen"
+        },
+        {
+            "key": "BOOKING_REQUIRED_MESSAGE",
+            "value": "Tolle Auswahl, jetzt nur noch die erforderlichen Informationen eingeben!"
+        },
+        {
+            "key": "BOOKING_INFORMATION",
+            "value": "Buchungsinformation"
+        },
+        {
+            "key": "GUEST_INFORMATION",
+            "value": "Gästeinformation"
+        },
+        {
+            "key": "FIRST_NAME",
+            "value": "Vorname"
+        },
+        {
+            "key": "LAST_NAME",
+            "value": "Nachname"
+        },
+        {
+            "key": "EMAIL",
+            "value": "Email"
+        },
+        {
+            "key": "PHONE_NUMBER",
+            "value": "Mobilnummer"
+        },
+        {
+            "key": "ADDRESS",
+            "value": "Adresse"
+        },
+        {
+            "key": "CITY",
+            "value": "Stadt"
+        },
+        {
+            "key": "STATE",
+            "value": "Bundesland"
+        },
+        {
+            "key": "COUNTRY",
+            "value": "Land"
+        },
+        {
+            "key": "POSTAL_CODE",
+            "value": "Postleitzahl"
+        },
+        {
+            "key": "ADDITIONAL_GUEST",
+            "value": "Zusätzlicher Gast"
+        },
+        {
+            "key": "SPECIAL_REQUEST",
+            "value": "Besondere Bitte"
+        },
+        {
+            "key": "PAYMENT_METHODS",
+            "value": "Gewünschte Zahlungsweise?"
+        },
+        {
+            "key": "RESERVE_WITHOUT_CREDIT_CARD",
+            "value": "Reservieren ohne Zahlungsgarantie"
+        },
+        {
+            "key": "PAY_WITH_CREDIT_CARD",
+            "value": "Mit Karte garantieren"
+        },
+        {
+            "key": "GUARANTEE_WITH_CREDIT_CARD",
+            "value": "Garantie mit Kreditkarte"
+        },
+        {
+            "key": "GUARANTEE_WITH_DEPOSIT",
+            "value": "Banküberweisung"
+        },
+        {
+            "key": "GUARANTEE_WITH_BITCOIN",
+            "value": "Bezahlen Sie mit Bitcoin"
+        },
+        {
+            "key": "GUARANTEE_WITH_E-PAY",
+            "value": "Zahlen Sie mit der ANCV-Connect-Zahlung"
+        },
+        {
+            "key": "GUARANTEE_WITH_INVOICE",
+            "value": "Mit Rechnung bezahlen"
+        },
+        {
+            "key": "TERM_OF_USE_BOOKING_MESSAGE",
+            "value": "Ich habe die Nutzungsbedingungen und die Datenschutzerklärung gelesen und akzeptiere sie. Außerdem habe ich die Preisbeschreibung und die Preisregeln für meine Reservierung gelesen und verstanden."
+        },
+        {
+            "key": "NEWSLETTERS_BOOKING_MESSAGE",
+            "value": "Durch Aktivieren dieses Kästchens erklären Sie sich damit einverstanden, regelmäßig Newsletter, Updates und Werbeangebote an die von Ihnen angegebene E-Mail-Adresse zu erhalten."
+        },
+        {
+            "key": "CONFIRM_BOOKING",
+            "value": "Buchung bestätigen"
+        },
+        {
+            "key": "ACCEPTED",
+            "value": "Akzeptiert"
+        },
+        {
+            "key": "CARD_NUMBER",
+            "value": "Kartennummer"
+        },
+        {
+            "key": "EXPIRY_DATE",
+            "value": "Gültig bis"
+        },
+        {
+            "key": "CARDHOLDER_NAME",
+            "value": "Name des Karteninhabers"
+        },
+        {
+            "key": "CVV",
+            "value": "CVV"
+        },
+        {
+            "key": "PROCESSING",
+            "value": "wird bearbeitet"
+        },
+        {
+            "key": "DECLINE_BOOKING",
+            "value": "Angebot ablehnen"
+        },
+        {
+            "key": "BOOKING_SUMMARY",
+            "value": "Buchungsübersicht"
+        },
+        {
+            "key": "DATE",
+            "value": "Datum"
+        },
+        {
+            "key": "HIDE_DETAILS",
+            "value": "Details ausblenden"
+        },
+        {
+            "key": "ROOM_RATE",
+            "value": "Zimmerpreis"
+        },
+        {
+            "key": "SUB_TOTAL",
+            "value": "Zwischensumme"
+        },
+        {
+            "key": "INCLUDES_TAX",
+            "value": "Inklusive"
+        },
+        {
+            "key": "SERVICE_CHARGE",
+            "value": "Servicegebühr"
+        },
+        {
+            "key": "TAX",
+            "value": "Steuer"
+        },
+        {
+            "key": "VAT",
+            "value": "VAT"
+        },
+        {
+            "key": "TOTAL",
+            "value": "Gesamt"
+        },
+        {
+            "key": "PAYABLE_NOW",
+            "value": "Jetzt zahlbar"
+        },
+        {
+            "key": "PAYABLE_ON_ARRIVAL",
+            "value": "Offener Betrag"
+        },
+        {
+            "key": "TAX_INFORMATION",
+            "value": "Steuerinformation"
+        },
+        {
+            "key": "REQUEST_BOOKING_PAYMENT_FAILED",
+            "value": "Wir können die Zahlung nicht verarbeiten. Bitte versuche es erneut."
+        },
+        {
+            "key": "GUEST_INFO_REQUIRED",
+            "value": "Gastinformationen sind erforderlich"
+        },
+        {
+            "key": "BOOKING_RFC_NOT_AVAILABLE",
+            "value": "Das Zimmer ist nicht mehr verfügbar. Bitte versuchen Sie es mit einem anderen Datum oder wählen Sie ein anderes Zimmer."
+        },
+        {
+            "key": "REQUIRE_HOTEL_PAYMENT_MODE_CODE",
+            "value": "Zahlungsmethode ist erforderlich. Bitte versuchen Sie es später noch einmal!"
+        },
+        {
+            "key": "REQUEST_AFTER_OPERATION_CLOSING_TIME",
+            "value": "Buchung nach Betriebsschluss!"
+        },
+        {
+            "key": "CARD_INFO_REQUIRED",
+            "value": "Bitte geben Sie alle erforderlichen Kreditkarteninformationen ein"
+        },
+        {
+            "key": "CHARGE_CREDIT_CARD_FAILED",
+            "value": "Die Aufladung per Kreditkarte ist fehlgeschlagen. Bitte versuchen Sie es später noch einmal!"
+        },
+        {
+            "key": "TOKENIZE_CARD_FAILED",
+            "value": "Hinzufügen der Kartenkennung fehlgeschlagen. Bitte versuchen Sie es später noch einmal!"
+        },
+        {
+            "key": "CREATE_MEWS_CUSTOMER_FAILED",
+            "value": "Das Erstellen des Mews-Kunden ist fehlgeschlagen. Bitte versuchen Sie es später noch einmal!"
+        },
+        {
+            "key": "REQUIRE_CARD_INFORMATION",
+            "value": "Fehlende Karteninformationen. Bitte versuchen Sie es später noch einmal!"
+        },
+        {
+            "key": "BOOKING_NOT_AVAILABLE",
+            "value": "Das Zimmer ist nicht mehr verfügbar. Bitte versuchen Sie es mit einem anderen Datum oder wählen Sie ein anderes Zimmer."
+        },
+        {
+            "key": "EXTRA_SERVICE",
+            "value": "Extras"
+        },
+        {
+            "key": "BOOKING_SUCCESS_MESSAGE",
+            "value": "Die Buchung war erfolgreich!"
+        },
+        {
+            "key": "BOOKING_CONFIRMATION",
+            "value": "Buchungsbestätigung"
+        },
+        {
+            "key": "BOOKING_NUMBER",
+            "value": "Buchungsnummer"
+        },
+        {
+            "key": "ARRIVAL",
+            "value": "Ankunft"
+        },
+        {
+            "key": "DEPARTURE",
+            "value": "Abfahrt"
+        },
+        {
+            "key": "HOW_TO_REACH_US",
+            "value": "So erreichen Sie uns"
+        },
+        {
+            "key": "MAIN_GUEST_INFORMATION",
+            "value": "Hauptinformationen für Gäste"
+        },
+        {
+            "key": "FULL_NAME",
+            "value": "Vollständiger Name"
+        },
+        {
+            "key": "EMAIL_ADDRESS",
+            "value": "E-Mail-Addresse"
+        },
+        {
+            "key": "PRICING_INFORMATION",
+            "value": "Preisinformationen"
+        },
+        {
+            "key": "BACK_TO_HOMEPAGE",
+            "value": "Zurück zur Startseite"
+        },
+        {
+            "key": "HOTEL_SERVICES_AND_ANCILLARIES",
+            "value": "Zusatzleistungen"
+        },
+        {
+            "key": "BOOKER_INFORMATION",
+            "value": "Bucherinformationen"
+        },
+        {
+            "key": "SPECIAL_REQUEST_PLACEHOLDER",
+            "value": "Besondere Wünsche nehmen wir gerne entgegen und versuchen, diese je nach Möglichkeit umzusetzen."
+        },
+        {
+            "key": "PROPOSAL_EXPIRATION_MESSAGE",
+            "value": "Dieses Angebot ist nicht mehr verfügbar"
+        },
+        {
+            "key": "PROPOSAL_CONTACT_MESSAGE",
+            "value": "Kontaktieren Sie uns, um eine neue Buchung vorzunehmen"
+        },
+        {
+            "key": "MAKE_ANOTHER_BOOKING",
+            "value": "Machen Sie eine weitere Buchung"
+        },
+        {
+            "key": "OR",
+            "value": "oder"
+        },
+        {
+            "key": "PROPOSAL_DECLINED_MESSAGE",
+            "value": "Sie haben diese Buchung am abgelehnt"
+        },
+        {
+            "key": "TERM_OF_USE",
+            "value": "Nutzungsbedingungen"
+        },
+        {
+            "key": "PRIVACY_STATEMENT",
+            "value": "Datenschutzerklärung"
+        },
+        {
+            "key": "POWER_BY",
+            "value": "Technik von"
+        },
+        {
+            "key": "YOU_GOT_A_DEAL",
+            "value": "ANGEBOT buchbar"
+        },
+        {
+            "key": "DEAL_AVAILABLE",
+            "value": "ANGEBOT verfügbar"
+        },
+        {
+            "key": "DEAL_MESSAGE",
+            "value": "Mindestaufenthalt"
+        },
+        {
+            "key": "DEAL_MAX_LOS_MESSAGE",
+            "value": "und maximal"
+        },
+        {
+            "key": "AGE_OF_CHILD",
+            "value": "Alter des Kindes"
+        },
+        {
+            "key": "MEAL_PLANS_AND_SERVICES",
+            "value": "Extras"
+        },
+        {
+            "key": "FEATURE_CONFIGURATOR",
+            "value": "Merkmalskonfigurator"
+        },
+        {
+            "key": "PRICE_SETTINGS",
+            "value": "Preiseinstellungen"
+        },
+        {
+            "key": "DECLINE",
+            "value": "Ablehnen"
+        },
+        {
+            "key": "INVALID_CAPACITY",
+            "value": "Ungültige Kapazitätsanfrage"
+        },
+        {
+            "key": "DISPLAY_TOTAL_PRICE",
+            "value": "Gesamtpreis anzeigen"
+        },
+        {
+            "key": "ROOM_KEY",
+            "value": "Wohneinheit"
+        },
+        {
+            "key": "ROOM_SPACE",
+            "value": "Grösse"
+        },
+        {
+            "key": "MESSAGE_CONFIRM_PAYMENT_CERTIFY",
+            "value": "Ich bestätige, dass ich die"
+        },
+        {
+            "key": "MESSAGE_CONFIRM_PAYMENT_TERMS_OF_USE",
+            "value": "Nutzungsbedingungen"
+        },
+        {
+            "key": "MESSAGE_CONFIRM_PAYMENT_PRIVACY_STATEMENT",
+            "value": "die Erklärung zum Datenschutz"
+        },
+        {
+            "key": "MESSAGE_CONFIRM_PAYMENT_RATE_DESCRIPTION_RULE",
+            "value": "gelesen und akzeptiert habe sowie die Preisbeschreibungen und Preisregelungen gelesen und verstanden habe. "
+        },
+        {
+            "key": "AND",
+            "value": "und"
+        },
+        {
+            "key": "TOOLTIP_HOW_DO_WE_CALCULATE_PERCENTAGE_MATCHES_LINE_1",
+            "value": "Optionen & Preise sind so individuell wie die Gästevorlieben."
+        },
+        {
+            "key": "TOOLTIP_HOW_DO_WE_CALCULATE_PERCENTAGE_MATCHES_LINE_2",
+            "value": "Ergebnisse werden durch Rangfolge & Popularität der Merkmale beeinflusst."
+        },
+        {
+            "key": "LANGUAGE",
+            "value": "Sprache"
+        },
+        {
+            "key": "CURRENCY",
+            "value": "Währung"
+        },
+        {
+            "key": "LANGUAGE_AND_CURRENCY",
+            "value": "Sprache und Währung"
+        },
+        {
+            "key": "NUMBER_OF_NIGHTS_STAY",
+            "value": "{{number_of_nights}} mal schlafen"
+        },
+        {
+            "key": "SELECT_RATE_SUITABLE",
+            "value": "Tarif Optionen"
+        },
+        {
+            "key": "COMBINATION_UNITS",
+            "value": "Kombination von {{number_of_rooms}} Einheiten"
+        },
+        {
+            "key": "PER_ROOM",
+            "value": "Pro Zimmer"
+        },
+        {
+            "key": "PER_PERSON_PER_NIGHT",
+            "value": "Pro Person & Nacht"
+        },
+        {
+            "key": "PER_PERSON",
+            "value": "pro Person & Aufenthalt"
+        },
+        {
+            "key": "NOT_ALLOW_CHECK_IN",
+            "value": "Kein Check-in"
+        },
+        {
+            "key": "IS_REQUIRED",
+            "value": "ist erforderlich"
+        },
+        {
+            "key": "IS_NOT_VALID",
+            "value": "ist nicht gültig"
+        },
+        {
+            "key": "RESTRICTION_LENGTH_OF_STAY_THROUGH",
+            "value": "{{number_of_night}}-Nächte Aufenthalt während dieses Zeitraums erforderlich."
+        },
+        {
+            "key": "GO_TO_NEXT_ROOM",
+            "value": "Zur nächsten Einheit"
+        },
+        {
+            "key": "UNAVAILABLE",
+            "value": "Nicht verfügbar"
+        },
+        {
+            "key": "SELECT_AVAILABLE_DATE_ON_THE_RIGHT",
+            "value": "Wählen Sie auf der rechten Seite das verfügbare Datum aus."
+        },
+        {
+            "key": "RESIDENTIAL_UNITS",
+            "value": "Wohneinheiten"
+        },
+        {
+            "key": "NO_SERVICES",
+            "value": "Können im nächsten Schritt gebucht werden."
+        },
+        {
+            "key": "SPECIAL_REQUEST_IS_NOT_VALID_MAX_LENGTH",
+            "value": "Sonderwünsche dürfen nicht länger als 250 Zeichen sein"
+        },
+        {
+            "key": "PER_UNIT",
+            "value": "pro Einheit"
+        },
+        {
+            "key": "ACCOMMODATION_LEFT",
+            "value": "Nur noch {{recommendation_count}} verfügbar"
+        },
+        {
+            "key": "SELECTED_ROOM",
+            "value": "Ausgewählte Unterkunft"
+        },
+        {
+            "key": "SPECIAL_DEAL",
+            "value": "Spezieller Deal"
+        },
+        {
+            "key": "SOLD_OUT",
+            "value": "Ausverkauft"
+        },
+        {
+            "key": "EXPLAIN",
+            "value": "Erklären"
+        },
+        {
+            "key": "DESCRIPTION",
+            "value": "Beschreibung"
+        },
+        {
+            "key": "NIGHTS_MAXIMUM",
+            "value": "Nächte maximal"
+        },
+        {
+            "key": "SHOW_MORE_PRODUCTS",
+            "value": "Mehr anzeigen"
+        },
+        {
+            "key": "CARD_DECLINED",
+            "value": "Karte abgelehnt"
+        },
+        {
+            "key": "PAYMENT_FAILED_MSG",
+            "value": "Bei der Verarbeitung Ihrer Zahlung ist ein Fehler aufgetreten."
+        },
+        {
+            "key": "PAYMENT_FAILED",
+            "value": "Bezahlung fehlgeschlagen"
+        },
+        {
+            "key": "PER_ITEM",
+            "value": "pro Stück"
+        },
+        {
+            "key": "GUARANTEE_WITH_DIGITAL_SYSTEM",
+            "value": "Bezahlen mit digitalem Gästesystem"
+        },
+        {
+            "key": "THIS_IS_YOUR_PROPOSAL",
+            "value": "Das ist Ihr Vorschlag"
+        },
+        {
+            "key": "SAVE_CHANGE",
+            "value": "Änderungen speichern"
+        },
+        {
+            "key": "COMPANY_INFORMATION",
+            "value": "Informationen zum Unternehmen"
+        },
+        {
+            "key": "TAX_ID",
+            "value": "Steuer-ID"
+        },
+        {
+            "key": "COMPANY_NAME",
+            "value": "Name des Unternehmens"
+        },
+        {
+            "key": "COMPANY_EMAIL",
+            "value": "Zusätzliche Firmen-E-Mail"
+        },
+        {
+            "key": "CITY_OR_TOWN",
+            "value": "Stadt/Ort"
+        },
+        {
+            "key": "CONFIRM_YOUR_BOOKING",
+            "value": "Angebot bestätigen für"
+        },
+        {
+            "key": "PROPOSAL_NUMBER",
+            "value": "Angebotsnummer"
+        },
+        {
+            "key": "BOOK_FOR_SOMEONE_ELSE",
+            "value": "Für eine andere Person buchen?"
+        },
+        {
+            "key": "ACCOMMODATIONS",
+            "value": "Unterkünfte"
+        },
+        {
+            "key": "TRAVELLERS",
+            "value": "Reisende"
+        },
+        {
+            "key": "TOTAL",
+            "value": "Gesamtsumme"
+        },
+        {
+            "key": "IMPRINT",
+            "value": "Impressum"
+        },
+        {
+            "key": "LEISURE",
+            "value": "Freizeit"
+        },
+        {
+            "key": "BUSINESS",
+            "value": "Geschäftlich"
+        },
+        {
+            "key": "OTHERS",
+            "value": "Andere"
+        },
+        {
+            "key": "COLLAPSE",
+            "value": "Schließen"
+        },
+        {
+            "key": "CLOSE",
+            "value": "Schließen"
+        },
+        {
+            "key": "FEATURES_SELECTED_PRIORITY",
+            "value": "Merkmale nach Priorität"
+        },
+        {
+            "key": "MORE_PERSONALIZATION",
+            "value": "Mehr Merkmale aussuchen"
+        },
+        {
+            "key": "ACCOMMODATION_RATES_FOR",
+            "value": "Übernachtungspreis für"
+        },
+        {
+            "key": "EACH_ROOM_PER_NIGHT",
+            "value": "Pro Unterkunft pro Nacht"
+        },
+        {
+            "key": "TOTAL_CHARGES",
+            "value": "Gesamtkosten"
+        },
+        {
+            "key": "CONGRATULATION_YOU_SAVED",
+            "value": "Gespart"
+        },
+        {
+            "key": "BOOK_NOW",
+            "value": "JETZT BUCHEN"
+        },
+        {
+            "key": "TOTAL_PRICE_FOR_ALL_ROOMS",
+            "value": "Gesamtpreis "
+        },
+        {
+            "key": "TOTAL_PRICE_FOR",
+            "value": "Preis für"
+        },
+        {
+            "key": "VIEW_DETAILS",
+            "value": "Details ansehen"
+        },
+        {
+            "key": "TOTAL_CHARGES_FOR_ROOM",
+            "value": "Preis für "
+        },
+        {
+            "key": "TOTAL_CHARGES_FOR_ALL_ROOMS",
+            "value": "Gesamtpreis"
+        },
+        {
+            "key": "PET",
+            "value": "Haustier"
+        },
+        {
+            "key": "PETS",
+            "value": "Haustiere"
+        },
+        {
+            "key": "ADDITIONAL_GUEST_LIST",
+            "value": "Weitere Gäste"
+        },
+        {
+            "key": "OPTIONAL",
+            "value": "wahlweise"
+        },
+        {
+            "key": "REQUIRED",
+            "value": "erforderlich"
+        },
+        {
+            "key": "TRIP_PURPOSE_MSG",
+            "value": "Auf Geschäftsreise?"
+        },
+        {
+            "key": "SPECIAL_REQUEST_MSG",
+            "value": "Nachricht schicken?"
+        },
+        {
+            "key": "TOTAL_GUESTS",
+            "value": "Gäste insgesamt"
+        },
+        {
+            "key": "TOTAL_AMOUNT",
+            "value": "Gesamtbetrag"
+        },
+        {
+            "key": "EACH_ROOM_PER_NIGHT",
+            "value": "Jedes Zimmer pro Nacht"
+        },
+        {
+            "key": "COMPANY_ADDRESS",
+            "value": "Adresse des Unternehmens"
+        },
+        {
+            "key": "TRIP_PURPOSE",
+            "value": "Zweck der Reise"
+        },
+        {
+            "key": "PAYMENT_METHOD",
+            "value": "Zahlungsmethode"
+        },
+        {
+            "key": "CREDIT_CARD",
+            "value": "mit Kreditkarte"
+        },
+        {
+            "key": "ACCOMMODATIONS_AND_GUESTS",
+            "value": "Unterkünfte und Gäste"
+        },
+        {
+            "key": "DESTINATION",
+            "value": "Reiseziel"
+        },
+        {
+            "key": "PREPAID_AMOUNT",
+            "value": "Vorausbezahlter Betrag"
+        },
+        {
+            "key": "TOTAL_AMOUNT_DUE",
+            "value": "Fälliger Gesamtbetrag"
+        },
+        {
+            "key": "SELECTED_FEATURED",
+            "value": " Ausgewählte Merkmale"
+        },
+        {
+            "key": "SELECT_FEATURES_TO_PERSONALISE_YOUR_STAY",
+            "value": "Merkmale auswählen, um Ihren Aufenthalt zu personalisieren"
+        },
+        {
+            "key": "TRIP_PURPOSE_MSG_OPT_1",
+            "value": "Ja, ich bin auf Geschäftsreise."
+        },
+        {
+            "key": "TRIP_PURPOSE_MSG_OPT_2",
+            "value": "Nein, ich bin es nicht."
+        },
+        {
+            "key": "ALTERNATIVE_ACCOMMODATION_OPTIONS",
+            "value": "Alternative Unterkunftsmöglichkeiten"
+        },
+        {
+            "key": "NO_AVAILABLE_ACCOMMODATION_FOR",
+            "value": "Es sind keine Optionen verfügbar für:"
+        },
+        {
+            "key": "CHANGE_YOUR_SEARCH",
+            "value": "Ändern Sie Ihre Suche"
+        },
+        {
+            "key": "INPUT_ANOTHER_CODE",
+            "value": "Bitte versuchen Sie, einen anderen Code zu entfernen oder einzugeben"
+        },
+        {
+            "key": "NO_ROOM_OPTION_AVAILABLE",
+            "value": "Leider ist keine Option verfügbar"
+        },
+        {
+            "key": "PLEASE_CHOOSE_ANOTHER_DATE",
+            "value": "Bitte wählen Sie ein anderes Datum"
+        },
+        {
+            "key": "BOOK_ANOTHER_DATE",
+            "value": "Buchen Sie ein anderes Datum"
+        },
+        {
+            "key": "MATCHED",
+            "value": "Match"
+        },
+        {
+            "key": "OTHER",
+            "value": "Weitere"
+        },
+        {
+            "key": "SHOW_LESS_PRODUCT",
+            "value": "Weniger anzeigen"
+        },
+        {
+            "key": "BOOK",
+            "value": "Buchen"
+        },
+        {
+            "key": "OPAQUE_TEXT",
+            "value": "Ihre Unterkunft wird nach unserem Ermessen zugewiesen. Präferenzen werden nicht berücksichtigt."
+        },
+        {
+            "key": "NO_MATCHED_AVAILABLE_LINE_1",
+            "value": "Kein {{space_type}} Match verfügbar"
+        },
+        {
+            "key": "NO_MATCHED_AVAILABLE_LINE_2",
+            "value": "Sie können ein anderes Merkmal wählen oder sich alternative Optionen ansehen"
+        },
+        {
+            "key": "NO_MATCHED_AVAILABLE_BUTTON",
+            "value": "Alternative Option anzeigen - Keine Übereinstimmung"
+        },
+        {
+            "key": "STAY_UNIT",
+            "value": "Unterkunft"
+        },
+        {
+            "key": "STAY_UNITS",
+            "value": "Unterkünfte"
+        },
+        {
+            "key": "EXTRA_SERVICES",
+            "value": "Extra services"
+        },
+        {
+            "key": "NIGHTS_MINIMUM",
+            "value": "Nächte Minimum"
+        },
+        {
+            "key": "NIGHT_MAXIMUM",
+            "value": "Nacht Maximum"
+        },
+        {
+            "key": "NOT_MATCH_BUT_AVAILABLE",
+            "value": "Verfügbar im gewählten Zeitraum."
+        },
+        {
+            "key": "EXTRA_BED",
+            "value": "Zusatzbett"
+        },
+        {
+            "key": "EXTRA_BEDS",
+            "value": "Zusatzbetten"
+        },
+        {
+            "key": "FEATURES",
+            "value": "Merkmale"
+        },
+        {
+            "key": "INCLUDED_SERVICES",
+            "value": "Inkludierte Leistungen"
+        },
+        {
+            "key": "SPECIAL_ACCOMMODATION_FEATURES",
+            "value": "Besondere Merkmale der Unterkunft"
+        },
+        {
+            "key": "SPECIAL_FEATURES",
+            "value": "Besondere Merkmale"
+        },
+        {
+            "key": "VIEW_ALL_PHOTOS",
+            "value": "Alle Fotos anzeigen"
+        },
+        {
+            "key": "RATE",
+            "value": "Preis"
+        },
+        {
+            "key": "ROOM_IMAGE",
+            "value": "Zimmerbild"
+        },
+        {
+            "key": "NO_FEATURE_GUARANTEED",
+            "value": "Kein Merkmal garantiert."
+        },
+        {
+            "key": "PER_STAY_UNIT_PER_NIGHT",
+            "value": "Pro Einheit pro Nacht"
+        },
+        {
+            "key": "BOOKING_NOTES",
+            "value": "Buchungsnotizen"
+        },
+        {
+            "key": "SELECT_YOUR_FEATURES",
+            "value": "Merkmale wählen"
+        },
+        {
+            "key": "YOUR_SELECTIONS",
+            "value": "Auswahl"
+        },
+        {
+            "key": "EDIT_MY_SELECTIONS",
+            "value": "Meine Auswahl bearbeiten"
+        },
+        {
+            "key": "CATEGORY_HOVERING_MESSAGE",
+            "value": "Wähle {{feature_name}} und mehr"
+        },
+        {
+            "key": "BOOKING_PROCESSING_TITLE",
+            "value": "Die Buchung wird bearbeitet!"
+        },
+        {
+            "key": "BOOKING_PROCESSING_INSTRUCTION",
+            "value": "Bitte nicht auf ‚zurück‘ oder ‚schließen‘ klicken oder den Browser aktualisieren."
+        },
+        {
+            "key": "BOOKING_PROCESSING_ERROR_TITLE",
+            "value": "Ihre Buchung konnte nicht abgeschlossen werden!"
+        },
+        {
+            "key": "BOOKING_PROCESSING_ERROR_INSTRUCTION",
+            "value": "Ihre Buchung wurde nicht abgeschlossen. Bitte versuchen Sie es erneut."
+        },
+        {
+            "key": "GUARANTEE_WITH_PAYPAL",
+            "value": "PayPal"
+        },
+        {
+            "key": "OTHER_PAYMENT",
+            "value": "Andere Zahlungsmethode"
+        },
+        {
+            "key": "FIXED_FEE",
+            "value": "Fester Aufpreis"
+        },
+        {
+            "key": "ADD_ACCOMMODATION",
+            "value": "Unterkunft hinzufügen"
+        },
+        {
+            "key": "BANK_TRANSFER",
+            "value": "Banküberweisung"
+        },
+        {
+            "key": "CLEAR_ALL",
+            "value": "Alles löschen"
+        },
+        {
+            "key": "FEATURE_SELECTED",
+            "value": "Merkmale ausgewählt"
+        },
+        {
+            "key": "GUARANTEE_WITH",
+            "value": "Garantie mit"
+        },
+        {
+            "key": "NO_GUARANTEE",
+            "value": "Keine Gewähr"
+        },
+        {
+            "key": "OTHER_PAYMENT_METHOD",
+            "value": "Andere Zahlungsmethode"
+        },
+        {
+            "key": "PAYPAL",
+            "value": "PayPal"
+        },
+        {
+            "key": "SELECT_ACCOMMODATION",
+            "value": "Unterkunft auswählen"
+        },
+        {
+            "key": "TOTAL_ACCOMMODATION",
+            "value": "Gesamtunterkunft"
+        },
+        {
+            "key": "TOTAL_REMAINING",
+            "value": "Gesamt verbleibend"
+        },
+        {
+            "key": "FIND_YOUR_MATCH",
+            "value": "Finde dein Match"
+        },
+        {
+            "key": "FIND_A_DIFFERENT_MATCH",
+            "value": "Andere Option finden"
+        },
+        {
+            "key": "BOOKING_PREFERENCES_CHANGED",
+            "value": "Die Buchungseinstellungen wurden geändert.\n Bitte drücken Sie „{0}“, um sie anzuwenden."
+        },
+        {
+            "key": "TOTAL_UNITS",
+            "value": "Einheiten insgesamt"
+        },
+        {
+            "key": "TOTAL_PRICE",
+            "value": "Gesamtpreis"
+        },
+        {
+            "key": "PER_PET_PER_STAY",
+            "value": "Pro Haustier / Aufenthalt"
+        },
+        {
+            "key": "PER_PET_PER_NIGHT",
+            "value": "Pro Haustier / Nacht"
+        },
+        {
+            "key": "UNIT",
+            "value": "einheit"
+        },
+        {
+            "key": "UNITS",
+            "value": "einheiten"
+        },
+        {
+            "key": "PER",
+            "value": "pro"
+        },
+        {
+            "key": "ADD_UNIT",
+            "value": "Einheit hinzufügen"
+        },
+        {
+            "key": "BOOKING_DETAILS",
+            "value": "Buchungsdetails"
+        },
+        {
+            "key": "CUSTOMIZE",
+            "value": "Anpassen"
+        },
+        {
+            "key": "PICK_FEATURES",
+            "value": "Merkmale wählen"
+        },
+        {
+            "key": "OPTION",
+            "value": "Option"
+        },
+        {
+            "key": "OPTIONS",
+            "value": "Optionen"
+        },
+        {
+            "key": "WHO_IS_COMING_AND_WHEN",
+            "value": "Wer kommt wann?"
+        },
+        {
+            "key": "AVAILABLE_OPTIONS",
+            "value": "Verfügbare Optionen"
+        },
+        {
+            "key": "WHO_BOOKED_ALSO_CHOOSE",
+            "value": "{0} die das {1} gebucht haben, wählten auch:"
+        }
+    ]
+}

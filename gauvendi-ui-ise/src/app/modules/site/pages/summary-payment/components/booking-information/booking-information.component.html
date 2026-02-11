@@ -1,0 +1,405 @@
+<div class="p-[24px] bg-background-secondary-color rounded-[24px] sm:p-[16px]">
+  <div class="mb-[16px]">
+    <app-checkbox-c [formControl]="bookForAnotherCtl">
+      <div class="text-[14px] font-normal leading-[21px] text-primary-color">{{ 'BOOK_FOR_SOMEONE_ELSE' | translate | async }}</div>
+    </app-checkbox-c>
+  </div>
+  <div class="" *ngIf="bookForAnotherCtl?.value">
+    <!-- Booker information -->
+    <div class="" [formGroup]="rfBooker">
+      <div class="text-[20px] font-medium leading-[24px] text-primary-color mb-[20px] sm:hidden">
+        {{ 'BOOKER_INFORMATION' | translate | async }}
+      </div>
+      <div class="flex items-start gap-[12px] mb-[12px] sm:flex-col">
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">{{ 'FIRST_NAME' | translate | async }} <span class="text-field-required">*</span></div>
+          <div class="">
+            <app-input
+              [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+              [isRequired]="true"
+              [control]="rfBooker?.get('firstName')"
+              formControlName="firstName"
+              type="text"
+            >
+              <app-form-error *ngIf="rfBooker?.get('firstName').hasError('required') && rfBooker?.get('firstName').touched">
+                {{ 'FIRST_NAME' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+              </app-form-error>
+            </app-input>
+          </div>
+        </div>
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">{{ 'LAST_NAME' | translate | async }} <span class="text-field-required">*</span></div>
+          <div class="">
+            <app-input
+              [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+              [isRequired]="true"
+              [control]="rfBooker?.get('lastName')"
+              formControlName="lastName"
+              type="text"
+            >
+              <app-form-error *ngIf="rfBooker?.get('lastName').hasError('required') && rfBooker?.get('lastName').touched">
+                {{ 'LAST_NAME' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+              </app-form-error>
+            </app-input>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-start gap-[12px] mb-[12px] sm:flex-col">
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">{{ 'EMAIL' | translate | async }} <span class="text-field-required">*</span></div>
+          <div class="">
+            <app-input
+              [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+              [isRequired]="true"
+              [control]="rfBooker?.get('email')"
+              formControlName="email"
+              type="email"
+            >
+              <app-form-error *ngIf="rfBooker?.get('email').hasError('required') && rfBooker?.get('email').touched">
+                {{ 'EMAIL' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+              </app-form-error>
+              <app-form-error *ngIf="rfBooker?.get('email').hasError('email') && rfBooker?.get('email').touched">
+                {{ 'EMAIL' | translate | async }} {{ 'IS_NOT_VALID' | translate | async }}
+              </app-form-error>
+            </app-input>
+          </div>
+        </div>
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">{{ 'PHONE_NUMBER' | translate | async }} <span class="text-field-required">*</span></div>
+          <div class="">
+            <app-input-custom-phone-number
+              [allItems]="countriesPhone$ | async"
+              [isRequired]="true"
+              [control]="rfBooker?.get('phoneNumber')"
+              [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+              formControlName="phoneNumber"
+            >
+              <app-form-error *ngIf="rfBooker?.get('phoneNumber').hasError('required') && rfBooker?.get('phoneNumber').touched">
+                {{ 'PHONE_NUMBER' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+              </app-form-error>
+              <app-form-error *ngIf="rfBooker?.get('phoneNumber').hasError('phoneNumberRequired') && rfBooker?.get('phoneNumber').touched">
+                {{ 'PHONE_NUMBER' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+              </app-form-error>
+            </app-input-custom-phone-number>
+          </div>
+        </div>
+      </div>
+      <div class="mb-[12px]">
+        <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">
+          {{ 'ADDRESS' | translate | async }} <span *ngIf="mandatoryAddressMainGuest?.address" class="text-field-required">*</span>
+        </div>
+        <div class="">
+          <app-input
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            [isRequired]="mandatoryAddressMainGuest?.address"
+            [control]="rfBooker?.get('address')"
+            formControlName="address"
+            type="text"
+            [maxLength]="80"
+          >
+            <app-form-error *ngIf="rfBooker?.get('address').hasError('required') && rfBooker?.get('address').touched">
+              {{ 'ADDRESS' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+            </app-form-error>
+          </app-input>
+        </div>
+      </div>
+      <div class="flex items-start gap-[12px] mb-[12px] sm:flex-col">
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">
+            {{ 'CITY' | translate | async }} <span *ngIf="mandatoryAddressMainGuest?.city" class="text-field-required">*</span>
+          </div>
+          <div class="">
+            <app-input
+              [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+              [isRequired]="true"
+              [control]="rfBooker?.get('city')"
+              formControlName="city"
+              type="text"
+              [maxLength]="40"
+            >
+              <app-form-error *ngIf="rfBooker?.get('city').hasError('required') && rfBooker?.get('city').touched">
+                {{ 'CITY' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+              </app-form-error>
+            </app-input>
+          </div>
+        </div>
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">{{ 'STATE' | translate | async }}</div>
+          <div class="">
+            <app-input
+              [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+              [control]="rfBooker?.get('state')"
+              formControlName="state"
+              type="text"
+              [maxLength]="20"
+            ></app-input>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-start gap-[12px] sm:flex-col">
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">{{ 'COUNTRY' | translate | async }}</div>
+          <div class="">
+            <app-select-single-control-country
+              [allItems]="countriesParse$ | async"
+              [control]="rfBooker?.get('country')"
+              [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+              formControlName="country"
+            >
+            </app-select-single-control-country>
+          </div>
+        </div>
+        <div class="flex-1 sm:w-full">
+          <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">
+            {{ 'POSTAL_CODE' | translate | async }}
+            <span *ngIf="mandatoryAddressMainGuest?.postalCode" class="text-field-required">*</span>
+          </div>
+          <div class="">
+            <app-input
+              [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+              [control]="rfBooker?.get('postalCode')"
+              formControlName="postalCode"
+              type="text"
+              [maxLength]="15"
+            >
+              <app-form-error *ngIf="rfBooker?.get('postalCode').hasError('required') && rfBooker?.get('postalCode').touched">
+                {{ 'POSTAL_CODE' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+              </app-form-error>
+            </app-input>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-main-screen mx-[-24px] sm:-mx-[16px]">
+      <div class="h-[12px] bg-background-secondary-color rounded-b-[24px] pt-[24px]"></div>
+      <div class="h-[12px] bg-background-secondary-color rounded-t-[24px] mt-[12px] pb-[24px]"></div>
+    </div>
+  </div>
+  <!-- Guest information -->
+  <div class="" [formGroup]="rfGuest">
+    <div class="text-[20px] font-medium leading-[24px] text-primary-color mb-[20px]">
+      {{ 'GUEST_INFORMATION' | translate | async }}
+    </div>
+    <div class="flex items-start gap-[12px] mb-[12px] sm:flex-col">
+      <div class="flex-1 sm:w-full">
+        <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">{{ 'FIRST_NAME' | translate | async }} <span class="text-field-required">*</span></div>
+        <div class="">
+          <app-input
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            [isRequired]="true"
+            [control]="rfGuest?.get('firstName')"
+            formControlName="firstName"
+            type="text"
+          >
+            <app-form-error *ngIf="rfGuest?.get('firstName').hasError('required') && rfGuest?.get('firstName').touched">
+              {{ 'FIRST_NAME' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+            </app-form-error>
+          </app-input>
+        </div>
+      </div>
+      <div class="flex-1 sm:w-full">
+        <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">{{ 'LAST_NAME' | translate | async }} <span class="text-field-required">*</span></div>
+        <div class="">
+          <app-input
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            [isRequired]="true"
+            [control]="rfGuest?.get('lastName')"
+            formControlName="lastName"
+            type="text"
+          >
+            <app-form-error *ngIf="rfGuest?.get('lastName').hasError('required') && rfGuest?.get('lastName').touched">
+              {{ 'LAST_NAME' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+            </app-form-error>
+          </app-input>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-start gap-[12px] mb-[12px] sm:flex-col">
+      <div class="flex-1 sm:w-full">
+        <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">{{ 'EMAIL' | translate | async }} <span class="text-field-required">*</span></div>
+        <div class="">
+          <app-input
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            [isRequired]="true"
+            [control]="rfGuest?.get('email')"
+            formControlName="email"
+            type="email"
+          >
+            <app-form-error *ngIf="rfGuest?.get('email').hasError('required') && rfGuest?.get('email').touched">
+              {{ 'EMAIL' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+            </app-form-error>
+            <app-form-error *ngIf="rfGuest?.get('email').hasError('email') && rfGuest?.get('email').touched">
+              {{ 'EMAIL' | translate | async }} {{ 'IS_NOT_VALID' | translate | async }}
+            </app-form-error>
+          </app-input>
+        </div>
+      </div>
+      <div class="flex-1 sm:w-full">
+        <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">{{ 'PHONE_NUMBER' | translate | async }} <span class="text-field-required">*</span></div>
+        <div class="">
+          <app-input-custom-phone-number
+            [allItems]="countriesPhone$ | async"
+            [isRequired]="true"
+            [metadata]="true"
+            [control]="rfGuest?.get('phoneNumber')"
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            formControlName="phoneNumber"
+          >
+            <app-form-error *ngIf="rfGuest?.get('phoneNumber').hasError('required') && rfGuest?.get('phoneNumber').touched">
+              {{ 'PHONE_NUMBER' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+            </app-form-error>
+            <app-form-error *ngIf="rfGuest?.get('phoneNumber').hasError('phoneNumberRequired') && rfGuest?.get('phoneNumber').touched">
+              {{ 'PHONE_NUMBER' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+            </app-form-error>
+          </app-input-custom-phone-number>
+        </div>
+      </div>
+    </div>
+    <div class="mb-[12px]">
+      <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">
+        {{ 'ADDRESS' | translate | async }} <span *ngIf="mandatoryAddressMainGuest?.address" class="text-field-required">*</span>
+      </div>
+      <div class="">
+        <app-input
+          [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+          [isRequired]="mandatoryAddressMainGuest?.address"
+          [control]="rfGuest?.get('address')"
+          formControlName="address"
+          type="text"
+          [maxLength]="80"
+        >
+          <app-form-error *ngIf="rfGuest?.get('address').hasError('required') && rfGuest?.get('address').touched">
+            {{ 'ADDRESS' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+          </app-form-error>
+        </app-input>
+      </div>
+    </div>
+    <div class="flex items-start gap-[12px] mb-[12px] sm:flex-col">
+      <div class="flex-1 sm:w-full">
+        <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">
+          {{ 'CITY' | translate | async }} <span *ngIf="mandatoryAddressMainGuest?.city" class="text-field-required">*</span>
+        </div>
+        <div class="">
+          <app-input
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            [isRequired]="true"
+            [control]="rfGuest?.get('city')"
+            formControlName="city"
+            type="text"
+            [maxLength]="40"
+          >
+            <app-form-error *ngIf="rfGuest?.get('city').hasError('required') && rfGuest?.get('city').touched">
+              {{ 'CITY' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+            </app-form-error>
+          </app-input>
+        </div>
+      </div>
+      <div class="flex-1 sm:w-full">
+        <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">{{ 'STATE' | translate | async }}</div>
+        <div class="">
+          <app-input
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            [control]="rfGuest?.get('state')"
+            formControlName="state"
+            type="text"
+            [maxLength]="20"
+          ></app-input>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-start gap-[12px] sm:flex-col">
+      <div class="flex-1 sm:w-full">
+        <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">{{ 'COUNTRY' | translate | async }}</div>
+        <div class="">
+          <app-select-single-control-country
+            [allItems]="countriesParse$ | async"
+            [control]="rfGuest?.get('country')"
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            formControlName="country"
+          >
+          </app-select-single-control-country>
+        </div>
+      </div>
+      <div class="flex-1 sm:w-full">
+        <div class="text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]">
+          {{ 'POSTAL_CODE' | translate | async }}
+          <span *ngIf="mandatoryAddressMainGuest?.postalCode" class="text-field-required">*</span>
+        </div>
+        <div class="">
+          <app-input
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            [control]="rfGuest?.get('postalCode')"
+            formControlName="postalCode"
+            type="text"
+            [maxLength]="15"
+          >
+            <app-form-error *ngIf="rfGuest?.get('postalCode').hasError('required') && rfGuest?.get('postalCode').touched">
+              {{ 'POSTAL_CODE' | translate | async }} {{ 'IS_REQUIRED' | translate | async }}
+            </app-form-error>
+          </app-input>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-[24px] border border-border-color px-[20px] py-[8px] rounded-[12px]" *ngIf="+roomSummary()?.adults + +roomSummary()?.children">
+    <div class="flex items-center justify-between cursor-pointer" (click)="expansionPanel.toggle(); additionGuest(expansionPanel?._getExpandedState() === 'collapsed')">
+      <div class="text-[17px] font-medium leading-[23.8px] text-primary-color">
+        {{ 'ADDITIONAL_GUEST_LIST' | translate | async }} ({{ (expansionPanel?._getExpandedState() === 'expanded' ? 'REQUIRED' : 'OPTIONAL') | translate | async }})
+      </div>
+      <div class="flex items-center rotate-90" [ngClass]="{ '!-rotate-90': expansionPanel?._getExpandedState() === 'expanded' }">
+        <mat-icon class="text-primary-color">chevron_right</mat-icon>
+      </div>
+    </div>
+    <mat-expansion-panel #expansionPanel id="expand-guest" (afterCollapse)="resetValidation()">
+      <div class="mt-[20px]">
+        @for (rfResGuest of rfAdditional.controls; let idx1 = $index; track idx1) {
+          <div
+            class="bg-background-primary-color text-primary-color p-3 rounded-2xl"
+            [ngClass]="{ 'mb-5': idx1 < rfAdditional.controls.length - 1, 'mb-3': idx1 === rfAdditional.controls.length - 1 }"
+          >
+            <div class="flex items-center gap-2">
+              <div class="bg-button-hover-background-color text-button-hover-color p-1 rounded-[4px] font-light text-[14px]">
+                <span class="font-normal">#{{ +rfResGuest.get('index').value + 1 }}</span>
+              </div>
+              <div class="font-medium text-[14px]">{{ rfResGuest.get('name').value }}</div>
+              <app-room-summary-label [roomSummary]="roomSummaryList()[idx1]" labelClass="font-light !text-[14px]"></app-room-summary-label>
+            </div>
+            <div>
+              @for (rfGuest of rfResGuest.get('guestList')['controls']; let idx2 = $index; track idx2) {
+                <div class="mt-4">
+                  <div class="font-medium text-[14px]">{{ (rfGuest.get('isAdult').value ? 'ADULT' : 'CHILD') | translate | async | titlecase }} #{{ rfGuest.get('index').value }} {{ rfGuest.get('age').value ? '(' + rfGuest.get('age').value + ')' : '' }}</div>
+                  <div class="flex items-center gap-3 mt-2" [formGroup]="rfGuest">
+                    <app-input
+                      [control]="rfGuest?.get('firstName')"
+                      [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+                      [customInputClass]="'placeholder:font-light placeholder:text-[14px]'"
+                      [isDisabled]="idx1 === 0 && idx2 === 0"
+                      [maxLength]="50"
+                      [placeHolder]="'FIRST_NAME' | translate | async"
+                      class="flex-1"
+                      formControlName="firstName"
+                      type="text"
+                    ></app-input>
+                    <app-input
+                      [control]="rfGuest?.get('lastName')"
+                      [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+                      [customInputClass]="'placeholder:font-light placeholder:text-[14px]'"
+                      [isDisabled]="idx1 === 0 && idx2 === 0"
+                      [maxLength]="50"
+                      [placeHolder]="'LAST_NAME' | translate | async"
+                      class="flex-1"
+                      formControlName="lastName"
+                      type="text"
+                    ></app-input>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </mat-expansion-panel>
+  </div>
+</div>

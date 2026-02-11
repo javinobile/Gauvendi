@@ -1,0 +1,147 @@
+<ng-container
+  *ngIf="{
+    price: price | currencyRate: (currencyRate$ | async),
+    originalPrice: originalPrice | currencyRate: (currencyRate$ | async),
+    fullPrice: fullPrice | currencyRate: (currencyRate$ | async),
+    isIncludedTax: isIncludedTax$ | async,
+    currencyCode: currencyCode$ | async,
+    isePricingDisplayMode: isePricingDisplayMode$ | async,
+    showPricePerNight: showPricePerNight$ | async
+  } as vm"
+>
+  <ng-container [ngTemplateOutlet]="tplDiscount"></ng-container>
+
+  <div class="font-light text-12 text-primary-color" [ngClass]="{ 'text-end sm:text-start': isCombination && displayMode === EDisplayMode.List, 'text-right': isStep2 }" [class]="parentClass">
+    @if (isCombination) {
+      <span class="font-medium pym_price text-20">
+        {{ priceView === EPriceView.PerNight ? (vm.price * totalNight()).toFixed(2) : (vm.price | myCurrency: vm.currencyCode : 'symbol' : '1.2') }}
+        <span class="font-light text-12">{{ 'TOTAL' | translate | async }}</span>
+      </span>
+      @if (rooms > 1) {
+        @switch (displayMode) {
+          @case (EDisplayMode.Grid) {
+            <span class="block font-light text-12">
+              <ng-container *ngIf="isBracket">(</ng-container>
+              <ng-container [ngTemplateOutlet]="tplPrice" [ngTemplateOutletContext]="{ price: vm.price, currencyCode: vm.currencyCode, hideNewLine: true }"></ng-container>
+              <ng-container *ngIf="isBracket">)</ng-container>
+            </span>
+            <ng-container [ngTemplateOutlet]="tplTax" [ngTemplateOutletContext]="{ isIncludedTax: vm.isIncludedTax }"></ng-container>
+          }
+          @case (EDisplayMode.Tiles) {
+            <br />
+            <ng-container [ngTemplateOutlet]="tplTax" [ngTemplateOutletContext]="{ isIncludedTax: vm.isIncludedTax, isBlock: false }"></ng-container>
+            <span class="font-light text-12">
+              (<ng-container [ngTemplateOutlet]="tplPrice" [ngTemplateOutletContext]="{ price: vm.price, currencyCode: vm.currencyCode, hideNewLine: true }"></ng-container>)
+            </span>
+          }
+          @case (EDisplayMode.List) {
+            <div>
+              <span class="font-light text-12"> {{ 'PER' | translate | async }} {{ rooms }} {{ 'UNITS' | translate | async }} </span>
+              <br class="hidden sm:block" />
+              <span class="font-light text-12">
+                (<ng-container [ngTemplateOutlet]="tplPrice" [ngTemplateOutletContext]="{ price: vm.price, currencyCode: vm.currencyCode, hideNewLine: true }"></ng-container>)
+              </span>
+              <ng-container [ngTemplateOutlet]="tplTax" [ngTemplateOutletContext]="{ isIncludedTax: vm.isIncludedTax, isBlock: true }"></ng-container>
+            </div>
+          }
+        }
+      } @else {
+        <br />
+        <ng-container [ngTemplateOutlet]="tplPriceView"></ng-container>
+        <ng-container [ngTemplateOutlet]="tplTax" [ngTemplateOutletContext]="{ isIncludedTax: vm.isIncludedTax, isBlock: true }"></ng-container>
+      }
+    } @else {
+      @switch (vm.isePricingDisplayMode) {
+        @case (pricingDisplayModeEnum.TOTAL) {
+          <ng-container [ngTemplateOutlet]="tplFullPrice" [ngTemplateOutletContext]="{ isBold: true }"></ng-container>
+          <ng-container *ngIf="vm.showPricePerNight" [ngTemplateOutlet]="tplPriceViewDetails" [ngTemplateOutletContext]="{ isBold: !vm.fullPrice }"></ng-container>
+        }
+        @default {
+          <ng-container [ngTemplateOutlet]="tplPriceViewDetails" [ngTemplateOutletContext]="{ isBold: true }"></ng-container>
+          <ng-container *ngIf="vm.showPricePerNight" [ngTemplateOutlet]="tplFullPrice" [ngTemplateOutletContext]="{ isBold: false }"></ng-container>
+        }
+      }
+      <ng-container [ngTemplateOutlet]="tplTax" [ngTemplateOutletContext]="{ isIncludedTax: vm.isIncludedTax, isBlock: true }"></ng-container>
+    }
+  </div>
+
+  <ng-template #tplDiscount>
+    <div class="flex items-end gap-[2px]" [ngClass]="{ 'justify-end sm:justify-start': isTextEnd }">
+      @if (showFrom) {
+        <div class="font-light text-12 text-primary-color" [class]="parentClass">
+          {{ 'FROM' | translate | async }}
+        </div>
+      }
+      @if (shouldShowStrikeThrough) {
+        <div class="flex items-center gap-[4px]">
+          @if (isCombination || vm.isePricingDisplayMode === pricingDisplayModeEnum.TOTAL) {
+            <div class="font-normal line-through text-14 text-primary-color" [class]="parentClass">{{ vm.originalPrice | myCurrency: vm.currencyCode : 'symbol' : '1.2' }}</div>
+          } @else {
+            <div class="font-normal line-through text-14 text-primary-color" [class]="parentClass">
+              {{ vm.originalPrice / totalNight() | myCurrency: vm.currencyCode : 'symbol' : '1.2' }}
+              /{{ priceView === EPriceView.PerNight ? ('NIGHT' | translate | async) : ('STAY' | translate | async) }}
+            </div>
+          }
+          <div class="text-12 !leading-[20px] font-semibold h-[20px] px-[8px] rounded-[100px] bg-[#048502] text-[#E6F6F4] flex items-center justify-center">{{ adjustmentPercentage }}%</div>
+        </div>
+      }
+    </div>
+  </ng-template>
+
+  <ng-template #tplPriceView>/{{ priceView === EPriceView.PerNight ? ('NIGHT' | translate | async) : ('STAY' | translate | async) }} </ng-template>
+
+  <ng-template #tplFullPrice let-isBold="isBold">
+    <div *ngIf="vm.fullPrice" [class.font-medium]="isBold" [class.text-20]="isBold" [class.text-right]="displayMode === EDisplayMode.List">
+      {{ vm.fullPrice | myCurrency: vm.currencyCode : 'symbol' : '1.2' }} <span class="font-light text-12">{{ 'TOTAL' | translate | async }}</span>
+    </div>
+  </ng-template>
+
+  <ng-template #tplPriceViewDetails let-isBold="isBold">
+    <div [class.text-right]="displayMode === EDisplayMode.List">
+      @if (rooms > 1) {
+        <ng-container *ngIf="!isBracket">
+          <span class="block font-light text-12">
+            <ng-container [ngTemplateOutlet]="tplPrice" [ngTemplateOutletContext]="{ price: vm.price, currencyCode: vm.currencyCode }"></ng-container>
+          </span>
+        </ng-container>
+        <ng-container *ngIf="isBracket">
+          <span class="block font-light text-12"> (<ng-container [ngTemplateOutlet]="tplPrice" [ngTemplateOutletContext]="{ price: vm.price, currencyCode: vm.currencyCode }"></ng-container>) </span>
+        </ng-container>
+      } @else {
+        <ng-container [ngTemplateOutlet]="tplPriceWithBold" [ngTemplateOutletContext]="{ price: vm.price, currencyCode: vm.currencyCode, isBold: isBold }"></ng-container>
+        <span class="font-light text-12">/{{ priceView === EPriceView.PerNight ? ('NIGHT' | translate | async) : ('STAY' | translate | async) }} </span>
+      }
+    </div>
+  </ng-template>
+</ng-container>
+
+<ng-template #tplTax let-isIncludedTax="isIncludedTax" let-isBlock="isBlock">
+  <span class="font-light text-12" [ngClass]="{ 'text-end sm:text-start': isTextEnd, block: isBlock }">{{
+    isIncludedTax ? ('INCLUDES_TAXES_AND_FEES' | translate | async) : ('EXCLUSIVE_TAXES_AND_FEES' | translate | async)
+  }}</span>
+</ng-template>
+
+<ng-template #tplPrice let-price="price" let-currencyCode="currencyCode" let-hideNewLine="hideNewLine">
+  <span class="inline-block">
+    {{ price / rooms | myCurrency: currencyCode : 'symbol' : '1.2' }}
+    <br *ngIf="!hideNewLine" />
+    {{ 'PER_UNIT' | translate | async }}/{{ priceView === EPriceView.PerNight ? ('NIGHT' | translate | async) : ('STAY' | translate | async) }}
+    <!-- @if (isePricingDisplayMode$ | async; as isePricingDisplayMode) {
+      @if (isePricingDisplayMode === pricingDisplayModeEnum.TOTAL) {
+        {{ price / rooms | myCurrency: currencyCode : 'symbol' : '1.2' }}
+        <br *ngIf="!hideNewLine" />
+        {{ 'PER_UNIT' | translate | async }} {{ 'PER' | translate | async }} {{ priceView === EPriceView.PerNight ? ('NIGHT' | translate | async) : ('STAY' | translate | async) }}
+      } @else {
+        {{ 'PER_UNIT' | translate | async }} {{ 'PER' | translate | async }} {{ priceView === EPriceView.PerNight ? ('NIGHT' | translate | async) : ('STAY' | translate | async) }}
+        <br *ngIf="!hideNewLine" />
+        {{ price / rooms | myCurrency: currencyCode : 'symbol' : '1.2' }}
+      }
+    } -->
+  </span>
+</ng-template>
+
+<ng-template #tplPriceWithBold let-price="price" let-currencyCode="currencyCode" let-isBold="isBold">
+  <span class="pym_price" [class.font-medium]="isBold" [class.text-20]="isBold">
+    {{ price | myCurrency: currencyCode : 'symbol' : '1.2' }}
+  </span>
+</ng-template>

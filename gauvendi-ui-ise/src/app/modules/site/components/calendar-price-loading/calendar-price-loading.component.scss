@@ -1,0 +1,25 @@
+.ln {
+  background-image: linear-gradient(to left, #B3B3B3 0%, #DADADA 20%, #B3B3B3 40%, #B3B3B3 100%);
+  animation: skeletonLoading 1s infinite;
+  background-size: 400% 100%;
+}
+.bx {
+  box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.06);
+}
+@keyframes skeletonLoading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.loading-wrapper {
+  width: 25px;
+  height: 8px;
+  background-color: #B3B3B3;
+  margin-top: 5px;
+  border-radius: 4px;
+}
+

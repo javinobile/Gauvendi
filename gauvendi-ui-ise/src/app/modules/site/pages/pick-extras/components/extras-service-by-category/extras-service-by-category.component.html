@@ -1,0 +1,58 @@
+<ng-container *ngIf="hotelAmenity">
+  <div class="flex items-center flex-wrap gap-[16px] md:hidden sm:hidden">
+    <ng-container *ngFor="let amenity of hotelAmenity | sortByMandatory: (mandatoryServiceIdList$ | async) : (surchargeAmenityList$ | async) : includedHotelExtrasList">
+      <div class="w-[calc(calc(100%-60px)/4)]">
+        <app-service-item
+          (changeAmount)="changeAmount.emit({ code: amenity.code, amount: $event })"
+          (toggleServices)="toggleServices.emit({ code: amenity.code, amount: $event })"
+          [amount]="amenity.code | amenitySelected: roomServiceChain"
+          [category]="category"
+          [code]="amenity?.code"
+          [description]="amenity?.description"
+          [image]="amenity?.iconImageUrl"
+          [index]="index"
+          [isIncluded]="amenity.code | amenityIncluded: includedHotelExtrasList"
+          [isMandatory]="amenity?.id | isMandatoryService: (mandatoryServiceIdList$ | async)"
+          [isSelected]="!!(amenity.code | amenitySelected: roomServiceChain)"
+          [price]="(isIncludedTax ? amenity?.totalGrossAmount : amenity?.totalBaseAmount) | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2'"
+          [priceAmount]="isIncludedTax ? amenity?.totalGrossAmount : amenity?.totalBaseAmount"
+          [title]="amenity?.name"
+          [unit]="amenity?.pricingUnit"
+        ></app-service-item>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="hidden sm:block md:block">
+    <swiper [config]="config" (slideChange)="onSlideChange($event)" class="category-carousel">
+      <ng-container *ngFor="let amenity of hotelAmenity | sortByMandatory: (mandatoryServiceIdList$ | async) : (surchargeAmenityList$ | async) : includedHotelExtrasList; index as i">
+        <ng-template swiperSlide>
+          <app-service-item
+            (changeAmount)="changeAmount.emit({ code: amenity.code, amount: $event })"
+            (toggleServices)="toggleServices.emit({ code: amenity.code, amount: $event })"
+            [amount]="amenity.code | amenitySelected: roomServiceChain"
+            [category]="category"
+            [code]="amenity?.code"
+            [description]="amenity?.description"
+            [image]="amenity?.iconImageUrl"
+            [index]="index"
+            [isIncluded]="amenity.code | amenityIncluded: includedHotelExtrasList"
+            [isMandatory]="amenity?.id | isMandatoryService: (mandatoryServiceIdList$ | async)"
+            [isSelected]="!!(amenity.code | amenitySelected: roomServiceChain)"
+            [price]="(isIncludedTax ? amenity?.totalGrossAmount : amenity?.totalBaseAmount) | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2'"
+            [priceAmount]="isIncludedTax ? amenity?.totalGrossAmount : amenity?.totalBaseAmount"
+            [title]="amenity?.name"
+            [unit]="amenity?.pricingUnit"
+          ></app-service-item>
+        </ng-template>
+      </ng-container>
+    </swiper>
+
+    <div class="w-[40px] h-[4px] rounded-[8px] mx-auto relative bg-configurator-hover-background-color mt-[12px]" *ngIf="hotelAmenity?.length >= 2">
+      <div
+        class="w-[10px] h-[4px] rounded-[8px] absolute ltr:left-0 rtl:right-0 top-0 bg-configurator-selected-background-color transition-all duration-500 ease-in"
+        [style.left]="progressValue * 30 + 'px'"
+      ></div>
+    </div>
+  </div>
+</ng-container>

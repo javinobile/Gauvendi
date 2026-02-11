@@ -1,0 +1,33 @@
+@if ({ colorText: colorText$ | async }; as vm) {
+  <div class="flex items-end gap-[6px] sm:gap-[8px] sm:gap-y-[2px] sm:flex-wrap flex-wrap {{ customClass() }}">
+    @if (prefixTemplate()) {
+      <ng-container *ngTemplateOutlet="prefixTemplate()" />
+    }
+    @for (item of data(); track item) {
+      <div *ngIf="item.value" class="flex min-w-fit gap-[4px]">
+        <div
+          class="unit-info-img-icon bg-primary-color {{ iconClass() }}"
+          style="--unit-image-url: url({{ item.icon }}); --unit-image-color: {{ vm.colorText }};"
+          appCustomTooltip
+          [tooltipMessage]="item.toolTipMsg || (item.isPluralLabel ? item.pluralLabel : item.label) | translate | async | titlecase"
+        ></div>
+        <span class="text-secondary-color {{ textClass() }}">
+          {{ item.value }}
+          @if (showText()) {
+            {{ ((item.isPluralLabel ? item.pluralLabel : item.label) | translate | async) || item.label }}
+          }
+          @if (item.isUsingMeasureMetrics) {
+            <ng-container *ngIf="measureMetrics === 'sqm'"> m<sup>2</sup></ng-container>
+            <ng-container *ngIf="measureMetrics === 'sqft'"> ft<sup>2</sup></ng-container>
+          }
+        </span>
+      </div>
+    }
+
+    @if (noFeatures()) {
+      <div class="text-12 text-secondary-color line-clamp-1">
+        {{ 'YOUR_ROOM_WILL_BE_ASSIGNED_AS_PER_AVAILABILITY' | translate | async }}
+      </div>
+    }
+  </div>
+}

@@ -1,0 +1,18 @@
+<div class="pt-[40px] text-center sm:pt-[70px] sm:px-[16px]">
+  <div class="text-[32px] leading-[32px] mb-[20px] sm:mt-[16px] text-primary-color sm:text-[24px]">{{'PROPOSAL_EXPIRATION_MESSAGE' | translate | async}}</div>
+
+<!--  <div class="my-[8px] flex items-center">-->
+    <img src="assets/icons/error.png" alt="" class="my-[8px] mx-auto" />
+<!--  </div>-->
+
+  <div class="text-[20px] leading-[32px] text-primary-color opacity-80 sm:text-[16px]">
+    {{'PROPOSAL_CONTACT_MESSAGE' | translate | async}} <a class="underline text-primary-color font-semibold"
+    href="mailto:{{hotelEmailAddress$ | async}}">{{hotelEmailAddress$ | async}}</a> {{'OR' | translate | async}}
+    <span class="underline text-primary-color font-semibold">{{phoneNumber$ | async}}</span>
+  </div>
+
+  <div class="flex items-center justify-center mt-2 sm:mt-[20px]">
+    <button class="h-[44px] text-[14px] font-medium leading-[140%] text-button-normal-color bg-button-normal-background-color rounded-[12px] px-[24px] hover:opacity-80"
+            (click)="navigateToRecommendation()">{{'MAKE_ANOTHER_BOOKING' | translate | async}}</button>
+  </div>
+</div>

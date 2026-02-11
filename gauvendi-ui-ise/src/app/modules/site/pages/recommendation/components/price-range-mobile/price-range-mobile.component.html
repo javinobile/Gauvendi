@@ -1,0 +1,26 @@
+<div
+  class="p-[20px] w-screen rounded-none rounded-tl-[16px] rounded-tr-[16px] dialog-content shadow-configurator relative bg-popover-background-color"
+  [class.animation--fadeUp]="isOpen"
+  [class.animation--fadeDown]="!isOpen"
+>
+  <div class="text-[17px] font-medium leading-[140%] text-primary-color text-center mb-[20px]">{{ 'PRICE_SETTINGS' | translate | async }}</div>
+  <div class="absolute ltr:right-[8px] rtl:left-[8px] top-[8px] flex items-center" (click)="closePanel()">
+    <mat-icon class="text-primary-color">close</mat-icon>
+  </div>
+
+  <!--  <div class="mt-[20px]">-->
+  <!--    <div class="text-[14px] font-medium text-primary-color leading-[140%] mb-[8px]">{{'DISPLAY_TOTAL_PRICE' | translate | async}}</div>-->
+  <!--    <app-checkbox-c [formControl]="taxCtrl">-->
+  <!--      <div class="text-normal">{{'SHOW_PRICE_WITH_ALL_TAXES_AND_FEES' | translate | async}}</div>-->
+  <!--    </app-checkbox-c>-->
+  <!--  </div>-->
+
+  <!--  <div class="w-full my-[20px] h-[1px] bg-border-color"></div>-->
+
+  <app-price-range-form
+    [currencyCode]="data?.currencyCode"
+    [currencyRate]="data?.currencyRate"
+    [stayOptionSuggestionList]="data?.stayOptionSuggestionList"
+    (closeMobile)="closePanel()"
+  ></app-price-range-form>
+</div>

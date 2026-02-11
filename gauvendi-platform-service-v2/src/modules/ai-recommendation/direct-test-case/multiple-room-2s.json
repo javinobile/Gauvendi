@@ -1,0 +1,1552 @@
+{
+  "featureList": [
+    {
+      "code": "LT_TEST_G0U",
+      "name": "test",
+      "popularity": 1
+    },
+    {
+      "code": "VW_SUNSET",
+      "name": "Ocean view",
+      "popularity": 5
+    },
+    {
+      "code": "OS_BALCON",
+      "name": "Balcony",
+      "popularity": 1
+    },
+    {
+      "code": "LO_AWAY_FROM_CO_WORKING_SPACE",
+      "name": "Away from co-working space",
+      "popularity": 1
+    },
+    {
+      "code": "LO_AWAY_FROM_COMMUNITY_LOUNGE",
+      "name": "Away from community lounge",
+      "popularity": 1
+    },
+    {
+      "code": "OS_GLASS_BALCONY",
+      "name": "Glassed balcony",
+      "popularity": 1
+    },
+    {
+      "code": "BD_CANOPY_BED",
+      "name": "Canopy bed",
+      "popularity": 1
+    },
+    {
+      "code": "SPT_HOTEL",
+      "name": "Room",
+      "popularity": 1
+    },
+    {
+      "code": "LO_LIFT",
+      "name": "Close to elevator",
+      "popularity": 1
+    },
+    {
+      "code": "LT_COTTAGE",
+      "name": "Cottage",
+      "popularity": 1
+    },
+    {
+      "code": "LO_CSTPARK",
+      "name": "Close to parking",
+      "popularity": 1
+    },
+    {
+      "code": "LO_POOL",
+      "name": "Close to pool",
+      "popularity": 0
+    },
+    {
+      "code": "SPT_HOME",
+      "name": "Holiday Home",
+      "popularity": 1
+    },
+    {
+      "code": "DF_ARCHED_WINDOWS",
+      "name": "Arched Windows",
+      "popularity": 1
+    },
+    {
+      "code": "VW_COURT",
+      "name": "Courtyard view",
+      "popularity": 1
+    },
+    {
+      "code": "SP_ML",
+      "name": "M/L - size",
+      "popularity": 1
+    },
+    {
+      "code": "SP_L",
+      "name": "L- size",
+      "popularity": 1
+    },
+    {
+      "code": "VW_VIEW_PARKING",
+      "name": "View to Parking",
+      "popularity": 1
+    },
+    {
+      "code": "BR_BATHTUB_IN_ROOM",
+      "name": "Bathtub in room",
+      "popularity": 1
+    },
+    {
+      "code": "LO_QUANGLOCATION",
+      "name": "Quanglocation",
+      "popularity": 1
+    },
+    {
+      "code": "BD_QUEEN",
+      "name": "Queen bed",
+      "popularity": 1
+    },
+    {
+      "code": "VW_GARDEN",
+      "name": "Garden view",
+      "popularity": 1
+    },
+    {
+      "code": "LT_TEST",
+      "name": "test",
+      "popularity": 1
+    },
+    {
+      "code": "BR_STEAM",
+      "name": "Steam bath",
+      "popularity": 1
+    },
+    {
+      "code": "VW_FOUNTAIN",
+      "name": "Fountain View",
+      "popularity": 1
+    },
+    {
+      "code": "BR_BT",
+      "name": "Bathtub",
+      "popularity": 1
+    },
+    {
+      "code": "SPT_HOUSE",
+      "name": "House",
+      "popularity": 1
+    },
+    {
+      "code": "LO_RESTAURANT",
+      "name": "Close to restaurant",
+      "popularity": 1
+    },
+    {
+      "code": "VW_LAKE",
+      "name": "Lake view",
+      "popularity": 1
+    },
+    {
+      "code": "LO_AWAY_FROM_RESTAURANT",
+      "name": "Away from restaurant",
+      "popularity": 1
+    },
+    {
+      "code": "BD_CKB",
+      "name": "California king bed",
+      "popularity": 1
+    },
+    {
+      "code": "SP_SIZE_4",
+      "name": "Size 4",
+      "popularity": 1
+    },
+    {
+      "code": "BR_BWW",
+      "name": "Bathroom with window",
+      "popularity": 1
+    },
+    {
+      "code": "BD_BED_FACING_WINDOW",
+      "name": "Bed facing window",
+      "popularity": 1
+    },
+    {
+      "code": "BD_FOOTBOARD",
+      "name": "Bed with footboard",
+      "popularity": 1
+    },
+    {
+      "code": "BD_BABY_CRIB",
+      "name": "Baby Crib",
+      "popularity": 1
+    },
+    {
+      "code": "BD_BOTTOM_BUNK_BED",
+      "name": "Bottom Bunk bed",
+      "popularity": 1
+    },
+    {
+      "code": "SPT_CHALET",
+      "name": "Chalet",
+      "popularity": 1
+    },
+    {
+      "code": "SP_SIZE_2",
+      "name": "Size 2",
+      "popularity": 1
+    },
+    {
+      "code": "VW_FIELD_VIEW",
+      "name": "Field view",
+      "popularity": 1
+    },
+    {
+      "code": "BD_SINGLE",
+      "name": "Single bed",
+      "popularity": 3
+    },
+    {
+      "code": "OS_GLASS_TERRACE",
+      "name": "Glassed terrace",
+      "popularity": 1
+    },
+    {
+      "code": "SP_M",
+      "name": "M - size",
+      "popularity": 1
+    },
+    {
+      "code": "LO_CTG",
+      "name": "Close to garden",
+      "popularity": 3
+    },
+    {
+      "code": "OS_FRONTTERR",
+      "name": "Front Terrace",
+      "popularity": 1
+    },
+    {
+      "code": "BR_BTSW",
+      "name": "Bathroom with a view",
+      "popularity": 0
+    },
+    {
+      "code": "VW_BACKSIDE",
+      "name": "Backside view",
+      "popularity": 1
+    },
+    {
+      "code": "DF_BRIGHTROOM",
+      "name": "Bright Room",
+      "popularity": 1
+    },
+    {
+      "code": "OS_CSVTR",
+      "name": "Conservatory",
+      "popularity": 1
+    },
+    {
+      "code": "LT_BED2APT",
+      "name": "2-bedroom apartment",
+      "popularity": 3
+    },
+    {
+      "code": "SPT_APARTMENT",
+      "name": "Apartment",
+      "popularity": 1
+    },
+    {
+      "code": "SPT_VILLA",
+      "name": "Villa",
+      "popularity": 1
+    },
+    {
+      "code": "SPT_CARAVAN",
+      "name": "Pitch",
+      "popularity": 1
+    },
+    {
+      "code": "SP_SIZE_1",
+      "name": "Size 1",
+      "popularity": 1
+    },
+    {
+      "code": "SP_SIZE_3",
+      "name": "Size 3",
+      "popularity": 1
+    },
+    {
+      "code": "LT_BED4APT",
+      "name": "4-bedroom apartment",
+      "popularity": 1
+    },
+    {
+      "code": "SP_XS",
+      "name": "XS - size",
+      "popularity": 1
+    },
+    {
+      "code": "OS_DINN",
+      "name": "Dining  table",
+      "popularity": 1
+    },
+    {
+      "code": "SP_S",
+      "name": "S - size",
+      "popularity": 1
+    },
+    {
+      "code": "SP_SM",
+      "name": "S/M - size",
+      "popularity": 1
+    },
+    {
+      "code": "LC_CTB",
+      "name": "Close to beach",
+      "popularity": 4
+    },
+    {
+      "code": "BD_DB",
+      "name": "Double bed",
+      "popularity": 1
+    },
+    {
+      "code": "BR_B",
+      "name": "Bidet",
+      "popularity": 1
+    },
+    {
+      "code": "DF_BAREFOOT",
+      "name": "Barefoot",
+      "popularity": 1
+    },
+    {
+      "code": "DF_BC",
+      "name": "Blackout curtain",
+      "popularity": 1
+    },
+    {
+      "code": "SP_XL",
+      "name": "XL - size",
+      "popularity": 1
+    },
+    {
+      "code": "OS_TER",
+      "name": "Terrace",
+      "popularity": 1
+    },
+    {
+      "code": "LT_EIGHT_BED_ROOM",
+      "name": "8-bed room",
+      "popularity": 1
+    },
+    {
+      "code": "DF_BLNTL",
+      "name": "Bedlinen, towels",
+      "popularity": 1
+    },
+    {
+      "code": "DF_BRAMN",
+      "name": "Bathroom amenities",
+      "popularity": 1
+    },
+    {
+      "code": "BD_CUPBOARD_BED",
+      "name": "Cupboard bed",
+      "popularity": 1
+    },
+    {
+      "code": "BD_BB",
+      "name": "Bunk bed",
+      "popularity": 1
+    },
+    {
+      "code": "VW_PV",
+      "name": "Pool View",
+      "popularity": 3
+    },
+    {
+      "code": "LT_BED3APT",
+      "name": "3-bedroom apartment",
+      "popularity": 3
+    },
+    {
+      "code": "BD_SPRINGBOX",
+      "name": "Boxspring bed",
+      "popularity": 1
+    },
+    {
+      "code": "LO_2F",
+      "name": "2nd floor",
+      "popularity": 1
+    },
+    {
+      "code": "SPT_CABIN",
+      "name": "Cabin",
+      "popularity": 1
+    },
+    {
+      "code": "SPT_BOARD_ROOM",
+      "name": "Board Room",
+      "popularity": 1
+    },
+    {
+      "code": "LT_BED",
+      "name": "Bedroom",
+      "popularity": 1
+    },
+    {
+      "code": "LO_AWAY_FROM_LAUNDRY_ROOM",
+      "name": "Away from laundry room",
+      "popularity": 1
+    },
+    {
+      "code": "V_SV",
+      "name": "Front View",
+      "popularity": 3
+    },
+    {
+      "code": "VW_HARBOR_VIEW",
+      "name": "Harbor View",
+      "popularity": 0
+    },
+    {
+      "code": "LT_APART",
+      "name": "Apartment",
+      "popularity": 1
+    },
+    {
+      "code": "VW_VILLAGE",
+      "name": "Village View",
+      "popularity": 1
+    },
+    {
+      "code": "OS_FB",
+      "name": "French balcony",
+      "popularity": 1
+    },
+    {
+      "code": "LC_AFE",
+      "name": "Away from elevator",
+      "popularity": 1
+    },
+    {
+      "code": "LT_FOUR_BED_ROOM",
+      "name": "4-bed room",
+      "popularity": 3
+    },
+    {
+      "code": "LT_SIX_BED_ROOM",
+      "name": "6-bed room",
+      "popularity": 1
+    },
+    {
+      "code": "BD_DOKB",
+      "name": "Double or king bed",
+      "popularity": 1
+    },
+    {
+      "code": "LT_TWELVE_BED_ROOM",
+      "name": "12-bed room",
+      "popularity": 3
+    },
+    {
+      "code": "BD_KING",
+      "name": "King bed",
+      "popularity": 1
+    },
+    {
+      "code": "LT_TEN_BED_ROOM",
+      "name": "10-bed room",
+      "popularity": 5
+    }
+  ],
+  "salesStrategy": {
+    "mostPopular": ["RFC", "ERFC", "MRFC"],
+    "ourTip": ["RFC", "ERFC", "MRFC"],
+    "direct": ["RFC", "ERFC", "MRFC"]
+  },
+  "roomRequestList": [
+    {
+      "index": 0,
+      "adults": 2,
+      "children": 1,
+      "pets": 0
+    },
+    {
+      "index": 1,
+      "adults": 1,
+      "children": 0,
+      "pets": 0
+    }
+  ],
+  "eventFeatureList": [],
+  "lowestPriceList": ["MRFC009"],
+  "bookingHistoryList": [],
+  "stayOptionRecommendationNumber": 11,
+  "availableRoomProductList": [
+    {
+      "id": "29de7d39-71a9-4cf2-9d61-5b088b18ef0e",
+      "code": "ERFC019",
+      "name": "Phòng Phi Hành Gia",
+      "basePrice": 290.32,
+      "type": "ERFC",
+      "availableRoomIds": ["21348385-dd42-4bba-921f-dbdfb723f71f"],
+      "featureList": [
+        "LT_BED2APT",
+        "SPT_HOTEL",
+        "SP_XL",
+        "LO_CSTPARK",
+        "VW_VIEW_PARKING",
+        "BD_KING"
+      ],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 1,
+      "capacity": {
+        "adults": 1,
+        "children": 0,
+        "pets": 0,
+        "maximum": 1
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 1
+    },
+    {
+      "id": "ce98ce03-60cf-41b1-bb0b-032e5ee1b600",
+      "code": "ERFC046",
+      "name": "Room 105 - 2",
+      "basePrice": 398,
+      "type": "ERFC",
+      "availableRoomIds": ["b5c5c9be-57b5-4d43-817e-be53c775099a"],
+      "featureList": [
+        "BD_SPRINGBOX",
+        "LT_TWELVE_BED_ROOM",
+        "SPT_HOTEL",
+        "BR_B",
+        "BD_BED_FACING_WINDOW",
+        "BR_BATHTUB_IN_ROOM",
+        "VW_FIELD_VIEW",
+        "LT_FOUR_BED_ROOM"
+      ],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 1,
+      "capacity": {
+        "adults": 2,
+        "children": 1,
+        "pets": 0,
+        "maximum": 3
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 2
+    },
+    {
+      "id": "2d603540-c42b-4f20-abaf-ff3bfdee09ea",
+      "code": "MRFC001",
+      "name": "Grand Suites",
+      "basePrice": 366.36,
+      "type": "MRFC",
+      "availableRoomIds": [
+        "838e2516-c3f4-4983-a4b6-d3c139c31991",
+        "93dec2d6-fbe8-4cb4-9a4a-191270155b09",
+        "fd428133-0ac1-432e-902d-b7e125f5f436",
+        "a2f3c13a-6173-430a-b9a2-e8148f5ace2e",
+        "a75a1c2b-4af1-4d46-a0a1-950a2c33f7b0",
+        "79214dd7-e5a5-407a-8909-2b087a137c1b",
+        "8279157a-ad84-4e4f-a83d-47f8cb27e924",
+        "315eb861-4004-413f-ae7b-03884733453e",
+        "eeed691a-b9a3-4933-9e6d-220339d8ba8e",
+        "d9a63fd6-5427-4c40-955e-06ef9e58e264",
+        "cf4f0405-f555-4909-a7b1-db285d5e9446",
+        "3dc6f844-ccd2-499a-acb0-7261c4c79f19",
+        "a1f19748-9466-4605-9cd6-4335566b84f1",
+        "c2da7d28-bf7f-46f5-888a-a6fd2d6915f5",
+        "620a3358-9359-4ab4-8708-4ab944e8f076",
+        "30d58253-ff1d-4fc8-ad88-b48c7a4876ea",
+        "149b6924-39b7-4e45-9648-bcda7ff73020",
+        "ac8dda4e-2ddb-4743-91de-52d2767ebd08",
+        "bcb44e86-a2e7-4817-8aaa-546adffe5d2e",
+        "9421cc98-b9bb-4cf1-b53e-ca1ba3a5afac",
+        "15fab8c8-49b8-4ff7-863c-5c59323828c5",
+        "946e2be3-9038-4a44-a04a-08adb732990e",
+        "9302ed93-75d1-42dc-8360-0bf74a436f6d",
+        "7dc2660e-0771-40d8-ac82-a16f69b8df11",
+        "91359e9a-4ddd-4cad-ace6-a195865ad605",
+        "6a4ade4f-aecf-4b0a-886f-9e84d960b9fd",
+        "6f4b8065-67c3-40c7-99f0-4de8976709ad",
+        "6cafb9ea-34f1-4eb5-95a5-22ae1a0c36fb",
+        "24cf3f26-d7ef-4010-9d80-8a62477a7a98",
+        "65be0b7b-0006-4911-aa53-e64b3e3c0f42",
+        "fca0335c-7d61-4bb3-b55a-7719cca6690d",
+        "4d470f89-7c57-4899-95d4-9bca1c55d644",
+        "1f224373-ff9f-4efc-9dbf-236a5ad4406d",
+        "e96df18d-5574-4d94-81e2-cf74d65da0e7",
+        "a14e054f-c49a-469e-b33c-01ed67952859",
+        "7c0af00a-d576-44cc-96d0-e5595b338ea1",
+        "5221925f-d44e-49cb-8557-6c8ebe2a2cce",
+        "e01a59e3-484a-4953-835c-8fbd1087fd51",
+        "9f286fc8-0ded-4314-bfb6-d106c66e048f",
+        "4e648486-4201-45a7-be32-a22d7b992a89",
+        "af1449d4-1c7a-4698-9546-cea35ef95ec3",
+        "6604efbb-8665-41a7-b9ee-9ea0ecf0826c",
+        "7069cc66-ce33-455d-8070-f2a9a045ab86",
+        "460a0f7a-28ae-46ee-b8b1-448929ce1a14",
+        "fe3469a5-8e67-46f8-a5c9-bdbf57d51c00",
+        "e2b682b0-debb-4571-be59-13984ee90b0e",
+        "c67c8fe1-93e8-413e-b19f-d166b179964f",
+        "5eacad4f-483d-4bd9-84d0-9f95c6ee45e9",
+        "7f354ba5-e8bf-47b5-9b49-1bacef0aeec5",
+        "abe5f6cc-dc66-4237-bb28-e7835280cf78",
+        "59e7fd3f-4ecf-48e8-a5c6-f1ae8b9d8af0",
+        "4dbc4b79-807a-4da5-81e0-4fdf73c72a13",
+        "e1c74de1-5d81-42d0-87c2-070625982be4",
+        "d2d320f4-6d98-4d6f-9ed5-5171883c861a",
+        "79460fe9-b153-4893-99db-15df88efc0c0",
+        "efd8b808-b41c-4ca3-bde9-9a1814f1f6e4",
+        "fb2e2244-f229-4b7f-9958-7e49536314c7"
+      ],
+      "featureList": ["SPT_HOUSE", "LO_2F", "BD_QUEEN", "LT_BED2APT", "V_SV", "SP_L", "BR_BT"],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOUSE"],
+      "availableToSell": 57,
+      "capacity": {
+        "adults": 2,
+        "children": 2,
+        "pets": 0,
+        "maximum": 3
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 2
+    },
+    {
+      "id": "f53cc268-a4d9-45d8-b571-80fb3c67aaa3",
+      "code": "MRFC002",
+      "name": "Units",
+      "basePrice": 1199,
+      "type": "MRFC",
+      "availableRoomIds": [
+        "b5c5c9be-57b5-4d43-817e-be53c775099a",
+        "463ab94e-00f7-4664-89a4-80df91732f9a",
+        "db3522d2-d6e7-41c0-97dc-59d496eb1852",
+        "7937f70d-9784-4b1f-9e02-1cf24e9ef1c5"
+      ],
+      "featureList": [
+        "VW_GARDEN",
+        "DF_BC",
+        "LO_RESTAURANT",
+        "DF_BRAMN",
+        "DF_BLNTL",
+        "DF_BAREFOOT",
+        "SPT_CHALET",
+        "LT_BED2APT",
+        "DF_BRIGHTROOM",
+        "BD_DB",
+        "SP_L",
+        "OS_BALCON",
+        "LO_2F"
+      ],
+      "isRestricted": true,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_CHALET"],
+      "availableToSell": 4,
+      "capacity": {
+        "adults": 2,
+        "children": 1,
+        "pets": 0,
+        "maximum": 3
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 2
+    },
+    {
+      "id": "ca150723-feed-4d2d-92ae-75f24926d35e",
+      "code": "MRFC008",
+      "name": "Phòng Lồng Chim",
+      "basePrice": 312.32,
+      "type": "MRFC",
+      "availableRoomIds": [
+        "2ac6f43a-8688-46f5-ab90-ffc2746051ac",
+        "21348385-dd42-4bba-921f-dbdfb723f71f"
+      ],
+      "featureList": [
+        "LT_BED2APT",
+        "SPT_BOARD_ROOM",
+        "SP_XL",
+        "LO_CSTPARK",
+        "VW_VIEW_PARKING",
+        "BD_KING",
+        "BD_SPRINGBOX"
+      ],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_BOARD_ROOM"],
+      "availableToSell": 2,
+      "capacity": {
+        "adults": 2,
+        "children": 1,
+        "pets": 0,
+        "maximum": 3
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 1
+    },
+    {
+      "id": "f73e3932-d26a-4440-8926-1b9e4bb3b5e9",
+      "code": "RFC011",
+      "name": "RFC 011",
+      "basePrice": 300.02,
+      "type": "RFC",
+      "availableRoomIds": ["43c777a2-ba1b-4c95-bb50-0e4b929f744d"],
+      "featureList": [
+        "OS_TER",
+        "SPT_HOTEL",
+        "BD_KING",
+        "LC_AFE",
+        "BD_SINGLE",
+        "SP_L",
+        "LT_BED3APT"
+      ],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 1,
+      "capacity": {
+        "adults": 2,
+        "children": 1,
+        "pets": 0,
+        "maximum": 2
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 1
+      },
+      "numberOfBedrooms": 1
+    },
+    {
+      "id": "0a005ff0-ad1e-422b-8824-c84eb84adcb0",
+      "code": "RFC015",
+      "name": "RFC015 - Enlissh",
+      "basePrice": 314.24,
+      "type": "RFC",
+      "availableRoomIds": [
+        "db3522d2-d6e7-41c0-97dc-59d496eb1852",
+        "463ab94e-00f7-4664-89a4-80df91732f9a"
+      ],
+      "featureList": ["SP_L", "SPT_HOTEL", "LT_BED2APT", "LO_RESTAURANT", "BD_DB", "OS_TER"],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 2,
+      "capacity": {
+        "adults": 2,
+        "children": 1,
+        "pets": 0,
+        "maximum": 3
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 1
+    },
+    {
+      "id": "ed945a8e-08dc-4a74-a96b-327ee9e740bb",
+      "code": "RFC024",
+      "name": "RFC024",
+      "basePrice": 484.88,
+      "type": "RFC",
+      "availableRoomIds": [
+        "30d58253-ff1d-4fc8-ad88-b48c7a4876ea",
+        "15fab8c8-49b8-4ff7-863c-5c59323828c5"
+      ],
+      "featureList": [
+        "V_SV",
+        "BR_BT",
+        "BD_QUEEN",
+        "OS_TER",
+        "LT_BED2APT",
+        "SPT_HOTEL",
+        "LT_APART",
+        "OS_BALCON",
+        "LO_2F",
+        "SP_L"
+      ],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 2,
+      "capacity": {
+        "adults": 2,
+        "children": 1,
+        "pets": 0,
+        "maximum": 3
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 2
+    },
+    {
+      "id": "6d445fed-8757-4d75-b842-30b5163e514b",
+      "code": "RFC025",
+      "name": "RFC025 English",
+      "basePrice": 292.02,
+      "type": "RFC",
+      "availableRoomIds": [
+        "51a6c34e-8487-4a26-b403-5c85d311826c",
+        "e3bb21a3-0e0b-45f7-a684-3bae147b7751",
+        "eb24c75c-d089-44a7-8e5b-f705ded4f7f5",
+        "1f7f72a7-1481-4535-b2d8-7e8fca3f35e7",
+        "005fe52e-dffc-4fb4-9902-b4123bbc560d",
+        "5c75e1d3-afc6-4b4a-8b2a-17a021fd1b4f",
+        "ca30f467-54e1-4973-bce4-a9ea23a159db",
+        "08fe75ca-6abc-43d8-8a6e-a4a892a5324f",
+        "6e9969fc-58a9-4983-b098-d15b77bf132e",
+        "d6e73137-5884-4f18-81c0-9ebc27d08056",
+        "279f31ca-2bb1-4481-9840-8cf5db19baa2",
+        "936426ac-a667-4700-8c2a-c3bb5cdbd619",
+        "9f12029a-0c97-4cef-a55b-7d8832346d6f",
+        "20e4f2c1-8ba1-407f-8bda-72dc460301c4",
+        "33b051e7-fea5-4bf9-9a5e-19e260b2b275",
+        "21ba9bad-dc63-4d91-8d1a-8ca96dc93ce8",
+        "8015a52f-6780-4eae-a0bc-43fce961607a",
+        "e7fce00c-8b2d-4ed7-b436-30564ff3e5b9",
+        "0ba101f4-f4ea-49b7-8f94-1f7bf5ab73da",
+        "9e039b87-b1bc-4904-805d-2c095b97eb95",
+        "8e2a1baa-e737-4011-8f8c-d261101397a6",
+        "12d34690-0a5c-4d92-b01f-0d26ffe08ec4",
+        "e9de8290-a87e-4adb-a36e-b8476da2659c",
+        "361736a1-7a74-4c57-967c-8892114c2d9f",
+        "7473a3f4-6768-4989-b76d-39897dc96c0d",
+        "a07bcd00-41cb-4557-b2ab-de42918605ae",
+        "ff1f47c5-829c-4903-8f70-f7c48a9574a0",
+        "fda6e1e0-7316-4253-b6b2-fe3fecdf3372",
+        "039d8182-b9bd-45c6-8407-6bcd438b5f3a",
+        "39eb3c4e-50cd-44c5-a0f2-d6bd5b9b6856",
+        "af8d2f71-97bb-4d48-b990-b0bcba03a90b",
+        "80f2a515-ac3d-4abe-8b2d-19b8f3358cbb",
+        "46d5272c-9165-4c69-a9b8-76fd893346bf",
+        "d11bd63b-0979-4076-9a23-6545efcb9e6d",
+        "911c8721-5f2f-454c-88ba-aaa6cc784feb",
+        "a56a2924-fcc7-425e-a91c-03ccda240046",
+        "9f3a4f18-174b-40d8-a4fc-38073d0643ff",
+        "7cb7c4b4-081f-4f5e-a189-62aa270bacaf",
+        "68508f21-392f-4ec6-977f-b56e0f5bb2c3",
+        "50e3aa8a-3bf7-47c8-9c36-408d177a16b5",
+        "956a5b2a-5746-4775-a6fc-04d9acd9852e",
+        "f9ffdbd2-3ae8-4d9e-80f2-b3102a52dd2a",
+        "68b15457-6615-4ff5-aa89-bc665085af80",
+        "0abfd018-2ac7-4bab-adf6-29908eab7ca5",
+        "1c9dccab-42f4-4bf6-9652-13437daa79d4",
+        "45329889-d3b2-4123-bef4-57697ecb3e31",
+        "9bd59a13-8d0c-4133-9a9d-db7f617484ed",
+        "080d3b69-08ad-4794-a83d-b2df6229f298",
+        "11af6ef6-34d0-4868-be4d-f79bfd49f474",
+        "65579799-c08e-47e2-91f8-394b7df914ee",
+        "e3562938-4167-44be-8a21-771d1ef6b500",
+        "24ed858c-4562-4988-9e0a-de8566ca5d6b",
+        "4c276ffd-aedd-444c-8ac6-3e541a81acf2",
+        "0ea358bf-d299-47b3-a579-b4b9287d638f",
+        "237a7722-deff-4500-b5d7-fe2447ded1b5",
+        "39b5792b-da66-4d99-bbcf-5cf39f5ba38c",
+        "c3cabe0a-ca01-4442-ade3-34fa58633940",
+        "39633c97-3371-4e24-8f8c-41c153bb050f",
+        "0fe1410c-2115-41c5-8445-d997289069b9",
+        "d68580bb-269d-41d3-b1b0-338ce201c22d",
+        "f55f2c8b-e655-430a-aaba-6f334263dfab",
+        "12b08396-d3b5-434c-b535-1b18ccbe65d0",
+        "b378062f-9a40-49b0-97a1-ae5f90e1673b",
+        "bb8c027f-e835-426e-943d-71c7fb3f44b4",
+        "17e3141b-ddf6-4c26-8f09-0d051cfa8884",
+        "671eecb2-b01f-447b-bf20-2a9f3ce6bede",
+        "a9ffff0d-b921-4ce9-a891-d26256ab7c49",
+        "20ce7141-c65d-4831-b477-f004a0a75516",
+        "99e5a611-57b6-48d1-81e4-81cd8f348720",
+        "018840aa-fccf-466c-af14-77c6f4318aa3",
+        "eb2b8071-d0f2-4764-ad32-16976bf1c4ef",
+        "cbb7dc51-9465-4bbc-adc1-8e6889a4372c",
+        "cd558ab7-b060-49e7-87d3-60d7c12b0ac8",
+        "45450b42-afeb-49b8-a32d-5d6f03b12e45",
+        "ab2f9654-5333-4581-bfe4-ff614472d7dd",
+        "804b0a65-3256-4e0d-807f-1a0c0a1f127c",
+        "6701e538-c856-4091-b6b7-a4292ade69cb",
+        "cbfaf887-450b-488d-adac-febfba9e7814",
+        "ed133d5d-a62c-4405-b72a-11db1cc8cbf9",
+        "2bd60980-2fb2-4c9f-84d7-68b26c9f4d5c",
+        "0bad6e19-2ae2-4e46-a368-450108e2550e",
+        "893e19d5-8e42-408d-b2da-08a8ac56b091",
+        "9c38b95c-fd8c-422c-b4a5-435301be24e4",
+        "262e5720-f0a0-4c23-b6c7-9cdd56091671",
+        "b7cf7ef0-fdc9-4497-a2f6-2ddd0e69988f",
+        "43436886-0eb5-44c1-af7b-2a5612313789",
+        "74f6109f-158a-4b7b-bd48-4063fa24973b",
+        "b1d12830-c925-4f49-ad9a-2919be225e18",
+        "57241c1f-ed8a-41c6-9942-689eadd55a27",
+        "1bcbae2a-10e3-4271-8aee-4c53ba186e4e",
+        "ea3d45f8-7492-4e0c-a136-918897b493be",
+        "d5caea13-3c56-4879-b0f8-4a893917d373",
+        "9bea3df0-a241-4f89-8c9f-b8cea79570f2",
+        "7b4eb721-7dba-4bbc-8924-5b39be241939",
+        "9b3bb188-4ada-4a37-8428-4c4588ee4d3d",
+        "858c87c4-55e8-443f-9b27-0be24458f491",
+        "00b559c9-f4e3-4a23-a990-deb71d92579f",
+        "b0eb3e2a-6049-4031-94a2-128833656393",
+        "62acfa8b-6575-49f9-86cd-f5c6264e96e0",
+        "2bb58304-28ab-4407-866a-b816393aa197",
+        "5d763e3f-7405-430f-b410-2f32e6362f3d",
+        "014116a4-f5d0-4ece-98ea-8532bf0d8360",
+        "7b887ee8-91e3-4e7b-ba12-ea0e62c8c5ea",
+        "82d5bc92-856c-408b-9d1f-12900dbf7f2e",
+        "148e1521-4021-46b8-b516-36a7cd8d9986"
+      ],
+      "featureList": ["BD_DB", "SPT_HOTEL", "OS_TER", "LT_APART", "VW_LAKE", "SP_L"],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 105,
+      "capacity": {
+        "adults": 2,
+        "children": 1,
+        "pets": 0,
+        "maximum": 3
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 2
+    },
+    {
+      "id": "c8c47f12-57bc-4d5d-946f-42495c721db8",
+      "code": "RFC045",
+      "name": "RFC045",
+      "basePrice": 354.24,
+      "type": "RFC",
+      "availableRoomIds": ["7937f70d-9784-4b1f-9e02-1cf24e9ef1c5"],
+      "featureList": [
+        "LT_BED2APT",
+        "SPT_HOTEL",
+        "LO_RESTAURANT",
+        "OS_TER",
+        "BD_DB",
+        "SP_L",
+        "BR_BTSW"
+      ],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 1,
+      "capacity": {
+        "adults": 2,
+        "children": 1,
+        "pets": 0,
+        "maximum": 3
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 1
+    },
+    {
+      "id": "28cb2733-f2bd-443e-8b9f-2ce27ff72455",
+      "code": "MRFC006",
+      "name": "Standard room",
+      "basePrice": 300.02,
+      "type": "MRFC",
+      "availableRoomIds": ["43c777a2-ba1b-4c95-bb50-0e4b929f744d"],
+      "featureList": [
+        "LT_BED3APT",
+        "SP_L",
+        "SPT_HOTEL",
+        "BD_SINGLE",
+        "LC_AFE",
+        "VW_SUNSET",
+        "BD_KING"
+      ],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 1,
+      "capacity": {
+        "adults": 3,
+        "children": 1,
+        "pets": 0,
+        "maximum": 4
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 2
+    },
+    {
+      "id": "ec8fad74-432b-40d9-a490-13cf0f306d0c",
+      "code": "RFC013",
+      "name": "RFC013",
+      "basePrice": 292.02,
+      "type": "RFC",
+      "availableRoomIds": [
+        "9e5ce95f-dceb-4c48-8e57-1e0e112c353a",
+        "6a33401b-16ea-4a4e-af79-12a3b0c488ee",
+        "7c98f1d7-573e-4748-8159-3bc7dc46fdd8"
+      ],
+      "featureList": ["LT_APART", "BD_DB", "SPT_HOTEL", "OS_TER", "VW_LAKE", "LO_LIFT", "SP_L"],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 3,
+      "capacity": {
+        "adults": 2,
+        "children": 2,
+        "pets": 0,
+        "maximum": 4
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 2
+    },
+    {
+      "id": "756fa1de-489c-49df-b0e1-f06feda1f9ed",
+      "code": "RFC016",
+      "name": "RFC016",
+      "basePrice": 290.32,
+      "type": "RFC",
+      "availableRoomIds": [
+        "2ac6f43a-8688-46f5-ab90-ffc2746051ac",
+        "21348385-dd42-4bba-921f-dbdfb723f71f"
+      ],
+      "featureList": [
+        "OS_TER",
+        "BD_KING",
+        "SPT_HOTEL",
+        "SP_XL",
+        "VW_VIEW_PARKING",
+        "LT_BED2APT",
+        "LO_CSTPARK"
+      ],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 2,
+      "capacity": {
+        "adults": 3,
+        "children": 1,
+        "pets": 0,
+        "maximum": 4
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 2
+    },
+    {
+      "id": "8c108440-f8b9-4e8b-8cc0-eb2b32b6e9a8",
+      "code": "RFC018",
+      "name": "RFC018",
+      "basePrice": 292.02,
+      "type": "RFC",
+      "availableRoomIds": ["5e6b5c41-a9a8-45b5-86f8-eb1fe035c4fb"],
+      "featureList": ["OS_TER", "BD_DB", "SPT_HOTEL", "LO_POOL", "LT_APART", "VW_PV", "SP_L"],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 1,
+      "capacity": {
+        "adults": 3,
+        "children": 1,
+        "pets": 0,
+        "maximum": 4
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 3
+    },
+    {
+      "id": "e0c74c45-1ebf-4b74-a645-1d51197322cf",
+      "code": "RFC026",
+      "name": "RFC026",
+      "basePrice": 307.1,
+      "type": "RFC",
+      "availableRoomIds": ["abe5f6cc-dc66-4237-bb28-e7835280cf78"],
+      "featureList": [
+        "V_SV",
+        "LT_BED2APT",
+        "BD_QUEEN",
+        "SPT_HOTEL",
+        "BR_BT",
+        "OS_TER",
+        "LO_2F",
+        "SP_L",
+        "LO_LIFT"
+      ],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 1,
+      "capacity": {
+        "adults": 2,
+        "children": 1,
+        "pets": 0,
+        "maximum": 3
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 1
+      },
+      "numberOfBedrooms": 12
+    },
+    {
+      "id": "6ab1b747-e19f-4099-ae71-f1641b2e8811",
+      "code": "RFC029",
+      "name": "RFC029",
+      "basePrice": 484.88,
+      "type": "RFC",
+      "availableRoomIds": [
+        "6604efbb-8665-41a7-b9ee-9ea0ecf0826c",
+        "838e2516-c3f4-4983-a4b6-d3c139c31991",
+        "e01a59e3-484a-4953-835c-8fbd1087fd51",
+        "8279157a-ad84-4e4f-a83d-47f8cb27e924",
+        "cf4f0405-f555-4909-a7b1-db285d5e9446",
+        "7dc2660e-0771-40d8-ac82-a16f69b8df11"
+      ],
+      "featureList": [
+        "SPT_HOTEL",
+        "BD_QUEEN",
+        "V_SV",
+        "LT_APART",
+        "SP_L",
+        "OS_TER",
+        "BR_BT",
+        "LO_2F",
+        "LT_BED2APT"
+      ],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 6,
+      "capacity": {
+        "adults": 2,
+        "children": 2,
+        "pets": 0,
+        "maximum": 4
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 2
+    },
+    {
+      "id": "4820c4bd-d673-4030-9170-f9ee1d0d63e2",
+      "code": "ERFC047",
+      "name": "Room 105-2",
+      "basePrice": 408.24,
+      "type": "ERFC",
+      "availableRoomIds": [
+        "d2d320f4-6d98-4d6f-9ed5-5171883c861a",
+        "a14e054f-c49a-469e-b33c-01ed67952859",
+        "b5c5c9be-57b5-4d43-817e-be53c775099a",
+        "15fab8c8-49b8-4ff7-863c-5c59323828c5"
+      ],
+      "featureList": [
+        "LO_AWAY_FROM_CO_WORKING_SPACE",
+        "OS_CSVTR",
+        "OS_FB",
+        "OS_DINN",
+        "LO_AWAY_FROM_LAUNDRY_ROOM",
+        "SPT_HOTEL",
+        "LT_APART",
+        "LT_EIGHT_BED_ROOM",
+        "LT_BED4APT",
+        "LT_FOUR_BED_ROOM",
+        "LC_AFE"
+      ],
+      "isRestricted": false,
+      "allocationType": "ALL",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 4,
+      "capacity": {
+        "adults": 4,
+        "children": 0,
+        "pets": 0,
+        "maximum": 4
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 1
+      },
+      "numberOfBedrooms": 5
+    },
+    {
+      "id": "6fc651f0-df81-4172-9a48-e21273700468",
+      "code": "ERFC052",
+      "name": "Cuong ERFC",
+      "basePrice": 307.1,
+      "type": "ERFC",
+      "availableRoomIds": [
+        "4dbc4b79-807a-4da5-81e0-4fdf73c72a13",
+        "3dc6f844-ccd2-499a-acb0-7261c4c79f19"
+      ],
+      "featureList": [
+        "LO_AWAY_FROM_RESTAURANT",
+        "SPT_HOTEL",
+        "SP_XS",
+        "OS_FRONTTERR",
+        "DF_ARCHED_WINDOWS",
+        "VW_FOUNTAIN",
+        "LT_BED",
+        "BD_BED_FACING_WINDOW",
+        "BR_B"
+      ],
+      "isRestricted": false,
+      "allocationType": "ALL",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 2,
+      "capacity": {
+        "adults": 2,
+        "children": 1,
+        "pets": 2,
+        "maximum": 2
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 3
+      },
+      "numberOfBedrooms": 10
+    },
+    {
+      "id": "1d10c1ce-4561-4441-81dd-b467766528e2",
+      "code": "MRFC004",
+      "name": "MRFC004",
+      "basePrice": 292.02,
+      "type": "MRFC",
+      "availableRoomIds": ["5e6b5c41-a9a8-45b5-86f8-eb1fe035c4fb"],
+      "featureList": ["LT_APART", "LO_POOL", "SP_L", "VW_PV", "BD_DB", "SPT_CARAVAN", "OS_BALCON"],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_CARAVAN"],
+      "availableToSell": 1,
+      "capacity": {
+        "adults": 5,
+        "children": 0,
+        "pets": 0,
+        "maximum": 5
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 1
+    },
+    {
+      "id": "c88a46f7-2cc2-43e8-8919-51e1fd04242e",
+      "code": "RFC027",
+      "name": "RFC027",
+      "basePrice": 307.1,
+      "type": "RFC",
+      "availableRoomIds": [
+        "7c0af00a-d576-44cc-96d0-e5595b338ea1",
+        "5eacad4f-483d-4bd9-84d0-9f95c6ee45e9",
+        "315eb861-4004-413f-ae7b-03884733453e",
+        "9421cc98-b9bb-4cf1-b53e-ca1ba3a5afac",
+        "4dbc4b79-807a-4da5-81e0-4fdf73c72a13",
+        "4e648486-4201-45a7-be32-a22d7b992a89",
+        "7069cc66-ce33-455d-8070-f2a9a045ab86",
+        "7f354ba5-e8bf-47b5-9b49-1bacef0aeec5",
+        "6a4ade4f-aecf-4b0a-886f-9e84d960b9fd",
+        "93dec2d6-fbe8-4cb4-9a4a-191270155b09",
+        "946e2be3-9038-4a44-a04a-08adb732990e",
+        "149b6924-39b7-4e45-9648-bcda7ff73020",
+        "efd8b808-b41c-4ca3-bde9-9a1814f1f6e4",
+        "9302ed93-75d1-42dc-8360-0bf74a436f6d",
+        "c2da7d28-bf7f-46f5-888a-a6fd2d6915f5",
+        "4d470f89-7c57-4899-95d4-9bca1c55d644",
+        "460a0f7a-28ae-46ee-b8b1-448929ce1a14",
+        "9f286fc8-0ded-4314-bfb6-d106c66e048f",
+        "d9a63fd6-5427-4c40-955e-06ef9e58e264",
+        "5221925f-d44e-49cb-8557-6c8ebe2a2cce",
+        "620a3358-9359-4ab4-8708-4ab944e8f076",
+        "91359e9a-4ddd-4cad-ace6-a195865ad605",
+        "fd428133-0ac1-432e-902d-b7e125f5f436",
+        "a2f3c13a-6173-430a-b9a2-e8148f5ace2e",
+        "59e7fd3f-4ecf-48e8-a5c6-f1ae8b9d8af0",
+        "a1f19748-9466-4605-9cd6-4335566b84f1",
+        "eeed691a-b9a3-4933-9e6d-220339d8ba8e",
+        "fca0335c-7d61-4bb3-b55a-7719cca6690d",
+        "79460fe9-b153-4893-99db-15df88efc0c0",
+        "d2d320f4-6d98-4d6f-9ed5-5171883c861a",
+        "ac8dda4e-2ddb-4743-91de-52d2767ebd08",
+        "24cf3f26-d7ef-4010-9d80-8a62477a7a98",
+        "af1449d4-1c7a-4698-9546-cea35ef95ec3",
+        "e1c74de1-5d81-42d0-87c2-070625982be4",
+        "e2b682b0-debb-4571-be59-13984ee90b0e",
+        "a14e054f-c49a-469e-b33c-01ed67952859",
+        "a75a1c2b-4af1-4d46-a0a1-950a2c33f7b0",
+        "65be0b7b-0006-4911-aa53-e64b3e3c0f42",
+        "6cafb9ea-34f1-4eb5-95a5-22ae1a0c36fb",
+        "fb2e2244-f229-4b7f-9958-7e49536314c7",
+        "fe3469a5-8e67-46f8-a5c9-bdbf57d51c00"
+      ],
+      "featureList": [
+        "BD_QUEEN",
+        "SPT_HOTEL",
+        "LO_2F",
+        "BR_BT",
+        "V_SV",
+        "OS_TER",
+        "SP_L",
+        "LT_BED2APT"
+      ],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 41,
+      "capacity": {
+        "adults": 2,
+        "children": 1,
+        "pets": 0,
+        "maximum": 3
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 2
+      },
+      "numberOfBedrooms": 2
+    },
+    {
+      "id": "669fd0f3-eaf2-435d-8560-cd5cc18694bf",
+      "code": "ERFC021",
+      "name": "Apartment Eng",
+      "basePrice": 299.56,
+      "type": "ERFC",
+      "availableRoomIds": [
+        "7c0af00a-d576-44cc-96d0-e5595b338ea1",
+        "e3bb21a3-0e0b-45f7-a684-3bae147b7751"
+      ],
+      "featureList": ["SPT_APARTMENT", "BD_SINGLE"],
+      "isRestricted": false,
+      "allocationType": "ALL",
+      "spaceTypeList": ["SPT_APARTMENT"],
+      "availableToSell": 2,
+      "capacity": {
+        "adults": 4,
+        "children": 2,
+        "pets": 2,
+        "maximum": 6
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 0
+      },
+      "numberOfBedrooms": 2
+    },
+    {
+      "id": "9c3812b2-5fed-4b8a-9ebb-a3c34ed8e0fe",
+      "code": "ERFC035",
+      "name": "ERFC002",
+      "basePrice": 591.92,
+      "type": "ERFC",
+      "availableRoomIds": [
+        "bcb44e86-a2e7-4817-8aaa-546adffe5d2e",
+        "15fab8c8-49b8-4ff7-863c-5c59323828c5"
+      ],
+      "featureList": [
+        "LT_TWELVE_BED_ROOM",
+        "SP_SIZE_1",
+        "BD_FOOTBOARD",
+        "BD_CANOPY_BED",
+        "LT_EIGHT_BED_ROOM",
+        "SP_SM",
+        "SPT_HOTEL",
+        "LT_SIX_BED_ROOM",
+        "SP_SIZE_3",
+        "LT_TEN_BED_ROOM",
+        "BD_CUPBOARD_BED",
+        "SP_SIZE_4",
+        "BD_SPRINGBOX",
+        "LT_FOUR_BED_ROOM",
+        "BD_BB",
+        "LT_BED3APT"
+      ],
+      "isRestricted": false,
+      "allocationType": "ALL",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 2,
+      "capacity": {
+        "adults": 3,
+        "children": 1,
+        "pets": 0,
+        "maximum": 3
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 3
+      },
+      "numberOfBedrooms": 1
+    },
+    {
+      "id": "4fe41e77-06a0-4e0f-938d-6cff10a587d3",
+      "code": "ERFC049",
+      "name": "ERFC with 5 room",
+      "basePrice": 307.1,
+      "type": "ERFC",
+      "availableRoomIds": [
+        "d9a63fd6-5427-4c40-955e-06ef9e58e264",
+        "fe3469a5-8e67-46f8-a5c9-bdbf57d51c00"
+      ],
+      "featureList": [
+        "BD_SPRINGBOX",
+        "VW_HARBOR_VIEW",
+        "SP_SIZE_2",
+        "SP_L",
+        "LT_TEN_BED_ROOM",
+        "SPT_HOTEL",
+        "SP_ML",
+        "LT_TWELVE_BED_ROOM",
+        "SP_SM",
+        "BD_BABY_CRIB",
+        "BD_BB",
+        "BD_BED_FACING_WINDOW",
+        "LT_BED3APT",
+        "SP_SIZE_4",
+        "OS_GLASS_BALCONY",
+        "BD_BOTTOM_BUNK_BED",
+        "SP_M",
+        "BD_FOOTBOARD",
+        "SP_XL",
+        "SP_S",
+        "LT_FOUR_BED_ROOM",
+        "OS_GLASS_TERRACE",
+        "VW_GARDEN",
+        "SP_SIZE_1"
+      ],
+      "isRestricted": true,
+      "allocationType": "ALL",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 2,
+      "capacity": {
+        "adults": 3,
+        "children": 3,
+        "pets": 1,
+        "maximum": 5
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 1
+      },
+      "numberOfBedrooms": 2
+    },
+    {
+      "id": "6d36770f-bc14-4c51-865c-48e2deaf9cfd",
+      "code": "RFC014",
+      "name": "Deluxe Room RFC014",
+      "basePrice": 307.1,
+      "type": "RFC",
+      "availableRoomIds": ["bcb44e86-a2e7-4817-8aaa-546adffe5d2e"],
+      "featureList": [
+        "BD_QUEEN",
+        "SP_L",
+        "SPT_HOTEL",
+        "BR_BT",
+        "V_SV",
+        "LT_BED2APT",
+        "LO_2F",
+        "OS_TER",
+        "OS_BALCON"
+      ],
+      "isRestricted": false,
+      "allocationType": "DEDUCT",
+      "spaceTypeList": ["SPT_HOTEL"],
+      "availableToSell": 1,
+      "capacity": {
+        "adults": 3,
+        "children": 1,
+        "pets": 1,
+        "maximum": 3
+      },
+      "extraCapacity": {
+        "adults": 0,
+        "children": 0,
+        "pets": 0,
+        "maximum": 3
+      },
+      "numberOfBedrooms": 1
+    }
+  ],
+  "priceJump": true,
+  "mergedRequest": false,
+  "spaceTypeRequestList": null,
+  "featureRequestList": []
+}

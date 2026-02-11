@@ -1,0 +1,77 @@
+<ng-container *ngIf="{isMobile: isMobile$ | async} as vm">
+  <ng-container *ngIf="vm.isMobile">
+    <div class="flex items-center justify-between mb-[6px] cursor-pointer" (click)="standardFeaturesToggle.toggle()">
+      <div class="font-medium text-[14px] leading-[140%] mb-[8px] mt-[16px] text-primary-color sm:text-[14px]">{{ 'STANDARD_FEATURES' | translate | async }}</div>
+      <mat-icon class="text-primary-color">{{ standardFeaturesToggle?._getExpandedState() === 'expanded' ? 'expand_less' : 'expand_more' }}</mat-icon>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!vm.isMobile">
+    <div class="font-medium text-[14px] leading-[140%] mb-[8px] mt-[16px] text-primary-color sm:text-[14px]">{{ 'STANDARD_FEATURES' | translate | async }}</div>
+  </ng-container>
+
+  <ng-container *ngIf="vm.isMobile">
+    <div class="grid grid-cols-3 gap-x-[24px] gap-y-[4px] sm:grid-cols-2 md:grid-cols-2 sm:gap-x-[16px] sm:gap-y-[4px]">
+      <ng-container *ngFor="let stFeature of standardFeatures | slice: 0 : maxFeatureShowed; index as stFeatureIdx">
+        <div class="flex items-center gap-[4px]">
+          <img loading="lazy" class="w-[24px] h-[24px] sm:w-[16px] sm:h-[16px]" [src]="stFeature?.iconImageUrl || 'assets/icons/checked.svg'" appFilterSvg [color]="colorText$ | async" />
+          <div
+            class="font-light text-[12px] leading-[140%] text-primary-color line-clamp-2"
+            appFeatureDescriptionTooltip
+            [isDisabled]="false"
+            [featureName]="stFeature?.name"
+            [featureCode]="stFeature?.code"
+            [featureDescription]="stFeature?.description"
+            [featureIcon]="stFeature?.iconImageUrl"
+            [isStandard]="true"
+          >
+            {{ stFeature?.name }}
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <mat-expansion-panel hideToggle #standardFeaturesToggle>
+      <div class="grid grid-cols-3 gap-x-[24px] gap-y-[4px] sm:grid-cols-2 md:grid-cols-2 sm:gap-x-[16px] sm:gap-y-[4px]">
+        <ng-container *ngFor="let stFeature of standardFeatures | slice: maxFeatureShowed; index as stFeatureIdx">
+          <div class="flex items-center gap-[4px]">
+            <img loading="lazy" class="w-[24px] h-[24px] sm:w-[16px] sm:h-[16px]" [src]="stFeature?.iconImageUrl || 'assets/icons/checked.svg'" appFilterSvg [color]="colorText$ | async" />
+            <div
+              class="font-light text-[12px] leading-[140%] text-primary-color line-clamp-2"
+              appFeatureDescriptionTooltip
+                [isDisabled]="isMobile"
+              [featureName]="stFeature?.name"
+              [featureCode]="stFeature?.code"
+              [featureDescription]="stFeature?.description"
+              [featureIcon]="stFeature?.iconImageUrl"
+              [isStandard]="true"
+            >
+              {{ stFeature?.name }}
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </mat-expansion-panel>
+  </ng-container>
+
+  <ng-container *ngIf="!vm.isMobile">
+    <div class="grid grid-cols-3 gap-x-[24px] gap-y-[4px] sm:grid-cols-2 md:grid-cols-2 sm:gap-x-[16px] sm:gap-y-[4px]">
+      <ng-container *ngFor="let stFeature of standardFeatures | slice: 0 : maxFeatureShowed; index as stFeatureIdx">
+        <div class="flex items-center gap-[4px]">
+          <img loading="lazy" class="w-[24px] h-[24px] sm:w-[16px] sm:h-[16px]" [src]="stFeature?.iconImageUrl || 'assets/icons/checked.svg'" appFilterSvg [color]="colorText$ | async" />
+          <div
+            class="font-light text-[12px] leading-[140%] text-primary-color line-clamp-2"
+            appFeatureDescriptionTooltip
+            [isDisabled]="false"
+            [featureName]="stFeature?.name"
+            [featureCode]="stFeature?.code"
+            [featureDescription]="stFeature?.description"
+            [featureIcon]="stFeature?.iconImageUrl"
+            [isStandard]="true"
+          >
+            {{ stFeature?.name }}
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,116 @@
+<ng-container
+  *ngIf="{
+    calendarDailyRates: calendarDailyRates$ | async,
+    currencyRate: currencyRate$ | async,
+    currencyCode: currencyCode$ | async,
+    isLoadingCalendar: isLoadingCalendar$ | async,
+    locale: locale$ | async,
+    lowestPriceOption: lowestPriceOption$ | async,
+    colorText: colorText$ | async
+  } as vm"
+>
+  <div class="">
+    <div class="max-h-[73vh] overflow-y-auto pb-10" [ngClass]="{ '!max-h-[78vh]': !isIOS }">
+      <div class="flex items-center justify-between mb-[24px]">
+        <div class="flex items-center" (click)="onBackClick()">
+          <mat-icon class="text-primary-color !w-auto !h-auto dir-mat-icon">chevron_left</mat-icon>
+        </div>
+        <div class="text-[17px] font-medium leading-[140%] text-primary-color">{{ 'CHANGE_DATE' | translate | async }}</div>
+        <div class="opacity-0">
+          <mat-icon class="text-primary-color !w-auto !h-auto dir-mat-icon">chevron_left</mat-icon>
+        </div>
+      </div>
+      <div class="bg-background-secondary-color rounded-[16px] p-[12px] mb-[16px]">
+        <div class="flex items-center justify-between" (click)="expansionPanel.toggle()">
+          <div class="flex items-center gap-[8px]">
+            <div class="text-[17px] font-medium leading-[140%] text-primary-color">{{ 'EXPLAIN' | translate | async }}</div>
+            <div class="flex items-center gap-[8px]" *ngIf="expansionPanel?._getExpandedState() === 'collapsed'">
+              <img src="assets/icons/ctd.svg" alt="" appFilterSvg [color]="vm.colorText" />
+              <img src="assets/icons/cta.svg" alt="" appFilterSvg [color]="vm.colorText" />
+              <!--          <img src="assets/icons/deal.svg" alt="">-->
+              <img [src]="(layoutSetting$ | async) === 'SQUARE' ? 'assets/icons/sold-out-square.svg' : 'assets/icons/sold-out.svg'" alt="" />
+            </div>
+          </div>
+          <div class="flex items-center">
+            <mat-icon class="text-primary-color !w-auto !h-auto">{{ expansionPanel?._getExpandedState() === 'expanded' ? 'expand_less' : 'expand_more' }}</mat-icon>
+          </div>
+        </div>
+        <mat-expansion-panel id="explain-panel" #expansionPanel>
+          <div class="flex flex-col gap-[16px] mt-[16px]">
+            <div class="flex items-center gap-[12px]">
+              <img src="assets/icons/ctd.svg" alt="" appFilterSvg [color]="vm.colorText" />
+              <div class="text-[14px] font-normal leading-[140%] text-primary-color">{{ 'CTA_MESSAGE' | translate | async }}</div>
+            </div>
+            <div class="flex items-center gap-[12px]">
+              <img src="assets/icons/cta.svg" alt="" appFilterSvg [color]="vm.colorText" />
+              <div class="text-[14px] font-normal leading-[140%] text-primary-color">{{ 'CTD_MESSAGE' | translate | async }}</div>
+            </div>
+            <!--        <div class="flex items-center gap-[12px]">-->
+            <!--          <img src="assets/icons/deal.svg" alt="">-->
+            <!--          <div class="text-[14px] font-normal leading-[140%] text-primary-color">{{'SPECIAL_DEAL' | translate | async}}</div>-->
+            <!--        </div>-->
+            <div class="flex items-center gap-[12px]">
+              <img [src]="(layoutSetting$ | async) === 'SQUARE' ? 'assets/icons/sold-out-square.svg' : 'assets/icons/sold-out.svg'" alt="" />
+              <div class="text-[14px] font-normal leading-[140%] text-primary-color">{{ 'SOLD_OUT' | translate | async }}</div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </div>
+      <div class="">
+        <app-calendar-mobile-renderer
+          [isStartDate]="true"
+          [calendarDailyRates]="vm.calendarDailyRates"
+          [activeDate]="activeDate[0]"
+          [selectedValue]="datesSelected"
+          [currencyRate]="vm.currencyRate"
+          [currencyCode]="vm.currencyCode"
+          [minDate]="minDate"
+          [maxDate]="maxDate"
+          [isLoadingPrice]="vm.isLoadingCalendar"
+          [locale]="vm.locale"
+          [lowestPriceOption]="vm.lowestPriceOption"
+          [checkInDateInfo]="checkInDateInfo"
+          [colorText]="vm.colorText"
+          [calendarSetting]="calendarSetting$ | async"
+          [layoutSetting]="layoutSetting$ | async"
+          (valueChange)="selectedChange($event)"
+          (clearSelectedDate)="clearSelectedDate()"
+          (changeDate)="changeDate($event)"
+        ></app-calendar-mobile-renderer>
+      </div>
+      <div class="">
+        <app-calendar-mobile-renderer
+          [isStartDate]="false"
+          [calendarDailyRates]="vm.calendarDailyRates"
+          [activeDate]="activeDate[1]"
+          [selectedValue]="datesSelected"
+          [currencyRate]="vm.currencyRate"
+          [currencyCode]="vm.currencyCode"
+          [minDate]="minDate"
+          [maxDate]="maxDate"
+          [isLoadingPrice]="vm.isLoadingCalendar"
+          [locale]="vm.locale"
+          [lowestPriceOption]="vm.lowestPriceOption"
+          [checkInDateInfo]="checkInDateInfo"
+          [colorText]="vm.colorText"
+          [calendarSetting]="calendarSetting$ | async"
+          [layoutSetting]="layoutSetting$ | async"
+          (valueChange)="selectedChange($event)"
+          (clearSelectedDate)="clearSelectedDate()"
+          (changeDate)="changeDate($event)"
+        ></app-calendar-mobile-renderer>
+      </div>
+    </div>
+    <div class="mt-[16px] sticky bg-background-primary-color pt-4" [class.bottom-8]="isIOS" [class.bottom-2]="!isIOS">
+      <div class="h-[1px] w-[98%] bg-hotel-primary-color mx-auto mb-4"></div>
+      <button
+        (click)="onBack.emit()"
+        [disabled]="!datesSelected?.[0] || !datesSelected?.[1]"
+        [ngClass]="{ 'opacity-50 !cursor-not-allowed': !datesSelected?.[0] || !datesSelected?.[1] }"
+        class="w-full h-[44px] px-[24px] rounded-[12px] text-button-normal-color bg-button-normal-background-color text-[14px] font-medium leading-[140%]"
+      >
+        {{ 'DONE' | translate | async }}
+      </button>
+    </div>
+  </div>
+</ng-container>

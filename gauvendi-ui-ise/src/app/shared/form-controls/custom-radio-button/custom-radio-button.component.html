@@ -1,0 +1,20 @@
+<div
+  class="grid grid-cols-2 gap-[16px]"
+  [class]="customClass"
+>
+  <ng-container *ngFor="let item of allItems">
+    <label class="relative col-span-1 flex cursor-pointer select-none items-center custom-radio ps-[20px]">
+      {{label}}
+      <input
+        type="radio"
+        class="opacity-0 !h-0 !w-0 absolute cursor-pointer"
+        [value]="item.value"
+        [ngModel]="value"
+        (ngModelChange)="change($event)"
+        name="radio2" />
+      <div class="text-primary-color text-[12px] h-[16px] leading-[140%]" [class]="customLabel">{{item?.label | translate | async}}</div>
+      <span class="absolute top-0 ltr:left-0 rtl:right-0 checkmark w-[16px] h-[16px] rounded-[50%] border-[2px] border-border-color"></span>
+    </label>
+  </ng-container>
+
+</div>

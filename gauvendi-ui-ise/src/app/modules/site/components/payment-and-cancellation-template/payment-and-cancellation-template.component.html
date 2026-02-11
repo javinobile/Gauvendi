@@ -1,0 +1,58 @@
+@if (
+  {
+    data: data(),
+    currencyRate: currencyRate$ | async,
+    currencyCode: currencyCode$ | async
+  };
+  as vm
+) {
+  @if (vm.data; as data) {
+    <div class="bg-background-secondary-color rounded-[16px] py-[16px] px-[24px] mt-[12px]">
+      @if (data.payOnConfirmationAmount) {
+        <div class="flex items-start justify-between mb-[2px]">
+          <div class="max-w-[80%]">
+            <div class="text-[14px] font-medium leading-[140%] text-primary-color mb-[2px]">
+              {{ 'PAYABLE_NOW' | translate | async }}
+            </div>
+          </div>
+          <div class="text-[17px] font-medium leading-[140%] text-primary-color whitespace-nowrap">
+            {{ data.payOnConfirmationAmount | currencyRate: vm.currencyRate | myCurrency: vm.currencyCode : 'symbol' : '1.2' }}
+          </div>
+        </div>
+        @if (data.payOnConfirmationDescription) {
+          <div class="flex items-start justify-between mb-[12px] sm:max-w-full">
+            <div class="text-[14px] font-light leading-[140%] text-secondary-color flex items-start gap-[2px]">
+              <div class="text-primary-color sm:font-light" [innerHTML]="data.payOnConfirmationDescription"></div>
+            </div>
+          </div>
+        }
+      }
+
+      @if (data.payAtHotelAmount) {
+        <div class="flex items-start justify-between">
+          <div class="max-w-[80%]">
+            <div class="text-[14px] font-medium leading-[140%] text-primary-color mb-[2px]">
+              {{ 'PAYABLE_ON_ARRIVAL' | translate | async }}
+            </div>
+          </div>
+          <div class="text-[17px] font-medium leading-[140%] text-primary-color whitespace-nowrap">
+            {{ data.payAtHotelAmount | currencyRate: vm.currencyRate | myCurrency: vm.currencyCode : 'symbol' : '1.2' }}
+          </div>
+        </div>
+        @if (data.payAtHotelDescription) {
+          <div class="flex items-start justify-between mt-[2px]">
+            <div class="text-[14px] font-light leading-[140%] text-secondary-color flex items-start gap-[2px]">
+              <div class="text-primary-color sm:font-light" [innerHTML]="data.payAtHotelDescription"></div>
+            </div>
+          </div>
+        }
+      }
+
+      <div *ngIf="data.payOnConfirmationAmount || data.payAtHotelAmount" class="h-[1px] w-full bg-border-color my-[12px]"></div>
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color mb-[2px]">
+        {{ 'CANCELLATION_POLICY' | translate | async }}
+      </div>
+      <div class="text-[14px] font-light leading-[140%] text-primary-color" [innerHTML]="data.cxlPolicyDescription || '--'"></div>
+    </div>
+  }
+}

@@ -1,0 +1,9 @@
+query PaymentOptionsBySalesPlan($filter: PaymentOptionsBySalesPlanFilter) {
+  response: paymentOptionsBySalesPlan(filter: $filter) {
+    data {
+      ... on HotelPaymentMode {
+        code
+      }
+    }
+  }
+}

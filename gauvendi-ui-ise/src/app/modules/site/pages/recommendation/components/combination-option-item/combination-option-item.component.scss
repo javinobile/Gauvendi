@@ -1,0 +1,13 @@
+.animated {
+  -webkit-filter: blur(0);
+  filter: blur(0); // fix blurry text when using rotation animation
+}
+
+.option-space-type-img {
+  position: relative;
+  background-color: white;
+  mask-image: var(--image-url);
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center;
+}

@@ -1,0 +1,42 @@
+td {
+  &:not(.selected, .not-allow-checkin, .disabled) {
+    > div {
+      &.hovered {
+        background-color: var(--color-calendar-hover-background);
+        border-radius: 8px;
+      }
+    }
+  }
+
+  &.not-allow-checkin,
+  &.disabled {
+    > div {
+      &.hovered {
+        background-color: #e9e9e9 !important;
+        cursor: not-allowed;
+        border-radius: 8px;
+      }
+    }
+  }
+}
+
+.violated {
+  background-color: #e9e9e9 !important;
+  cursor: not-allowed;
+  border-radius: 8px;
+
+  div {
+    color: #8e8e8e !important;
+  }
+}
+
+.clear-date-range {
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.08);
+  border-radius: 100px;
+  background: #ffffff;
+  width: 24px;
+  height: 24px;
+  right: -10px;
+  top: -10px;
+  z-index: 20;
+}

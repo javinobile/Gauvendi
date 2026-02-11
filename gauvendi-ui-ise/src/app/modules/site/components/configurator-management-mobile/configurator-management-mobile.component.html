@@ -1,0 +1,383 @@
+@if (
+  {
+    hotelRetailCategoryList: hotelRetailCategoryList$ | async,
+    hotelRetailFeatureList: hotelRetailFeatureList$ | async,
+    categoryHoverText: categoryHoverText$ | async,
+    categoryHoverBg: categoryHoverBg$ | async,
+    tripPurpose: tripPurpose$ | async,
+    hotelPrimaryColor: hotelPrimaryColor$ | async,
+    colorText: colorText$ | async,
+    buttonTextColor: buttonTextColor$ | async,
+    eventFeatureRecommendationList: eventFeatureRecommendationList$ | async,
+    categoryDefaultText: categoryDefaultText$ | async,
+    categoryDefaultBg: categoryDefaultBg$ | async,
+    featureDefaultIcon: featureDefaultIcon$ | async,
+    featureHoverIcon: featureHoverIcon$ | async
+  };
+  as vm
+) {
+  <div class="h-screen bg-popover-background-color" #element>
+    <div class="p-[16px] overflow-hidden" [style.height.px]="viewport()" [ngClass]="{ 'max-h-[calc(100vh-50px)': !isIOS }" [class.animation--fadeUp]="isOpen" [class.animation--fadeDown]="!isOpen">
+      <div class="flex items-center justify-between pb-[12px]">
+        <div class="flex items-center" (click)="onBackClick()">
+          <mat-icon class="text-primary-color !w-auto !h-auto dir-mat-icon">chevron_left</mat-icon>
+        </div>
+        <div class="text-[17px] font-medium leading-[140%] text-primary-color">
+          {{ 'FEATURE_CONFIGURATOR' | translate | async }}
+        </div>
+        <div class=""></div>
+      </div>
+
+      <div class="h-[calc(100%-36px)] overflow-y-auto">
+        <ng-container *ngIf="vm.hotelRetailCategoryList; else tplLoadingFeature">
+          <div class="rounded-[12px] border border-border-color p-[12px] md:px-[16px] md:pt-0 h-full">
+            <div class="relative">
+            <swiper [config]="config" (slideChange)="onSlideChange($event)" #swiperComponent
+              class="category-carousel !h-[71px] md:!pt-[16px] pt-[12px] md:hidden lg:hidden relative">
+              <ng-container
+                *ngFor="let cFeature of vm.hotelRetailCategoryList | orderBySelectedFeatures: featureSelected(); index as i">
+                <ng-template swiperSlide>
+                  <ng-container [ngTemplateOutlet]="templateRef" [ngTemplateOutletContext]="{
+                                  cFeature: cFeature,
+                                  selectedCategory: categorySelected(),
+                                  selectedRetailFeatures: featureSelected(),
+                                  hotelRetailFeatureList: vm.hotelRetailFeatureList,
+                                  categoryDefaultIcon: vm.categoryDefaultText,
+                                  categoryDefaultBg: vm.categoryDefaultBg,
+                                  buttonText: vm.buttonTextColor,
+                                  index: i
+                                }">
+                  </ng-container>
+                </ng-template>
+              </ng-container>
+            </swiper>
+            
+          <button [ngClass]="{'opacity-0': isFirstSlide()}" class="w-[28px] h-[28px] absolute top-1/2 -translate-y-1/2 ltr:left-[-10px] rtl:right-0 slider__prev z-40">
+            <div class="hexagon transition-all duration-200 z-[21] top-0 left-0 right-0 bottom-0">
+              <div class="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                <img loading="lazy" alt="" class="ltr:rotate-180 rtl:rotate-0" src="assets/icons/keyboard-right.svg"
+                  appFilterSvg />
+              </div>
+            </div>
+          </button>
+          
+          <button class="w-[28px] h-[28px] absolute top-1/2 -translate-y-1/2 ltr:right-[-10px] rtl:left-0 slider__next z-40">
+            <div class="hexagon transition-all duration-200 z-[21] top-0 left-0 right-0 bottom-0">
+              <div class="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                <img loading="lazy" alt="" class="dir-mat-icon" src="assets/icons/keyboard-right.svg" appFilterSvg />
+              </div>
+            </div>
+          </button>
+          </div>
+
+            <div
+              class="w-full grid-cols-8 gap-[18px] pt-[16px] sm:hidden md:grid lg:grid"
+              [ngClass]="{
+                'grid-cols-8': vm?.hotelRetailCategoryList?.length === 8,
+                'grid-cols-7': vm?.hotelRetailCategoryList?.length === 7,
+                'grid-cols-6': vm?.hotelRetailCategoryList?.length === 6,
+                'grid-cols-5': vm?.hotelRetailCategoryList?.length === 5,
+                'grid-cols-4': vm?.hotelRetailCategoryList?.length === 4
+              }"
+            >
+              <ng-container *ngFor="let cFeature of vm.hotelRetailCategoryList; index as i">
+                <ng-container
+                  [ngTemplateOutlet]="templateRef"
+                  [ngTemplateOutletContext]="{
+                    cFeature: cFeature,
+                    selectedCategory: categorySelected(),
+                    selectedRetailFeatures: featureSelected(),
+                    hotelRetailFeatureList: vm.hotelRetailFeatureList,
+                    categoryDefaultIcon: vm.categoryDefaultText,
+                    categoryDefaultBg: vm.categoryDefaultBg,
+                    buttonText: vm.buttonTextColor,
+                    index: i
+                  }"
+                ></ng-container>
+              </ng-container>
+            </div>
+
+            <div class="w-full overflow-y-auto mt-[16px] md:mt-[35px] scroll-feature h-[calc(100%-87px)] md:h-[70vh] lg:h-[384px]">
+              <div class="flex flex-col md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 gap-[12px]">
+                @for (retailFeature of vm.hotelRetailFeatureList | featureByCategoryCode: categorySelected()?.code; track retailFeature) {
+                  <div class="max-h-[68px] md:col-span-1 lg:col-span-1">
+                    <app-feature-retail-item
+                      [id]="retailFeature?.code"
+                      (toggleItem)="handlerToggleItem(retailFeature?.code)"
+                      [description]="retailFeature?.description"
+                      [image]="retailFeature?.retailFeatureImageList[0]?.imageUrl"
+                      [isSelected]="retailFeature?.code | getSelectedFeature: featureSelected()"
+                      [title]="retailFeature?.name"
+                      [isSpecial]="hotelSuggestedFeatureCodeList()?.includes(retailFeature?.code)"
+                      [hotelPrimaryColor]="vm.hotelPrimaryColor"
+                      [featureDefaultIcon]="vm.featureDefaultIcon"
+                      [featureHoverIcon]="vm.featureHoverIcon"
+                    ></app-feature-retail-item>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <!--      <div class="w-full bg-background-secondary-color mt-[4px] rounded-[12px] p-[8px] md:p-[16px] md:mt-[16px]">-->
+      <!--        <div class="flex justify-start items-center gap-[4px] mb-[4px] md:mb-[12px]">-->
+      <!--          <img src="assets/icons/special.svg" class="!w-[20px] !h-[20px] md:!w-[24px] md:!h-[24px]" alt="special" appFilterSvg-->
+      <!--               [color]="vm.hotelPrimaryColor">-->
+      <!--          <div class="flex flex-wrap">-->
+
+      <!--            @for (item of eventFeatureRecommendationList()?.event?.split('\n')?.[0]?.split(' '); track item) {-->
+      <!--              <span class="whitespace-nowrap font-medium text-primary-color text-12 md:text-[17px]">{{item}}&nbsp;</span>-->
+      <!--            }-->
+      <!--            <span class="whitespace-nowrap font-medium text-primary-color text-12 md:text-[17px]">{{eventFeatureRecommendationList()?.event?.split('\n')?.[1]}}</span>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--        <div class="grid grid-cols-3 gap-[8px] md:gap-[12px]">-->
+      <!--          @if (!vm.eventFeatureRecommendationList || !vm.hotelRetailFeatureList) {-->
+      <!--            <div class="col-span-3 h-[57px] skeleton-ln rounded-[8px] w-full"></div>-->
+      <!--          } @else {-->
+      <!--            @for (suggest of eventFeatureRecommendationList()?.popularRetailFeatureList; track suggest) {-->
+      <!--              <div-->
+      <!--                class="col-span-1 cursor-pointer hover:bg-feature-background p-[8px] rounded-[12px] md:px-[12px] md:flex md:items-center md:justify-between md:gap-[8px]"-->
+      <!--                (click)="addSuggestFeature(suggest?.code)"-->
+      <!--                [class]="featureSelected()?.includes(suggest?.code) ? 'bg-feature-background' : 'bg-feature-suggested'"-->
+      <!--              >-->
+      <!--                <div class="flex items-start justify-between md:hidden">-->
+      <!--                  <img class="h-[24px] w-[21px] "-->
+      <!--                       [src]="suggest?.retailFeatureImageList[0]?.imageUrl"-->
+      <!--                       appFilterSvg-->
+      <!--                       [color]="vm.hotelPrimaryColor"-->
+      <!--                       alt="">-->
+      <!--                  @if (featureSelected()?.includes(suggest?.code)) {-->
+      <!--                    <img class="w-[18px]"-->
+      <!--                         src="assets/icons/check.svg"-->
+      <!--                         appFilterSvg-->
+      <!--                         [color]="vm.hotelPrimaryColor"-->
+      <!--                         alt="" />-->
+      <!--                  } @else {-->
+      <!--                    <img class="w-[18px]"-->
+      <!--                         src="assets/icons/plus-circle.svg"-->
+      <!--                         appFilterSvg-->
+      <!--                         [color]="vm.hotelPrimaryColor"-->
+      <!--                         alt="" />-->
+      <!--                  }-->
+      <!--                </div>-->
+      <!--                <img class="h-[48px] w-[42px] md:block hidden"-->
+      <!--                     [src]="suggest?.retailFeatureImageList[0]?.imageUrl"-->
+      <!--                     appFilterSvg-->
+      <!--                     [color]="vm.hotelPrimaryColor"-->
+      <!--                     alt="">-->
+      <!--                <div class="text-primary-color line-clamp-1 text-12">-->
+      <!--                  {{ suggest?.name }}-->
+      <!--                </div>-->
+      <!--                @if (featureSelected()?.includes(suggest?.code)) {-->
+      <!--                  <img class="w-[24px] md:block hidden"-->
+      <!--                       src="assets/icons/check.svg"-->
+      <!--                       appFilterSvg-->
+      <!--                       [color]="vm.hotelPrimaryColor"-->
+      <!--                       alt="" />-->
+      <!--                } @else {-->
+      <!--                  <img class="w-[24px] md:block hidden"-->
+      <!--                       src="assets/icons/plus-circle.svg"-->
+      <!--                       appFilterSvg-->
+      <!--                       [color]="vm.hotelPrimaryColor"-->
+      <!--                       alt="" />-->
+      <!--                }-->
+      <!--              </div>-->
+      <!--            }-->
+      <!--          }-->
+
+      <!--        </div>-->
+      <!--      </div>-->
+    </div>
+
+    @if (!isOpenRanking()) {
+      <div class="absolute bottom-0 left-0 right-0 bg-white shadow-[0px_-4px_40px_0px_rgba(0,0,0,0.04)]">
+        <div class="px-[16px] pt-[12px] pb-[8px]">
+          <div class="flex justify-center gap-[8px] items-center mb-[8px]" (click)="featureSelected()?.length > 0 && isOpenRanking.set(true)">
+            <div class="text-center text-14 text-primary-color">
+              {{
+                featureSelected()?.length > 0 ? ('SELECTED_FEATURED' | translate | async) + ' (' + featureSelected()?.length + ')' : ('SELECT_FEATURES_TO_PERSONALISE_YOUR_STAY' | translate | async)
+              }}
+            </div>
+            <div class="w-[24px] h-[24px] dynamic-color-icon bg-hotel-primary-color" 
+                  style="--image-url: url(assets/icons/collapse.svg)">
+            </div>
+          </div>
+
+          @if (hotelRetailFeatureList() | parseRankFeatureSelected: featureSelected(); as b) {
+            @if (b?.length > 0) {
+              <div class="bg-configurator-category-hover-background-color rounded-[8px] p-[4px] flex justify-center items-center gap-[6px]">
+                @for (hotelFeatureSelected of b | slice: 0 : 8; track hotelFeatureSelected) {
+                  <div class="text-center h-[34.23px] w-[30px] dynamic-color-icon bg-hotel-primary-color" style="--image-url: url({{ hotelFeatureSelected?.retailFeatureImageList[0]?.imageUrl }})"> </div>
+                }
+                @if (b?.length > 8) {
+                  <div class="relative overflow-hidden h-[34.23px] w-[30px]">
+                    <img src="assets/icons/hexagon-count.svg" appFilterSvg [color]="vm.hotelPrimaryColor" class="text-button-background" alt="''" width="30" height="34.23" />
+                    <span class="absolute top-0 left-0 flex h-full w-full items-center justify-center z-[2] text-white text-10">+{{ b?.length - 8 }}</span>
+                  </div>
+                }
+              </div>
+            }
+          }
+
+          @if (featureSelected()?.length) {
+            <div class="flex w-full items-center justify-center gap-[10px] mt-[8px]">
+              <button
+                *ngIf="featureSelected()?.length > 0"
+                (click)="clear()"
+                class="flex items-center justify-center border border-solid font-medium border-outline-button-normal-color bg-outline-button-normal-background-color text-outline-button-normal-color w-1/2 h-[44px] rounded-[12px] text-[14px] leading-[140%] hover:opacity-80"
+              >
+                {{ 'CLEAR_SELECTION' | translate | async }}
+              </button>
+              <button
+                (click)="apply()"
+                class="flex items-center justify-center border-solid font-medium border-button-color w-1/2 h-[44px] rounded-[12px] bg-button-normal-background-color text-button-normal-color text-[14px] leading-[140%] hover:opacity-80"
+              >
+                {{ 'FIND_MATCH' | translate | async }}
+              </button>
+            </div>
+          } @else {
+            <button
+              (click)="apply()"
+              class="flex items-center mt-[8px] justify-center border-solid font-medium border-button-color w-full h-[44px] rounded-[12px] bg-button-normal-background-color text-button-normal-color text-[14px] leading-[140%] hover:opacity-80"
+            >
+              {{ (featureSelected()?.length ? 'FIND_MATCH' : 'SEARCH') | translate | async }}
+            </button>
+          }
+        </div>
+      </div>
+    } @else {
+      <div class="transition-all duration-100 overlay linear" *ngIf="isOpenRanking()"></div>
+      <div
+        class="bg-background-secondary-color rounded-[12px] px-[8px] py-[16px] mt-[16px] transition-all linear duration-100"
+        [ngClass]="{ 'fixed left-0 right-0 bottom-0 !px-[20px] !pt-[20px] !pb-[35px] rounded-none rounded-tl-[16px] rounded-tr-[16px] z-[30] transition-all linear duration-100': isOpenRanking() }"
+      >
+        <div class="mb-[8px] flex items-center justify-center gap-[8px]" (click)="isOpenRanking.set(!isOpenRanking())">
+          <div class="font-medium text-[14px] leading-[140%] text-primary-color">
+            {{ 'SELECTED_FEATURED' | translate | async }} <span class="font-medium text-[14px] leading-[140%] text-hotel-primary-color">({{ featureSelected().length }} )</span>
+          </div>
+          <div class="w-[24px] h-[24px] dynamic-color-icon bg-hotel-primary-color rotate-180" 
+               style="--image-url: url(assets/icons/collapse.svg)">
+          </div>
+        </div>
+
+        @if (hotelRetailFeatureList() | parseRankFeatureSelected: featureSelected(); as b) {
+          @if (b?.length > 0) {
+            <div class="bg-configurator-category-hover-background-color rounded-[8px] p-[4px] flex justify-center items-center gap-[6px]">
+              @for (hotelFeatureSelected of b | slice: 0 : 8; track hotelFeatureSelected) {
+                <img class="text-center h-[34.23px] w-[30px]" appFilterSvg [color]="vm.hotelPrimaryColor" [src]="hotelFeatureSelected?.retailFeatureImageList[0]?.imageUrl" alt="" />
+              }
+              @if (b?.length > 8) {
+                <div class="relative overflow-hidden h-[34.23px] w-[30px]">
+                  <img src="assets/icons/hexagon-count.svg" appFilterSvg [color]="vm.hotelPrimaryColor" class="text-button-background" alt="''" width="30" height="34.23" />
+                  <span class="absolute top-0 left-0 flex h-full w-full items-center justify-center z-[2] text-white text-10">+{{ b?.length - 8 }}</span>
+                </div>
+              }
+            </div>
+          }
+        }
+        <ng-container *ngIf="isOpenRanking">
+          <div class="overflow-y-auto overflow-x-hidden mt-[8px] scroll-feature max-h-[70vh]" cdkScrollable>
+            <div class="w-full grid grid-cols-1 gap-[8px]" [cdkDropListData]="curFeatureRankings()" cdkDropList (cdkDropListDropped)="drop($event)">
+              @if (curFeatureRankings()?.length > 0) {
+                @for (featureRanking of curFeatureRankings(); track featureRanking) {
+                  <div class="relative flex w-full items-center mb-[4px] h-[46px] border border-primary-color px-[4px] gap-[6px] rounded-[8px]" cdkDragLockAxis="y" cdkDrag>
+                    <img cdkDragHandle appFilterSvg [color]="vm.colorText" class="cursor-all-scroll" src="assets/icons/drag.svg" width="16" height="16" alt="" />
+                    <div class="w-[calc(100%-28px)] line-clamp-2 text-[12px] text-primary-color font-[400] leading-[16.8px]">
+                      <span class="font-semibold">{{ featureRanking?.category?.name }}:</span>
+                      @for (feat of featureRanking?.features; track feat; let last = $last) {
+                        {{ feat?.name }}
+                        @if (!last) {
+                          ,&nbsp;
+                        }
+                      }
+                    </div>
+                  </div>
+                }
+              }
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    }
+  </div>
+
+  <ng-template #tplLoadingFeature>
+    <div class="w-full gap-[24px] grid grid-cols-6">
+      <div class="col-span-1 w-[40px] h-[40px] rounded-[8px] skeleton-ln"></div>
+      <div class="col-span-1 w-[40px] h-[40px] rounded-[8px] skeleton-ln"></div>
+      <div class="col-span-1 w-[40px] h-[40px] rounded-[8px] skeleton-ln"></div>
+      <div class="col-span-1 w-[40px] h-[40px] rounded-[8px] skeleton-ln"></div>
+      <div class="col-span-1 w-[40px] h-[40px] rounded-[8px] skeleton-ln"></div>
+      <div class="col-span-1 w-[40px] h-[40px] rounded-[8px] skeleton-ln"></div>
+    </div>
+  </ng-template>
+}
+
+<ng-template
+  #templateRef
+  let-cFeature="cFeature"
+  let-selectedCategory="selectedCategory"
+  let-selectedRetailFeatures="selectedRetailFeatures"
+  let-hotelRetailFeatureList="hotelRetailFeatureList"
+  let-buttonText="buttonText"
+  let-index="index"
+  let-categoryDefaultIcon="categoryDefaultIcon"
+  let-categoryDefaultBg="categoryDefaultBg"
+>
+  <div
+    [ngClass]="{
+      selected: selectedCategory?.code === cFeature?.code,
+      '!bg-button-normal-background-color': selectedCategory?.code === cFeature?.code || (cFeature?.code | featureCountConfigurator: selectedRetailFeatures : hotelRetailFeatureList) > 0
+    }"
+    (click)="selectCategory(cFeature)"
+    #cFeatureRef
+    class="relative col-span-1 flex cursor-pointer bg-configurator-category-default-background-color rounded-[8px] flex-col items-center justify-center feature-item md:py-[4px]"
+  >
+    @if (cFeature?.code | featureCountConfigurator: featureSelected() : hotelRetailFeatureList; as number) {
+      <div class="absolute z-20 ltr:-right-[6px] rtl:-left-[6px] -top-[5px]">
+        <div class="w-[17.6px] h-[20.9px] relative">
+          <div class="absolute z-[22] top-1/2 text-11 font-semibold text-secondary-color -translate-x-1/2 left-1/2 -translate-y-1/2">{{ number }}</div>
+          <div class="hexagon-mb z-[21]"></div>
+        </div>
+      </div>
+    }
+    <div
+      class="flex items-center justify-center item-box-feature item-bg w-[40px] h-[34px]"
+      [ngClass]="{
+        'bg-button-normal-background-color': (cFeature?.code | featureCountConfigurator: selectedRetailFeatures : hotelRetailFeatureList) > 0
+      }"
+    >
+      <div
+        class="absolute !z-10 w-[38px] h-[34px] bg-configurator-category-default-background-color rounded-[4px] flex items-center justify-center"
+        [ngClass]="{
+          '!bg-button-normal-background-color': selectedCategory?.code === cFeature?.code || (cFeature?.code | featureCountConfigurator: selectedRetailFeatures : hotelRetailFeatureList) > 0
+        }"
+      >
+        <app-image-hovering
+          class="w-[18px] h-[18px]"
+          [src]="cFeature?.iconImageUrl"
+          [color]="selectedCategory?.code === cFeature?.code || (cFeature?.code | featureCountConfigurator: selectedRetailFeatures : hotelRetailFeatureList) > 0 ? buttonText : categoryDefaultIcon"
+          [colorHovering]="
+            selectedCategory?.code === cFeature?.code || (cFeature?.code | featureCountConfigurator: selectedRetailFeatures : hotelRetailFeatureList) > 0 ? buttonText : categoryDefaultIcon
+          "
+          [defaultClass]="'group-hover:!hidden'"
+          [hoveringClass]="'group-hover:!block'"
+        />
+      </div>
+    </div>
+    <div
+      class="name leading-[16.8px] text-primary-color text-center text-[12px] text-container w-[53px] !overflow-hidden"
+      [ngClass]="{ '!text-[#fff]': selectedCategory?.code === cFeature?.code || (cFeature?.code | featureCountConfigurator: selectedRetailFeatures : hotelRetailFeatureList) > 0 }"
+      #wr
+    >
+      <span #ct [class]="ct?.clientWidth > wr?.clientWidth ? 'animate' : ''">{{ cFeature?.name }}</span>
+    </div>
+
+    @if (categorySelected()?.code === cFeature?.code) {
+      <div class="-bottom-[9px] absolute left-0 right-0 bg-hotel-primary-color h-[5px] rounded-[12px]"></div>
+    }
+  </div>
+</ng-template>

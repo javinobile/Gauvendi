@@ -1,0 +1,15 @@
+<div class="mt-[12px] p-[24px] bg-background-secondary-color rounded-[24px] sm:p-[16px]">
+  <div class="text-[17px] font-medium leading-[140%] text-primary-color mb-[12px]">
+    {{'BOOKING_NOTES' | translate | async}}
+  </div>
+  <app-input-textarea
+    [customClass]="'!h-[81px] !rounded-[10px] border !border-border-color text-primary-color'"
+    [placeHolder]="'SPECIAL_REQUEST_PLACEHOLDER' | translate | async"
+    [formControl]="bookingNotesCtl"
+  >
+    <app-form-error
+      *ngIf="bookingNotesCtl?.hasError('maxlength') && bookingNotesCtl?.touched">
+      {{ 'SPECIAL_REQUEST_IS_NOT_VALID_MAX_LENGTH' | translate | async }}
+    </app-form-error>
+  </app-input-textarea>
+</div>

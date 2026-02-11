@@ -1,0 +1,22 @@
+<div class="flex items-center gap-[4px] flex-wrap">
+  <div
+    class="text-[17px] font-normal leading-[23.8px] text-primary-color hover:text-hotel-primary-color cursor-pointer"
+    (click)="navigate(RouterPageKey.recommendation)"
+  >{{hotelName$ | async}}</div>
+  <mat-icon class="text-primary-color rtl:rotate-180 ltr:rotate-0">chevron_right</mat-icon>
+  <ng-container *ngFor="let item of breadcrumb; let last = last">
+    <div
+      class="text-[17px] font-normal leading-[23.8px] text-primary-color"
+      [ngClass]="{
+        '!text-hotel-primary-color !font-semibold' : item?.isSelected,
+        'hover:text-hotel-primary-color cursor-pointer': !item?.isSelected
+      }"
+      (click)="navigate(item?.url)"
+    >
+      {{item?.name | translate | async}}
+    </div>
+    <ng-container *ngIf="!last">
+      <mat-icon class="text-primary-color rtl:rotate-180 ltr:rotate-0">chevron_right</mat-icon>
+    </ng-container>
+  </ng-container>
+</div>

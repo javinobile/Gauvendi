@@ -1,0 +1,24 @@
+.ln {
+  background: linear-gradient(
+    270deg,
+    #f9fafb 0%,
+    #e5e7eb 33%,
+    #f9fafb 66%,
+    #e5e7eb 100%
+  );
+  animation: skeletonLoading 1s infinite;
+  background-size: 400% 100%;
+}
+
+@keyframes skeletonLoading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+:host {
+  width: 100%;
+}

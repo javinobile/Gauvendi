@@ -1,0 +1,10 @@
+{
+  "git": {
+    "deploymentEnabled": {
+      "qa": true,
+      "develop": false,
+      "master": false,
+      "release/*": false
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<div class="relative overflow-hidden pe-[24px] pt-[24px]">
+  <div class="absolute right-[-5px] top-[-8px] z-10 cursor-pointer hover:scale-105" mat-dialog-close>
+    <img loading="lazy" src="assets/icons/close-hexagon.png" alt="" />
+  </div>
+  <div class="overflow-y-auto overflow-x-hidden max-w-[1200px] max-h-[70vh] rounded-[16px]">
+    <!-- SINGLE OPTION -->
+    <ng-container *ngIf="data?.itemSelected?.items?.length === 1">
+      <app-option-item
+        [item]="data?.itemSelected?.items[0]"
+        [priceView]="data?.priceView"
+        [displayMode]="EDisplayMode.List"
+        [childrenFiltered]="data?.childrenFiltered"
+        [adultsFiltered]="data?.adultsFiltered"
+        [isLowestPriceOpaque]="data?.isLowestPriceOpaque"
+        [lowestPriceImageUrl]="data?.lowestPriceImageUrl"
+        [restrictionValidationList]="data?.itemSelected?.metadata?.restrictionValidationList"
+        (selectRatePlan)="onSelectRatePlan({ ratePlan: $event, item: data?.itemSelected })"
+        [showMatch]="data?.isMatchFlow"
+      />
+    </ng-container>
+    <!-- END SINGLE OPTION -->
+    <!-- COMBINATION OPTION -->
+    <ng-container *ngIf="data?.itemSelected?.items?.length > 1">
+      <app-combination-option-item
+        [item]="data?.itemSelected"
+        [displayMode]="EDisplayMode.List"
+        [childrenFiltered]="data?.childrenFiltered"
+        [priceView]="data?.priceView"
+        [adultsFiltered]="data?.adultsFiltered"
+        [isLowestPriceOpaque]="data?.isLowestPriceOpaque"
+        [lowestPriceImageUrl]="data?.lowestPriceImageUrl"
+        [restrictionValidationList]="data?.itemSelected?.metadata?.restrictionValidationList"
+        (selectRatePlan)="onSelectRatePlan({ ratePlan: $event, item: data?.itemSelected })"
+        [showMatch]="data?.isMatchFlow"
+      />
+    </ng-container>
+    <!-- END COMBINATION OPTION -->
+  </div>
+</div>

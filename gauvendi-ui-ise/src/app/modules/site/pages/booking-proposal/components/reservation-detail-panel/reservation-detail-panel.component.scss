@@ -1,0 +1,30 @@
+.more-image-count {
+  background: linear-gradient(0deg, rgba(0, 0, 0, .35), rgba(0, 0, 0, .35));
+}
+
+.amenity-image {
+  &.first-amenity {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      content: "";
+      left: -4px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      height: 100%;
+      background-color: var(--color-primary);
+    }
+  }
+}
+
+:host {
+  ::ng-deep .mat-expansion-panel {
+    box-shadow: none !important;
+
+    .mat-expansion-panel-body {
+      padding: 0 !important;
+    }
+  }
+}

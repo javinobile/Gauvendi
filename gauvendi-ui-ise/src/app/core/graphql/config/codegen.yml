@@ -1,0 +1,30 @@
+schema:
+  - https://sandbox.service.gauvendi.com/graphql
+
+overwrite: true
+#watch : true
+config:
+  noNamespaces: true
+generates:
+  ./src/app/core/graphql/generated/graphql.ts:
+    plugins:
+      - typescript:
+          skipTypename: true
+          avoidOptionals: false
+          declarationKind: 'interface'
+  ./src/app/core/graphql/generated/queries.ts:
+    documents: src/app/core/graphql/queries/**/*.graphql
+    config:
+      namePrefix: 'Query'
+      nameSuffix: 'Docs'
+      namingConvention: keep
+    plugins:
+      - typescript-document-nodes
+  ./src/app/core/graphql/generated/mutation.ts:
+    documents: src/app/core/graphql/mutations/**/*.graphql
+    config:
+      namePrefix: 'Mutation'
+      nameSuffix: 'Docs'
+      namingConvention: keep
+    plugins:
+      - typescript-document-nodes

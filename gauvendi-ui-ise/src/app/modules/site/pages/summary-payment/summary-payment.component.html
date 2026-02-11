@@ -1,0 +1,326 @@
+<div class="max-w-[1200px] mx-auto mb-[52px] sm:pt-[70px] sm:px-[16px] md:px-[20px] lg:p-[12px]">
+  <ng-container
+    *ngIf="{
+      paymentMethodDetails: paymentMethodDetails$ | async,
+      summaryBooking: summaryBooking$ | async,
+      roomSummary: roomSummary$ | async,
+      mandatoryAddressMainGuest: mandatoryAddressMainGuest$ | async,
+      isLowestPriceOpaque: isLowestPriceOpaque$ | async,
+      currencyCode: currencyCode$ | async,
+      currencyRate: currencyRate$ | async,
+      isCustomized: isCustomized$ | async,
+      hotelName: hotelName$ | async,
+      isHotelInclusive: isHotelInclusive$ | async,
+      hotelTaxInformationSetting: hotelTaxInformationSetting$ | async,
+      hotelCountry: hotelCountry$ | async,
+      stripeConnect: stripeConnect$ | async,
+      lowestPriceImageUrl: lowestPriceImageUrl$ | async,
+      locale: locale$ | async,
+      bookingSrc: bookingSrc$ | async,
+      bookingInformation: bookingInformation$ | async,
+      colorText: colorText$ | async,
+      colorSecondaryText: colorSecondaryText$ | async,
+      cancellationPolicy: cancellationPolicy$ | async,
+      hotelTerms: hotelTerms$ | async,
+      hotelPrivacy: hotelPrivacy$ | async,
+      colorPrimary: colorPrimary$ | async,
+      availableAmenity: availableAmenity$ | async,
+      availablePaymentMethodList: availablePaymentMethodList$ | async,
+      childrenFiltered: childrenFiltered$ | async,
+      location: location$ | async
+    } as vm"
+  >
+    <div class="hidden md:flex sm:flex items-center justify-between sm:pt-[16px] sm:items-start">
+      <div class="text-[24px] font-medium leading-[120%] text-primary-color sm:text-[17px] sm:text-center">
+        {{ 'BOOKING_REQUIRED_MESSAGE' | translate | async }}
+      </div>
+      <div></div>
+    </div>
+
+    <div class="md:hidden sm:hidden">
+      <div class="text-[24px] font-medium leading-[120%] text-primary-color sm:text-[17px] sm:text-center mt-[24px] text-center">
+        {{ 'BOOKING_REQUIRED_MESSAGE' | translate | async }}
+      </div>
+    </div>
+
+    <div class="flex my-6">
+      <app-breadcrumb [breadcrumb]="breadcrumb" />
+    </div>
+    <!-- <div class="cursor-pointer flex items-center my-6" (click)="onBack()">
+      <mat-icon class="text-primary-color">arrow_left</mat-icon>
+      <div class="text-[17px] font-medium leading-[140%] text-primary-color translate-y-[2px] sm:hidden hover:underline">
+        {{ 'BACK' | translate | async }}
+      </div>
+    </div> -->
+
+    <div class="flex items-start gap-[24px] sm:flex-col-reverse sm:mt-[16px] md:flex-col-reverse md:mt-[12px]">
+      <div class="flex-1 sm:w-full md:w-full">
+        <ng-container *ngIf="vm.availablePaymentMethodList; else tplLoadingBookingInformation">
+          <app-booking-information
+            [booking]="vm.summaryBooking"
+            [childrenFiltered]="vm.childrenFiltered"
+            [mandatoryAddressMainGuest]="vm.mandatoryAddressMainGuest"
+            [needValidation]="needValidation"
+            [roomSummary]="vm.roomSummary"
+          ></app-booking-information>
+
+          <div class="mt-[12px]">
+            <app-trip-purpose></app-trip-purpose>
+          </div>
+          <ng-container [ngSwitch]="vm.paymentMethodDetails?.paymentProvider?.code">
+            <ng-container *ngSwitchCase="paymentProviderCodeEnum.ApaleoPay">
+              <app-adyen-payment
+                [environment]="environment"
+                [availablePaymentMethodList]="vm.availablePaymentMethodList"
+                [summaryBooking]="vm.summaryBooking"
+                [originKey]="vm.paymentMethodDetails?.metadata?.metadata?.bookingEngineOriginKey"
+                [guestInformationValid]="vcGuestInformation?.rfGuest?.valid && vcGuestInformation?.rfAdditional?.valid && vcTripPurpose?.rfSpecialRequest?.valid"
+                [additionalGuestList]="vcGuestInformation?.rfAdditional?.value | parseAdditionalValue | parseGuestInformationInputList"
+                [guestInformation]="vcGuestInformation?.rfGuest?.value | parseGuestInformationInput"
+                [specialRequest]="vcTripPurpose?.rfSpecialRequest?.value?.specialRequest"
+                [currencyCode]="vm.currencyCode"
+                [locale]="vm.locale"
+                [bookingSrc]="vm.bookingSrc"
+                [bookingInformation]="vm.bookingInformation"
+                [requestBookingInfo]="requestBooking"
+                [additionalGuestValid]="vcGuestInformation?.rfAdditional?.valid"
+                [hotelTerm]="vm.hotelTerms"
+                [hotelPrivacy]="vm.hotelPrivacy"
+                [tripPurpose]="vcTripPurpose?.purposeCtrl?.value"
+                [companyInfo]="vcTripPurpose?.rfCompany?.value | parseCompanyInformationInput"
+                [bookerInformation]="vcGuestInformation?.rfBooker?.value | parseGuestInformationInput"
+                [bookerInformationValid]="vcGuestInformation?.rfBooker?.valid"
+                [isBookForAnother]="vcGuestInformation?.bookForAnotherCtl?.value"
+                [location]="vm.location"
+                (needValidation)="needValidation = true"
+              ></app-adyen-payment>
+            </ng-container>
+            <ng-container *ngSwitchCase="paymentProviderCodeEnum.Adyen">
+              <app-adyen-payment
+                [environment]="environment"
+                [availablePaymentMethodList]="vm.availablePaymentMethodList"
+                [summaryBooking]="vm.summaryBooking"
+                [clientKey]="vm.paymentMethodDetails?.metadata?.metadata?.clientKey"
+                [guestInformationValid]="vcGuestInformation?.rfGuest?.valid && vcGuestInformation?.rfAdditional?.valid && vcTripPurpose?.rfSpecialRequest?.valid"
+                [additionalGuestList]="vcGuestInformation?.rfAdditional?.value | parseAdditionalValue | parseGuestInformationInputList"
+                [guestInformation]="vcGuestInformation?.rfGuest?.value | parseGuestInformationInput"
+                [specialRequest]="vcTripPurpose?.rfSpecialRequest?.value?.specialRequest"
+                [currencyCode]="vm.currencyCode"
+                [locale]="vm.locale"
+                [bookingSrc]="vm.bookingSrc"
+                [bookingInformation]="vm.bookingInformation"
+                [requestBookingInfo]="requestBooking"
+                [additionalGuestValid]="vcGuestInformation?.rfAdditional?.valid"
+                [hotelTerm]="vm.hotelTerms"
+                [hotelPrivacy]="vm.hotelPrivacy"
+                [tripPurpose]="vcTripPurpose?.purposeCtrl?.value"
+                [companyInfo]="vcTripPurpose?.rfCompany?.value | parseCompanyInformationInput"
+                [bookerInformation]="vcGuestInformation?.rfBooker?.value | parseGuestInformationInput"
+                [bookerInformationValid]="vcGuestInformation?.rfBooker?.valid"
+                [isBookForAnother]="vcGuestInformation?.bookForAnotherCtl?.value"
+                [location]="vm.location"
+                (needValidation)="needValidation = true"
+              ></app-adyen-payment>
+            </ng-container>
+            <ng-container *ngSwitchCase="paymentProviderCodeEnum.MewsPayment">
+              <app-mews-payment
+                [availablePaymentMethodList]="vm.availablePaymentMethodList"
+                [summaryBooking]="vm.summaryBooking"
+                [merchantId]="vm.paymentMethodDetails?.metadata?.metadata?.subMerchantId"
+                [guestInformationValid]="vcGuestInformation?.rfGuest?.valid && vcGuestInformation?.rfAdditional?.valid && vcTripPurpose?.rfSpecialRequest?.valid"
+                [additionalGuestList]="vcGuestInformation?.rfAdditional?.value | parseAdditionalValue | parseGuestInformationInputList"
+                [guestInformation]="vcGuestInformation?.rfGuest?.value | parseGuestInformationInput"
+                [specialRequest]="vcTripPurpose?.rfSpecialRequest?.value?.specialRequest"
+                [currencyCode]="vm.currencyCode"
+                [locale]="vm.locale"
+                [bookingSrc]="vm.bookingSrc"
+                [bookingInformation]="vm.bookingInformation"
+                [requestBookingInfo]="requestBooking"
+                [additionalGuestValid]="vcGuestInformation?.rfAdditional?.valid"
+                [hotelTerm]="vm.hotelTerms"
+                [hotelPrivacy]="vm.hotelPrivacy"
+                [tripPurpose]="vcTripPurpose?.purposeCtrl?.value"
+                [companyInfo]="vcTripPurpose?.rfCompany?.value | parseCompanyInformationInput"
+                [bookerInformation]="vcGuestInformation?.rfBooker?.value | parseGuestInformationInput"
+                [bookerInformationValid]="vcGuestInformation?.rfBooker?.valid"
+                [isBookForAnother]="vcGuestInformation?.bookForAnotherCtl?.value"
+                (needValidation)="needValidation = true"
+              ></app-mews-payment>
+            </ng-container>
+            <ng-container *ngSwitchCase="paymentProviderCodeEnum.Opi">
+              <ng-container *ngIf="vm.paymentMethodDetails?.metadata?.metadata?.method === 'NO_OPI'">
+                <app-no-opi-payment
+                  [availablePaymentMethodList]="vm.availablePaymentMethodList"
+                  [summaryBooking]="vm.summaryBooking"
+                  [merchantId]="vm.paymentMethodDetails?.metadata?.metadata?.merchantId"
+                  [guestInformationValid]="vcGuestInformation?.rfGuest?.valid && vcGuestInformation?.rfAdditional?.valid && vcTripPurpose?.rfSpecialRequest?.valid"
+                  [additionalGuestList]="vcGuestInformation?.rfAdditional?.value | parseAdditionalValue | parseGuestInformationInputList"
+                  [guestInformation]="vcGuestInformation?.rfGuest?.value | parseGuestInformationInput"
+                  [specialRequest]="vcTripPurpose?.rfSpecialRequest?.value?.specialRequest"
+                  [currencyCode]="vm.currencyCode"
+                  [locale]="vm.locale"
+                  [bookingSrc]="vm.bookingSrc"
+                  [bookingInformation]="vm.bookingInformation"
+                  [requestBookingInfo]="requestBooking"
+                  [additionalGuestValid]="vcGuestInformation?.rfAdditional?.valid"
+                  [hotelTerm]="vm.hotelTerms"
+                  [hotelPrivacy]="vm.hotelPrivacy"
+                  [tripPurpose]="vcTripPurpose?.purposeCtrl?.value"
+                  [companyInfo]="vcTripPurpose?.rfCompany?.value | parseCompanyInformationInput"
+                  [bookerInformation]="vcGuestInformation?.rfBooker?.value | parseGuestInformationInput"
+                  [bookerInformationValid]="vcGuestInformation?.rfBooker?.valid"
+                  [isBookForAnother]="vcGuestInformation?.bookForAnotherCtl?.value"
+                  (needValidation)="needValidation = true"
+                ></app-no-opi-payment>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngSwitchCase="paymentProviderCodeEnum.GauvendiPay">
+              <ng-container *ngIf="vm.stripeConnect">
+                <app-stripe-payment
+                  [availablePaymentMethodList]="vm.availablePaymentMethodList"
+                  [summaryBooking]="vm.summaryBooking"
+                  [stripeConnect]="vm.stripeConnect"
+                  [guestInformationValid]="vcGuestInformation?.rfGuest?.valid && vcGuestInformation?.rfAdditional?.valid && vcTripPurpose?.rfSpecialRequest?.valid"
+                  [additionalGuestList]="vcGuestInformation?.rfAdditional?.value | parseAdditionalValue | parseGuestInformationInputList"
+                  [guestInformation]="vcGuestInformation?.rfGuest?.value | parseGuestInformationInput"
+                  [specialRequest]="vcTripPurpose?.rfSpecialRequest?.value?.specialRequest"
+                  [currencyCode]="vm.currencyCode"
+                  [locale]="vm.locale"
+                  [bookingSrc]="vm.bookingSrc"
+                  [bookingInformation]="vm.bookingInformation"
+                  [requestBookingInfo]="requestBooking"
+                  [additionalGuestValid]="vcGuestInformation?.rfAdditional?.valid"
+                  [hotelTerm]="vm.hotelTerms"
+                  [hotelPrivacy]="vm.hotelPrivacy"
+                  [tripPurpose]="vcTripPurpose?.purposeCtrl?.value"
+                  [companyInfo]="vcTripPurpose?.rfCompany?.value | parseCompanyInformationInput"
+                  [bookerInformation]="vcGuestInformation?.rfBooker?.value | parseGuestInformationInput"
+                  [bookerInformationValid]="vcGuestInformation?.rfBooker?.valid"
+                  [isBookForAnother]="vcGuestInformation?.bookForAnotherCtl?.value"
+                  (needValidation)="needValidation = true"
+                ></app-stripe-payment>
+              </ng-container>
+              <ng-container *ngIf="!vm.stripeConnect">
+                <app-gvd-payment
+                  [availablePaymentMethodList]="vm.availablePaymentMethodList"
+                  [summaryBooking]="vm.summaryBooking"
+                  [guestInformationValid]="vcGuestInformation?.rfGuest?.valid && vcGuestInformation?.rfAdditional?.valid && vcTripPurpose?.rfSpecialRequest?.valid"
+                  [additionalGuestList]="vcGuestInformation?.rfAdditional?.value | parseAdditionalValue | parseGuestInformationInputList"
+                  [guestInformation]="vcGuestInformation?.rfGuest?.value | parseGuestInformationInput"
+                  [specialRequest]="vcTripPurpose?.rfSpecialRequest?.value?.specialRequest"
+                  [currencyCode]="vm.currencyCode"
+                  [locale]="vm.locale"
+                  [bookingSrc]="vm.bookingSrc"
+                  [bookingInformation]="vm.bookingInformation"
+                  [requestBookingInfo]="requestBooking"
+                  [additionalGuestValid]="vcGuestInformation?.rfAdditional?.valid"
+                  [hotelTerm]="vm.hotelTerms"
+                  [hotelPrivacy]="vm.hotelPrivacy"
+                  [tripPurpose]="vcTripPurpose?.purposeCtrl?.value"
+                  [companyInfo]="vcTripPurpose?.rfCompany?.value | parseCompanyInformationInput"
+                  [bookerInformation]="vcGuestInformation?.rfBooker?.value | parseGuestInformationInput"
+                  [bookerInformationValid]="vcGuestInformation?.rfBooker?.valid"
+                  [isBookForAnother]="vcGuestInformation?.bookForAnotherCtl?.value"
+                  (needValidation)="needValidation = true"
+                ></app-gvd-payment>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngSwitchCase="paymentProviderCodeEnum.OnePay">
+              <app-onepay-payment
+                [availablePaymentMethodList]="vm.availablePaymentMethodList"
+                [summaryBooking]="vm.summaryBooking"
+                [guestInformationValid]="vcGuestInformation?.rfGuest?.valid && vcGuestInformation?.rfAdditional?.valid && vcTripPurpose?.rfSpecialRequest?.valid"
+                [additionalGuestList]="vcGuestInformation?.rfAdditional?.value | parseAdditionalValue | parseGuestInformationInputList"
+                [guestInformation]="vcGuestInformation?.rfGuest?.value | parseGuestInformationInput"
+                [specialRequest]="vcTripPurpose?.rfSpecialRequest?.value?.specialRequest"
+                [currencyCode]="vm.currencyCode"
+                [locale]="vm.locale"
+                [bookingSrc]="vm.bookingSrc"
+                [bookingInformation]="vm.bookingInformation"
+                [requestBookingInfo]="requestBooking"
+                [additionalGuestValid]="vcGuestInformation?.rfAdditional?.valid"
+                [hotelTerm]="vm.hotelTerms"
+                [hotelPrivacy]="vm.hotelPrivacy"
+                [tripPurpose]="vcTripPurpose?.purposeCtrl?.value"
+                [companyInfo]="vcTripPurpose?.rfCompany?.value | parseCompanyInformationInput"
+                [bookerInformation]="vcGuestInformation?.rfBooker?.value | parseGuestInformationInput"
+                [bookerInformationValid]="vcGuestInformation?.rfBooker?.valid"
+                [isBookForAnother]="vcGuestInformation?.bookForAnotherCtl?.value"
+                [location]="vm.location"
+                (needValidation)="needValidation = true"
+              ></app-onepay-payment>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+              <app-gvd-payment
+                [availablePaymentMethodList]="vm.availablePaymentMethodList"
+                [summaryBooking]="vm.summaryBooking"
+                [guestInformationValid]="vcGuestInformation?.rfGuest?.valid && vcGuestInformation?.rfAdditional?.valid && vcTripPurpose?.rfSpecialRequest?.valid"
+                [additionalGuestList]="vcGuestInformation?.rfAdditional?.value | parseAdditionalValue | parseGuestInformationInputList"
+                [guestInformation]="vcGuestInformation?.rfGuest?.value | parseGuestInformationInput"
+                [specialRequest]="vcTripPurpose?.rfSpecialRequest?.value?.specialRequest"
+                [currencyCode]="vm.currencyCode"
+                [locale]="vm.locale"
+                [bookingSrc]="vm.bookingSrc"
+                [bookingInformation]="vm.bookingInformation"
+                [requestBookingInfo]="requestBooking"
+                [additionalGuestValid]="vcGuestInformation?.rfAdditional?.valid"
+                [hotelTerm]="vm.hotelTerms"
+                [hotelPrivacy]="vm.hotelPrivacy"
+                [tripPurpose]="vcTripPurpose?.purposeCtrl?.value"
+                [companyInfo]="vcTripPurpose?.rfCompany?.value | parseCompanyInformationInput"
+                [bookerInformation]="vcGuestInformation?.rfBooker?.value | parseGuestInformationInput"
+                [bookerInformationValid]="vcGuestInformation?.rfBooker?.valid"
+                [isBookForAnother]="vcGuestInformation?.bookForAnotherCtl?.value"
+                (needValidation)="needValidation = true"
+              ></app-gvd-payment>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="w-[505px] sticky right-0 top-0 h-fit sm:relative sm:w-full md:relative md:w-full">
+        <ng-container *ngIf="vm.summaryBooking; else tplLoadingBookingInformationPanel">
+          <app-summary-panel
+            [summaryBooking]="vm.summaryBooking"
+            [isLowestPriceOpaque]="vm.isLowestPriceOpaque"
+            [lowestPriceImageUrl]="vm.lowestPriceImageUrl"
+            [roomsConfigurationCode]="roomsConfigurationCode"
+            [currencyRate]="vm.currencyRate"
+            [currencyCode]="vm.currencyCode"
+            [isCustomize]="vm.isCustomized"
+            [hotelName]="vm.hotelName"
+            [isHotelInclusive]="vm.isHotelInclusive"
+            [hotelTaxInformationSetting]="vm.hotelTaxInformationSetting"
+            [hotelCountry]="vm.hotelCountry"
+            [roomSummary]="vm.roomSummary"
+            [colorText]="vm.colorText"
+            [cancellationPolicy]="vm.cancellationPolicy"
+            [locale]="vm.locale"
+            [colorSecondaryText]="vm.colorSecondaryText"
+            [bookingDuration]="bookingDuration"
+            [colorPrimary]="vm.colorPrimary"
+          ></app-summary-panel>
+
+          @if (vm.summaryBooking; as info) {
+            <app-payment-and-cancellation-template
+              [data]="{
+                payOnConfirmationAmount: info.payOnConfirmationAmount,
+                payAtHotelAmount: info.payAtHotelAmount,
+                payOnConfirmationDescription: info.reservationPricingList?.[0]?.hotelPaymentTerm?.payOnConfirmationDescription,
+                payAtHotelDescription: info.reservationPricingList?.[0]?.hotelPaymentTerm?.payAtHotelDescription,
+                cxlPolicyDescription: info.reservationPricingList?.[0]?.hotelCxlPolicy?.description || '--'
+              }"
+            ></app-payment-and-cancellation-template>
+          }
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #tplLoadingBookingInformation>
+  <app-booking-information-loading></app-booking-information-loading>
+</ng-template>
+
+<ng-template #tplLoadingBookingInformationPanel>
+  <app-booking-information-panel-loading></app-booking-information-panel-loading>
+</ng-template>

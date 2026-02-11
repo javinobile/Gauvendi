@@ -1,0 +1,30 @@
+.custom-radio:hover input ~ .checkmark {
+  background-color: var(--color-calendar-hover-background);
+  border-color: var(--color-calendar-hover-background);
+  @apply duration-300 transition-all;
+}
+
+.custom-radio input:checked ~ .checkmark {
+  background-color: var(--color-button-normal-background);
+  border: none !important;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom-radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.custom-radio .checkmark:after {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+}

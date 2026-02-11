@@ -1,0 +1,1537 @@
+{
+    "id": "6122e25b-4a29-11ef-bc33-0223397f383d",
+    "attribute": [
+        {
+            "key": "ADULT",
+            "value": "بالغ"
+        },
+        {
+            "key": "ADULTS",
+            "value": "بالغون"
+        },
+        {
+            "key": "ROOM_AND_GUEST",
+            "value": "الإقامة والضيوف"
+        },
+        {
+            "key": "ROOM",
+            "value": "غرفة"
+        },
+        {
+            "key": "ROOMS",
+            "value": "غرف"
+        },
+        {
+            "key": "CHILDREN",
+            "value": "أطفال"
+        },
+        {
+            "key": "CHILD",
+            "value": "طفل"
+        },
+        {
+            "key": "ADULT_POLICY",
+            "value": "18 عامًا فما فوق"
+        },
+        {
+            "key": "AGES",
+            "value": "الأعمار"
+        },
+        {
+            "key": "CHILDREN_POLICY",
+            "value": "0-17 عامًا"
+        },
+        {
+            "key": "YEAR",
+            "value": "سنة"
+        },
+        {
+            "key": "YEARS",
+            "value": "سنوات"
+        },
+        {
+            "key": "AGE_NEEDED",
+            "value": "العمر المطلوب"
+        },
+        {
+            "key": "AGE_REQUIRED",
+            "value": "للعثور على الإقامة المناسبة، نحتاج إلى معرفة أعمار الأطفال."
+        },
+        {
+            "key": "ADD_ROOM",
+            "value": "إضافة غرفة"
+        },
+        {
+            "key": "APPLY",
+            "value": "تطبيق"
+        },
+        {
+            "key": "CHECK_IN",
+            "value": "تسجيل الوصول"
+        },
+        {
+            "key": "CHECK_OUT",
+            "value": "تسجيل الخروج"
+        },
+        {
+            "key": "DONE",
+            "value": "تم"
+        },
+        {
+            "key": "PROMO",
+            "value": "تطبيق الرمز"
+        },
+        {
+            "key": "SEARCH",
+            "value": "بحث"
+        },
+        {
+            "key": "CHECK_IN_DATE",
+            "value": "تاريخ تسجيل الوصول"
+        },
+        {
+            "key": "CHECK_OUT_DATE",
+            "value": "تاريخ تسجيل الخروج"
+        },
+        {
+            "key": "PROMOTION_CODE",
+            "value": "أدخله هنا"
+        },
+        {
+            "key": "NIGHTS",
+            "value": "ليالي"
+        },
+        {
+            "key": "NIGHT",
+            "value": "ليلة"
+        },
+        {
+            "key": "STAY",
+            "value": "الإقامة"
+        },
+        {
+            "key": "MON",
+            "value": "الاثنين"
+        },
+        {
+            "key": "TUE",
+            "value": "الثلاثاء"
+        },
+        {
+            "key": "WED",
+            "value": "الأربعاء"
+        },
+        {
+            "key": "THU",
+            "value": "الخميس"
+        },
+        {
+            "key": "FRI",
+            "value": "الجمعة"
+        },
+        {
+            "key": "SAT",
+            "value": "السبت"
+        },
+        {
+            "key": "SUN",
+            "value": "الأحد"
+        },
+        {
+            "key": "NOT_ALLOWED_CHECK_IN",
+            "value": "غير مسموح بتسجيل الوصول"
+        },
+        {
+            "key": "HOTEL_OPERATION_VIOLATED_MESSAGE",
+            "value": "لا يمكن القيام بالحجوزات لهذا اليوم بعد الآن."
+        },
+        {
+            "key": "STAY_IN_ONLY",
+            "value": "الإقامة فقط"
+        },
+        {
+            "key": "CTA_MESSAGE",
+            "value": "تسجيل الخروج فقط"
+        },
+        {
+            "key": "CTD_MESSAGE",
+            "value": "تسجيل الوصول فقط"
+        },
+        {
+            "key": "NIGHT_MINIMUM",
+            "value": "الليل الأدنى،"
+        },
+        {
+            "key": "SELECTED_FEATURED",
+            "value": "الميزات التي اخترتها"
+        },
+        {
+            "key": "SUGGESTED_FOR",
+            "value": "مقترحة لـ"
+        },
+        {
+            "key": "TRAVELLING_AS_GROUP",
+            "value": "السفر كمجموعة"
+        },
+        {
+            "key": "SOLO_TRAVELLER",
+            "value": "المسافر بمفرده"
+        },
+        {
+            "key": "TWO_TRAVELLERS",
+            "value": "اثنين من المسافرين"
+        },
+        {
+            "key": "THREE_TRAVELLERS",
+            "value": "ثلاثة مسافرين"
+        },
+        {
+            "key": "SMALL_GROUPS",
+            "value": "مجموعات صغيرة"
+        },
+        {
+            "key": "TRAVELLING_WITH_KIDS",
+            "value": "السفر مع الأطفال"
+        },
+        {
+            "key": "FAMILY_TRIP",
+            "value": "رحلة عائلية"
+        },
+        {
+            "key": "PERSONALIZE_YOUR_TRIP",
+            "value": "تخصيص إقامتك"
+        },
+        {
+            "key": "NO_FEATURE_SELECTED",
+            "value": "لم يتم اختيار أي ميزة"
+        },
+        {
+            "key": "CLEAR",
+            "value": "مسح"
+        },
+        {
+            "key": "CLEAR_SELECTION",
+            "value": "مسح التحديد"
+        },
+        {
+            "key": "FIND_MATCH",
+            "value": "العثور على ماتش"
+        },
+        {
+            "key": "YOUR_CHOICE",
+            "value": "اختيارك من الإقامة"
+        },
+        {
+            "key": "MATCH",
+            "value": "مطابقة"
+        },
+        {
+            "key": "LOWEST_PRICE",
+            "value": "أقل سعر"
+        },
+        {
+            "key": "MOST_POPULAR",
+            "value": "الأكثر شيوعًا"
+        },
+        {
+            "key": "RECOMMENDED",
+            "value": "توصية لدينا"
+        },
+        {
+            "key": "RESTRICTION_AVAILABLE_FROM",
+            "value": "هذه الغرفة متاحة فقط من"
+        },
+        {
+            "key": "TO",
+            "value": "إلى"
+        },
+        {
+            "key": "RESTRICTION_LENGTH_OF_STAY",
+            "value": "الحد الأدنى للإقامة هو"
+        },
+        {
+            "key": "RESTRICTION_CLOSE_TO_DEPARTURE",
+            "value": "لا يمكن تسجيل الخروج في التاريخ المحدد."
+        },
+        {
+            "key": "RESTRICTION_CLOSE_TO_ARRIVAL",
+            "value": "لا يمكن تسجيل الوصول في التاريخ المحدد."
+        },
+        {
+            "key": "THROUGH",
+            "value": "عبر"
+        },
+        {
+            "key": "RESTRICTION_MAX_LENGTH_OF_STAY",
+            "value": "يمكنك الإقامة لمدة تصل إلى"
+        },
+        {
+            "key": "NO_PREFERENCES_OR_FEATURES_GUARANTEED",
+            "value": "لا توجد تفضيلات"
+        },
+        {
+            "key": "YOUR_ROOM_WILL_BE_ASSIGNED_AS_PER_AVAILABILITY",
+            "value": "تتم تخصيص الغرف حسب التوافر."
+        },
+        {
+            "key": "MORE",
+            "value": "المزيد"
+        },
+        {
+            "key": "MATCHED_FEATURES",
+            "value": "الميزات المتطابقة"
+        },
+        {
+            "key": "NOT_A_MATCH",
+            "value": "ليست مطابقة"
+        },
+        {
+            "key": "OTHER_FEATURES_INCLUDED",
+            "value": "الميزات الأخرى المضمنة"
+        },
+        {
+            "key": "CHANGE_DATE",
+            "value": "تغيير التاريخ"
+        },
+        {
+            "key": "FROM",
+            "value": "من"
+        },
+        {
+            "key": "INCLUDES",
+            "value": "يشمل"
+        },
+        {
+            "key": "EXCLUSIVE",
+            "value": "حصري"
+        },
+        {
+            "key": "VIEW",
+            "value": "عرض"
+        },
+        {
+            "key": "SHOW_DETAILS",
+            "value": "عرض التفاصيل"
+        },
+        {
+            "key": "DURING_STAY",
+            "value": "خلال الإقامة"
+        },
+        {
+            "key": "PER_STAY",
+            "value": "لكل إقامة"
+        },
+        {
+            "key": "KIDS",
+            "value": "الأطفال"
+        },
+        {
+            "key": "KID",
+            "value": "طفل"
+        },
+        {
+            "key": "FOR",
+            "value": "لـ"
+        },
+        {
+            "key": "EVERYDAY",
+            "value": "كل يوم"
+        },
+        {
+            "key": "EXCEPT",
+            "value": "باستثناء"
+        },
+        {
+            "key": "DAYS",
+            "value": "أيام"
+        },
+        {
+            "key": "DAY",
+            "value": "يوم"
+        },
+        {
+            "key": "BEDROOMS",
+            "value": "غرف النوم"
+        },
+        {
+            "key": "BEDROOM",
+            "value": "غرفة نوم"
+        },
+        {
+            "key": "ONLY",
+            "value": "فقط"
+        },
+        {
+            "key": "DAILY",
+            "value": "يوميًا"
+        },
+        {
+            "key": "PRICE_FOR",
+            "value": "السعر لـ"
+        },
+        {
+            "key": "ACCOMMODATION",
+            "value": "إقامة"
+        },
+        {
+            "key": "PER_NIGHT",
+            "value": "لكل ليلة"
+        },
+        {
+            "key": "MESSAGE_NO_ROOM_OPTION_MATCH",
+            "value": "نحن نواجه ارتفاعًا في معدل الحجوزات خلال تواريخ السفر المطلوبة - يرجى محاولة تاريخ آخر."
+        },
+        {
+            "key": "MESSAGE_NO_ROOM_OPTION",
+            "value": "عذرًا، لا يوجد خيار غرفة متاح."
+        },
+        {
+            "key": "SELECT_PREFERENCE_FOR_MORE_OPTIONS",
+            "value": "المزيد من التخصيص"
+        },
+        {
+            "key": "ACCOMMODATION_OPTIONS",
+            "value": "خيارات الإقامة"
+        },
+        {
+            "key": "MATCHES",
+            "value": "مباراة/مباريات"
+        },
+        {
+            "key": "HOW_ARE_MATCHES_AND_PRICE_CALCULATED",
+            "value": "كيف يتم حساب المطابقات والأسعار؟"
+        },
+        {
+            "key": "SHOW_PRICE_WITH_ALL_TAXES_AND_FEES",
+            "value": "عرض السعر مع جميع الضرائب والرسوم"
+        },
+        {
+            "key": "ALTERNATIVE_OPTIONS",
+            "value": "خيارات بديلة"
+        },
+        {
+            "key": "PER_NIGHT_PRICE",
+            "value": "السعر لليلة الواحدة"
+        },
+        {
+            "key": "PRICE_PER_STAY",
+            "value": "السعر الإجمالي للإقامة"
+        },
+        {
+            "key": "PRICE_VIEW",
+            "value": "عرض السعر"
+        },
+        {
+            "key": "PRICE_RANGE",
+            "value": "نطاق السعر"
+        },
+        {
+            "key": "RESET",
+            "value": "إعادة تعيين"
+        },
+        {
+            "key": "CANCEL",
+            "value": "إلغاء"
+        },
+        {
+            "key": "OPTIONS_BASED_ON_SELECTED_PREFERENCES",
+            "value": "الخيارات بناءً على التفضيلات المحددة"
+        },
+        {
+            "key": "NO",
+            "value": "لا"
+        },
+        {
+            "key": "FEATURES_INCLUEDED",
+            "value": "الميزات المضمنة"
+        },
+        {
+            "key": "STANDARD_FEATURES",
+            "value": "الميزات القياسية"
+        },
+        {
+            "key": "CANCELLATION_POLICY",
+            "value": "سياسة الإلغاء"
+        },
+        {
+            "key": "PAYMENT_TERM",
+            "value": "شرط الدفع"
+        },
+        {
+            "key": "SELECT",
+            "value": "تحديد"
+        },
+        {
+            "key": "ADD_SERVICES",
+            "value": "إضافة خدمات"
+        },
+        {
+            "key": "YOU_ARE_SELECTING",
+            "value": "الاختيار الحالي:"
+        },
+        {
+            "key": "INCLUDES_TAXES_AND_FEES",
+            "value": "يتضمن الضرائب والرسوم"
+        },
+        {
+            "key": "EXCLUSIVE_TAXES_AND_FEES",
+            "value": "باستثناءالضرائب والرسوم"
+        },
+        {
+            "key": "FEATURES_INCLUDED",
+            "value": "الميزات المضمنة"
+        },
+        {
+            "key": "BACK",
+            "value": "العودة"
+        },
+        {
+            "key": "ENHANCE_YOUR_STAY",
+            "value": "تحسين إقامتك"
+        },
+        {
+            "key": "SELECT_ADDITIONAL_EXTRAS_FOR",
+            "value": "اختر خدمات إضافية لـِ"
+        },
+        {
+            "key": "MEAL_PLAN",
+            "value": "الخيارات الطهوية"
+        },
+        {
+            "key": "HOTEL_SERVICES",
+            "value": " الخدمات الإضافية"
+        },
+        {
+            "key": "EXTRAS",
+            "value": "المزايا"
+        },
+        {
+            "key": "INCLUDED",
+            "value": "مضمن"
+        },
+        {
+            "key": "SELECTED",
+            "value": "محدد"
+        },
+        {
+            "key": "REMOVE",
+            "value": "إزالة"
+        },
+        {
+            "key": "TOTAL_PRICE_FOR",
+            "value": "السعر الإجمالي لـ"
+        },
+        {
+            "key": "COMPLETE_BOOKING",
+            "value": "اكتمال الحجز"
+        },
+        {
+            "key": "BOOKING_REQUIRED_MESSAGE",
+            "value": "اختيار رائع! أدخِل فقط المعلومات المطلوبة الآن."
+        },
+        {
+            "key": "BOOKING_INFORMATION",
+            "value": "معلومات الحجز"
+        },
+        {
+            "key": "GUEST_INFORMATION",
+            "value": "معلومات الضيف"
+        },
+        {
+            "key": "FIRST_NAME",
+            "value": "الاسم الأول"
+        },
+        {
+            "key": "LAST_NAME",
+            "value": "الاسم الأخير"
+        },
+        {
+            "key": "EMAIL",
+            "value": "البريد الإلكتروني"
+        },
+        {
+            "key": "PHONE_NUMBER",
+            "value": "رقم الجوال"
+        },
+        {
+            "key": "ADDRESS",
+            "value": "العنوان"
+        },
+        {
+            "key": "CITY",
+            "value": "المدينة"
+        },
+        {
+            "key": "STATE",
+            "value": "الولاية"
+        },
+        {
+            "key": "COUNTRY",
+            "value": "البلد"
+        },
+        {
+            "key": "POSTAL_CODE",
+            "value": "الرمز البريدي"
+        },
+        {
+            "key": "ADDITIONAL_GUEST",
+            "value": "ضيف إضافي"
+        },
+        {
+            "key": "SPECIAL_REQUEST",
+            "value": "طلب خاص"
+        },
+        {
+            "key": "PAYMENT_METHODS",
+            "value": "الطريقة المفضلة للدفع؟"
+        },
+        {
+            "key": "RESERVE_WITHOUT_CREDIT_CARD",
+            "value": "الحجز بدون ضمان للدفع"
+        },
+        {
+            "key": "PAY_WITH_CREDIT_CARD",
+            "value": "ضمان بالبطاقة"
+        },
+        {
+            "key": "GUARANTEE_WITH_CREDIT_CARD",
+            "value": "الضمان بواسطة بطاقة الائتمان"
+        },
+        {
+            "key": "GUARANTEE_WITH_DEPOSIT",
+            "value": "تحويل بنكي"
+        },
+        {
+            "key": "GUARANTEE_WITH_BITCOIN",
+            "value": "الدفع بالبيتكوين"
+        },
+        {
+            "key": "GUARANTEE_WITH_E-PAY",
+            "value": "الدفع بواسطة الدفع الإلكتروني"
+        },
+        {
+            "key": "GUARANTEE_WITH_INVOICE",
+            "value": "الدفع بالفاتورة"
+        },
+        {
+            "key": "TERM_OF_USE_BOOKING_MESSAGE",
+            "value": "لقد قرأت ووافقت على شروط الاستخدام وبيان الخصوصية، وقرأت وفهمت وصف السعر وقواعد السعر لحجزي."
+        },
+        {
+            "key": "NEWSLETTERS_BOOKING_MESSAGE",
+            "value": "من خلال تحديد هذا الخيار، فإنك توافق على تلقي النشرات الدورية، والتحديثات، والعروض الترويجية على البريد الإلكتروني الذي قدمته."
+        },
+        {
+            "key": "CONFIRM_BOOKING",
+            "value": "تأكيد الحجز"
+        },
+        {
+            "key": "ACCEPTED",
+            "value": "مقبول"
+        },
+        {
+            "key": "CARD_NUMBER",
+            "value": "رقم البطاقة"
+        },
+        {
+            "key": "EXPIRY_DATE",
+            "value": "صالح حتى"
+        },
+        {
+            "key": "CARDHOLDER_NAME",
+            "value": "اسم صاحب البطاقة"
+        },
+        {
+            "key": "CVV",
+            "value": "CVV"
+        },
+        {
+            "key": "PROCESSING",
+            "value": "جاري المعالجة"
+        },
+        {
+            "key": "DECLINE_BOOKING",
+            "value": "رفض الاقتراح"
+        },
+        {
+            "key": "BOOKING_SUMMARY",
+            "value": "ملخص الحجز"
+        },
+        {
+            "key": "DATE",
+            "value": "التاريخ"
+        },
+        {
+            "key": "HIDE_DETAILS",
+            "value": "إخفاء التفاصيل"
+        },
+        {
+            "key": "ROOM_RATE",
+            "value": "سعر الغرفة"
+        },
+        {
+            "key": "SUB_TOTAL",
+            "value": "المجموع الفرعي"
+        },
+        {
+            "key": "INCLUDES_TAX",
+            "value": "يتضمن"
+        },
+        {
+            "key": "SERVICE_CHARGE",
+            "value": "رسوم الخدمة"
+        },
+        {
+            "key": "TAX",
+            "value": "الضريبة"
+        },
+        {
+            "key": "VAT",
+            "value": "ضريبة القيمة المضافة"
+        },
+        {
+            "key": "TOTAL",
+            "value": "الإجمالي"
+        },
+        {
+            "key": "PAYABLE_NOW",
+            "value": "المستحق الآن"
+        },
+        {
+            "key": "PAYABLE_ON_ARRIVAL",
+            "value": "المبلغ المستحق"
+        },
+        {
+            "key": "TAX_INFORMATION",
+            "value": "معلومات الضريبة"
+        },
+        {
+            "key": "REQUEST_BOOKING_PAYMENT_FAILED",
+            "value": "لا يمكننا معالجة الدفع. يرجى المحاولة مرة أخرى."
+        },
+        {
+            "key": "GUEST_INFO_REQUIRED",
+            "value": "معلومات الضيف مطلوبة"
+        },
+        {
+            "key": "BOOKING_RFC_NOT_AVAILABLE",
+            "value": "الغرفة غير متاحة حاليًا. يرجى تجربة تاريخ آخر أو اختيار غرفة أخرى."
+        },
+        {
+            "key": "REQUIRE_HOTEL_PAYMENT_MODE_CODE",
+            "value": "الطريقة الدفع مطلوبة. يرجى المحاولة مرة أخرى في وقت لاحق!"
+        },
+        {
+            "key": "REQUEST_AFTER_OPERATION_CLOSING_TIME",
+            "value": "هذا الحجز بعد ساعات الإغلاق التشغيلية!"
+        },
+        {
+            "key": "CARD_INFO_REQUIRED",
+            "value": "يرجى إدخال جميع معلومات بطاقة الائتمان المطلوبة"
+        },
+        {
+            "key": "CHARGE_CREDIT_CARD_FAILED",
+            "value": "فشلت عملية الشحن بواسطة بطاقة الائتمان. يرجى المحاولة مرة أخرى في وقت لاحق!"
+        },
+        {
+            "key": "TOKENIZE_CARD_FAILED",
+            "value": "فشل إضافة الرمز لبطاقة الدفع. يرجى المحاولة مرة أخرى في وقت لاحق!"
+        },
+        {
+            "key": "CREATE_MEWS_CUSTOMER_FAILED",
+            "value": "فشل إنشاء حساب العميل. يرجى المحاولة مرة أخرى في وقت لاحق!"
+        },
+        {
+            "key": "REQUIRE_CARD_INFORMATION",
+            "value": "معلومات البطاقة مفقودة. يرجى المحاولة مرة أخرى في وقت لاحق!"
+        },
+        {
+            "key": "BOOKING_NOT_AVAILABLE",
+            "value": "الغرفة غير متاحة حاليًا. يرجى تجربة تاريخ آخر أو اختيار غرفة أخرى."
+        },
+        {
+            "key": "EXTRA_SERVICE",
+            "value": "خدمة إضافية"
+        },
+        {
+            "key": "BOOKING_SUCCESS_MESSAGE",
+            "value": "تم الحجز بنجاح!"
+        },
+        {
+            "key": "BOOKING_CONFIRMATION",
+            "value": "تأكيد الحجز"
+        },
+        {
+            "key": "BOOKING_NUMBER",
+            "value": "رقم الحجز"
+        },
+        {
+            "key": "ARRIVAL",
+            "value": "الوصول"
+        },
+        {
+            "key": "DEPARTURE",
+            "value": "المغادرة"
+        },
+        {
+            "key": "HOW_TO_REACH_US",
+            "value": "كيفية التواصل معنا"
+        },
+        {
+            "key": "MAIN_GUEST_INFORMATION",
+            "value": "معلومات الضيف الرئيسية"
+        },
+        {
+            "key": "FULL_NAME",
+            "value": "الاسم الكامل"
+        },
+        {
+            "key": "EMAIL_ADDRESS",
+            "value": "عنوان البريد الإلكتروني"
+        },
+        {
+            "key": "PRICING_INFORMATION",
+            "value": "معلومات التسعير"
+        },
+        {
+            "key": "BACK_TO_HOMEPAGE",
+            "value": "العودة إلى الصفحة الرئيسية"
+        },
+        {
+            "key": "HOTEL_SERVICES_AND_ANCILLARIES",
+            "value": "الخدمات الفندقية الإضافية"
+        },
+        {
+            "key": "BOOKER_INFORMATION",
+            "value": "معلومات الحاجز"
+        },
+        {
+            "key": "SPECIAL_REQUEST_PLACEHOLDER",
+            "value": "نحن سعداء بقبول الطلبات الخاصة ونحاول تلبيتها حسب الإمكانية."
+        },
+        {
+            "key": "PROPOSAL_EXPIRATION_MESSAGE",
+            "value": "لا يتوفر هذا الحجز بعد الآن"
+        },
+        {
+            "key": "PROPOSAL_CONTACT_MESSAGE",
+            "value": "اتصل بنا لإجراء حجز جديد"
+        },
+        {
+            "key": "MAKE_ANOTHER_BOOKING",
+            "value": "أجري حجزًا آخر"
+        },
+        {
+            "key": "OR",
+            "value": "أو"
+        },
+        {
+            "key": "PROPOSAL_DECLINED_MESSAGE",
+            "value": "لقد رفضت هذا الحجز في"
+        },
+        {
+            "key": "TERM_OF_USE",
+            "value": "شروط الاستخدام"
+        },
+        {
+            "key": "PRIVACY_STATEMENT",
+            "value": "بيان الخصوصية"
+        },
+        {
+            "key": "POWER_BY",
+            "value": "مدعوم بواسطة"
+        },
+        {
+            "key": "YOU_GOT_A_DEAL",
+            "value": "صفقة قابلة للحجز"
+        },
+        {
+            "key": "DEAL_AVAILABLE",
+            "value": "الصفقة متاحة"
+        },
+        {
+            "key": "DEAL_MESSAGE",
+            "value": "يجب البقاء الدنيا"
+        },
+        {
+            "key": "DEAL_MAX_LOS_MESSAGE",
+            "value": "والحد الأقصى"
+        },
+        {
+            "key": "AGE_OF_CHILD",
+            "value": "عمر الطفل"
+        },
+        {
+            "key": "MEAL_PLANS_AND_SERVICES",
+            "value": "إضافات"
+        },
+        {
+            "key": "FEATURE_CONFIGURATOR",
+            "value": "مكون الخصائص"
+        },
+        {
+            "key": "PRICE_SETTINGS",
+            "value": "إعدادات السعر"
+        },
+        {
+            "key": "DECLINE",
+            "value": "رفض"
+        },
+        {
+            "key": "INVALID_CAPACITY",
+            "value": "طلب سعة غير صالح"
+        },
+        {
+            "key": "DISPLAY_TOTAL_PRICE",
+            "value": "عرض السعر الإجمالي"
+        },
+        {
+            "key": "ROOM_KEY",
+            "value": "وحدة سكنية"
+        },
+        {
+            "key": "ROOM_SPACE",
+            "value": "مساحة"
+        },
+        {
+            "key": "MESSAGE_CONFIRM_PAYMENT_CERTIFY",
+            "value": "أقر أنني قرأت وأوافق على"
+        },
+        {
+            "key": "MESSAGE_CONFIRM_PAYMENT_TERMS_OF_USE",
+            "value": "شروط الاستخدام"
+        },
+        {
+            "key": "MESSAGE_CONFIRM_PAYMENT_PRIVACY_STATEMENT",
+            "value": "بيان الخصوصية"
+        },
+        {
+            "key": "MESSAGE_CONFIRM_PAYMENT_RATE_DESCRIPTION_RULE",
+            "value": "وقد قرأت وفهمت وصف السعر وقواعد السعر لحجزي."
+        },
+        {
+            "key": "AND",
+            "value": "و"
+        },
+        {
+            "key": "TOOLTIP_HOW_DO_WE_CALCULATE_PERCENTAGE_MATCHES_LINE_1",
+            "value": "الخيارات والأسعار متنوعة تمامًا كتفضيلات الضيوف الفردية."
+        },
+        {
+            "key": "TOOLTIP_HOW_DO_WE_CALCULATE_PERCENTAGE_MATCHES_LINE_2",
+            "value": "تتأثر النتائج بتصنيف الميزات وشعبيتها."
+        },
+        {
+            "key": "LANGUAGE",
+            "value": "اللغة"
+        },
+        {
+            "key": "CURRENCY",
+            "value": "العملة"
+        },
+        {
+            "key": "LANGUAGE_AND_CURRENCY",
+            "value": "اللغة والعملة"
+        },
+        {
+            "key": "NUMBER_OF_NIGHTS_STAY",
+            "value": "الإقامة لمدة {{number_of_nights}} ليلة"
+        },
+        {
+            "key": "SELECT_RATE_SUITABLE",
+            "value": "خيارات السعر"
+        },
+        {
+            "key": "COMBINATION_UNITS",
+            "value": "مجموعة من {{number_of_rooms}} وحدة"
+        },
+        {
+            "key": "PER_ROOM",
+            "value": "لكل غرفة"
+        },
+        {
+            "key": "PER_PERSON_PER_NIGHT",
+            "value": "لكل شخص / ليلة"
+        },
+        {
+            "key": "PER_PERSON",
+            "value": "لكل شخص والإقامة"
+        },
+        {
+            "key": "NOT_ALLOW_CHECK_IN",
+            "value": "عدم السماح بتسجيل الوصول"
+        },
+        {
+            "key": "IS_REQUIRED",
+            "value": "مطلوب"
+        },
+        {
+            "key": "IS_NOT_VALID",
+            "value": "غير صالح"
+        },
+        {
+            "key": "RESTRICTION_LENGTH_OF_STAY_THROUGH",
+            "value": "مطلوب إقامة دقيقة لمدة {{number_of_night}} ليلة خلال هذه الفترة"
+        },
+        {
+            "key": "GO_TO_NEXT_ROOM",
+            "value": " إلى الوحدة التالية"
+        },
+        {
+            "key": "UNAVAILABLE",
+            "value": "غير متوفر"
+        },
+        {
+            "key": "SELECT_AVAILABLE_DATE_ON_THE_RIGHT",
+            "value": "حدد التاريخ المتاح على اليمين"
+        },
+        {
+            "key": "RESIDENTIAL_UNITS",
+            "value": "وحدات سكنية"
+        },
+        {
+            "key": "NO_SERVICES",
+            "value": "يمكن حجزها في الخطوة التالية."
+        },
+        {
+            "key": "SPECIAL_REQUEST_IS_NOT_VALID_MAX_LENGTH",
+            "value": "لا يمكن أن يزيد طلب الخاص عن 250 حرفًا"
+        },
+        {
+            "key": "PER_UNIT",
+            "value": "لكل وحدة"
+        },
+        {
+            "key": "ACCOMMODATION_LEFT",
+            "value": "الآن تبقى فقط {{recommendation_count}}"
+        },
+        {
+            "key": "SELECTED_ROOM",
+            "value": "الغرفة المحددة"
+        },
+        {
+            "key": "SPECIAL_DEAL",
+            "value": "عرض خاص"
+        },
+        {
+            "key": "SOLD_OUT",
+            "value": "نفذت الكمية"
+        },
+        {
+            "key": "EXPLAIN",
+            "value": "شرح"
+        },
+        {
+            "key": "DESCRIPTION",
+            "value": "الوصف"
+        },
+        {
+            "key": "NIGHTS_MAXIMUM",
+            "value": "الليالي القصوى"
+        },
+        {
+            "key": "SHOW_MORE_PRODUCTS",
+            "value": "عرض المزيد"
+        },
+        {
+            "key": "CARD_DECLINED",
+            "value": "تم رفض البطاقة"
+        },
+        {
+            "key": "PAYMENT_FAILED_MSG",
+            "value": "حدث خطأ أثناء معالجة الدفع الخاص بك."
+        },
+        {
+            "key": "PAYMENT_FAILED",
+            "value": "فشل الدفع"
+        },
+        {
+            "key": "PER_ITEM",
+            "value": "لكل قطعة"
+        },
+        {
+            "key": "GUARANTEE_WITH_DIGITAL_SYSTEM",
+            "value": "الدفع عبر نظام الضيف الرقمي"
+        },
+        {
+            "key": "THIS_IS_YOUR_PROPOSAL",
+            "value": "هذا هو اقتراحك"
+        },
+        {
+            "key": "SAVE_CHANGE",
+            "value": "حفظ التغيير"
+        },
+        {
+            "key": "COMPANY_INFORMATION",
+            "value": "معلومات الشركة"
+        },
+        {
+            "key": "TAX_ID",
+            "value": "الرقم الضريبي"
+        },
+        {
+            "key": "COMPANY_NAME",
+            "value": "اسم الشركة"
+        },
+        {
+            "key": "COMPANY_EMAIL",
+            "value": "بريد إلكتروني إضافي للشركة"
+        },
+        {
+            "key": "CITY_OR_TOWN",
+            "value": "المدينة/البلدة"
+        },
+        {
+            "key": "CONFIRM_YOUR_BOOKING",
+            "value": "تأكيد العرض للفندق"
+        },
+        {
+            "key": "PROPOSAL_NUMBER",
+            "value": "رقم العرض"
+        },
+        {
+            "key": "BOOK_FOR_SOMEONE_ELSE",
+            "value": "الحجز لشخص آخر؟"
+        },
+        {
+            "key": "ACCOMMODATIONS",
+            "value": "أماكن الإقامة"
+        },
+        {
+            "key": "TRAVELLERS",
+            "value": "المسافرون"
+        },
+        {
+            "key": "TOTAL",
+            "value": "الإجمالي"
+        },
+        {
+            "key": "IMPRINT",
+            "value": "بصمة"
+        },
+        {
+            "key": "LEISURE",
+            "value": "ترفيه"
+        },
+        {
+            "key": "BUSINESS",
+            "value": "أعمال"
+        },
+        {
+            "key": "OTHERS",
+            "value": "أخرى"
+        },
+        {
+            "key": "COLLAPSE",
+            "value": "طي"
+        },
+        {
+            "key": "CLOSE",
+            "value": "إغلاق"
+        },
+        {
+            "key": "FEATURES_SELECTED_PRIORITY",
+            "value": "الميزات حسب الأولوية"
+        },
+        {
+            "key": "MORE_PERSONALIZATION",
+            "value": "اكتشف مزيدًا من الخيارات"
+        },
+        {
+            "key": "ACCOMMODATION_RATES_FOR",
+            "value": "سعر الإقامة لـ"
+        },
+        {
+            "key": "EACH_ROOM_PER_NIGHT",
+            "value": "لكل إقامة في الليلة"
+        },
+        {
+            "key": "TOTAL_CHARGES",
+            "value": "السعر الكلي"
+        },
+        {
+            "key": "CONGRATULATION_YOU_SAVED",
+            "value": "توفير يورو"
+        },
+        {
+            "key": "BOOK_NOW",
+            "value": "احجز الآن"
+        },
+        {
+            "key": "TOTAL_PRICE_FOR_ALL_ROOMS",
+            "value": "السعر الإجمالي لجميع الغرف"
+        },
+        {
+            "key": "TOTAL_PRICE_FOR",
+            "value": "السعر الإجمالي لـ"
+        },
+        {
+            "key": "VIEW_DETAILS",
+            "value": "عرض التفاصيل"
+        },
+        {
+            "key": "TOTAL_CHARGES_FOR_ROOM",
+            "value": " سعر لـ"
+        },
+        {
+            "key": "TOTAL_CHARGES_FOR_ALL_ROOMS",
+            "value": "السعر الكلي"
+        },
+        {
+            "key": "PET",
+            "value": "حيوان أليف"
+        },
+        {
+            "key": "PETS",
+            "value": "حيوانات أليفة"
+        },
+        {
+            "key": "ADDITIONAL_GUEST_LIST",
+            "value": "ضيوف آخرون"
+        },
+        {
+            "key": "OPTIONAL",
+            "value": "اختياري"
+        },
+        {
+            "key": "REQUIRED",
+            "value": "مطلوب"
+        },
+        {
+            "key": "TRIP_PURPOSE_MSG",
+            "value": "في رحلة عمل؟"
+        },
+        {
+            "key": "SPECIAL_REQUEST_MSG",
+            "value": "هل يوجد أي رسالة؟"
+        },
+        {
+            "key": "TOTAL_GUESTS",
+            "value": "إجمالي الضيوف"
+        },
+        {
+            "key": "TOTAL_AMOUNT",
+            "value": "المبلغ الإجمالي"
+        },
+        {
+            "key": "EACH_ROOM_PER_NIGHT",
+            "value": "كل غرفة في الليلة"
+        },
+        {
+            "key": "COMPANY_ADDRESS",
+            "value": "عنوان الشركة"
+        },
+        {
+            "key": "TRIP_PURPOSE",
+            "value": "هدف الرحلة"
+        },
+        {
+            "key": "PAYMENT_METHOD",
+            "value": "طريقة الدفع"
+        },
+        {
+            "key": "CREDIT_CARD",
+            "value": "بطاقة ائتمان"
+        },
+        {
+            "key": "ACCOMMODATIONS_AND_GUESTS",
+            "value": "وحدات الإقامة والضيوف"
+        },
+        {
+            "key": "DESTINATION",
+            "value": "الوجهة"
+        },
+        {
+            "key": "PREPAID_AMOUNT",
+            "value": "المبلغ المدفوع مقدمًا"
+        },
+        {
+            "key": "TOTAL_AMOUNT_DUE",
+            "value": "الإجمالي المستحق"
+        },
+        {
+            "key": "SELECTED_FEATURED",
+            "value": "الميزات التي اخترتها"
+        },
+        {
+            "key": "SELECT_FEATURES_TO_PERSONALISE_YOUR_STAY",
+            "value": "اختر الميزات لتخصيص إقامتك"
+        },
+        {
+            "key": "TRIP_PURPOSE_MSG_OPT_1",
+            "value": "نعم، أنا في رحلة عمل"
+        },
+        {
+            "key": "TRIP_PURPOSE_MSG_OPT_2",
+            "value": "لا، أنا لست كذلك"
+        },
+        {
+            "key": "ALTERNATIVE_ACCOMMODATION_OPTIONS",
+            "value": "خيارات إقامة بديلة"
+        },
+        {
+            "key": "NO_AVAILABLE_ACCOMMODATION_FOR",
+            "value": "لا توجد خيارات متاحة لـ:"
+        },
+        {
+            "key": "CHANGE_YOUR_SEARCH",
+            "value": "قم بتغيير بحثك"
+        },
+        {
+            "key": "INPUT_ANOTHER_CODE",
+            "value": "يرجى محاولة إزالة أو إدخال كود آخر"
+        },
+        {
+            "key": "NO_ROOM_OPTION_AVAILABLE",
+            "value": "عذراً، لا تتوفر خيارات للغرف"
+        },
+        {
+            "key": "PLEASE_CHOOSE_ANOTHER_DATE",
+            "value": "يرجى اختيار تاريخ آخر"
+        },
+        {
+            "key": "BOOK_ANOTHER_DATE",
+            "value": "احجز تاريخًا آخر"
+        },
+        {
+            "key": "MATCHED",
+            "value": "متطابق"
+        },
+        {
+            "key": "OTHER",
+            "value": "أخرى"
+        },
+        {
+            "key": "SHOW_LESS_PRODUCT",
+            "value": "عرض أقل"
+        },
+        {
+            "key": "BOOK",
+            "value": "احجز"
+        },
+        {
+            "key": "OPAQUE_TEXT",
+            "value": "سيتم تعيين مكان إقامتك حسبما نراه مناسبًا. لن يتم النظر في أي تفضيلات."
+        },
+        {
+            "key": "NO_MATCHED_AVAILABLE_LINE_1",
+            "value": "لا يوجد {{space_type}} تطابق"
+        },
+        {
+            "key": "NO_MATCHED_AVAILABLE_LINE_2",
+            "value": "يمكنك اختيار ميزة أخرى أو النظر في الخيارات البديلة"
+        },
+        {
+            "key": "NO_MATCHED_AVAILABLE_BUTTON",
+            "value": "عرض البديل - ليس مطابقًا"
+        },
+        {
+            "key": "STAY_UNIT",
+            "value": "إقامة"
+        },
+        {
+            "key": "STAY_UNITS",
+            "value": "إقامات"
+        },
+        {
+            "key": "EXTRA_SERVICES",
+            "value": " إضافات"
+        },
+        {
+            "key": "NIGHTS_MINIMUM",
+            "value": "الليالي الأدنى،"
+        },
+        {
+            "key": "NIGHT_MAXIMUM",
+            "value": " الليل الأقصى،"
+        },
+        {
+            "key": "NOT_MATCH_BUT_AVAILABLE",
+            "value": "متاح خلال التواريخ التي حددتها"
+        },
+        {
+            "key": "EXTRA_BED",
+            "value": "سرير إضافي"
+        },
+        {
+            "key": "EXTRA_BEDS",
+            "value": "أسرّة إضافية"
+        },
+        {
+            "key": "FEATURES",
+            "value": "ميزات"
+        },
+        {
+            "key": "INCLUDED_SERVICES",
+            "value": "الخدمات المشمولة"
+        },
+        {
+            "key": "SPECIAL_ACCOMMODATION_FEATURES",
+            "value": "ميزات الإقامة الخاصة"
+        },
+        {
+            "key": "SPECIAL_FEATURES",
+            "value": "اَلْعَرَبِيَّةُ: ميزات خاصة"
+        },
+        {
+            "key": "VIEW_ALL_PHOTOS",
+            "value": "عرض جميع الصور"
+        },
+        {
+            "key": "RATE",
+            "value": "تقييم"
+        },
+        {
+            "key": "ROOM_IMAGE",
+            "value": "صورة الغرفة"
+        },
+        {
+            "key": "NO_FEATURE_GUARANTEED",
+            "value": "لا يوجد ميزة مضمونة"
+        },
+        {
+            "key": "PER_STAY_UNIT_PER_NIGHT",
+            "value": "لكل وحدة في الليلة"
+        },
+        {
+            "key": "BOOKING_NOTES",
+            "value": "ملاحظات الحجز"
+        },
+        {
+            "key": "SELECT_YOUR_FEATURES",
+            "value": "اختر ميزاتك"
+        },
+        {
+            "key": "EDIT_MY_SELECTIONS",
+            "value": "عدل اختياراتي"
+        },
+        {
+            "key": "YOUR_SELECTIONS",
+            "value": "اختياراتك"
+        },
+        {
+            "key": "CATEGORY_HOVERING_MESSAGE",
+            "value": "اختر {{feature_name}} والمزيد"
+        },
+        {
+            "key": "BOOKING_PROCESSING_TITLE",
+            "value": "جاري معالجة الحجز!"
+        },
+        {
+            "key": "BOOKING_PROCESSING_INSTRUCTION",
+            "value": "يرجى عدم النقر على \"رجوع\" أو \"إغلاق\"، أو تحديث المتصفح."
+        },
+        {
+            "key": "BOOKING_PROCESSING_ERROR_TITLE",
+            "value": "تعذر إتمام حجزك!"
+        },
+        {
+            "key": "BOOKING_PROCESSING_ERROR_INSTRUCTION",
+            "value": "لم يتم إكمال حجزك. يرجى المحاولة مرة أخرى."
+        },
+        {
+            "key": "GUARANTEE_WITH_PAYPAL",
+            "value": "باي بال"
+        },
+        {
+            "key": "OTHER_PAYMENT",
+            "value": "طريقة دفع أخرى"
+        },
+        {
+            "key": "FIXED_FEE",
+            "value": "رسوم ثابتة"
+        },
+        {
+            "key": "CLEAR_ALL",
+            "value": "مسح الكل"
+        },
+        {
+            "key": "FIND_A_DIFFERENT_MATCH",
+            "value": "العثور على خيار آخر"
+        },
+        {
+            "key": "BOOKING_PREFERENCES_CHANGED",
+            "value": "تم تغيير تفضيلات الحجز. يرجى الضغط على '{0}' للتطبيق."
+        },
+        {
+            "key": "TOTAL_UNITS",
+            "value": "إجمالي الوحدات"
+        },
+        {
+            "key": "TOTAL_PRICE",
+            "value": "السعر الإجمالي"
+        },
+        {
+            "key": "PER_PET_PER_STAY",
+            "value": "لكل حيوان أليف / لكل إقامة"
+        },
+        {
+            "key": "PER_PET_PER_NIGHT",
+            "value": "لكل حيوان أليف / لكل ليلة"
+        },
+        {
+            "key": "UNIT",
+            "value": "وحدة"
+        },
+        {
+            "key": "UNITS",
+            "value": "وحدات"
+        },
+        {
+            "key": "ADD_ACCOMMODATION",
+            "value": "إضافة مكان إقامة"
+        },
+        {
+            "key": "PER",
+            "value": "لكل"
+        },
+        {
+            "key": "TOTAL_REMAINING",
+            "value": "المجموع المتبقي"
+        },
+        {
+            "key": "FIND_YOUR_MATCH",
+            "value": "الميزات المناسبة"
+        },
+        {
+            "key": "ADD_UNIT",
+            "value": "إضافة وحدة"
+        },
+        {
+            "key": "FEATURE_SELECTED",
+            "value": "الميزات المحددة"
+        },
+        {
+            "key": "BOOKING_DETAILS",
+            "value": "تفاصيل الحجز"
+        },
+        {
+            "key": "CUSTOMIZE",
+            "value": "تخصيص"
+        },
+        {
+            "key": "PICK_FEATURES",
+            "value": "اختر الميزات"
+        },
+        {
+            "key": "OPTION",
+            "value": "خيار"
+        },
+        {
+            "key": "OPTIONS",
+            "value": "خيارات"
+        },
+        {
+            "key": "WHO_IS_COMING_AND_WHEN",
+            "value": "من سيأتي ومتى؟"
+        },
+        {
+            "key": "AVAILABLE_OPTIONS",
+            "value": "الخيارات المتاحة"
+        },
+        {
+            "key": "WHO_BOOKED_ALSO_CHOOSE",
+            "value": "{0} الذين حجزوا {1} اختاروا أيضًا:"
+        }
+    ]
+}

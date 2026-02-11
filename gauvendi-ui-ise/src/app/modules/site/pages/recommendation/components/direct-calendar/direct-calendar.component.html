@@ -1,0 +1,66 @@
+<ng-container
+  *ngIf="{
+    locale: locale$ | async,
+    calendarDirectRoomList: calendarDirectRoomList$ | async,
+    currencyRate: currencyRate$ | async,
+    currencyCode: currencyCode$ | async,
+    isLoadingCalendar: isLoadingCalendar$ | async,
+    lowestPriceStayOption: lowestPriceStayOption$ | async,
+    colorText: colorText$ | async
+  } as vm"
+>
+  <div class="flex items-center justify-between mb-[24px]">
+    <div class="flex items-center justify-between flex-1">
+      <mat-icon (click)="changeDate('left')" class="text-primary-color cursor-pointer">chevron_left</mat-icon>
+      <div class="text-[14px] font-semibold leading-[140%] text-primary-color">{{ activeDate[0] | dateWithLocale: vm.locale : 'MMMM yyyy' }}</div>
+      <div></div>
+    </div>
+    <div class="flex items-center justify-between flex-1">
+      <div></div>
+      <div class="text-[14px] font-semibold leading-[140%] text-primary-color">{{ activeDate[1] | dateWithLocale: vm.locale : 'MMMM yyyy' }}</div>
+      <mat-icon (click)="changeDate('right')" class="text-primary-color cursor-pointer">chevron_right</mat-icon>
+    </div>
+  </div>
+  <div class="flex items-start gap-[24px] sm:flex-col">
+    <div class="flex-1">
+      <app-direct-calendar-renderer
+        [calendarDailyRates]="vm.calendarDirectRoomList"
+        [activeDate]="activeDate[0]"
+        [selectedValue]="datesSelected"
+        [currencyRate]="vm.currencyRate"
+        [currencyCode]="vm.currencyCode"
+        [minDate]="minDate"
+        [maxDate]="maxDate"
+        [isLoadingPrice]="vm.isLoadingCalendar"
+        [locale]="vm.locale"
+        [lowestPriceStayOption]="vm.lowestPriceStayOption"
+        [checkInDateInfo]="checkInDateInfo"
+        [colorText]="vm.colorText"
+        [calendarSetting]="calendarSetting$ | async"
+        [layoutSetting]="layoutSetting$ | async"
+        (valueChange)="selectedChange($event)"
+        (clearSelectedDate)="clearSelectedDate()"
+      ></app-direct-calendar-renderer>
+    </div>
+    <div class="flex-1">
+      <app-direct-calendar-renderer
+        [calendarDailyRates]="vm.calendarDirectRoomList"
+        [activeDate]="activeDate[1]"
+        [selectedValue]="datesSelected"
+        [currencyRate]="vm.currencyRate"
+        [currencyCode]="vm.currencyCode"
+        [minDate]="minDate"
+        [maxDate]="maxDate"
+        [locale]="vm.locale"
+        [isLoadingPrice]="vm.isLoadingCalendar"
+        [lowestPriceStayOption]="vm.lowestPriceStayOption"
+        [checkInDateInfo]="checkInDateInfo"
+        [colorText]="vm.colorText"
+        [calendarSetting]="calendarSetting$ | async"
+        [layoutSetting]="layoutSetting$ | async"
+        (valueChange)="selectedChange($event)"
+        (clearSelectedDate)="clearSelectedDate()"
+      ></app-direct-calendar-renderer>
+    </div>
+  </div>
+</ng-container>

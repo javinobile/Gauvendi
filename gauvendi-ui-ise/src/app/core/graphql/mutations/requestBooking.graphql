@@ -1,0 +1,60 @@
+mutation RequestBooking($request: RequestBookingPaymentInput) {
+  response: requestBooking(request: $request) {
+    code
+    status
+    message
+    data {
+      ... on BookingPaymentResponse {
+        bookingInformation {
+          id
+          bookingNumber
+          totalGrossAmount
+        }
+        booking {
+          id
+          bookingNumber
+          arrival
+          departure
+          totalGrossAmount
+          totalBaseAmount
+          totalAdult
+          totalChildren
+          taxAmount
+          cityTaxAmount
+          balance
+          booker {
+            emailAddress
+          }
+          bookingFlow
+          reservationList {
+            reservationNumber
+            id
+            rfc {
+              code
+              name
+            }
+            adult
+            childrenAgeList
+            totalBaseAmount
+            totalGrossAmount
+            matchedFeatureList {
+              name
+              code
+            }
+          }
+        }
+        action {
+          data {
+            MD
+            paReq
+            termUrl
+          }
+          type
+          url
+          method
+          paymentData
+        }
+      }
+    }
+  }
+}

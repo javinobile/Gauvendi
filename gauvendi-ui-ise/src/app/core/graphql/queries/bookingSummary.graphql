@@ -1,0 +1,242 @@
+query BookingSummary($filter: BookingFilter) {
+  response: bookingSummary(filter: $filter) {
+    id
+    bookingNumber
+    hotelPaymentModeCode
+    status
+    bookingTransactionList {
+      accountNumber
+      accountHolder
+      expiryMonth
+      expiryYear
+      cardType
+      totalAmount
+      currency {
+        id
+        code
+        name
+      }
+    }
+    arrival
+    departure
+    payOnConfirmationAmount
+    payAtHotelAmount
+    averageDailyRate
+    totalBaseAmount
+    totalGrossAmount
+    totalSellingRate
+    serviceChargeAmount
+    taxAmount
+    cityTaxAmount
+    balance
+    ratePlanName
+    ratePlanDescription
+    promoCode
+    specialRequest
+    totalAdult
+    totalChildren
+    childrenAgeList
+    bookingFlow
+    bookingCityTaxList {
+      id
+      name
+      code
+      value
+      cityTaxAmount
+    }
+    bookingTaxList {
+      name
+      code
+      rate
+      amount
+    }
+    paymentTerm {
+      name
+      code
+      description
+      payAtHotelDescription
+      payOnConfirmationDescription
+    }
+    cxlPolicy {
+      name
+      description
+    }
+    bookingMetadataList {
+      value
+    }
+    occasionList {
+      name
+    }
+    travelTagList {
+      name
+    }
+    additionalGuest {
+      firstName
+      lastName
+      isAdult
+      countryId
+      emailAddress
+      address
+      city
+      state
+      phoneNumber
+      postalCode
+    }
+    guestList {
+      firstName
+      lastName
+      isAdult
+      countryId
+      emailAddress
+      address
+      city
+      state
+      phoneNumber
+      postalCode
+      countryNumber
+    }
+    currency {
+      name
+      code
+    }
+    booker {
+      firstName
+      lastName
+      emailAddress
+      address
+      city
+      state
+      countryId
+      postalCode
+      phoneNumber
+      companyName
+      companyCity
+      companyTaxId
+      companyEmail
+      companyAddress
+      companyCountry
+      companyPostalCode
+      countryNumber
+    }
+    cancelledBy
+    cancelledDate
+    cancelledReason
+    cityTaxList {
+      unit
+      name
+      value
+      description
+      cityTaxAmount
+      translationList {
+        name
+        languageCode
+        description
+      }
+    }
+    reservationList {
+      id
+      reservationNumber
+      arrival
+      departure
+      tripPurpose
+      additionalGuest {
+        firstName
+        lastName
+      }
+      matchedFeatureList {
+        name
+        code
+        quantity
+        retailFeatureImageList {
+          imageUrl
+        }
+      }
+      arrival
+      departure
+      adult
+      childrenAgeList
+      totalBaseAmount
+      totalGrossAmount
+      totalSellingRate
+      totalAccommodationAmount
+      serviceChargeAmount
+      taxAmount
+      balance
+      guestNote
+      rfc {
+        code
+        name
+        space
+        numberOfBedrooms
+        rfcImageList {
+          imageUrl
+        }
+        retailFeatureList {
+          id
+          name
+          code
+          quantity
+          retailFeatureImageList {
+            imageUrl
+          }
+        }
+        standardFeatureList {
+          id
+          name
+          code
+          iconImageUrl
+        }
+      }
+      paymentTerm {
+        name
+        code
+        description
+        payAtHotelDescription
+        payOnConfirmationDescription
+      }
+      cxlPolicy {
+        name
+        description
+      }
+      rfcRatePlan {
+        code
+        name
+        ratePlan {
+          code
+          name
+          description
+        }
+      }
+      stayOption {
+        id
+        name
+        type
+      }
+      reservationAmenityList {
+        id
+        totalBaseAmount
+        totalGrossAmount
+        serviceChargeAmount
+        taxAmount
+        totalSellingRate
+        hotelAmenity {
+          id
+          name
+          code
+          displaySequence
+          iconImageUrl
+        }
+        reservationAmenityDateList {
+          id
+          date
+          totalBaseAmount
+          totalGrossAmount
+          serviceChargeAmount
+          taxAmount
+          totalSellingRate
+          count
+        }
+      }
+    }
+  }
+}

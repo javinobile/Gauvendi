@@ -1,0 +1,26 @@
+<ng-container
+  *ngIf="{
+    priceStatePerNight: priceStatePerNight$ | async,
+    colorText: colorText$ | async,
+    stayOptionSuggestionList
+  } as vm"
+>
+  <ng-container *ngIf="vm.stayOptionSuggestionList; else tplLoading">
+    <div
+      class="bg-popover-background-color rounded-[12px] px-[12px] h-[36px] flex items-center gap-[4px] cursor-pointer hover:opacity-80"
+      appPriceRangeFilter
+      [stayOptionSuggestionList]="stayOptionSuggestionList"
+      [currencyRate]="currencyRate"
+      [currencyCode]="currencyCode"
+      (closed)="isOpenPriceRange = $event"
+    >
+      <div class="flex justify-between text-normal gap-[1px] text-primary-color">
+        <img loading="lazy" src="assets/icons/sort.svg" appFilterSvg [color]="vm.colorText" />
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-template #tplLoading>
+  <div class="h-[36px] skeleton-ln rounded-[12px] w-[220px]"></div>
+</ng-template>

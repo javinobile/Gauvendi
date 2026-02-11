@@ -1,0 +1,74 @@
+<div class="h-[40px] relative">
+  <!-- Label  -->
+  <ng-container *ngIf="label">
+    <div class="mb-1">{{ label }} <span class="text-error" *ngIf="isRequired">*</span></div>
+  </ng-container>
+  <!-- Input -->
+  <div
+    #inputEl
+    class="flex w-full items-center gap-4 border border-black-1 bg-[#fff] ps-1 pe-4 rounded-[10px] h-[40px] bg-background-primary-color"
+    [class]="customClass"
+    [ngClass]="{
+      'cursor-not-allowed': isDisabled,
+      '!border-[#F85757]': control?.errors && control?.touched
+    }"
+  >
+    <div
+      class="flex cursor-pointer items-center justify-between h-[30px] bg-button-normal-background-color rounded-[6px] px-[6px] hover:opacity-80"
+      (click)="openMatSelect(phoneCode)"
+      [class.disabled]="isDisabled"
+      [class.cursor-not-allowed]="isDisabled"
+    >
+      <div class="text-[14px] leading-[24px] font-[400] line-clamp-1 text-button-normal-color">+{{ value?.phoneCode }}</div>
+      <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4.5 6L8.5 10L12.5 6" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+
+    <div class="flex-1">
+      <input
+        class="h-full w-full border-none p-0 shadow-none outline-none text-black-normal placeholder-grey-300 bg-background-primary-color"
+        [ngModel]="value?.phoneNumber"
+        (ngModelChange)="changeValue($event)"
+        [class.text-error]="control?.errors && control?.touched"
+        [disabled]="isDisabled"
+        [placeholder]="placeHolder || ''"
+        (blur)="onTouched()"
+        appInputNumber
+        type="text"
+        autocomplete="tel"
+        [ngClass]="{
+          'cursor-not-allowed': isDisabled
+        }"
+      />
+    </div>
+  </div>
+  <mat-select
+    #phoneCode
+    (closed)="searchInput.value = null; closeMatSelect()"
+    (opened)="searchInput.focus()"
+    (valueChange)="selectItem($event)"
+    [value]="value"
+    class="dropdown-position !w-full absolute top-[25px] left-0 right-0 bottom-0"
+    disableOptionCentering
+    [panelClass]="'!shadow-ml !overflow-hidden !rounded-[16px]'"
+  >
+    <input
+      #searchInput
+      (input)="filterSearch($event)"
+      [class.hidden]="!hasSearch"
+      placeholder="Search..."
+      type="text"
+      class="w-[calc(100%-16px)] ml-[8px] !outline-none text-[14px] leading-[24px] !shadow-m border border-border-color rounded-[8px] focus:border-primary-color"
+      style="padding-inline: 16px !important; height: 40px"
+    />
+    <div class="overflow-y-auto h-[calc(100%-46px)]">
+      <mat-option *ngFor="let item of allItems | filterDropdown: filter : metadata" class="mat-option-custom" [value]="item">
+        <span [class]="'me-1 fi fi-' + item?.code"></span>
+        {{ metadata ? item?.metaData?.label : item.label }}
+      </mat-option>
+    </div>
+  </mat-select>
+</div>
+
+<ng-content></ng-content>

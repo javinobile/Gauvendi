@@ -1,0 +1,6 @@
+:host {
+  ::ng-deep app-option-item > div,
+  ::ng-deep app-combination-option-item > div {
+    padding-bottom: 0 !important;
+  }
+}

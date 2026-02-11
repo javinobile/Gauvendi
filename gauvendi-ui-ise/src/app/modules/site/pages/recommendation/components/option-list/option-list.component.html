@@ -1,0 +1,345 @@
+<ng-container *ngIf="showTotal">
+  <div *ngIf="isMatchFlow && !items?.length" class="mb-[8px] flex justify-center flex-col items-center">
+    <img loading="lazy" src="assets/images/no-rooms.png" alt="no rooms" class="w-[100px] mb-[8px] sm:!w-[80px]" />
+
+    <div class="text-20 font-medium text-primary-color sm:!text-[17px] sm:text-center sm:max-w-[313px]">
+      @if (spaceTypeList$ | async; as spaceTypeList) {
+        {{ ('NO_MATCHED_AVAILABLE_LINE_1' | translate | async).replace('{{space_type}}', (selectedSpaceType() | getSpaceTypeName: spaceTypeList)) }}
+      }
+    </div>
+    <div class="text-14 mb-[16px] text-primary-color sm:!text-[12px] sm:text-center">{{ 'NO_MATCHED_AVAILABLE_LINE_2' | translate | async }}</div>
+    <button
+      class="rounded-[12px] h-[44px] px-[24px] text-[14px] font-medium leading-[140%] bg-button-normal-background-color text-button-normal-color sm:flex md:flex lg:flex items-center transition-all duration-500 hover:opacity-80 mx-auto mb-[60px]"
+      (click)="viewAlternativeOption()"
+    >
+      {{ 'NO_MATCHED_AVAILABLE_BUTTON' | translate | async }}
+    </button>
+  </div>
+</ng-container>
+<div
+  class="grid gap-x-[16px] transition-all duration-500 sm:grid-cols-1 md:gap-x-[20px]"
+  [ngClass]="{
+    'grid-cols-3 md:grid-cols-2': displayMode === EDisplayMode.Grid,
+    'grid-cols-2 md:grid-cols-1': displayMode === EDisplayMode.Tiles,
+    'grid-cols-1': displayMode === EDisplayMode.List
+  }"
+>
+  @if (items | slice: 0 : (items?.length | calRenderedItems: bundles?.length : limitNumber : loadedMore() : isMatchFlow); as mappedItems) {
+    <ng-container *ngFor="let i of mappedItems || []; index as index">
+      <div [id]="'option-item-' + i?.metadata?.['stayOptionUuid']" class="col-span-1 h-full relative transition-all">
+        <!-- SELECTED LAYER -->
+        <ng-container *ngIf="itemSelectedIndex === index">
+          <!-- BACKDROP -->
+          <div class="fixed top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.5)] z-[31] transition-all" [@fadeInOutAnimation]></div>
+          <!-- OPTION SELECTED-->
+          <div class="absolute top-0 left-0 right-0 bottom-0 z-[32]">
+            <!-- SINGLE -->
+            <ng-container *ngIf="i?.items?.length === 1">
+              <app-option-item
+                [step2CompactMode]="false"
+                [collapsed]="!!itemSelected"
+                [item]="itemSelected.items?.[0]"
+                [displayMode]="displayMode"
+                [roomSummary]="roomSummary()"
+                [isSelected]="true"
+                [priceView]="priceView"
+                [isHighLight]="true"
+                [isLowestPriceOpaque]="isLowestPriceOpaque"
+                [lowestPriceImageUrl]="lowestPriceImageUrl"
+                [restrictionValidationList]="i?.metadata?.restrictionValidationList"
+                [showMatch]="isMatchFlow"
+                [isAlternativeOption]="isAlternativeOption"
+                [buttonTextColor]="buttonTextColor"
+                (selectItem)="selectItem($event, i, index)"
+                (clear)="itemSelectedIndex = null; itemSelected = null"
+                (selectRatePlan)="onSelectRatePlan.emit({ ratePlan: $event, item: i })"
+              />
+            </ng-container>
+            <!-- END SINGLE -->
+            <!-- COMBINATION -->
+            <ng-container *ngIf="i?.items?.length > 1">
+              <app-combination-option-item
+                [collapsed]="!!itemSelected"
+                [item]="i"
+                [isHighLight]="true"
+                [priceView]="priceView"
+                [displayMode]="displayMode"
+                [roomSummary]="roomSummary()"
+                [isSelected]="itemSelectedIndex === index"
+                [isLowestPriceOpaque]="isLowestPriceOpaque"
+                [lowestPriceImageUrl]="lowestPriceImageUrl"
+                [restrictionValidationList]="i?.metadata?.restrictionValidationList"
+                [showMatch]="isMatchFlow"
+                [buttonTextColor]="buttonTextColor"
+                [isAlternativeOption]="isAlternativeOption"
+                (selectItem)="selectItem($event, i, index)"
+                (clear)="itemSelectedIndex = null; itemSelected = null"
+                (selectRatePlan)="onSelectRatePlan.emit({ ratePlan: $event, item: i })"
+              />
+            </ng-container>
+            <!-- COMBINATION -->
+          </div>
+        </ng-container>
+        <!-- END SELECTED LAYER -->
+        <!-- SINGLE OPTION -->
+        <ng-container *ngIf="i?.items?.length === 1">
+          <app-option-item
+            [step2CompactMode]="false"
+            [collapsed]="!!itemSelected"
+            [item]="i.items?.[0]"
+            [displayMode]="displayMode"
+            [roomSummary]="roomSummary()"
+            [isSelected]="itemSelectedIndex === index"
+            [priceView]="priceView"
+            [isHighLight]="true"
+            [isLowestPriceOpaque]="isLowestPriceOpaque"
+            [lowestPriceImageUrl]="lowestPriceImageUrl"
+            [restrictionValidationList]="i?.metadata?.restrictionValidationList"
+            [showMatch]="isMatchFlow"
+            [buttonTextColor]="buttonTextColor"
+            [isAlternativeOption]="isAlternativeOption"
+            (selectItem)="selectItem($event, i, index)"
+            (clear)="itemSelectedIndex = null; itemSelected = null"
+            (selectRatePlan)="onSelectRatePlan.emit({ ratePlan: $event, item: i })"
+          />
+        </ng-container>
+        <!-- COMBINATION OPTION -->
+        <ng-container *ngIf="i?.items?.length > 1">
+          <app-combination-option-item
+            [collapsed]="!!itemSelected"
+            [item]="i"
+            [isHighLight]="true"
+            [priceView]="priceView"
+            [displayMode]="displayMode"
+            [roomSummary]="roomSummary()"
+            [isSelected]="itemSelectedIndex === index"
+            [isLowestPriceOpaque]="isLowestPriceOpaque"
+            [lowestPriceImageUrl]="lowestPriceImageUrl"
+            [restrictionValidationList]="i?.metadata?.restrictionValidationList"
+            [showMatch]="isMatchFlow"
+            [buttonTextColor]="buttonTextColor"
+            [isAlternativeOption]="isAlternativeOption"
+            (selectItem)="selectItem($event, i, index)"
+            (clear)="itemSelectedIndex = null; itemSelected = null"
+            (selectRatePlan)="onSelectRatePlan.emit({ ratePlan: $event, item: i })"
+          />
+        </ng-container>
+
+        <ng-container *ngIf="!!!i?.items?.length"> Something wrong</ng-container>
+      </div>
+      <!-- add more col span 3 to display detail -->
+      <ng-container
+        *ngIf="itemSelectedIndex | calDetailsPopupPos: displayMode : index : mappedItems?.length + (!isMatchFlow || isAlternativeOption ? bundles?.length : 0)"
+        [ngTemplateOutlet]="optionDetailTpl"
+      />
+      <!--  END - add more col span 3 to display detail -->
+    </ng-container>
+  }
+
+  <ng-container *ngIf="!isMatchFlow || isAlternativeOption">
+    <ng-container *ngFor="let i of bundles; index as index">
+      <div class="col-span-1 pb-4 h-full" id="bundle{{ i }}">
+        <app-option-bundle
+          [bundle]="i"
+          [priceView]="priceView"
+          [isSelected]="isBundleSelected"
+          [isCollapsed]="!!itemSelected"
+          [displayMode]="displayMode"
+          (selectRatePlan)="onBundleRatePlanSelected($event, calculateRenderedItems(items?.length, bundles?.length, limitNumber, loadedMore()) + index, 'bundle' + i)"
+        ></app-option-bundle>
+      </div>
+      <ng-container
+        *ngIf="
+          itemSelectedIndex
+            | calDetailsPopupPos
+              : displayMode
+              : index + (items | slice: 0 : (items?.length | calRenderedItems: bundles?.length : limitNumber : loadedMore() : isMatchFlow))?.length
+              : (items | slice: 0 : (items?.length | calRenderedItems: bundles?.length : limitNumber : loadedMore() : isMatchFlow))?.length + bundles?.length
+        "
+        [ngTemplateOutlet]="optionDetailTpl"
+      />
+    </ng-container>
+  </ng-container>
+</div>
+
+<!-- SHOW MORE -->
+@if (items?.length > 6) {
+  <div class="flex justify-center mb-[20px]">
+    <div
+      class="cursor-pointer text-primary-color text-[17px] font-medium h-[48px] bg-product-background-color py-[12px] px-[16px] rounded-[99px] shadow-option-item flex items-center gap-[4px]"
+      (click)="loadedMore.set(!loadedMore())"
+    >
+      @if (!loadedMore()) {
+        {{ 'SHOW_MORE_PRODUCTS' | translate | async }}
+      } @else {
+        {{ 'SHOW_LESS_PRODUCT' | translate | async }}
+      }
+      <img
+        loading="lazy"
+        src="assets/icons/arrow-left.svg"
+        alt="arrow-left"
+        class="rotate-[270deg] transition-all duration-500"
+        appFilterSvg
+        [color]="colorText$ | async"
+        [class.!rotate-90]="loadedMore()"
+      />
+    </div>
+  </div>
+}
+<!-- end SHOW MORE  -->
+
+<ng-template #optionDetailTpl>
+  <div class="col-span-full md:hidden relative">
+    <ng-container *ngIf="isBundleSelected">
+      <div class="fixed top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.5)] z-[31] transition-all" [@fadeInOutAnimation]></div>
+      <div class="absolute top-0 left-0 right-0 z-[999] transition-all duration-400 rounded-[16px]" [@inOutAnimation]>
+        <div
+          class="absolute z-[50] ltr:right-[-30px] rtl:left-[-30px] top-[-30px] cursor-pointer hover:scale-105 drop-shadow-lg"
+          (click)="itemSelectedIndex = null; itemSelected = null; isBundleSelected = false"
+        >
+          <img loading="lazy" src="assets/icons/hexagon.svg" class="w-[65px] h-[65px]" appFilterSvg [color]="buttonBgColor" />
+          <img loading="lazy" src="assets/icons/cancel.svg" class="w-[23px] h-[23px] absolute z-[10] top-[17px] right-[18px]" appFilterSvg [color]="buttonTextColor" />
+        </div>
+      </div>
+      <div class="bg-button-hover-background-color p-4 rounded-t-[16px] z-[32] relative">
+        <app-option-bundle [bundle]="selectedBundle" [priceView]="priceView" [isSelected]="false" [isCollapsed]="false" [isDetailsView]="true"></app-option-bundle>
+      </div>
+      <div class="p-4 bg-product-background-color rounded-b-[16px] z-[32] relative">
+        <div class="my-3">
+          <!-- <span class="bg-button-normal-background-color text-button-normal-color px-2 py-1 rounded-[4px]">#1 -->
+          <div class="font-medium text-xl">
+            <span>{{ 'FOR' | translate | async | titlecase }} </span>
+            <span>{{ roomSummary()?.adults }} {{ roomSummary()?.adults > 1 ? ('ADULTS' | translate | async) : ('ADULT' | translate | async) }}</span>
+            <span *ngIf="roomSummary()?.children > 0">
+              {{ roomSummary()?.children > 0 ? ', ' + roomSummary()?.children : '' }}
+              {{ roomSummary()?.children > 1 ? ('CHILDREN' | translate | async) : roomSummary()?.children === 1 ? ('CHILD' | translate | async) : '' }}
+            </span>
+            <span *ngIf="roomSummary()?.pets > 0">
+              {{ roomSummary()?.pets > 0 ? ', ' + roomSummary()?.pets : '' }}
+              {{ roomSummary()?.pets > 1 ? ('PETS' | translate | async) : roomSummary()?.pets === 1 ? ('PET' | translate | async) : '' }}
+            </span>
+          </div>
+
+          <!-- </span> - {for} {{ adultsFiltered }} adult{{
+            adultsFiltered > 1 ? 's' : ''
+          }}, {{ childrenFiltered }} child{{ childrenFiltered > 1 ? 'ren' : '' }}, {{ pets }} pet{{ pets > 1 ? 's' : '' }} -->
+        </div>
+        <ng-container *ngIf="selectedBundle">
+          <div class="max-h-[400px] overflow-y-auto transition-all duration-500">
+            <ng-container *ngFor="let bundleItem of selectedBundle?.items">
+              <app-option-item
+                [step2CompactMode]="false"
+                [isDetails]="false"
+                [collapsed]="false"
+                [item]="bundleItem?.items[0]"
+                [priceView]="priceView"
+                [isHighLight]="true"
+                [displayMode]="EDisplayMode.Tiles"
+                [roomSummary]="{
+                  adults: bundleItem?.adults,
+                  children: bundleItem?.children,
+                  pets: bundleItem?.pets
+                }"
+                [isLowestPriceOpaque]="isLowestPriceOpaque"
+                [lowestPriceImageUrl]="lowestPriceImageUrl"
+                [restrictionValidationList]="bundleItem?.metadata?.restrictionValidationList"
+                (selectRatePlan)="onSelectRatePlan.emit({ ratePlan: selectedBundle?.ratePlan?.[0]?.code, item: bundleItem })"
+                [showMatch]="isMatchFlow"
+                [isAlternativeOption]="isAlternativeOption"
+                [isBundle]="true"
+              />
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="itemSelected && !isBundleSelected">
+      <!-- SELECTED LAYER -->
+      <div class="absolute top-0 left-0 right-0 z-[31] transition-all duration-400 rounded-[16px]" [@inOutAnimation]>
+        <!-- SINGLE OPTION -->
+        <ng-container *ngIf="itemSelected?.items?.length === 1">
+          <app-option-item
+            [step2CompactMode]="false"
+            [isDetails]="true"
+            [collapsed]="false"
+            [item]="itemSelected?.items[0]"
+            [priceView]="priceView"
+            [isHighLight]="true"
+            [displayMode]="EDisplayMode.List"
+            [roomSummary]="roomSummary()"
+            [isLowestPriceOpaque]="isLowestPriceOpaque"
+            [lowestPriceImageUrl]="lowestPriceImageUrl"
+            [restrictionValidationList]="itemSelected?.metadata?.restrictionValidationList"
+            (selectRatePlan)="onSelectRatePlan.emit({ ratePlan: $event, item: itemSelected })"
+            [showMatch]="isMatchFlow"
+            [isAlternativeOption]="isAlternativeOption"
+          />
+        </ng-container>
+        <!-- END SINGLE OPTION -->
+        <!-- COMBINATION OPTION -->
+        <ng-container *ngIf="itemSelected?.items?.length > 1">
+          <app-combination-option-item
+            [isDetails]="true"
+            [collapsed]="false"
+            [item]="itemSelected"
+            [displayMode]="EDisplayMode.List"
+            [roomSummary]="roomSummary()"
+            [priceView]="priceView"
+            [isHighLight]="true"
+            [isLowestPriceOpaque]="isLowestPriceOpaque"
+            [lowestPriceImageUrl]="lowestPriceImageUrl"
+            [restrictionValidationList]="itemSelected?.metadata?.restrictionValidationList"
+            (selectRatePlan)="onSelectRatePlan.emit({ ratePlan: $event, item: itemSelected })"
+            [showMatch]="isMatchFlow"
+            [isAlternativeOption]="isAlternativeOption"
+          />
+        </ng-container>
+        <!-- END COMBINATION OPTION -->
+      </div>
+      <div class="absolute z-[50] ltr:right-[-30px] rtl:left-[-30px] top-[-30px] cursor-pointer hover:scale-105" (click)="itemSelectedIndex = null; itemSelected = null">
+        <img loading="lazy" src="assets/icons/hexagon.svg" class="w-[65px] h-[65px]" appFilterSvg [color]="buttonBgColor" />
+        <img loading="lazy" src="assets/icons/cancel.svg" class="w-[23px] h-[23px] absolute z-[10] top-[17px] right-[18px]" appFilterSvg [color]="buttonTextColor" />
+      </div>
+      <!-- END  SELECTED LAYER -->
+      <div class="overflow-hidden transition-all duration-400" [@inOutAnimation]>
+        <ng-container *ngIf="itemSelected?.items?.length === 1">
+          <app-option-item
+            [step2CompactMode]="false"
+            [isDetails]="true"
+            [collapsed]="false"
+            [item]="itemSelected?.items[0]"
+            [priceView]="priceView"
+            [displayMode]="EDisplayMode.List"
+            [roomSummary]="roomSummary()"
+            [isHighLight]="true"
+            [isLowestPriceOpaque]="isLowestPriceOpaque"
+            [lowestPriceImageUrl]="lowestPriceImageUrl"
+            [restrictionValidationList]="itemSelected?.metadata?.restrictionValidationList"
+            [buttonTextColor]="buttonTextColor"
+            (selectRatePlan)="onSelectRatePlan.emit({ ratePlan: $event, item: itemSelected })"
+            [showMatch]="isMatchFlow"
+            [isAlternativeOption]="isAlternativeOption"
+          />
+        </ng-container>
+        <ng-container *ngIf="itemSelected?.items?.length > 1">
+          <app-combination-option-item
+            [isDetails]="true"
+            [collapsed]="false"
+            [item]="itemSelected"
+            [displayMode]="EDisplayMode.List"
+            [roomSummary]="roomSummary()"
+            [priceView]="priceView"
+            [isHighLight]="true"
+            [isLowestPriceOpaque]="isLowestPriceOpaque"
+            [lowestPriceImageUrl]="lowestPriceImageUrl"
+            [restrictionValidationList]="itemSelected?.metadata?.restrictionValidationList"
+            [buttonTextColor]="buttonTextColor"
+            (selectRatePlan)="onSelectRatePlan.emit({ ratePlan: $event, item: itemSelected })"
+            [showMatch]="isMatchFlow"
+            [isAlternativeOption]="isAlternativeOption"
+          />
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>

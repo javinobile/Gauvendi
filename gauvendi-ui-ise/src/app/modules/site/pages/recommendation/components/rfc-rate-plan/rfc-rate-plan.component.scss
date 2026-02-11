@@ -1,0 +1,10 @@
+.rate-description {
+  ::ng-deep {
+    p {
+      font-weight: 300;
+      color: var(--color-text);
+      line-height: 140%;
+      display: inline;
+    }
+  }
+}

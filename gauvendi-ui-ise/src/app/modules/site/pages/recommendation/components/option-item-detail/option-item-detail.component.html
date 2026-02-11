@@ -1,0 +1,127 @@
+<ng-container
+  *ngIf="{
+    isLowestPriceOpaque: isLowestPriceOpaque$ | async,
+    isMatchFlow: isMatchFlow$ | async,
+    roomSummary: roomSummary$ | async,
+    priceState: priceState$ | async,
+    includeTax: includeTax$ | async,
+    lowestPriceImageUrl: lowestPriceImageUrl$ | async,
+    promoCode: promoCode$ | async,
+    hotelRetailFeatureList: hotelRetailFeatureList$ | async,
+    isMobile: isMobile$ | async,
+    isPromoted: (data?.baseOption?.availableRfcRatePlanList?.length > 0 ? data?.baseOption?.availableRfcRatePlanList : data?.baseOption?.unavailableRfcRatePlanList) | checkOptionPromoted
+  } as vm"
+>
+  <!-- swiper -->
+  <div class="w-full md:flex md:gap-[24px] md:items-center lg:flex lg:gap-[24px] lg:items-center md:p-[16px]">
+    <div class="relative md:w-[48%] shadow-ms lg:w-[calc(100%-344px)] rounded-[16px]">
+      <!-- zoom -->
+      <div
+        class="absolute bottom-[8px] ltr:right-[8px] rtl:left-[8px] z-10 rounded-full bg-[rgba(0,0,0,0.4)] p-[4px] cursor-zoom-in hover:scale-[1.01] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.24)]"
+        (click)="zoomIn(data?.imgUrls, data?.tag === BookingFlow.LowestPrice && vm.isLowestPriceOpaque, vm.lowestPriceImageUrl)"
+      >
+        <img loading="lazy" src="assets/icons/zoom-in.svg" alt="" />
+      </div>
+      <!-- end zoom -->
+
+      <div class="absolute top-[12px] ltr:left-[-4px] rtl:right-[-4px]">
+        <app-matching-percent-tag *ngIf="vm.isMatchFlow" [matchPercent]="data.matchPercent" />
+        <app-option-item-tag *ngIf="!vm.isMatchFlow" [tag]="data?.tag" [data]="vm.roomSummary" [hideExtra]="true" />
+      </div>
+
+      <div
+        class="absolute top-[64px] ltr:left-[8px] rtl:right-[8px] z-[22]"
+        [ngClass]="{
+          '!top-[10px]': !tag.includes(data?.tag) && vm.isPromoted,
+          '!top-[64px]': vm.isMatchFlow && vm.isPromoted
+        }"
+      >
+        <!-- promo tag -->
+        <ng-container *ngIf="vm.isPromoted">
+          <div class="w-fit rounded-[8px] flex items-center py-[4px] px-[8px] bg-[#C2EAE5] max-w-[120px]">
+            <!--
+                [ngClass]="{
+              'rounded-tl-[32px]': vm.isMatchFlow ? data?.matchPercent < 50 : !tag.includes(data?.tag)
+            }"
+           -->
+            <img loading="lazy" appFilterSvg [color]="'#00A991'" src="assets/icons/promotion.svg" width="16" height="16" alt="" />
+            <div class="ms-[5px] text-[14px] font-normal leading-[140%] text-[#00A991] truncate">{{ vm.promoCode }}</div>
+          </div>
+        </ng-container>
+      </div>
+      <!-- Default lowestPriceImage -->
+      <ng-container *ngIf="data?.tag === BookingFlow.LowestPrice && vm.isLowestPriceOpaque">
+        <div
+          class="bg-cover bg-center bg-no-repeat md:h-[320px] lg:h-[300px] h-[236px] bg-popover-background-color"
+          [style.backgroundImage]="vm.lowestPriceImageUrl | parseImageUrl"
+          alt="option-img"
+        ></div>
+      </ng-container>
+      <!-- End lowestPriceImage -->
+      <ng-container *ngIf="!(data?.tag === BookingFlow.LowestPrice && vm.isLowestPriceOpaque)">
+        <app-option-swiper [imgUrls]="data?.imgUrls" [optionIconUrls]="spaceTypeUrls()" [customClass]="'h-[236px] md:h-[320px] bg-popover-background-color md:rounded-[16px]'" />
+      </ng-container>
+    </div>
+    <!-- end swiper -->
+
+    <!-- info -->
+    <div class="bg-popover-background-color px-[20px] py-[16px] md:flex-1 lg:flex-1 md:h-[320px] lg:h-[320px] md:pt-[24px] md:px-0 md:pb-0 lg:pt-[24px] lg:px-0 lg:pb-0">
+      <div class="font-medium text-[20px] leading-[24px] text-primary-color mb-[8px]">
+        {{ data?.tag === BookingFlow.LowestPrice && vm.isLowestPriceOpaque ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) : data?.title }}
+      </div>
+      <app-option-units-info [item]="data" [showSpace]="true" [full]="true" />
+      @if (data?.metadata?.description; as description) {
+        <div class="text-[12px] font-light text-primary-color mt-[12px]" [innerHTML]="description"></div>
+      }
+      <div class="mt-[12px] lg:h-[calc(100%-64px)] lg:overflow-x-hidden lg:overflow-y-auto md:h-[calc(100%-86px)] md:overflow-y-auto md:overflow-x-hidden detail-scrollbar">
+        <ng-container *ngIf="!(data?.tag === BookingFlow.LowestPrice && vm.isLowestPriceOpaque)">
+          <app-feature-included-match-flow
+            *ngIf="vm.isMatchFlow && data.matchFeatures?.length > 0"
+            [matchFeatures]="data?.matchFeatures"
+            [notMatchFeatures]="data?.notMatchFeatures"
+            [anotherFeatures]="data?.features"
+            [maxFeatureShowed]="9999"
+            [displayMode]="EDisplayMode.List"
+          />
+          <app-feature-included
+            *ngIf="!vm.isMatchFlow || data.matchFeatures?.length === 0"
+            [features]="data?.features"
+            [maxFeatureShowed]="9999"
+            [isAlternativeOption]="isAlternativeOption"
+            [displayMode]="EDisplayMode.List"
+          />
+        </ng-container>
+        <div class="mt-[16px]">
+          <app-standard-features [standardFeatures]="data?.standardFeatures" [maxFeatureShowed]="vm.isMobile ? 4 : 9999" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="px-[20px] my-[10px] md:hidden">
+    <div class="h-[1px] bg-[#E9E9E9]"></div>
+  </div>
+  <div class="mt-[20px] bg-popover-background-color px-[16px] md:pe-[8px] lg:pe-[8px]">
+    <!-- <div class="font-medium text-[17px] leading-[140%] md:text-center lg:text-center text-primary-color mb-[8px] line-clamp-1">
+      {{ "SELECT_RATE_SUITABLE" | translate | async }}
+    </div> -->
+    <div class="detail-scrollbar">
+      <div class="w-full md:pe-[8px] lg:pe-[8px]">
+        <ng-container *ngFor="let rfcRatePlan of data?.rfcRatePlanList; index as i">
+          <app-rfc-rate-plan
+            (selectRatePlan)="selectRatePlan.emit($event)"
+            [bedRooms]="data?.bedRooms"
+            [dealCode]="data?.rfcRatePlanList | getDealCode"
+            [isBook]="isHighLight"
+            [isFromMatchingRfc]="isFromMatchingRfc"
+            [isIncludedTax]="vm.includeTax"
+            [item]="rfcRatePlan"
+            [name]="data?.title"
+            [priceView]="vm.priceState"
+            [promoCode]="vm.promoCode"
+            [roomProduct]="this.data?.baseOption?.availableRfcList?.[0]"
+          />
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>

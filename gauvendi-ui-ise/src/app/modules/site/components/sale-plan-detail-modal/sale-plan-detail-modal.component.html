@@ -1,0 +1,171 @@
+<div class="md:h-[80vh]" [style.height.px]="isMobile && viewport()">
+  @if (
+    {
+      hotelPrimaryColor: hotelPrimaryColor$ | async,
+      currencyRate: currencyRate$ | async,
+      currencyCode: currencyCode$ | async,
+      buttonTextColor: buttonTextColor$ | async,
+      buttonBgColor: buttonBgColor$ | async,
+      price: data?.item?.totalGrossAmount | calculatePriceWithTax: data?.item?.totalBaseAmount : 'totalSellingRate' : data?.isIncludedTax,
+      roomSummary: roomSummary$ | async
+    };
+    as vm
+  ) {
+    <div
+      class="relative overflow-hidden pe-[24px] pt-[24px] sm:pe-0 sm:h-full md:h-full sm:pt-0 sm:p-0 sm:bg-popover-background-color"
+      [class]="data?.isBook ? 'pb-[102px] sm:pb-[102px] md:pb-[30px]' : ''"
+    >
+      <div class="absolute ltr:right-[-7px] rtl:left-[-7px] top-[-8px] z-10 cursor-pointer hover:scale-105" mat-dialog-close>
+        <img src="assets/icons/hexagon.svg" class="w-[65px] h-[65px]" appFilterSvg [color]="vm.buttonBgColor" />
+        <img src="assets/icons/cancel.svg" class="w-[23px] h-[23px] absolute z-[10] top-[17px] right-[18px]" appFilterSvg [color]="vm.buttonTextColor" />
+      </div>
+      <div class="bg-popover-background-color pt-[24px] sm:pt-[16px] rounded-t-[16px] md:pt-[20px]">
+        <div class="text-24 font-medium text-popover-primary-color sm:line-clamp-2 sm:pe-[29px] px-6 sm:px-4">
+          {{ data?.selectedRatePlan?.name }}
+        </div>
+
+        <div class="w-full h-[1px] mt-6 bg-border-color sm:mt-6 md:mt-6"></div>
+      </div>
+
+      <div
+        class="overflow-y-auto overflow-x-hidden w-[720px] max-w-[720px] sm:w-full md:w-full bg-popover-background-color md:h-[calc(100%-138px)] md:max-h-[calc(100%-138px)] md:px-[16px] max-h-[65vh] sm:h-[calc(100%-138px)] sm:max-h-[calc(100%-138px)] p-[24px] sm:px-[16px]"
+      >
+        <div class="flex items-center gap-[8px] mb-[4px]">
+          <div class="rounded-full w-[8px] h-[8px] bg-button-normal-background-color"></div>
+          <div class="text-17 font-medium text-popover-primary-color">
+            {{ 'DESCRIPTION' | translate | async }}
+          </div>
+        </div>
+
+        <div class="w-full ps-[16px] text-14 font-light text-popover-primary-color" [innerHTML]="data?.selectedRatePlan?.description"></div>
+
+        <div class="flex items-center gap-[8px] mt-6 sm:mt-[16px] mb-[4px]">
+          <div class="rounded-full w-[8px] h-[8px] bg-button-normal-background-color"></div>
+          <div class="text-17 font-medium text-popover-primary-color">
+            {{ 'MEAL_PLANS_AND_SERVICES' | translate | async }}
+          </div>
+        </div>
+
+        <div class="w-full ps-[16px]">
+          <ng-container *ngIf="data?.item.ratePlan?.includedHotelExtrasList?.length > 0; else tplNoServices">
+            <div class="grid grid-cols-2 gap-[8px]">
+              <ng-container *ngFor="let extra of data?.item.ratePlan?.includedHotelExtrasList">
+                <div class="col-span-1">
+                  <div class="text-14 font-light text-popover-primary-color">
+                    {{ extra.name }}
+                  </div>
+                  <div class="text-14 font-light text-popover-primary-color">
+                    @if (extra.code === amenityCodeEnum.PET_SURCHARGE) {
+                      @if (vm.roomSummary?.pets) {
+                        {{
+                          vm.roomSummary?.pets
+                            | displayIncludedServiceDesc: vm.roomSummary?.children : data?.bedRooms : extra?.includedDates : data?.bookingDuration : extra?.pricingUnit : '' : data?.checkInDate : true
+                            | async
+                        }}
+                      }
+                    } @else {
+                      @if (vm.roomSummary?.adults) {
+                        {{
+                          vm.roomSummary?.adults
+                            | displayIncludedServiceDesc: vm.roomSummary?.children : data?.bedRooms : extra?.includedDates : data?.bookingDuration : extra?.pricingUnit : '' : data?.checkInDate
+                            | async
+                        }}
+                      }
+                    }
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="flex items-center gap-[8px] mt-6 sm:mt-[16px] mb-[4px]">
+          <div class="rounded-full w-[8px] h-[8px] bg-button-normal-background-color"></div>
+          <div class="text-17 font-medium text-popover-primary-color">
+            {{ 'CANCELLATION_POLICY' | translate | async }}
+          </div>
+        </div>
+
+        <div class="w-full ps-[16px] text-14 font-light text-popover-primary-color rate-description" [innerHTML]="data?.selectedRatePlan?.strongestCxlPolicy?.description"></div>
+
+        <div class="flex items-center gap-[8px] mt-6 sm:mt-[16px] mb-[4px]">
+          <div class="rounded-full w-[8px] h-[8px] bg-button-normal-background-color"></div>
+          <div class="text-17 font-medium text-popover-primary-color">
+            {{ 'PAYMENT_TERM' | translate | async }}
+          </div>
+        </div>
+
+        <div class="w-full ps-[16px] text-14 font-light text-popover-primary-color rate-description" [innerHTML]="data?.selectedRatePlan?.strongestPaymentTerms?.description"></div>
+
+        <div class="flex items-center gap-[8px] mt-6 sm:mt-[16px] mb-[8px]">
+          <div class="rounded-full w-[8px] h-[8px] bg-button-normal-background-color"></div>
+          <div class="text-17 font-medium text-popover-primary-color sm:line-clamp-1">
+            {{ data?.isCombination ? ('TOTAL_PRICE_FOR_ALL_ROOMS' | translate | async) : ('TOTAL_PRICE_FOR' | translate | async) + ' ' + data?.name }}
+          </div>
+        </div>
+
+        <div class="ps-[16px] flex justify-between items-center">
+          <div class="text-17 font-medium text-popover-primary-color">
+            {{ 'PRICE_FOR' | translate | async }}
+            {{ data?.bookingDuration || '--' }}
+            {{ (data?.bookingDuration > 1 ? 'NIGHTS' : 'NIGHT') | translate | async }}
+          </div>
+
+          <div class="text-20 sm:text-[14px] text-popover-primary-color font-medium">
+            {{ vm.price ? (vm.price | currencyRate: vm.currencyRate | myCurrency: vm.currencyCode : 'symbol' : '1.2') : '-.--' }}
+          </div>
+        </div>
+        <div class="ps-[16px] flex justify-between items-center">
+          <div class="text-14 font-light text-popover-primary-color">
+            {{ 'EACH_ROOM_PER_NIGHT' | translate | async }}
+          </div>
+
+          <div class="text-17 sm:text-[14px] text-popover-primary-color font-light">
+            {{ vm.price ? (vm.price / data?.bookingDuration | currencyRate: vm.currencyRate | myCurrency: vm.currencyCode : 'symbol' : '1.2') : '-.--' }}
+          </div>
+        </div>
+      </div>
+
+      @if (data?.isBook) {
+        <div
+          class="absolute bottom-[24px] sm:bottom-0 sm:ltr:right-0 sm:rtl:left-0 px-[24px] py-[16px] bg-popover-background-color ltr:left-0 ltr:right-[24px] rtl:right-0 rtl:left-[24px] shadow-[0px_-4px_16px_0px_#0000000F] overflow-hidden rounded-b-[16px] sm:p-[16px] md:p-[16px]"
+        >
+          <div class="w-full flex justify-between sm:flex-col">
+            <div class="flex flex-col justify-center">
+              <div class="text-[20px] font-medium text-popover-primary-color">
+                {{ 'TOTAL_CHARGES' | translate | async }}
+              </div>
+              @if (data?.item?.shouldShowStrikeThrough) {
+                <div class="px-[8px] w-fit text-14 py-[4px] rounded-[8px] bg-button-normal-background-color text-button-normal-color max-w-[300px]">
+                  {{ 'CONGRATULATION_YOU_SAVED' | translate | async }}
+                  {{ fixedPriceAdjustment | myCurrency: vm.currencyCode : 'symbol' : '1.2' }}
+                </div>
+              }
+            </div>
+            <div class="flex justify-between items-end gap-[8px] sm:mt-[12px]">
+              <div>
+                <span class="text-24 sm:text-[20px] text-popover-primary-color font-medium">{{ vm.price | currencyRate: vm.currencyRate | myCurrency: vm.currencyCode : 'symbol' : '1.2' }}</span
+                ><span class="text-12 font-light text-popover-primary-color">/{{ 'STAY' | translate | async }}</span>
+                <span class="block text-12 font-light text-popover-primary-color">{{
+                  data.isIncludedTax ? ('INCLUDES_TAXES_AND_FEES' | translate | async) : ('EXCLUSIVE_TAXES_AND_FEES' | translate | async)
+                }}</span>
+              </div>
+              <button
+                class="font-medium rounded-[12px] h-[36px] px-[32px] text-[12px] mt-[10px] bg-button-normal-background-color text-button-normal-color sm:px-[24px] hover:opacity-80"
+                (click)="submit()"
+              >
+                {{ 'BOOK_NOW' | translate | async }}
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
+
+<ng-template #tplNoServices>
+  <div class="text-popover-primary-color text-14">
+    {{ 'NO_SERVICES' | translate | async }}
+  </div>
+</ng-template>

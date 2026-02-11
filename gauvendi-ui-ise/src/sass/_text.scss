@@ -1,0 +1,71 @@
+.text-normal {
+  @apply text-[14px] font-normal leading-[140%] text-primary-color;
+}
+
+.text-9 {
+  @apply text-[9px] leading-[12.6px];
+}
+
+.text-10 {
+  @apply text-[10px] leading-[14px];
+}
+
+.text-11 {
+  @apply text-[11px] leading-[15px];
+}
+
+.text-12 {
+  @apply text-[12px] leading-[16.8px];
+}
+
+.text-14 {
+  @apply text-[14px] leading-[19.6px];
+}
+
+.text-16 {
+  @apply text-[16px] leading-[140%];
+}
+
+.text-17 {
+  @apply text-[17px] leading-[23.8px];
+}
+
+.text-18 {
+  @apply text-[18px] leading-[25.2px];
+}
+
+.text-20 {
+  @apply text-[20px] leading-[24px];
+}
+
+.text-22 {
+  @apply text-[22px] leading-[30.8px];
+}
+
+.text-24 {
+  @apply text-[24px] leading-[28.8px];
+}
+
+.text-27 {
+  @apply text-[27px] leading-[32.4px];
+}
+
+.text-34 {
+  @apply text-[34px] leading-[40.8px];
+}
+
+.text-38 {
+  @apply text-[38px] leading-[45.6px];
+}
+
+.text-42 {
+  @apply text-[42px] leading-[50.4px];
+}
+
+.text-field-required {
+  color: #f85757;
+}
+
+.break-word {
+  word-break: break-word;
+}

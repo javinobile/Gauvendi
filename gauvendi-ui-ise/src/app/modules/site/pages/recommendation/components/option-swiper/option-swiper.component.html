@@ -1,0 +1,32 @@
+<div class="relative">
+  <swiper #swiper [config]="config">
+    <ng-container *ngFor="let imgUrl of imgUrls">
+      <ng-template swiperSlide let-data>
+        <app-image-custom [src]="imgUrl" [customClass]="customClass" alt="option-img" />
+      </ng-template>
+    </ng-container>
+  </swiper>
+  <div
+    *ngIf="imgUrls?.length > 1"
+    class="absolute top-1/2 left-[8px] z-10 -translate-y-1/2 cursor-pointer w-[28px] h-[28px] bg-[rgba(0,0,0,0.4)] flex items-center justify-center rounded-full hover:scale-105"
+    (click)="slidePrev()"
+  >
+    <img loading="lazy" src="assets/icons/left-white.svg" />
+  </div>
+  <div
+    *ngIf="imgUrls?.length > 1"
+    class="absolute top-1/2 right-[8px] z-10 -translate-y-1/2 cursor-pointer w-[28px] h-[28px] bg-[rgba(0,0,0,0.4)] flex items-center justify-center rounded-full hover:scale-105"
+    (click)="slideNext()"
+  >
+    <img loading="lazy" src="assets/icons/right-white.svg" />
+  </div>
+  <div class="flex gap-1 stay-option-icon absolute z-10" [class]="isStep2 ? 'top-3 ltr:right-3 rtl:left-3' : 'bottom-3 ltr:left-3 rtl:right-3'">
+    @if (optionIconUrls().length) {
+      @for (item of optionIconUrls(); track $index) {
+        <div class="stay-option-icon__wrapper p-0.5 rounded-sm">
+          <div class="stay-option-icon__icon" style="--image-url: url({{ item.url }})" appCustomTooltip [tooltipMessage]="item.title | titlecase"></div>
+        </div>
+      }
+    }
+  </div>
+</div>

@@ -1,0 +1,46 @@
+::ng-deep.payment-content .mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+::ng-deep .mat-expansion-panel {
+  box-shadow: none !important;
+}
+
+input {
+  background-color: transparent;
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+.error-message {
+  p {
+    margin: 0 0 8px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #F85757;
+  }
+}
+
+.loader {
+  margin-right: 15px;
+  border: 3px solid #FFFFFF;
+  border-radius: 50%;
+  border-top: 3px solid #333;
+  border-right: 3px solid #333;
+  width: 15px;
+  height: 15px;
+  animation: spin 1s linear infinite;
+  z-index: 10;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

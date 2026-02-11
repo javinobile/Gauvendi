@@ -1,0 +1,65 @@
+
+// Colors variables
+$loadingPrimaryColor: #f9b619;
+$loadingContainerDimentions: 30px;
+$loadingShapeDimentions: 10px;
+$loadingAmount: 20px;
+
+.loading-container {
+  position: relative;
+  width: $loadingContainerDimentions;
+  height: $loadingContainerDimentions;
+  border-radius: calc($loadingContainerDimentions/2);
+  animation: rotation 1s infinite;
+  .shape {
+    position: absolute;
+    width: $loadingShapeDimentions;
+    height: $loadingShapeDimentions;
+    border-radius: calc($loadingShapeDimentions/2);
+    background-color: $loadingPrimaryColor;
+
+    &.shape-1 {
+      left: 0;
+    }
+    &.shape-2 {
+      right: 0;
+    }
+    &.shape-3 {
+      bottom: 0;
+    }
+    &.shape-4 {
+      bottom: 0;
+      right: 0;
+    }
+  }
+  @for $i from 1 through 4 {
+    .shape-#{$i} {
+      animation: shape#{$i} 0.5s infinite alternate;
+    }
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@mixin shapeTranslate($loadingindex, $loadingtx, $loadingty) {
+  @keyframes shape#{$loadingindex} {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translate($loadingtx, $loadingty);
+    }
+  }
+}
+
+@include shapeTranslate(1, $loadingAmount, $loadingAmount);
+@include shapeTranslate(2, -$loadingAmount, $loadingAmount);
+@include shapeTranslate(3, $loadingAmount, -$loadingAmount);
+@include shapeTranslate(4, -$loadingAmount, -$loadingAmount);

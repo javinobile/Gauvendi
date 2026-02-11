@@ -1,0 +1,58 @@
+<div class="text-[17px] font-medium leading-[140%] text-primary-color mb-[8px]">
+  {{ 'COMPANY_INFORMATION' | translate | async }}
+</div>
+
+<div class="p-[16px] bg-background-primary-color rounded-[16px]">
+  <ng-container *ngIf="booker?.companyName?.length > 0">
+    <div class="text-[17px] font-medium leading-[140%] text-primary-color">
+      {{ booker?.companyName || '-.--' }}
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="booker?.companyTaxId?.length || booker?.companyEmail?.length">
+    <div class="flex items-center gap-[24px] sm:flex-col sm:items-start sm:justify-start sm:gap-[8px] my-[8px]">
+      <ng-container *ngIf="booker?.companyTaxId?.length">
+        <div class="flex items-center gap-[8px]">
+          <div class="text-[14px] font-light leading-[140%] text-primary-color">{{ 'TAX_ID' | translate | async }}</div>
+          <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+            {{ booker?.companyTaxId || '-.--' }}
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="booker?.companyEmail?.length">
+        <div class="flex items-center gap-[8px]">
+          <div class="text-[14px] font-light leading-[140%] text-primary-color">{{ 'COMPANY_EMAIL' | translate | async }}</div>
+          <div class="text-[14px] font-medium leading-[140%] text-primary-color">{{ booker?.companyEmail || '-.--' }}</div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+
+  <div class="flex gap-[24px]">
+    <div *ngIf="booker?.companyCity" class="flex items-center gap-[8px]">
+      <div class="text-[14px] font-light leading-[140%] text-primary-color">{{ 'CITY' | translate | async }}</div>
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">{{ booker?.companyCity || '-.--' }}</div>
+    </div>
+
+    <div *ngIf="booker?.companyCountry?.length" class="flex items-center gap-[8px]">
+      <div class="text-[14px] font-light leading-[140%] text-primary-color">{{ 'COUNTRY' | translate | async }}</div>
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+        {{ (countriesName$ | async) || '-.--' }}
+      </div>
+    </div>
+    <div *ngIf="booker?.companyPostalCode" class="flex items-center gap-[8px]">
+      <div class="text-[14px] font-light leading-[140%] text-primary-color">{{ 'POSTAL_CODE' | translate | async }}</div>
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">{{ booker?.companyPostalCode }}</div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="booker?.companyAddress?.length">
+    <div class="mb-[8px] flex items-center gap-[8px] mt-[8px]">
+      <div class="text-[14px] font-light leading-[140%] text-primary-color">{{ 'ADDRESS' | translate | async }}</div>
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+        {{ booker?.companyAddress || '-.--' }}
+      </div>
+    </div>
+  </ng-container>
+</div>

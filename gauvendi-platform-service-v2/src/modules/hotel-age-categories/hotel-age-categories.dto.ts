@@ -1,0 +1,89 @@
+import { OptionalArrayProperty } from "@decorators/array-property.decorator";
+import { HotelAgeCategoryCodeEnum } from "@entities/hotel-entities/hotel-age-category.entity";
+import { IsBoolean, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+
+export class HotelAgeCategoryQueryDto {
+  @IsString()
+  @IsNotEmpty()
+  hotelCode: string;
+
+  @OptionalArrayProperty()
+  sort?: string[];
+}
+
+export class CreateHotelAgeCategoryDto {
+  @IsString()
+  @IsNotEmpty()
+  name: string;
+
+  @IsEnum(HotelAgeCategoryCodeEnum)
+  @IsNotEmpty()
+  code: HotelAgeCategoryCodeEnum;
+
+  @IsNumber()
+  @IsNotEmpty()
+  fromAge: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  toAge: number;
+
+  @IsString()
+  @IsOptional()
+  description?: string;
+
+  @IsString()
+  @IsNotEmpty()
+  hotelCode: string;
+}
+
+export class UpdateHotelAgeCategoryDto {
+  @IsString()
+  @IsNotEmpty()
+  id: string;
+
+  @IsString()
+  @IsOptional()
+  name?: string;
+
+  @IsEnum(HotelAgeCategoryCodeEnum)
+  @IsOptional()
+  code?: HotelAgeCategoryCodeEnum;
+
+  @IsNumber()
+  @IsOptional()
+  fromAge?: number;
+
+  @IsNumber()
+  @IsOptional()
+  toAge?: number;
+
+  @IsString()
+  @IsOptional()
+  description?: string;
+
+  @IsString()
+  @IsNotEmpty()
+  hotelCode: string;
+
+
+  @IsBoolean()
+  @IsOptional()
+  isIncludeExtraOccupancyRate?: boolean;
+}
+
+export class GetHotelAgeCategoryDto {
+  @IsString()
+  @IsNotEmpty()
+  id: string;
+
+  @IsString()
+  @IsNotEmpty()
+  hotelCode: string;
+}
+
+export class DeleteHotelAgeCategoryDto {
+  @IsString()
+  @IsNotEmpty()
+  id: string;
+}

@@ -1,0 +1,41 @@
+mutation CompleteBookingPayment($paymentIntent: PaymentIntentInput, $booking: BookingInput) {
+  response: completeBookingPayment(paymentIntent: $paymentIntent, booking: $booking) {
+    code
+    status
+    message
+    data {
+      ... on Booking {
+        id
+        bookingNumber
+        status
+        totalGrossAmount
+        totalBaseAmount
+        taxAmount
+        cityTaxAmount
+        totalAdult
+        totalChildren
+        bookingFlow
+        balance
+        booker {
+          address
+        }
+        reservationList {
+          id
+          reservationNumber
+          rfc {
+            code
+            name
+          }
+          totalBaseAmount
+          totalGrossAmount
+          adult
+          childrenAgeList
+          matchedFeatureList {
+            code
+            name
+          }
+        }
+      }
+    }
+  }
+}

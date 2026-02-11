@@ -1,0 +1,177 @@
+.configurator-fade-in {
+  animation: configuratorFadeIn;
+  animation-duration: 400ms;
+}
+
+.configurator-fade-out {
+  animation: configuratorFadeOut;
+  animation-duration: 400ms;
+}
+
+@keyframes configuratorFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes configuratorFadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+.scroll-feature {
+  /* width */
+  &::-webkit-scrollbar {
+    width: 3px;
+    height: 6px !important;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: white;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-feature-bar);
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    opacity: 0.4;
+    cursor: pointer;
+  }
+}
+
+:host::ng-deep .mat-mdc-tab-body-content {
+  overflow: hidden !important;
+}
+
+.custom-tab-feature {
+  height: 100%;
+
+  .mat-mdc-tab-header {
+    display: none !important;
+  }
+
+  .mat-mdc-tab-body-wrapper {
+    height: 100%;
+  }
+}
+
+:host::ng-deep .mat-mdc-tab-header {
+  display: none !important;
+}
+
+:host::ng-deep .mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+:host::ng-deep .mat-mdc-tab-body-wrapper {
+  height: 100% !important;
+}
+
+.feature-item {
+  &.selected {
+    .item-bg {
+      background-color: var(--color-feature-bg-selected);
+      border: 1px solid var(--color-feature-bg-selected);
+    }
+
+    .name {
+      color: var(--color-search-feature-text-selected);
+      font-weight: 500 !important;
+    }
+  }
+
+  &:not(.selected):hover {
+    .name {
+      color: var(--color-search-feature-text-selected);
+      font-weight: 500;
+      opacity: 0.7;
+    }
+  }
+}
+
+.name {
+  &.overlay {
+    position: relative;
+    -webkit-animation: movingtitle 8s infinite alternate linear;
+    animation: movingtitle 8s infinite alternate linear;
+
+    &:after {
+      position: absolute;
+      right: 0;
+      top: 7px;
+      content: '';
+      width: 14px;
+      height: 14px;
+      background: linear-gradient(
+        270deg,
+        var(--color-configurator-background) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+
+    &.animation-0 {
+      animation-delay: 0s;
+    }
+
+    &.animation-1 {
+      animation-delay: 1s;
+    }
+
+    &.animation-2 {
+      animation-delay: 2s;
+    }
+
+    &.animation-3 {
+      animation-delay: 3s;
+    }
+
+    &.animation-4 {
+      animation-delay: 4s;
+    }
+
+    &.animation-5 {
+      animation-delay: 5s;
+    }
+
+    &.animation-6 {
+      animation-delay: 6s;
+    }
+
+    &.animation-7 {
+      animation-delay: 7s;
+    }
+  }
+}
+
+@-webkit-keyframes movingtitle {
+  from {
+    text-indent: -120%;
+  }
+  to {
+    text-indent: 30%;
+  }
+}
+@keyframes movingtitle {
+  from {
+    text-indent: -120%;
+  }
+  to {
+    text-indent: 30%;
+  }
+}

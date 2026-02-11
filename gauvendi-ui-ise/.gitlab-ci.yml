@@ -1,0 +1,23 @@
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master" && $CI_COMMIT_MESSAGE !~ /^chore/'
+    - if: '$CI_COMMIT_BRANCH == "qa" && $CI_COMMIT_MESSAGE !~ /^chore/'
+    - if: '$CI_COMMIT_BRANCH == "develop" && $CI_COMMIT_MESSAGE !~ /^chore/'
+      when: always
+    - when: never
+
+variables:
+  APP_OUTPUT_PATH: "$CI_PROJECT_DIR/dist/gauvendi-ise-v2"
+  DEPLOYMENT_NAME: ui-ise-v2
+  ENABLE_OVERRIDE_NS: "false"
+  NAMESPACE: gvd-ui
+  STAGE_BUILD: DEV
+
+stages:
+  - pseudo
+
+pseudo-stage:
+  stage: pseudo
+  script:
+    - echo "Pseudo stage"
+  when: manual

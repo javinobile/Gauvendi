@@ -1,0 +1,37 @@
+<div class="pt-[16px] bg-popover-background-color">
+  <div class="flex items-center justify-between sm:mx-[16px] md:mx-[20px]">
+    <div class="cursor-pointer flex items-center gap-[8px]" (click)="onBack()">
+      <mat-icon class="text-primary-color dir-mat-icon">chevron_left</mat-icon>
+    </div>
+    <div class="text-[24px] font-medium leading-[120%] text-primary-color sm:text-[17px]">{{'SELECTED_ROOM' | translate | async}}</div>
+    <div class="opacity-0">
+      <mat-icon class="text-primary-color">chevron_left</mat-icon>
+    </div>
+  </div>
+  <ng-container *ngIf="{
+    isCombinationOption: isCombinationOption$ | async,
+    salesPlanList: salesPlanList$ | async
+  } as vm">
+    <div class="mt-[16px]" *ngIf="combinationOptionItemData && !vm.isCombinationOption">
+      <app-option-item-detail
+        [data]="combinationOptionItemData?.items?.[0]"
+        [isRecommendationDetail]="true"
+        [isHighLight]="true"
+        [isAlternativeOption]="isAlternativeOption"
+        (selectRatePlan)="onSelectRatePlan($event, vm.salesPlanList)"
+      ></app-option-item-detail>
+    </div>
+
+    <div class="mt-[16px]" *ngIf="combinationOptionItemData && vm.isCombinationOption">
+      <app-combination-option-item-mobile
+        [data]="combinationOptionItemData"
+        [isRecommendationDetail]="true"
+        [isHighLight]="true"
+        [isAlternativeOption]="isAlternativeOption"
+        (selectRatePlan)="onSelectRatePlan($event, vm.salesPlanList)"
+      >
+      </app-combination-option-item-mobile>
+    </div>
+  </ng-container>
+</div>
+

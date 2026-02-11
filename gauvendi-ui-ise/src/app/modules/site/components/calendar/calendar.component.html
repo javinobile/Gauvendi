@@ -1,0 +1,19 @@
+<div class="calendar__wrapper flex flex-col min-h-[80px]" *ngIf="isCalendarDisplayed()">
+  <div class="calendar__body bg-configurator-background-color flex-1 py-4 rounded-[0.75rem]">
+    @if (isMobile$ | async) {
+      <app-search-bar-mobile></app-search-bar-mobile>
+      <app-ise-configurator-mobile
+        [hotelRetailCategoryList]="hotelRetailCategoryList$ | async"
+        [hotelRetailFeatureList]="hotelRetailFeatureList$ | async"
+        [eventFeatureRecommendationList]="eventFeatureRecommendationList$ | async"
+      ></app-ise-configurator-mobile>
+    } @else {
+      <app-search-bar></app-search-bar>
+      <app-ise-configurator
+        [hotelRetailCategoryList]="hotelRetailCategoryList$ | async"
+        [hotelRetailFeatureList]="hotelRetailFeatureList$ | async"
+        [eventFeatureRecommendationList]="eventFeatureRecommendationList$ | async"
+      ></app-ise-configurator>
+    }
+  </div>
+</div>

@@ -1,0 +1,8 @@
+query CountryList {
+  response: countryList {
+    id
+    name
+    code
+    phoneCode
+  }
+}

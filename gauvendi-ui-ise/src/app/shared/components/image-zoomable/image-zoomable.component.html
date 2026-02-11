@@ -1,0 +1,19 @@
+@if (isMobile$ | async) {
+  <div class="w-full relative overflow-hidden">
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  </div>
+} @else {
+  <div class="w-[60vw] min-h-[70vh] relative overflow-hidden pt-6 pr-6">
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  </div>
+}
+
+<ng-template #contentTemplate>
+  <div class="absolute z-10 cursor-pointer hover:scale-105 ltr:right-[-3px] rtl:left-0 top-[-6px]" mat-dialog-close>
+    <img src="assets/icons/hexagon.svg" class="w-[65px] h-[65px]" appFilterSvg [color]="buttonBgColor$ | async" />
+    <img src="assets/icons/cancel.svg" class="w-[23px] h-[23px] absolute z-[10] top-[17px] right-[18px]" appFilterSvg [color]="buttonTextColor$ | async" />
+  </div>
+  <div class="w-full aspect-video relative">
+    <app-option-swiper [customClass]="'w-full aspect-video'" [imgUrls]="data?.imgUrls" />
+  </div>
+</ng-template>

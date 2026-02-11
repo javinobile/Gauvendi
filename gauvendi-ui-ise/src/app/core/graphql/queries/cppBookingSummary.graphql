@@ -1,0 +1,263 @@
+query CppBookingSummary($filter: CppBookingSummaryFilter) {
+  response: cppBookingSummary(filter: $filter) {
+    id
+    status
+    bookingNumber
+    arrival
+    departure
+    acceptTnc
+    totalAdult
+    cancelledDate
+    totalChildren
+    payOnConfirmationAmount
+    payAtHotelAmount
+    totalBaseAmount
+    totalGrossAmount
+    totalSellingRate
+    bookingFlow
+    specialRequest
+    booker {
+      id
+      address
+      city
+      state
+      countryId
+      country {
+        id
+        phoneCode
+        name
+        code
+      }
+      postalCode
+      phoneNumber
+      countryNumber
+      firstName
+      lastName
+      phoneNumber
+      emailAddress
+      countryId
+      countryNumber
+      address
+      city
+      postalCode
+      companyName
+      companyCity
+      companyTaxId
+      companyAddress
+      companyCountry
+      companyEmail
+      companyPostalCode
+    }
+    guestList {
+      id
+      isBooker
+      isMainGuest
+      isReturningGuest
+      countryId
+      firstName
+      lastName
+      phoneNumber
+      city
+      state
+      emailAddress
+      countryId
+      countryNumber
+      postalCode
+      isAdult
+      country {
+        name
+        id
+      }
+      address
+    }
+    additionalGuest {
+      firstName
+      lastName
+      isAdult
+    }
+    bookingCityTaxList {
+      id
+      name
+      code
+      value
+      cityTaxAmount
+    }
+    bookingTaxList {
+      name
+      code
+      rate
+      amount
+    }
+    cityTaxList {
+      unit
+      name
+      value
+      description
+      cityTaxAmount
+      translationList {
+        name
+        languageCode
+        description
+      }
+    }
+    paymentTerm {
+      name
+      code
+      description
+      payAtHotelDescription
+      payOnConfirmationDescription
+    }
+    cxlPolicy {
+      name
+      description
+    }
+    reservationList {
+      id
+      additionalGuest {
+        firstName
+        lastName
+        isAdult
+      }
+      primaryGuest {
+        id
+        countryId
+        firstName
+        lastName
+        phoneNumber
+        city
+        state
+        emailAddress
+        countryId
+        countryNumber
+        postalCode
+        isAdult
+        country {
+          name
+          id
+        }
+        address
+        isBooker
+        isMainGuest
+      }
+      reservationNumber
+      status
+      adult
+      childrenAgeList
+      pets
+      arrival
+      departure
+      specialRequest
+      guestNote
+      totalBaseAmount
+      taxAmount
+      serviceChargeAmount
+      cityTaxAmount
+      totalGrossAmount
+      totalSellingRate
+      payOnConfirmationAmount
+      payAtHotelAmount
+      totalAccommodationAmount
+      paymentTerm {
+        name
+        code
+        description
+        payAtHotelDescription
+        payOnConfirmationDescription
+      }
+      cxlPolicy {
+        name
+        description
+      }
+      rfc {
+        name
+        description
+        numberOfBedrooms
+        extraBedKid
+        extraBedAdult
+        space
+        rfcImageList {
+          imageUrl
+        }
+        retailFeatureList {
+          name
+          code
+          measurementUnit
+          hotelRetailCategory {
+            code
+          }
+          retailFeatureImageList {
+            imageUrl
+          }
+        }
+        standardFeatureList {
+          name
+          code
+          iconImageUrl
+        }
+      }
+      matchedFeatureList {
+        code
+        name
+        quantity
+        description
+        retailFeatureImageList {
+          imageUrl
+        }
+      }
+      rfcRatePlan {
+        ratePlan {
+          name
+          code
+          description
+        }
+      }
+      tripPurpose
+      company {
+                taxId
+                name
+                email
+                address
+                city
+                country
+                postalCode
+            }
+      reservationAmenityList {
+        id
+        totalBaseAmount
+        totalGrossAmount
+        serviceChargeAmount
+        taxAmount
+        totalSellingRate
+        hotelAmenity {
+          id
+          name
+          code
+          displaySequence
+          iconImageUrl
+        }
+        reservationAmenityDateList {
+          id
+          date
+          totalBaseAmount
+          totalGrossAmount
+          serviceChargeAmount
+          taxAmount
+          totalSellingRate
+          count
+        }
+      }
+    }
+    hotelPaymentModeCode
+    bookingTransactionList {
+      id
+      transactionNumber
+      status
+      accountNumber
+      accountHolder
+      expiryMonth
+      expiryYear
+      cardType
+      totalAmount
+    }
+  }
+}

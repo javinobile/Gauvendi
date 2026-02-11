@@ -1,0 +1,53 @@
+<ng-container
+  *ngIf="{
+    colorPrimary: colorPrimary$ | async,
+    colorButtonText: colorButtonText$ | async,
+    colorButtonBg: colorButtonBg$ | async
+  } as vm"
+>
+  <div class="w-[900px] h-auto sm:w-[95vw] md:w-full lg:w-full bg-popover-background-color p-[16px] relative">
+    <div class="absolute right-0 top-0 cursor-pointer sm:w-[48px] sm:h-[48px]" mat-dialog-close>
+      <img loading="lazy" src="assets/icons/hexagon.svg" class="w-[65px] h-[65px]" appFilterSvg [color]="vm.colorButtonBg" />
+      <img loading="lazy" src="assets/icons/cancel.svg" class="w-[23px] h-[23px] absolute z-[10] top-[17px] right-[17px] sm:right-[10px]" appFilterSvg [color]="vm.colorButtonText" />
+    </div>
+
+    <div class="flex items-center gap-[4px]">
+      <div
+        class="text-[17px] font-normal leading-[23.8px] text-primary-color py-[2px] px-[4px] rounded-[4px] sm:text-[12px] sm:leading-[16.8px]"
+        [style.background-color]="vm.colorPrimary | hexToRgba: 0.3"
+      >
+        #{{ MAT_DIALOG_DATA.roomIndex + 1 }}
+      </div>
+      <div class="text-[20px] font-medium leading-[24px] text-popover-primary-color sm:text-[14px] sm:leading-[15.4px]">
+        {{ MAT_DIALOG_DATA.item?.roomProduct?.name }}
+      </div>
+    </div>
+
+    <div class="mt-[16px]">
+      <div class="bg-cover h-[412px] sm:h-[251px] w-full bg-no-repeat bg-center rounded-[8px] relative" [ngStyle]="{ 'background-image': selectedImageUrl | parseImageUrl }">
+        <div class="index absolute bottom-[8px] left-1/2 -translate-x-1/2 px-[8px] rounded-[12px]">{{ selectedImageIndex + 1 }}/{{ imageList?.length }}</div>
+        <div
+          class="image-type absolute left-[16px] top-[16px] text-[20px] leading-[24px] font-light text-[#000] bg-[#FFF] py-[6px] px-[12px] rounded-[24px] sm:text-[14px] sm:leading-[16.8px] sm:top-[9px] sm:left-[9px]"
+        >
+          {{ imageList[selectedImageIndex]?.type === 'ROOM' ? ('ROOM_IMAGE' | translate | async) : imageList[selectedImageIndex]?.name }}
+        </div>
+
+        <div class="navigation navigation__left pointer" (click)="changeImage(-1)">
+          <mat-icon>chevron_left</mat-icon>
+        </div>
+        <div class="navigation navigation__right pointer" (click)="changeImage(+1)">
+          <mat-icon>chevron_right</mat-icon>
+        </div>
+      </div>
+      <div class="thumbnail-list py-2 mt-[16px] sm:hidden">
+        <swiper [config]="config" class="thumb-carousel">
+          <ng-container *ngFor="let item of imageList; index as i">
+            <ng-template swiperSlide>
+              <div class="thumb-image" [class.active]="i === selectedImageIndex" [ngStyle]="{ 'background-image': item?.imageUrl | parseImageUrl }" (click)="selectImage(item, i)"></div>
+            </ng-template>
+          </ng-container>
+        </swiper>
+      </div>
+    </div>
+  </div>
+</ng-container>

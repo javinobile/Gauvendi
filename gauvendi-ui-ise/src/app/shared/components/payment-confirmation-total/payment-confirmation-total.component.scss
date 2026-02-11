@@ -1,0 +1,27 @@
+.included_tax {
+    &__list {
+      position: relative;
+  
+      &::before {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 100%;
+        inset: calc(calc(1.4 * 12px) / 2) 0.25rem;
+        border-left: 1.5px solid var(--color-border);
+      }
+    }
+
+    &__item {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 0.5rem;
+        inset: 50% 0 50% -0.75rem;
+        border-top: 1.5px solid var(--color-border);
+      }
+    }
+  }

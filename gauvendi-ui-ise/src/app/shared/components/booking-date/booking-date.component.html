@@ -1,0 +1,17 @@
+<div class="p-[12px] mt-[16px] border rounded-[16px] border-border-color">
+  <div class="flex items-center justify-between border-b border-border-color pb-[12px]">
+    <div class="flex items-center gap-[8px]">
+      <img src="assets/icons/date.svg" alt="" appFilterSvg [color]="colorText">
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">{{'DATE' | translate | async}}</div>
+    </div>
+    <div class="text-[14px] font-medium leading-[140%] text-primary-color">{{totalNights}} {{(totalNights > 1 ? 'NIGHTS' : 'NIGHT') | translate | async}}</div>
+  </div>
+  <div class="flex items-center justify-between mt-[12px]">
+    <div class="text-[14px] font-light leading-[140%] text-primary-color">{{'CHECK_IN' | translate | async}}</div>
+    <div class="text-[14px] font-light leading-[140%] text-primary-color">{{checkInDate}}</div>
+  </div>
+  <div class="flex items-center justify-between mt-[12px]">
+    <div class="text-[14px] font-light leading-[140%] text-primary-color">{{'CHECK_OUT' | translate | async}}</div>
+    <div class="text-[14px] font-light leading-[140%] text-primary-color">{{checkOutDate}}</div>
+  </div>
+</div>

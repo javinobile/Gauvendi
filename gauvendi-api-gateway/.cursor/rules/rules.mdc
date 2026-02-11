@@ -1,0 +1,32 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+I'm trying to migrate apis from Java to NestJS.
+
+I need to read the type/schema/entity from Java and convert it to NestJS API.
+
+I have 2 services one is API Gateway and the other is Hotel Service (microservice).
+
+example to send message to Microservice:
+
+@Injectable()
+export class XService {
+  constructor(
+    @Inject(PLATFORM_SERVICE) private readonly hotelClient: ClientProxy // keep the same this name
+  ) {}
+
+  xMethod(query: XQueryDto) {
+    return this.hotelClient.send({ cmd: "x_method" }, query);
+  }
+}
+
+dtos folders include each api query or body
+
+not include ApiPropertyOptional ApiProperty anymore in dto
+
+
+Perfect! I understand your coding style now. This is a much cleaner approach:
+
+viết trong 1 hàm duy nhất, logic query sử dụng find etc của typeorm chứ ko dùng builder

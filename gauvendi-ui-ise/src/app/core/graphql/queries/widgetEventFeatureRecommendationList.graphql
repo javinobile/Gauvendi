@@ -1,0 +1,37 @@
+query WidgetEventFeatureRecommendationList($filter: WidgetEventFeatureRecommendationListFilter) {
+  response: widgetEventFeatureRecommendationList(filter: $filter) {
+    code
+    status
+    message
+    data {
+      ... on WidgetEventFeatureRecommendation {
+        travelProfile
+        event
+        popularRetailFeatureList {
+          id
+          name
+          code
+          description
+          shortDescription
+          baseRate
+          totalBaseAmount
+          totalGrossAmount
+          retailFeatureImageList {
+            id
+            description
+            imageUrl
+            mainImage
+          }
+          hotelRetailCategory {
+            code
+          }
+          displaySequence
+          matched
+          quantity
+          travelTag
+          occasion
+        }
+      }
+    }
+  }
+}

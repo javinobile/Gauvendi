@@ -1,0 +1,40 @@
+<div class="h-[100px] bg-footer-background-color sm:h-auto md:h-auto shadow-panel-price">
+  <div class="max-w-[1200px] mx-auto py-[20px] sm:max-w-[calc(100%-32px)] md:max-w-[calc(100%-40px)] lg:max-w-[calc(100%-20px)]">
+    <!-- left side -->
+    <div class="flex items-end justify-between sm:flex-col sm:gap-[32px]">
+      <div class="sm:w-full">
+        <div class="text-[18px] font-[500] leading-[140%] text-footer-color mb-[11px] sm:text-[17px] sm:leading-[20.4px]">
+          {{ hotelName }}
+        </div>
+        <div class="text-footer-color text-[14px] leading-[19.6px]">
+          {{ addressDisplay }}
+        </div>
+      </div>
+      <!-- right side -->
+      <div class="flex flex-col gap-[11px] sm:flex-row sm:w-full sm:justify-between">
+        <div class="flex gap-[12px] sm:flex-col sm:flex-end sm:gap-[8px]">
+          <a class="font-[600] text-[12px] sm:text-[10px] leading-[16.8px] sm:leading-[14px] text-footer-color" [href]="termOfUse | parseMetadataConfig: lang?.code" target="_blank">
+            {{ 'TERM_OF_USE' | translate | async }}
+          </a>
+          <a class="font-[600] text-[12px] sm:text-[10px] leading-[16.8px] sm:leading-[14px] text-footer-color" [href]="privacy | parseMetadataConfig: lang?.code" target="_blank">
+            {{ 'PRIVACY_STATEMENT' | translate | async }}
+          </a>
+          <a
+            class="font-[600] text-[12px] sm:text-[10px] leading-[16.8px] sm:leading-[14px] text-footer-color"
+            *ngIf="hotelImpressum | parseMetadataConfig: lang?.code"
+            [href]="hotelImpressum | parseMetadataConfig: lang?.code"
+            target="_blank"
+          >
+            {{ 'IMPRINT' | translate | async }}
+          </a>
+        </div>
+        <div class="flex items-center justify-end gap-[12px] sm:flex-col sm:gap-[0px]">
+          <div class="font-[500] text-[12px] sm:text-[10px] leading-[16.8px] sm:leading-[14px] text-footer-color">{{ 'POWER_BY' | translate | async }}</div>
+          <div class="mb-[4px]">
+            <h1 class="text-footer-color">GauVendi</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

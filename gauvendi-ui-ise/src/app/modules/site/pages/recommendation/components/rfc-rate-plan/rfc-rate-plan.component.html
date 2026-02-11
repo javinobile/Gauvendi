@@ -1,0 +1,243 @@
+<ng-container
+  *ngIf="{
+    ratePlanList: ratePlanList$ | async,
+    hotelPrimaryColor: hotelPrimaryColor$ | async,
+    buttonTextColor: buttonTextColor$ | async,
+    roomSummary: roomSummary$ | async,
+    selectedRoomSummary: selectedRoomSummary$ | async
+  } as vm"
+>
+  <div
+    class="bg-background-secondary-color px-[24px] py-[16px] rounded-[16px] sm:px-[20px] sm:mb-[8px] md:px-[16px] md:mb-[16px] lg:px-[16px] lg:mb-[16px]"
+    [ngClass]="{ '!px-4 mt-4': step2CompactMode }"
+  >
+    <!--    [class]="isLowestPrice ? 'border-[2px] border-button-fill' : 'border border-sales-plan-fill'"-->
+    <div class="flex items-center gap-[8px] pb-[8px] sm:border-b sm:border-[#E9E9E9] md:border-none sm:flex-col sm:items-start md:flex-col md:items-start lg:flex-col lg:items-start">
+      <div class="flex items-center sm:flex-col sm:items-start gap-[8px]">
+        <div class="font-medium text-[20px] leading-[24px] text-primary-color sm:text-[20px] sm:leading-[24px] sm:font-medium sm:text-primary-color" [ngClass]="{ '!text-[17px]': step2CompactMode }">
+          {{ item.ratePlan?.name }}
+        </div>
+        <div *ngIf="item?.ratePlan?.IsPromoted" class="flex items-center promotion rounded-[100px] py-[4px] px-[8px] bg-[#C2EAE5] text-[#00A991] text-[14px] font-normal leading-[140%] z-[21]">
+          <img loading="lazy" appFilterSvg [color]="'#00A991'" src="assets/icons/promotion.svg" width="16" height="16" alt="" />
+          <div class="ms-[5px]">{{ promoCode }}</div>
+        </div>
+      </div>
+
+      <div class="hidden sm:block pe-[24px]" *ngIf="!step2CompactMode">
+        <!-- <div class="font-medium leading-[140%] text-[14px] mb-[8px] text-primary-color sm:">
+          {{ 'DESCRIPTION' | translate | async }}
+        </div> -->
+        <div
+          #descriptionMb
+          class="font-light line-clamp-3 text-[12px] text-primary-color leading-[140%] rate-description"
+          [innerHTML]="vm.ratePlanList | getRatePlanDescription: item?.ratePlan?.code"
+        ></div>
+        <button
+          *ngIf="descriptionMb?.scrollHeight > descriptionMb?.clientHeight"
+          (click)="viewSalePlanDetail(vm.ratePlanList, item?.ratePlan?.code)"
+          class="cursor-pointer text-12 font-medium text-primary-color underline hover:opacity-80"
+        >
+          {{ 'VIEW_DETAILS' | translate | async }}
+        </button>
+      </div>
+    </div>
+    <!--Tablet-->
+    <div class="hidden lg:flex md:flex justify-between gap-[24px] pb-[16px] border-b border-[#E9E9E9]">
+      <div class="w-[45%]">
+        <div class="font-medium text-[14px] leading-[140%] mb-[8px] text-primary-color">
+          {{ 'DESCRIPTION' | translate | async }}
+        </div>
+        <div class="font-light text-[12px] text-primary-color leading-[140%] rate-description" [innerHTML]="vm.ratePlanList | getRatePlanDescription: item?.ratePlan?.code"></div>
+      </div>
+      <div class="w-[1px] bg-[#E9E9E9]"></div>
+      <div class="w-[45%]">
+        <div class="font-medium leading-[140%] text-[14px] mb-[8px] text-primary-color">
+          {{ 'MEAL_PLANS_AND_SERVICES' | translate | async }}
+        </div>
+        <ng-container *ngIf="item?.ratePlan?.includedHotelExtrasList?.length > 0; else tplNoServices">
+          <ng-container *ngFor="let extra of item.ratePlan?.includedHotelExtrasList">
+            <div class="flex items-center gap-[4px] mb-[6px]">
+              <img loading="lazy" src="assets/icons/checked.svg" alt="checked" appFilterSvg [color]="vm.hotelPrimaryColor" />
+              <div class="font-medium text-[12px] leading-[140%] text-primary-color">{{ extra.name }}</div>
+            </div>
+            @if (vm.selectedRoomSummary || vm.roomSummary; as roomSummary) {
+              @if (extra.code === amenityCodeEnum.PET_SURCHARGE) {
+                <div *ngIf="roomSummary?.pets" class="font-light text-secondary-color text-[12px] mb-[6px] leading-[17px] ms-[20px]">
+                  {{ roomSummary?.pets | displayIncludedServiceDesc: roomSummary?.children : bedRooms : extra?.includedDates : bookingDuration : extra?.pricingUnit : '' : checkInDate : true | async }}
+                </div>
+              } @else {
+                <div *ngIf="roomSummary?.adults" class="font-light text-secondary-color text-[12px] mb-[6px] leading-[17px] ms-[20px]">
+                  {{ roomSummary?.adults | displayIncludedServiceDesc: roomSummary?.children : bedRooms : extra?.includedDates : bookingDuration : extra?.pricingUnit : '' : checkInDate | async }}
+                </div>
+              }
+            }
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <div class="flex sm:flex-col md:justify-between md:mt-[16px] lg:justify-between lg:mt-[16px]">
+      <!--mobile-->
+      <div class="hidden sm:block sm:w-full sm:pt-[12px] sm:border-b sm:border-[#E9E9E9]">
+        <ng-container *ngIf="item.ratePlan?.includedHotelExtrasList?.length > 0; else tplNoServices">
+          <ng-container *ngFor="let extra of item.ratePlan?.includedHotelExtrasList | slice: 0 : 2">
+            <div class="flex items-center gap-[4px]">
+              <img loading="lazy" src="assets/icons/checked.svg" alt="checked" appFilterSvg [color]="vm.hotelPrimaryColor" />
+              <div class="font-light text-[12px] leading-[140%] text-primary-color">{{ extra.name }}</div>
+            </div>
+            @if (vm.selectedRoomSummary || vm.roomSummary; as roomSummary) {
+              @if (extra.code === amenityCodeEnum.PET_SURCHARGE) {
+                <div class="font-light text-secondary-color text-[12px] mb-[4px] leading-[17px] ms-[20px]">
+                  {{ roomSummary?.pets | displayIncludedServiceDesc: roomSummary?.children : bedRooms : extra?.includedDates : bookingDuration : extra?.pricingUnit : '' : checkInDate : true | async }}
+                </div>
+              } @else {
+                <div class="font-light text-secondary-color text-[12px] mb-[4px] leading-[17px] ms-[20px]">
+                  {{ roomSummary?.adults | displayIncludedServiceDesc: roomSummary?.children : bedRooms : extra?.includedDates : bookingDuration : extra?.pricingUnit : '' : checkInDate | async }}
+                </div>
+              }
+            }
+          </ng-container>
+          <ng-container *ngIf="item.ratePlan?.includedHotelExtrasList?.length > 2">
+            <div class="font-medium text-[12px] underline ps-[20px] leading-[140%] text-primary-color cursor-pointer" (click)="viewSalePlanDetail(vm.ratePlanList, item?.ratePlan?.code)">
+              +{{ item.ratePlan?.includedHotelExtrasList?.length - 2 }} {{ 'MORE' | translate | async }}
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <!--desktop-->
+      <div class="w-[25%] border-e border-[#E9E9E9] sm:hidden lg:hidden md:hidden" *ngIf="!step2CompactMode">
+        <div class="pe-[16px]">
+          <!--          <div class="font-medium text-[14px] leading-[140%] mb-[8px] text-primary-color">-->
+          <!--            {{ 'DESCRIPTION' | translate | async }}-->
+          <!--          </div>-->
+          <div
+            #description
+            class="font-light line-clamp-3 text-[12px] text-primary-color leading-[140%] rate-description"
+            [innerHTML]="vm.ratePlanList | getRatePlanDescription: item?.ratePlan?.code"
+          ></div>
+          <button
+            *ngIf="description?.scrollHeight > description?.clientHeight"
+            (click)="viewSalePlanDetail(vm.ratePlanList, item?.ratePlan?.code)"
+            class="cursor-pointer text-12 font-medium text-primary-color underline hover:opacity-80"
+          >
+            {{ 'VIEW_DETAILS' | translate | async }}
+          </button>
+        </div>
+      </div>
+      <div class="w-[25%] ps-[16px] sm:hidden md:hidden lg:hidden" [ngClass]="{ '!w-[35%] !ps-0': step2CompactMode }">
+        <div class="w-full">
+          <ng-container *ngIf="item.ratePlan?.includedHotelExtrasList?.length > 0; else tplNoServices">
+            <ng-container *ngFor="let extra of item.ratePlan?.includedHotelExtrasList | slice: 0 : 2">
+              @if (vm.selectedRoomSummary || vm.roomSummary; as roomSummary) {
+                @if (extra.code === amenityCodeEnum.PET_SURCHARGE) {
+                  <div class="flex items-center gap-[4px]">
+                    <img loading="lazy" src="assets/icons/checked.svg" alt="checked" appFilterSvg [color]="vm.hotelPrimaryColor" />
+                    <div class="font-medium leading-[140%] text-[12px] text-primary-color">{{ extra.name }}</div>
+                  </div>
+                  <div class="font-light text-secondary-color text-[12px] leading-[17px] ms-[20px] mb-[4px]">
+                    {{
+                      roomSummary?.pets | displayIncludedServiceDesc: roomSummary?.children : bedRooms : extra?.includedDates : bookingDuration : extra?.pricingUnit : '' : checkInDate : true | async
+                    }}
+                  </div>
+                } @else {
+                  <div class="flex items-center gap-[4px]">
+                    <img loading="lazy" src="assets/icons/checked.svg" alt="checked" appFilterSvg [color]="vm.hotelPrimaryColor" />
+                    <div class="font-medium leading-[140%] text-[12px] text-primary-color">{{ extra.name }}</div>
+                  </div>
+                  <div class="font-light text-secondary-color text-[12px] leading-[17px] ms-[20px] mb-[4px]">
+                    {{ roomSummary?.adults | displayIncludedServiceDesc: roomSummary?.children : bedRooms : extra?.includedDates : bookingDuration : extra?.pricingUnit : '' : checkInDate | async }}
+                  </div>
+                }
+              }
+            </ng-container>
+            <ng-container *ngIf="item.ratePlan?.includedHotelExtrasList?.length > 2">
+              <div class="font-medium text-[12px] underline ps-[20px] leading-[140%] text-primary-color cursor-pointer" (click)="viewSalePlanDetail(vm.ratePlanList, item?.ratePlan?.code)">
+                +{{ item.ratePlan?.includedHotelExtrasList?.length - 2 }} {{ 'MORE' | translate | async }}
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+      <div
+        class="w-[25%] px-[16px] border-e border-[#E9E9E9] border-s sm:w-full sm:border-e-0 sm:border-b sm:border-s-0 sm:px-0 sm:py-[12px] md:border-none md:px-0 md:w-[calc(100%-184px)] lg:border-none lg:px-0 lg:w-[calc(100%-184px)]"
+        [ngClass]="{ '!w-[40%]': step2CompactMode }"
+      >
+        <div class="mb-[4px] sm:mb-[4px] md:mb-[4px] lg:mb-[4px]">
+          <!--          <div class="font-medium text-[14px] text-primary-color leading-[140%] sm:mb-[4px]">-->
+          <!--            {{ 'CANCELLATION_POLICY'| translate | async }}-->
+          <!--          </div>-->
+          <div class="flex items-center gap-[4px]">
+            <img loading="lazy" src="assets/icons/cancellation-policy.svg" appFilterSvg [color]="vm.hotelPrimaryColor" alt="cancellation" />
+            <div class="text-12 font-medium line-clamp-1 text-primary-color" #cxlPolicyName>
+              {{ 'CANCELLATION_POLICY' | translate | async }}
+            </div>
+          </div>
+          <div class="font-light text-[12px] ps-[20px] line-clamp-1 leading-[140%] text-secondary-color" #cxlPolicyDesc>
+            {{ vm.ratePlanList | getCxlPolicy: item?.ratePlan?.code | stripHtml }}
+          </div>
+        </div>
+        <div>
+          <!--          <div class="font-medium text-[14px] text-primary-color sm:leading-[140%] sm:mb-[4px]">-->
+          <!--            {{ 'PAYMENT_TERM' |-->
+          <!--            translate | async }}</div>-->
+          <div class="flex items-center gap-[4px]">
+            <img loading="lazy" src="assets/icons/payment.svg" appFilterSvg [color]="vm.hotelPrimaryColor" alt="payment" />
+            <div class="text-12 font-medium line-clamp-1 text-primary-color" #paymentTermName>
+              {{ 'PAYMENT_TERM' | translate | async }}
+            </div>
+          </div>
+          <div class="font-light text-[12px] ps-[20px] line-clamp-1 leading-[140%] text-secondary-color" #paymentTermDesc>
+            {{ vm.ratePlanList | getPaymentTerm: item?.ratePlan?.code | stripHtml }}
+          </div>
+        </div>
+        <button
+          *ngIf="cxlPolicyName?.scrollHeight > 17 || cxlPolicyDesc?.scrollHeight > 34 || paymentTermName?.scrollHeight > 17 || paymentTermDesc?.scrollHeight > 34"
+          (click)="viewSalePlanDetail(vm.ratePlanList, item?.ratePlan?.code)"
+          class="cursor-pointer mt-[4px] ps-[20px] text-12 font-medium text-primary-color underline hover:opacity-80"
+        >
+          {{ 'VIEW_DETAILS' | translate | async }}
+        </button>
+      </div>
+      <div
+        class="flex flex-col items-end justify-end w-[25%] ps-[16px] sm:mt-[12px] sm:w-full sm:flex-row sm:justify-between sm:px-0 md:w-[360px] md:p-0 md:justify-start lg:w-[360px] lg:p-0 lg:justify-start"
+      >
+        <app-option-price
+          [isStep2]="isStep2"
+          [price]="item?.totalGrossAmount | calculatePriceWithTax: item?.totalBaseAmount : (priceView === EPriceView.PerNight ? 'averageDailyRate' : 'totalSellingRate') : isIncludedTax"
+          [parentClass]="'!text-[12px]'"
+          [showFrom]="false"
+          [rooms]="isFromMatchingRfc ? 1 : rooms"
+          [isDeal]="dealCode === item?.ratePlan?.code"
+          [isBracket]="true"
+          [shouldShowStrikeThrough]="item?.shouldShowStrikeThrough"
+          [adjustmentPercentage]="item?.adjustmentPercentage"
+          [originalPrice]="item?.totalGrossAmountBeforeAdjustment | calculateFullPriceWithTax: item?.totalBaseAmountBeforeAdjustment : isIncludedTax"
+          [priceView]="priceView"
+          [isTextEnd]="true"
+          [isCombination]="isCombination"
+          [displayMode]="displayMode"
+          [fullPrice]="item?.totalGrossAmount | calculatePriceWithTax: item?.totalBaseAmount : 'totalSellingRate' : isIncludedTax"
+        />
+        <button
+          *ngIf="!isFromMatchingRfc"
+          class="font-medium rounded-[12px] h-[36px] px-[32px] text-[12px] leading-[140%] mt-[10px] bg-button-normal-background-color text-button-normal-color sm:px-[24px] hover:opacity-80"
+          (click)="navigateToPickExtras(item?.ratePlan?.code)"
+        >
+          {{ 'BOOK' | translate | async }}
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #tplNoServices>
+  <div class="flex items-center gap-[4px]">
+    <img loading="lazy" src="assets/icons/checked.svg" alt="checked" appFilterSvg [color]="hotelPrimaryColor$ | async" />
+    <div class="font-medium leading-[16.8px] text-[12px] text-primary-color">
+      {{ 'MEAL_PLANS_AND_SERVICES' | translate | async }}
+    </div>
+  </div>
+  <div class="flex items-center gap-[4px] sm:mb-[12px]">
+    <div class="w-[16px]"></div>
+    <div class="text-[12px] leading-[16.8px] font-normal text-primary-color">{{ 'NO_SERVICES' | translate | async }}</div>
+  </div>
+</ng-template>

@@ -1,0 +1,435 @@
+<ng-container
+  *ngIf="{
+    maxFeatureShowed: displayMode === EDisplayMode.List ? 9999 : !isMobile ? 6 : 4,
+    noFeatures: isLowestPriceOpaque && item?.tag === BookingFlow.LowestPrice,
+    includeTax: includeTax$ | async,
+    promoCode: promoCode$ | async,
+    hotelRetailFeatureList: hotelRetailFeatureList$ | async,
+    isPromoted: (item?.baseOption?.availableRfcRatePlanList?.length > 0 ? item?.baseOption?.availableRfcRatePlanList : item?.baseOption?.unavailableRfcRatePlanList) | checkOptionPromoted
+  } as vm"
+>
+  <div
+    #wrapper
+    class="pb-[16px] relative md:pb-[20px]"
+    [ngClass]="{
+      'h-full': displayMode === EDisplayMode.Grid
+    }"
+  >
+    <!-- ================================= NORMAL STATE  =================================-->
+    <div class="hidden h-full" [class.!block]="!isSelected && !collapsed" [class.h-[432px]]="displayMode === EDisplayMode.Grid">
+      <!-- Tag for Grid or Tiles Mode -->
+      <ng-container *ngIf="displayMode !== EDisplayMode.List">
+        <!-- Pricing tag -->
+        <div class="absolute top-[12px] ltr:left-[-8px] rtl:-right-[8px]">
+          <app-matching-percent-tag *ngIf="showMatch" [matchPercent]="item.matchPercent" />
+          <app-option-item-tag *ngIf="!showMatch" [tag]="item?.tag" [data]="roomSummary()" />
+        </div>
+        <!-- end Pricing tag -->
+        <!-- Promo tag -->
+        <div
+          class="absolute z-[22]"
+          [ngClass]="{
+            'top-[8px] ltr:right-[8px] rtl:left-[8px] sm:ltr:left-[8px] sm:rtl:right-[8px]': displayMode === EDisplayMode.Grid,
+            'top-[64px] ltr:left-[8px] rtl:right-[8px]': displayMode !== EDisplayMode.Grid && ((item.tag | optionIcon) || showMatch),
+            'top-[12px] ltr:left-[8px] rtl:right-[8px]': displayMode !== EDisplayMode.Grid && !((item.tag | optionIcon) || showMatch)
+          }"
+          [class]="(item.tag | optionIcon) || showMatch ? 'sm:top-[64px]' : 'sm:top-[8px]'"
+        >
+          <ng-container *ngIf="vm.isPromoted">
+            <div class="w-fit rounded-[8px] flex items-center px-[8px] py-[4px] bg-[#E6F6F4] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.08)] max-w-[120px]">
+              <img loading="lazy" appFilterSvg [color]="'#00A991'" src="assets/icons/promotion.svg" width="16" height="16" alt="" />
+              <div class="ms-[5px] text-14 leading-[140%] text-[#00A991] truncate">
+                {{ vm.promoCode }}
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <!-- End promo tag -->
+      </ng-container>
+      <!-- End Tag for Grid or Tiles Mode -->
+
+      <div class="bg-product-background-color rounded-[16px] overflow-hidden transition-all duration-500 h-full shadow-option-item">
+        <div *ngIf="displayMode === EDisplayMode.List && isDetails" class="bg-button-normal-background-color h-[48px] flex items-center justify-center">
+          <ng-container *ngIf="!vm.noFeatures">
+            <span class="text-button-normal-color text-[17px] font-normal leading-[23.8px] pr-[12px]">
+              {{ 'YOU_ARE_SELECTING' | translate | async }}
+            </span>
+            <span class="text-button-normal-color text-[20px] font-medium leading-[24px]">
+              {{ item?.title }}
+            </span>
+          </ng-container>
+          <ng-container *ngIf="vm.noFeatures">
+            <span class="text-button-normal-color text-[20px] font-medium leading-[24px]">
+              {{ vm.noFeatures ? ('OPAQUE_TEXT' | translate | async) : item?.title }}
+            </span>
+          </ng-container>
+        </div>
+        <!-- CARD -->
+        <div
+          class="flex relative"
+          [ngClass]="{
+            'flex-col h-full': displayMode === EDisplayMode.Grid,
+            'px-[16px] py-[12px]': displayMode === EDisplayMode.List
+          }"
+        >
+          <!-- swiper -->
+          <div
+            class="relative"
+            [ngClass]="{
+              'w-[100%]': displayMode === EDisplayMode.Grid,
+              'w-[43%]': displayMode === EDisplayMode.Tiles,
+              'w-[54%]': displayMode === EDisplayMode.List,
+              '!w-[387px]': step2CompactMode
+            }"
+          >
+            <!-- Tag for List Mode -->
+            <ng-container *ngIf="displayMode === EDisplayMode.List">
+              <!-- Pricing tag -->
+              <div class="absolute top-[12px] ltr:left-[-8px] rtl:-right-[8px]">
+                <app-matching-percent-tag *ngIf="showMatch" [matchPercent]="item.matchPercent" />
+                <app-option-item-tag *ngIf="!showMatch" [tag]="item?.tag" [data]="roomSummary()" />
+              </div>
+              <!-- end Pricing tag -->
+              <!-- Promo tag -->
+              <ng-container *ngIf="vm.isPromoted">
+                <div class="absolute z-[22] top-[12px] ltr:right-[12px] rtl:left-[12px]">
+                  <div class="w-fit rounded-[8px] flex items-center px-[8px] py-[4px] bg-[#E6F6F4] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.08)] max-w-[120px]">
+                    <img loading="lazy" appFilterSvg [color]="'#00A991'" src="assets/icons/promotion.svg" width="16" height="16" alt="" />
+                    <div class="ms-[5px] text-14 leading-[140%] text-[#00A991] truncate">
+                      {{ vm.promoCode }}
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              <!-- End promo tag -->
+            </ng-container>
+            <!-- End Tag for List Mode -->
+            <!-- zoom -->
+            <div
+              *ngIf="displayMode === EDisplayMode.List && !item?.isLocked"
+              class="absolute bottom-[8px] ltr:right-[8px] rtl:left-[8px] z-10 rounded-full bg-[rgba(0,0,0,0.4)] p-[4px] cursor-zoom-in hover:scale-[1.01] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.24)]"
+              (click)="zoomIn(item?.imgUrls, vm.noFeatures)"
+            >
+              <img loading="lazy" src="assets/icons/zoom-in.svg" alt="" />
+            </div>
+            <!-- end zoom -->
+            <!-- locked layer -->
+            <ng-container *ngIf="item?.isLocked">
+              <div
+                class="absolute bottom-0 left-0 right-0 h-[36px] bg-popover-background-color z-[10] flex items-center justify-center text-[14px] text-primary-color"
+                [class.px-2]="displayMode === EDisplayMode.Tiles"
+                [class.h-12]="displayMode === EDisplayMode.Tiles"
+              >
+                <app-room-restriction [restriction]="restrictionValidationList" />
+              </div>
+              <div class="absolute top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.36)] z-[11]" [class.rounded-[16px]]="displayMode !== EDisplayMode.Grid"></div>
+            </ng-container>
+            <!-- end locked -->
+            <!-- Default lowestPriceImage -->
+            <ng-container *ngIf="vm.noFeatures">
+              <app-image-custom
+                [src]="lowestPriceImageUrl"
+                [ngClass]="{
+                  'h-[220px]': displayMode === EDisplayMode.Grid,
+                  'h-[280px] rounded-[16px]': displayMode === EDisplayMode.Tiles,
+                  'h-[360px] rounded-[16px]': displayMode === EDisplayMode.List,
+                  '!w-[387px] !h-[218px] rounded-[16px]': step2CompactMode
+                }"
+                alt="option-img"
+              />
+            </ng-container>
+            <!-- End lowestPriceImage -->
+            <ng-container *ngIf="!vm.noFeatures">
+              <app-option-swiper
+                [isStep2]="isStep2"
+                [imgUrls]="item?.imgUrls"
+                [optionIconUrls]="spaceTypeUrls()"
+                [customClass]="
+                  displayMode === EDisplayMode.Grid
+                    ? 'h-[220px]'
+                    : displayMode === EDisplayMode.Tiles
+                      ? 'h-[280px] rounded-[16px]'
+                      : step2CompactMode
+                        ? '!w-[387px] !h-[218px] rounded-[16px]'
+                        : 'h-[360px] rounded-[16px]'
+                "
+              />
+            </ng-container>
+          </div>
+          <!-- end swiper -->
+
+          <!-- info -->
+          <div
+            class="p-[16px] flex justify-between flex-col flex-1"
+            [ngClass]="{
+              'h-[185px]': displayMode === EDisplayMode.Grid,
+              'h-[280px]': displayMode === EDisplayMode.Tiles,
+              'h-[360px] ps-[24px]': displayMode === EDisplayMode.List,
+              'h-auto !px-[16px] !py-0': step2CompactMode
+            }"
+          >
+            <div class="overflow-y-hidden flex flex-col">
+              <div class="flex items-center justify-between w-full">
+                <div
+                  [class]="'pym_product pym_product_' + item?.metadata?.code"
+                  [isDisabled]="titleEle?.scrollHeight <= titleEle.offsetHeight"
+                  [tooltipMessage]="vm.noFeatures ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) : item?.title"
+                  #titleEle
+                  appCustomTooltip
+                  class="flex gap-1 text-[17px] font-medium leading-[24px] text-primary-color mb-[4px] line-clamp-1"
+                >
+                  {{ vm.noFeatures ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) : item?.title }}
+                  @if (displayMode !== EDisplayMode.List && !isStep2 && item?.metadata?.description) {
+                    <img
+                      class="h-[14px]"
+                      loading="lazy"
+                      appFilterSvg
+                      [color]="'#727272'"
+                      src="assets/icons/infov2.svg"
+                      width="14"
+                      height="14"
+                      alt="description"
+                      appCustomTooltip
+                      [tooltipMessage]="item?.metadata?.description"
+                    />
+                  }
+                </div>
+                <div class="flex items-center text-[12px]" *ngIf="isStep2">
+                  <div class="text-hotel-primary-color underline mr-2 cursor-pointer" (click)="step2CompactMode = !step2CompactMode">{{ step2CompactMode ? 'View' : 'Hide' }} details</div>
+                  <mat-icon class="text-hotel-primary-color text-[20px] !w-[20px] !h-[20px] cursor-pointer" (click)="onBack()">delete_outline</mat-icon>
+                </div>
+              </div>
+              <app-option-units-info [showSpace]="true" [item]="item" [full]="true" [showText]="displayMode === EDisplayMode.List" />
+              <div class="overflow-y-auto flex-1">
+                @if ((isStep2 && !step2CompactMode) || (displayMode === EDisplayMode.List && !isStep2)) {
+                  @if (item?.metadata?.description; as description) {
+                    <div class="text-[12px] font-light text-primary-color mt-[12px]" [innerHTML]="description"></div>
+                  }
+                }
+                <div class="flex flex-col gap-[12px]" *ngIf="step2CompactMode">
+                  <ng-container *ngFor="let rfcRatePlan of item?.rfcRatePlanList; index as i">
+                    <app-rfc-rate-plan
+                      (selectRatePlan)="selectRatePlan.emit($event)"
+                      [bedRooms]="item?.bedRooms"
+                      [dealCode]="item?.rfcRatePlanList | getDealCode"
+                      [isBook]="isHighLight"
+                      [isFromMatchingRfc]="isFromMatchingRfc"
+                      [isIncludedTax]="vm.includeTax"
+                      [isStep2]="true"
+                      [item]="rfcRatePlan"
+                      [name]="item?.title"
+                      [priceView]="priceView"
+                      [promoCode]="vm.promoCode"
+                      [roomProduct]="this.item?.baseOption?.availableRfcList?.[0]"
+                      [step2CompactMode]="step2CompactMode"
+                      [displayMode]="displayMode"
+                    />
+                  </ng-container>
+                </div>
+                <div class="detail-scrollbar mt-[12px]" [ngClass]="{ hidden: step2CompactMode }">
+                  <ng-container *ngIf="!vm.noFeatures">
+                    <app-feature-included-match-flow
+                      *ngIf="showMatch"
+                      [matchFeatures]="item?.matchFeatures"
+                      [notMatchFeatures]="item?.notMatchFeatures"
+                      [anotherFeatures]="item?.features"
+                      [maxFeatureShowed]="vm.maxFeatureShowed"
+                      [displayMode]="displayMode"
+                      (moreClicked)="viewDetail()"
+                    />
+                    <app-feature-included
+                      *ngIf="!showMatch"
+                      [features]="item?.features"
+                      [maxFeatureShowed]="vm.maxFeatureShowed"
+                      [displayMode]="displayMode"
+                      [isAlternativeOption]="isAlternativeOption"
+                      (moreClicked)="viewDetail()"
+                    />
+                    <!-- Standard features only show on List View -->
+                    <ng-container *ngIf="displayMode === EDisplayMode.List">
+                      <app-standard-features [standardFeatures]="item?.standardFeatures" [maxFeatureShowed]="vm.maxFeatureShowed" />
+                    </ng-container>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+
+            <!-- Other Display View -->
+            <ng-container *ngIf="!(displayMode === EDisplayMode.List)">
+              <div class="flex justify-between items-end mt-[8px]">
+                <ng-container *ngIf="item?.rfcRatePlan; else tplUnavailable">
+                  <app-option-price
+                    [isStep2]="isStep2"
+                    [price]="
+                      item?.rfcRatePlan?.totalGrossAmount
+                        | calculatePriceWithTax: item?.rfcRatePlan?.totalBaseAmount : (priceView === EPriceView.PerNight ? 'averageDailyRate' : 'totalSellingRate') : vm.includeTax
+                    "
+                    [shouldShowStrikeThrough]="item?.rfcRatePlan?.shouldShowStrikeThrough"
+                    [originalPrice]="item?.rfcRatePlan?.totalGrossAmountBeforeAdjustment | calculateFullPriceWithTax: item?.rfcRatePlan?.totalBaseAmountBeforeAdjustment : vm.includeTax"
+                    [adjustmentPercentage]="item?.rfcRatePlan?.adjustmentPercentage"
+                    [priceView]="priceView"
+                    [isDeal]="(item?.rfcRatePlanList | getDealCode) === item?.rfcRatePlan?.ratePlan?.code"
+                    [fullPrice]="item?.rfcRatePlan?.totalGrossAmount | calculatePriceWithTax: item?.rfcRatePlan?.totalBaseAmount : 'totalSellingRate' : vm.includeTax"
+                  />
+                </ng-container>
+                <ng-container *ngIf="changeDateFromDirectOption; else tplButtonDefault">
+                  <button
+                    class="rounded-[12px] h-[28px] px-[28px] bg-button-hover-background-color text-button-hover-color text-[12px] font-medium leading-[140%] hover:bg-button-normal-background-color hover:text-button-normal-color transition-all duration-500 whitespace-nowrap"
+                    (click)="changeDate()"
+                  >
+                    {{ 'CHANGE_DATE' | translate | async }}
+                  </button>
+                </ng-container>
+                <ng-template #tplButtonDefault>
+                  <button
+                    *ngIf="!item?.isLocked && item?.rfcRatePlan"
+                    class="rounded-[12px] md:hidden sm:hidden h-[36px] px-[35px] bg-button-hover-background-color text-button-hover-color text-[12px] font-medium leading-[140%] hover:bg-button-normal-background-color hover:text-button-normal-color transition-all duration-500"
+                    (click)="isBundle ? selectRatePlan.emit() : viewDetail()"
+                    appCustomTooltip
+                    [tooltipMessage]="'SEARCH_CHANGES'"
+                    [component]="'SEARCH_CHANGES'"
+                    [isDisabled]="!isSearchChanged()"
+                  >
+                    {{ 'VIEW' | translate | async }}
+                  </button>
+                  <button
+                    *ngIf="!item?.isLocked && item?.rfcRatePlan"
+                    class="rounded-[12px] hidden sm:block md:block h-[36px] px-[35px] bg-button-hover-background-color text-button-hover-color text-[12px] font-medium leading-[140%] hover:bg-button-normal-background-color hover:text-button-normal-color transition-all duration-500"
+                    (click)="onTrack()"
+                    appCustomTooltip
+                    [tooltipMessage]="'SEARCH_CHANGES'"
+                    [component]="'SEARCH_CHANGES'"
+                  >
+                    {{ 'VIEW' | translate | async }}
+                  </button>
+                  <button *ngIf="item?.isLocked" class="rounded-[12px] h-[36px] px-[42px] bg-disabled-color" [disabled]="true">
+                    <img loading="lazy" src="assets/icons/locked.svg" alt="" />
+                  </button>
+                </ng-template>
+              </div>
+            </ng-container>
+          </div>
+          <!-- end info -->
+        </div>
+        <!-- END CARD -->
+
+        <!-- DETAILS -->
+        <ng-container *ngIf="displayMode === EDisplayMode.List && item?.rfcRatePlanList?.length > 0 && !step2CompactMode">
+          <div class="p-[16px] flex flex-col gap-[12px] md:p-[20px] md:pt-[32px]">
+            <ng-container *ngFor="let rfcRatePlan of item?.rfcRatePlanList; index as i">
+              <app-rfc-rate-plan
+                (selectRatePlan)="selectRatePlan.emit($event)"
+                [bedRooms]="item?.bedRooms"
+                [dealCode]="item?.rfcRatePlanList | getDealCode"
+                [isBook]="isHighLight"
+                [isFromMatchingRfc]="isFromMatchingRfc"
+                [isIncludedTax]="vm.includeTax"
+                [item]="rfcRatePlan"
+                [name]="item?.title"
+                [priceView]="priceView"
+                [promoCode]="vm.promoCode"
+                [roomProduct]="this.item?.baseOption?.availableRfcList?.[0]"
+                [displayMode]="displayMode"
+              />
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <!-- END NORMAL STATE -->
+
+    <!--  ================================= SELECTED STATE =================================-->
+    <div class="hidden" [class.!block]="isSelected">
+      <div class="border-button-normal-background-color bg-button-normal-background-color border-[12px] rounded-[16px]">
+        <div class="min-h-[calc(145px-24px)] rounded-[12px] flex items-center justify-center gap-[12px] bg-configurator-category-hover-background-color py-2">
+          <div>
+            <ng-container *ngIf="vm.noFeatures">
+              <div class="text-[17px] leading-[23.8px] text-primary-color font-medium text-center mb-[12px] line-clamp-1">
+                {{ vm.noFeatures ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) : item?.title }}
+              </div>
+            </ng-container>
+            <ng-container *ngIf="!vm.noFeatures">
+              <div class="text-[17px] leading-[23.8px] text-primary-color font-medium text-center mb-[12px] line-clamp-1">
+                {{ item?.title }}
+              </div>
+            </ng-container>
+            <div class="flex w-full justify-center">
+              <app-option-price
+                [isStep2]="isStep2"
+                [price]="
+                  item?.rfcRatePlan?.totalGrossAmount
+                    | calculatePriceWithTax: item?.rfcRatePlan?.totalBaseAmount : (priceView === EPriceView.PerNight ? 'averageDailyRate' : 'totalSellingRate') : vm.includeTax
+                "
+                [shouldShowStrikeThrough]="item?.rfcRatePlan?.shouldShowStrikeThrough"
+                [originalPrice]="item?.rfcRatePlan?.totalGrossAmountBeforeAdjustment | calculateFullPriceWithTax: item?.rfcRatePlan?.totalBaseAmountBeforeAdjustment : vm.includeTax"
+                [adjustmentPercentage]="item?.rfcRatePlan?.adjustmentPercentage"
+                [priceView]="priceView"
+                [parentClass]="'!text-primary-color'"
+                [fullPrice]="item?.rfcRatePlan?.totalGrossAmount | calculatePriceWithTax: item?.rfcRatePlan?.totalBaseAmount : 'totalSellingRate' : vm.includeTax"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END SELECTED STATE -->
+
+    <!-- ================================= COLLAPSED STATE ================================= -->
+    <div class="hidden" [class.!block]="collapsed && !isSelected">
+      <div
+        class="bg-product-background-color rounded-[16px] overflow-hidden transition-all duration-500 shadow-option-item h-[145px]"
+        [ngClass]="{
+          'flex items-center': displayMode === EDisplayMode.Tiles
+        }"
+      >
+        <ng-container *ngIf="vm.noFeatures">
+          <app-image-custom
+            [src]="lowestPriceImageUrl"
+            [ngClass]="{
+              'h-[70px]': displayMode === EDisplayMode.Grid,
+              'h-[145px] rounded-[16px] ': displayMode === EDisplayMode.Tiles,
+              '!w-[387px] !h-[218px] rounded-[16px]': step2CompactMode
+            }"
+            alt="option-img"
+          />
+        </ng-container>
+        <ng-container *ngIf="!vm.noFeatures">
+          <div [class.w-[43%]]="displayMode === EDisplayMode.Tiles" class="relative">
+            <app-option-swiper
+              [isStep2]="isStep2"
+              [imgUrls]="item?.imgUrls"
+              [optionIconUrls]="spaceTypeUrls()"
+              [customClass]="displayMode === EDisplayMode.Grid ? 'h-[70px]' : step2CompactMode ? '!w-[387px] !h-[218px] rounded-[16px]' : 'h-[145px] rounded-[16px]'"
+            />
+            <ng-container *ngIf="item?.isLocked">
+              <div
+                class="absolute bottom-0 left-0 right-0 min-h-[36px] bg-popover-background-color z-[10] flex items-center justify-center text-[14px] text-primary-color"
+                [class.px-2]="displayMode === EDisplayMode.Tiles"
+                [class.h-12]="displayMode === EDisplayMode.Tiles"
+              >
+                <app-room-restriction [restriction]="restrictionValidationList" />
+              </div>
+              <div class="absolute top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.36)] z-[11]" [class.rounded-[16px]]="displayMode !== EDisplayMode.Grid"></div>
+            </ng-container>
+          </div>
+        </ng-container>
+        <div class="p-[16px] flex-1">
+          <div class="text-[17px] font-medium leading-[24px] text-primary-color mb-[4px] line-clamp-1">
+            {{ vm.noFeatures ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) : item?.title }}
+          </div>
+          <app-option-units-info [showSpace]="true" [item]="item" [full]="true" [showText]="displayMode === EDisplayMode.List" />
+        </div>
+      </div>
+    </div>
+    <!-- ================================= END COLLAPSED STATE =================================-->
+  </div>
+</ng-container>
+
+<ng-template #tplUnavailable>
+  <div class="mt-[8px] flex items-center justify-between w-full">
+    <div class="">
+      <div class="text-[17px] font-medium text-primary-color leading-[140%]">{{ 'UNAVAILABLE' | translate | async }}</div>
+      <div class="text-[12px] font-light text-primary-color leading-[140%]">{{ 'SELECT_AVAILABLE_DATE_ON_THE_RIGHT' | translate | async }}</div>
+    </div>
+  </div>
+</ng-template>

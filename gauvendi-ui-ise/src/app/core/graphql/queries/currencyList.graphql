@@ -1,0 +1,7 @@
+query CurrencyList {
+  response: currencyList {
+    id
+    name
+    code
+  }
+}

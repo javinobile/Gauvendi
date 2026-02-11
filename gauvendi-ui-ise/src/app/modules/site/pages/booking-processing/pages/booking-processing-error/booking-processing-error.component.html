@@ -1,0 +1,20 @@
+<div class="flex flex-col items-center justify-center h-[calc(100vh-88px-100px)]">
+  <div class="">
+    <svg width="10" height="47" viewBox="0 0 10 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.30342 36.0943H2.70405C2.37127 36.0942 2.05139 35.9656 1.81108 35.7354C1.57076 35.5052 1.42853 35.1912 1.41405 34.8587L0.101546 5.16807C0.0724272 4.50658 0.177589 3.84605 0.410688 3.22632C0.643786 2.60658 0.999991 2.04047 1.45782 1.56214C1.91565 1.08381 2.46562 0.703165 3.07456 0.443161C3.6835 0.183157 4.3388 0.0491823 5.00092 0.0493165C5.66305 0.0494243 6.31831 0.183642 6.92716 0.443874C7.53601 0.704106 8.08584 1.08496 8.5435 1.56347C9.00115 2.04198 9.35715 2.60822 9.59001 3.22805C9.82288 3.84788 9.92779 4.50846 9.89842 5.16994L8.58592 34.8587C8.57195 35.19 8.43091 35.5032 8.1921 35.7333C7.95329 35.9634 7.63504 36.0927 7.30342 36.0943Z" fill="#BF1515"/>
+      <path d="M5.00512 46.9507C7.34646 46.9507 9.2445 45.0526 9.2445 42.7113C9.2445 40.37 7.34646 38.4719 5.00512 38.4719C2.66378 38.4719 0.765747 40.37 0.765747 42.7113C0.765747 45.0526 2.66378 46.9507 5.00512 46.9507Z" fill="#BF1515"/>
+    </svg>
+  </div>
+  <div class="text-[24px] font-medium text-[#E11919] mt-[24px]">{{'BOOKING_PROCESSING_ERROR_TITLE' | translate | async}}</div>
+  <div class="text-[17px] font-light text-primary-color mt-[24px]">{{'BOOKING_PROCESSING_ERROR_INSTRUCTION' | translate | async}}</div>
+  <div class="">
+    <button
+      class="mt-[24px] flex items-center gap-[4px] h-[44px] rounded-[12px] px-[24px] cursor-pointer bg-button-normal-background-color justify-center hover:opacity-80"
+      (click)="backToHomePage()"
+    >
+      <div class="text-[14px] font-medium leading-[140%] text-button-normal-color">
+        {{'BACK_TO_HOMEPAGE' | translate | async}}
+      </div>
+    </button>
+  </div>
+</div>

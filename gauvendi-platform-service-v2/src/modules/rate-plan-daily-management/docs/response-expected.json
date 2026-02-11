@@ -1,0 +1,114 @@
+{
+    "count": 4,
+    "totalPage": 1,
+    "data": [
+      {
+        "date": "2025-09-24",
+        "occupancyRate": 0.017857144, 
+        "totalRoomInventory": 168, 
+        "totalOutOfInventory": 0, 
+        "totalPropertyRooms": 168, 
+        "totalOutOfOrder": 0, 
+        "totalOutOfService": 0,
+        "totalRoomsAssigned": 3, 
+        "totalRoomsUnassigned": 165, 
+        "totalRoomsSoldAssigned": 1, 
+        "totalRoomsSoldUnassigned": 2, 
+        "totalAvailabilityAdjustment": 11, 
+        "totalAvailablePropertyRooms": 165, 
+        "roomSoldList": [
+          {
+            "value": 3,
+            "channel": "GAUVENDI"
+          }
+        ],
+        "availableToSellList": [
+          {
+            "value": 176,
+            "channel": "GAUVENDI"
+          }
+        ]
+      },
+      {
+        "date": "2025-09-25",
+        "occupancyRate": 0.017857144,
+        "totalRoomInventory": 168,
+        "totalOutOfInventory": 0,
+        "totalPropertyRooms": 168,
+        "totalOutOfOrder": 0,
+        "totalOutOfService": 0,
+        "totalRoomsAssigned": 5,
+        "totalRoomsUnassigned": 163,
+        "totalRoomsSoldAssigned": 3,
+        "totalRoomsSoldUnassigned": 0,
+        "totalAvailabilityAdjustment": 13,
+        "totalAvailablePropertyRooms": 165,
+        "roomSoldList": [
+          {
+            "value": 3,
+            "channel": "GAUVENDI"
+          }
+        ],
+        "availableToSellList": [
+          {
+            "value": 178,
+            "channel": "GAUVENDI"
+          }
+        ]
+      },
+      {
+        "date": "2025-09-26",
+        "occupancyRate": 0.011904762,
+        "totalRoomInventory": 168,
+        "totalOutOfInventory": 0,
+        "totalPropertyRooms": 168,
+        "totalOutOfOrder": 0,
+        "totalOutOfService": 0,
+        "totalRoomsAssigned": 2,
+        "totalRoomsUnassigned": 166,
+        "totalRoomsSoldAssigned": 2,
+        "totalRoomsSoldUnassigned": 0,
+        "totalAvailabilityAdjustment": 12,
+        "totalAvailablePropertyRooms": 166,
+        "roomSoldList": [
+          {
+            "value": 2,
+            "channel": "GAUVENDI"
+          }
+        ],
+        "availableToSellList": [
+          {
+            "value": 178,
+            "channel": "GAUVENDI"
+          }
+        ]
+      },
+      {
+        "date": "2025-09-27",
+        "occupancyRate": 0,
+        "totalRoomInventory": 168,
+        "totalOutOfInventory": 0,
+        "totalPropertyRooms": 168,
+        "totalOutOfOrder": 0,
+        "totalOutOfService": 0,
+        "totalRoomsAssigned": 0,
+        "totalRoomsUnassigned": 168,
+        "totalRoomsSoldAssigned": 0,
+        "totalRoomsSoldUnassigned": 0,
+        "totalAvailabilityAdjustment": 10,
+        "totalAvailablePropertyRooms": 168,
+        "roomSoldList": [
+          {
+            "value": 0,
+            "channel": "GAUVENDI"
+          }
+        ],
+        "availableToSellList": [
+          {
+            "value": 178,
+            "channel": "GAUVENDI"
+          }
+        ]
+      }
+    ]
+  }

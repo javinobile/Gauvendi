@@ -1,0 +1,30 @@
+query BookingStatus($filter: BookingStatusFilter) {
+  response: bookingStatus(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on BookingPaymentResponse {
+        action {
+          data {
+            MD
+            paReq
+            termUrl
+          }
+          id
+          method
+          paymentData
+          paymentMethodId
+          url
+          paymentProviderCode
+          type
+        }
+        booking {
+          id
+        }
+        bookingTransaction {
+          status
+        }
+      }
+    }
+  }
+}

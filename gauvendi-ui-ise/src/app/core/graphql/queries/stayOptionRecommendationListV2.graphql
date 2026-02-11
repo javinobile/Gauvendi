@@ -1,0 +1,170 @@
+query StayOptionRecommendationListV2($filter: StayOptionRecommendationFilter) {
+  response: stayOptionRecommendationListV2(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on StayOptionSuggestion {
+        featureSuggestionList {
+          code
+          name
+          retailFeatureImageList {
+            imageUrl
+          }
+        }
+        tripRecommendationTitle
+        label
+        restrictionValidationList {
+          value
+          fromDate
+          toDate
+          code
+        }
+        availableRfcList {
+          code
+          name
+          description
+          matchingPercentage
+          isSpaceTypeSearchMatched
+          rfcImageList {
+            imageUrl
+          }
+          mostPopularFeatureList {
+            code
+            name
+            hotelRetailCategory {
+              code
+              name
+            }
+          }
+          retailFeatureList {
+            name
+            code
+            matched
+            quantity
+            description
+            hotelRetailCategory {
+              code
+              name
+            }
+            measurementUnit
+          }
+          additionalFeatureList {
+            name
+            code
+            matched
+            quantity
+            description
+            measurementUnit
+          }
+          layoutFeatureList {
+            code
+          }
+          rfcRatePlanList {
+            name
+            code
+            averageDailyRate
+            totalSellingRate
+            restrictionValidationList {
+              code
+              value
+              fromDate
+              toDate
+            }
+            ratePlan {
+              code
+              IsPromoted
+              hotelPaymentTerm {
+                name
+                code
+                description
+              }
+              hotelCancellationPolicy {
+                name
+                description
+              }
+              includedHotelExtrasList {
+                id
+                name
+                code
+                description
+                includedDates
+                pricingUnit
+              }
+            }
+          }
+          capacityDefault
+          capacityExtra
+          allocatedExtraBedAdultCount
+          allocatedExtraBedChildCount
+          allocatedAdultCount
+          allocatedChildCount
+          allocatedPetCount
+          numberOfBedrooms
+          space
+          travelTagList {
+            type
+            name
+            code
+          }
+          occasionList {
+            type
+            name
+            code
+          }
+          standardFeatureList {
+            name
+            code
+            description
+            iconImageUrl
+          }
+        }
+        availableRfcRatePlanList {
+          code
+          name
+          averageDailyRate
+          totalGrossAmount
+          totalBaseAmount
+          totalSellingRate
+          totalBaseAmountBeforeAdjustment
+          totalGrossAmountBeforeAdjustment
+          adjustmentPercentage
+          shouldShowStrikeThrough
+          ratePlan {
+            code
+            name
+            description
+            IsPromoted
+            includedHotelExtrasList {
+              name
+              code
+              description
+              pricingUnit
+              includedDates
+            }
+          }
+        }
+        unavailableRfcRatePlanList {
+          code
+          name
+          averageDailyRate
+          totalGrossAmount
+          totalBaseAmount
+          totalSellingRate
+          totalBaseAmountBeforeAdjustment
+          totalGrossAmountBeforeAdjustment
+          ratePlan {
+            code
+            name
+            description
+            IsPromoted
+            includedHotelExtrasList {
+              name
+              code
+              description
+            }
+          }
+        }
+      }
+    }
+  }
+}

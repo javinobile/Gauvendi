@@ -1,0 +1,46 @@
+<div class="bg-popover-background-color rounded-tl-[24px] rounded-tr-[24px] p-[20px]">
+  <div class="text-center text-[20px] font-medium leading-[120%] text-primary-color">
+    {{'BOOKING_SUMMARY' | translate | async}}
+  </div>
+  <div class="text-center text-[14px] font-light leading-[140%] text-primary-color">{{hotelName}}</div>
+  <app-booking-date
+    [checkInDate]="bookingInformation?.arrival | dateWithLocaleAndTimezone: locale : timezone : 'DD MMM, yyyy' : true"
+    [checkOutDate]="bookingInformation?.departure | dateWithLocaleAndTimezone: locale : timezone : 'DD MMM, yyyy' : true"
+    [totalNights]="bookingInformation?.arrival | calculateBookingNight: bookingInformation?.departure"
+    [colorText]="colorText"
+  ></app-booking-date>
+
+  <div class="border rounded-[16px] border-border-color mt-[16px] overflow-hidden">
+    <div class="flex items-center justify-between sm:gap-[12px] p-[12px] border-b border-border-color">
+      <div class="flex items-center gap-[8px]">
+        <img src='../../../../assets/icons/people.svg' alt="" appFilterSvg [color]="colorText">
+        <div class="text-[14px] font-medium leading-[140%] text-primary-color">{{'ROOM_AND_GUEST' | translate | async}}</div>
+      </div>
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+        {{bookingInformation?.reservationList?.length}} {{bookingInformation?.reservationList?.length > 1 ? ('ROOMS' | translate | async) : ('ROOM' | translate | async)}}, {{bookingInformation?.totalAdult}} {{bookingInformation?.totalAdult > 1 ? ('ADULTS' | translate | async) : ('ADULT' | translate | async)}}<span
+        class="text-[14px] font-medium leading-[140%] text-primary-color" *ngIf="bookingInformation?.totalChildren">
+          , {{bookingInformation?.totalChildren}} {{bookingInformation?.totalChildren > 1 ? ('CHILDREN' | translate | async) : ('CHILD' | translate | async)}}
+        </span>
+      </div>
+    </div>
+    <div class="">
+      <ng-container *ngFor="let item of bookingInformation?.reservationList; index as i; let first = first">
+        <div [ngClass]="{'mt-[12px]' : !first}">
+          <app-payment-reservation-detail
+            [currencyCode]="currencyCode"
+            [currencyRate]="currencyRate"
+            [reservation]="item"
+            [rfcImageList]="item?.rfc?.rfcImageList"
+            [roomIdx]="i"
+            [isLowestPriceOpaque]="isLowestPriceOpaque"
+            [lowestPriceImageUrl]="lowestPriceImageUrl"
+            [availableAmenity]="availableAmenity"
+            [totalNights]="bookingInformation?.arrival | calculateBookingNight: bookingInformation?.departure"
+            [ratePlanName]="ratePlanName"
+            [currentBookingFlow]="bookingInformation?.bookingFlow"
+          ></app-payment-reservation-detail>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

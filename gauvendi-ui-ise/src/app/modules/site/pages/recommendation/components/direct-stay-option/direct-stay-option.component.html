@@ -1,0 +1,118 @@
+<div
+  class="bg-button-normal-background-color text-button-normal-color text-[17px] font-medium leading-[23.8px] flex items-center px-[16px] pt-[16px] pb-[28px] rounded-t-[16px] mb-[-12px] line-clamp-1 md:w-[100%]"
+  [ngClass]="{
+    '': !specificRoom?.items?.[0]?.rfcRatePlan?.totalSellingRate
+  }"
+>
+  {{ 'YOUR_CHOICE' | translate | async }}: {{ specificRoom?.items?.[0]?.metadata?.name }}
+</div>
+<div
+  #containerEl
+  class="flex items-stretch direct-stay-option mb-[16px] bg-popover-background-color rounded-tr-[8px] rounded-br-[8px] rounded-tl-[16px] rounded-bl-[16px] sm:rounded-[16px] md:w-[100%] md:rounded-[16px] relative sm:flex-col"
+>
+  <div class="w-[389px] md:w-[389px] sm:w-full relative">
+    <div
+      class="h-full"
+      [ngClass]="{
+        'absolute top-0 left-0 w-full z-[32] bottom-[-16px]': itemSelected
+      }"
+    >
+      <app-option-item
+        (clear)="itemSelected = null"
+        (selectItem)="selectItem($event)"
+        (selectRatePlan)="selectRatePlan.emit($event)"
+        [roomSummary]="roomSummary()"
+        [changeDateFromDirectOption]="isChangeDate$ | async"
+        [collapsed]="!!itemSelected"
+        [displayMode]="EDisplayMode.Grid"
+        [isDetails]="false"
+        [isLowestPriceOpaque]="isLowestPriceOpaque"
+        [isSelected]="!!itemSelected"
+        [isStep2]="false"
+        [item]="specificRoom?.items?.[0]"
+        [lowestPriceImageUrl]="lowestPriceImageUrl"
+        [priceView]="priceView"
+        [restrictionValidationList]="specificRoom?.metadata?.restrictionValidationList"
+        [step2CompactMode]="false"
+      />
+    </div>
+    <app-option-item
+      [collapsed]="!!itemSelected"
+      [displayMode]="EDisplayMode.Grid"
+      [isLowestPriceOpaque]="isLowestPriceOpaque"
+      [item]="specificRoom?.items?.[0]"
+      [lowestPriceImageUrl]="lowestPriceImageUrl"
+      [restrictionValidationList]="specificRoom?.metadata?.restrictionValidationList"
+      *ngIf="itemSelected"
+      class="opacity-0"
+    />
+  </div>
+  <div class="px-[12px] py-[16px] flex-1 relative md:w-[calc(100%-389px)]">
+    <app-direct-calendar />
+    <div class="w-full my-[14px] bg-border-color h-[1px]"></div>
+    <div class="flex items-end justify-end gap-[24px]">
+      <div class="flex items-center gap-[8px]">
+        <img loading="lazy" src="assets/icons/cta.svg" alt="" appFilterSvg [color]="textColor" />
+        <div class="text-[12px] font-normal leading-[140%] text-primary-color">{{ 'CTD_MESSAGE' | translate | async }}</div>
+      </div>
+      <div class="flex items-center gap-[8px]">
+        <img loading="lazy" src="assets/icons/ctd.svg" alt="" appFilterSvg [color]="textColor" />
+        <div class="text-[12px] font-normal leading-[140%] text-primary-color">{{ 'CTA_MESSAGE' | translate | async }}</div>
+      </div>
+      <!--      <div class="flex items-center gap-[8px]">-->
+      <!--        <img loading="lazy" src="assets/icons/deal.svg" alt="">-->
+      <!--        <div-->
+      <!--          class="text-[12px] font-normal leading-[140%] text-primary-color">{{'SPECIAL_DEAL' | translate | async}}</div>-->
+      <!--      </div>-->
+      <div class="flex items-center gap-[8px]">
+        <img loading="lazy" [src]="(layoutSetting$ | async) === 'SQUARE' ? 'assets/icons/sold-out-square.svg' : 'assets/icons/sold-out.svg'" alt="" />
+        <div class="text-[12px] font-normal leading-[140%] text-primary-color">{{ 'SOLD_OUT' | translate | async }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SELECTED LAYER -->
+  <div class="mt-6 absolute top-[calc(145px+16px)] transition-all duration-500 z-[30]" [style.height.px]="itemSelected ? clientHeight : 0" [style.opacity]="itemSelected ? 1 : 0">
+    <div #wrapper class="grid transition-all duration-500 grid-cols-1">
+      <ng-container *ngIf="itemSelected">
+        <div class="col-span-full md:hidden relative">
+          <!-- BACKDROP -->
+          <div class="fixed top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.5)] z-[31] transition-all" [@fadeInOutAnimation]></div>
+          <div class="absolute z-[50] ltr:right-[-32px] rtl:left-[-32px] top-[-32px] cursor-pointer hover:scale-105" (click)="itemSelected = null">
+            <img loading="lazy" src="assets/icons/hexagon.svg" class="w-[65px] h-[65px]" appFilterSvg [color]="buttonBgColor" />
+            <img loading="lazy" src="assets/icons/cancel.svg" class="w-[23px] h-[23px] absolute z-[10] top-[17px] right-[18px]" appFilterSvg [color]="buttonTextColor" />
+          </div>
+          <div class="absolute top-0 left-0 right-0 z-[31] transition-all duration-400 rounded-[16px]" [@inOutAnimation]>
+            <app-option-item
+              (selectRatePlan)="selectRatePlan.emit($event)"
+              [roomSummary]="roomSummary()"
+              [displayMode]="EDisplayMode.List"
+              [isDetails]="true"
+              [isHighLight]="true"
+              [isLowestPriceOpaque]="isLowestPriceOpaque"
+              [item]="specificRoom?.items[0]"
+              [lowestPriceImageUrl]="lowestPriceImageUrl"
+              [priceView]="priceView"
+              [restrictionValidationList]="specificRoom?.metadata?.restrictionValidationList"
+              [step2CompactMode]="false"
+            />
+          </div>
+          <app-option-item
+            (selectRatePlan)="selectRatePlan.emit($event)"
+            [roomSummary]="roomSummary()"
+            [displayMode]="EDisplayMode.List"
+            [isDetails]="true"
+            [isHighLight]="true"
+            [isLowestPriceOpaque]="isLowestPriceOpaque"
+            [item]="specificRoom?.items[0]"
+            [lowestPriceImageUrl]="lowestPriceImageUrl"
+            [priceView]="priceView"
+            [restrictionValidationList]="specificRoom?.metadata?.restrictionValidationList"
+            [step2CompactMode]="false"
+          />
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<div class="transition-all duration-500" [style.height.px]="!!itemSelected ? clientHeight - 260 - 16 : 0"></div>

@@ -1,0 +1,18 @@
+<ng-container
+  *ngIf="{
+    bookingStatus: bookingStatus$ | async,
+    availablePaymentMethodList: availablePaymentMethodList$ | async,
+    bookingInformation: bookingInformation$ | async
+  } as vm"
+>
+  <div class="w-full">
+    <app-ise-loading [title]="'BOOKING_PROCESSING_TITLE' | translate | async" [subTitle]="'BOOKING_PROCESSING_INSTRUCTION' | translate | async" />
+
+    <div class="hidden" #frmPayment>
+      >
+      <div #cardNumber class="h-[40px] bg-background-primary-color rounded-[10px] px-[16px] py-[9.5px] border border-border-color" data-cse="encryptedCardNumber"></div>
+      <div #expiryDate class="h-[40px] bg-background-primary-color rounded-[10px] px-[16px] py-[9.5px] border border-border-color" data-cse="encryptedExpiryDate"></div>
+      <div #cvv class="h-[40px] bg-background-primary-color rounded-[10px] px-[16px] py-[9.5px] border border-border-color" data-cse="encryptedSecurityCode"></div>
+    </div>
+  </div>
+</ng-container>

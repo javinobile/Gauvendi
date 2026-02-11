@@ -1,0 +1,11 @@
+.dir-mat-icon {
+  @apply ltr:rotate-0 rtl:rotate-180;
+}
+
+[dir='rtl'] .rotate-y {
+  transform: rotateY(180deg);
+}
+
+[dir='ltr'] .rotate-y {
+  transform: rotateY(0deg);
+}

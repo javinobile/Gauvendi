@@ -1,0 +1,20 @@
+@if (dataConfig(); as data) {
+  <div class="flex flex-wrap {{ labelClass() }}">
+    @if (showForLabel()) {
+      @if ('FOR' | translate | async; as forLabel) {
+        <span>{{ isCapitalizeFirst() ? (forLabel | titlecase) : forLabel }}&nbsp;</span>
+      }
+    }
+    @for (item of data; let i = $index; track item) {
+      @if (item.value) {
+        <span *ngIf="i > 0">,&nbsp;</span>
+        <span
+          >{{ item.value }}
+          @if ((item.isPluralLabel ? item.pluralLabel : item.label) | translate | async; as label) {
+            {{ isCapitalizeAllValue() ? (label | titlecase) : label }}
+          }
+        </span>
+      }
+    }
+  </div>
+}

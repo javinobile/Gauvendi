@@ -1,0 +1,26 @@
+query AvailablePaymentMethodList($filter: AvailablePaymentMethodFilter) {
+  response: availablePaymentMethodList(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on AvailablePaymentMethod {
+        paymentMethodId
+        paymentMethodCode
+        paymentMethodName
+        paymentMethodDescription
+        paymentMethodDetailsList {
+          paymentProvider {
+            id
+            code
+            name
+            description
+          }
+          metadata {
+            value
+            metadata
+          }
+        }
+      }
+    }
+  }
+}

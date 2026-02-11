@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "console": "externalTerminal",
+    "configurations": [
+    
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\modules\\hotel\\services\\calculate-amenity-pricing.service.ts",
+            "outFiles": [
+                "${workspaceFolder}/**/*.js"
+            ]
+        },
+        {
+            "type": "node-terminal",
+            "request": "launch",
+            "name": "npm: start",
+            "command": "npm run start",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "node-terminal",
+            "request": "launch",
+            "name": "npm: start:debug",
+            "command": "npm run start:debug",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to 9229",
+            "port": 9229,
+            "restart": true,
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        }
+    ]
+}

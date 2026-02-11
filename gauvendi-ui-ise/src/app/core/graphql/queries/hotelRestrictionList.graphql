@@ -1,0 +1,12 @@
+query HotelRestrictionList($filter: HotelRestrictionFilter) {
+  response: hotelRestrictionList(filter: $filter) {
+    data {
+      ... on HotelRestriction {
+        code
+        value
+        fromDate
+        toDate
+      }
+    }
+  }
+}

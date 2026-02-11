@@ -1,0 +1,126 @@
+<div
+  class="p-4 pb-6 rounded-tl-[16px] rounded-tr-[16px] bg-popover-background-color dialog-content relative"
+  [class.animation--fadeUp]="isOpen"
+  [class.animation--fadeDown]="!isOpen"
+  [ngClass]="{ 'h-screen transition-all ease-in-out duration-300 !rounded-none !bg-overlay-fill !p-[16px]': selectedView$?.value !== 0 }"
+>
+  <mat-tab-group class="custom-tab-group" [selectedIndex]="selectedView$ | async">
+    <mat-tab>
+      <ng-template matTabContent>
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center justify-center">
+            <div class="text-[17px] font-medium leading-[140%] text-primary-color text-center">{{ 'WHO_IS_COMING_AND_WHEN' | translate | async }}</div>
+            <div class="absolute rtl:left-0 ltr:right-0 top-0" (click)="closeDialog()">
+              <mat-icon class="text-primary-color">close</mat-icon>
+            </div>
+          </div>
+          <ng-container *ngIf="summary$ | async as summary">
+            <!-- traveler -->
+            <div class="flex items-center gap-3 py-3 px-4 rounded-xl border border-border-color h-[60px]" (click)="selectedView$.next(1)">
+              <div class="flex items-center">
+                <img [src]="'assets/icons/people.svg'" alt="people" width="28" height="28" appFilterSvg [color]="textColor$ | async" />
+              </div>
+              <div class="flex flex-col gap-1">
+                <div class="text-[12px] font-light leading-[120%] text-secondary-color">
+                  {{ 'BOOKING_DETAILS' | translate | async }}
+                </div>
+                <div class="text-[12px] font-medium leading-[120%] text-primary-color">
+                  <app-option-units-info [item]="unitInfo$()" [showTotalRoom]="true" [showText]="false"></app-option-units-info>
+                </div>
+              </div>
+            </div>
+
+            <!-- date range -->
+            <div class="flex items-center gap-3 py-3 px-4 rounded-xl border border-border-color h-[60px]" (click)="selectedView$.next(2)">
+              <div class="flex items-center">
+                <img [src]="'assets/icons/travel-date.svg'" alt="travel date" width="28" height="28" appFilterSvg [color]="textColor$ | async" />
+              </div>
+              <div class="flex items-center justify-between w-full gap-[12px]">
+                <div class="">
+                  <div class="text-[12px] font-light leading-[120%] text-secondary-color mb-[4px]">
+                    {{ 'CHECK_IN' | translate | async }}
+                  </div>
+                  <div class="text-[12px] font-medium leading-[120%] text-primary-color">
+                    <ng-container *ngIf="summary?.arrival; else tplCheckIn">
+                      {{ summary?.arrival | dateWithLocale: (locale$ | async) : 'DD MMM yyyy' : false }}
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <img [src]="'assets/icons/arrow-right.svg'" class="dir-mat-icon" alt="arrow" width="18" height="18" appFilterSvg [color]="textColor$ | async" />
+                </div>
+                <div class="">
+                  <div class="text-[12px] font-light leading-[120%] text-secondary-color mb-[4px]">
+                    {{ 'CHECK_OUT' | translate | async }}
+                  </div>
+                  <div class="text-[12px] font-medium leading-[120%] text-primary-color">
+                    <ng-container *ngIf="summary?.departure; else tplCheckOut">
+                      {{ summary?.departure | dateWithLocale: (locale$ | async) : 'DD MMM yyyy' : false }}
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- promotion -->
+            <div class="flex items-center gap-3 py-3 px-4 rounded-xl border border-border-color h-[60px]">
+              <div class="flex items-center">
+                <img [src]="'assets/icons/promotion.svg'" alt="promotion" width="28" height="28" appFilterSvg [color]="textColor$ | async" />
+              </div>
+              <div class="flex-1">
+                <ng-container *ngIf="isOpenInputMode; else tplDefault">
+                  <div class="flex items-center gap-[8px] px-[8px] bg-[#FFFFFF] rounded-[8px] h-[32px] w-fit">
+                    <div class="text-primary-color text-[12px] font-medium leading-[140%] line-clamp-1">{{ summary?.promoCode }}</div>
+                    <div class="flex items-center justify-center">
+                      <mat-icon class="text-[20px] !w-auto !h-auto cursor-pointer" (click)="clearPromo()">clear</mat-icon>
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-template #tplDefault>
+                  <div class="text-[12px] font-light leading-[120%] text-secondary-color mb-[4px]">
+                    {{ 'PROMO' | translate | async }}
+                  </div>
+                  <div class="text-[12px] font-medium leading-[120%] text-primary-color">
+                    <app-input
+                      [placeHolder]="'PROMOTION_CODE' | translate | async"
+                      [customClass]="'!border-0 !h-[18px] !px-0'"
+                      [type]="'text'"
+                      [formControl]="promoCtrl"
+                      (blur)="onBlur()"
+                      (enter)="onBlur()"
+                    ></app-input>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+
+            <button
+              (click)="onSearch()"
+              [disabled]="!summary?.arrival || !summary?.departure || summary?.totalRoom < 1"
+              [ngClass]="{ 'opacity-50 !cursor-not-allowed': !summary?.arrival || !summary?.departure || summary?.totalRoom < 1 }"
+              class="flex items-center justify-center gap-[8px] text-button-normal-color bg-button-normal-background-color w-full h-[40px] px-[32px] rounded-xl hover:!opacity-80"
+            >
+              <div class="flex items-center">
+                <img [src]="'assets/icons/search.svg'" alt="search" width="16" height="16" appFilterSvg [color]="buttonTextColor$ | async" />
+              </div>
+              <div class="text-[14px] font-medium leading-[140%] text-button-normal-color">{{ 'SEARCH' | translate | async }}</div>
+            </button>
+          </ng-container>
+        </div>
+      </ng-template>
+    </mat-tab>
+    <mat-tab>
+      <ng-template matTabContent>
+        <app-travel-overlay-mobile [defaultPax]="defaultPax$ | async" (onBack)="selectedView$.next(0)"></app-travel-overlay-mobile>
+      </ng-template>
+    </mat-tab>
+    <mat-tab>
+      <ng-template matTabContent>
+        <app-calendar-mobile (onBack)="selectedView$.next(0)"></app-calendar-mobile>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<ng-template #tplCheckIn>{{ 'CHECK_IN_DATE' | translate | async }}</ng-template>
+<ng-template #tplCheckOut>{{ 'CHECK_OUT_DATE' | translate | async }}</ng-template>

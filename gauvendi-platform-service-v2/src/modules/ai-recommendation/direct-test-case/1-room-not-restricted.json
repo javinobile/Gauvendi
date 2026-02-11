@@ -1,0 +1,1393 @@
+{
+  "priceJump": true,
+  "roomRequestList": [
+    {
+      "index": "0",
+      "adults": 2,
+      "children": 0,
+      "pets": 0
+    }
+  ],
+  "bookingPeriod": {
+    "arrival": "2025-08-18",
+    "departure": "2025-08-20"
+  },
+  "stayOptionRecommendationNumber": 11,
+  "featureRecommendationNumber": 3,
+  "eventFeatureList": [
+    {
+      "name": "Heideblüte",
+      "from": "2025-08-08",
+      "to": "2025-09-09",
+      "featureList": []
+    }
+  ],
+  "featureList": [
+    {
+      "name": "Entrance area",
+      "code": "LT_BWEA",
+      "type": "Retail",
+      "popularity": 4,
+      "selection": 0
+    },
+    {
+      "name": "Seating area",
+      "code": "DF_SEATING",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 1
+    },
+    {
+      "name": "Ground floor",
+      "code": "LO_GNDFL",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 8
+    },
+    {
+      "name": "House",
+      "code": "SPT_HOUSE",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Holiday Home",
+      "code": "LT_COTTAGE",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Leaf theme",
+      "code": "DF_LEAF_THEME",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Coffee and Tea station",
+      "code": "DF_COFFEE_TABLE",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Attic",
+      "code": "LT_ATTIC_FLOOR",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 6
+    },
+    {
+      "name": "Queen bed",
+      "code": "BD_QUEEN",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 3
+    },
+    {
+      "name": "Indoor fireplace",
+      "code": "DF_IF",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 1
+    },
+    {
+      "name": "Shower",
+      "code": "BR_SHOW",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Vine and Dine",
+      "code": "DF_THEMED_DESIGN_16",
+      "type": "Retail",
+      "popularity": 5,
+      "selection": 0
+    },
+    {
+      "name": "Lucky Room",
+      "code": "DF_THEMED_DESIGN_15",
+      "type": "Retail",
+      "popularity": 4,
+      "selection": 3
+    },
+    {
+      "name": "Wellness",
+      "code": "DF_THEMED_DESIGN_14",
+      "type": "Retail",
+      "popularity": 5,
+      "selection": 0
+    },
+    {
+      "name": "Fridge",
+      "code": "DF_FRIDGE",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 1
+    },
+    {
+      "name": "Horse Stable",
+      "code": "DF_THEMED_DESIGN_13",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "New built in traditional style",
+      "code": "DF_THEMED_DESIGN_12",
+      "type": "Retail",
+      "popularity": 3,
+      "selection": 0
+    },
+    {
+      "name": "Garden area barn",
+      "code": "VW_NATURE",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Enjoy Life",
+      "code": "DF_THEMED_DESIGN_11",
+      "type": "Retail",
+      "popularity": 2,
+      "selection": 3
+    },
+    {
+      "name": "Oversized Queen",
+      "code": "BD_OVERSIZED_BEDDING",
+      "type": "Retail",
+      "popularity": 2,
+      "selection": 2
+    },
+    {
+      "name": "Sofa bed",
+      "code": "BD_SOFA",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Double Bedroom",
+      "code": "LT_DBLBRM",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 26
+    },
+    {
+      "name": "Private exit",
+      "code": "OS_PRIVATE_EXIT",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Owl House",
+      "code": "LO_TIMHOUSE",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 13
+    },
+    {
+      "name": "Random room assignment",
+      "code": "DF_RANDOM_ROOM_ASSIGNMENT",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 4
+    },
+    {
+      "name": "Outdoor Steps",
+      "code": "LT_STEPETR",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 2
+    },
+    {
+      "name": "Oversized Bed",
+      "code": "BD_DOKB",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 8
+    },
+    {
+      "name": "Full-size mirror",
+      "code": "DF_FULL_SIZE_MIRROR",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Large Single bed",
+      "code": "BD_SINGLE",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 3
+    },
+    {
+      "name": "Kitchenette",
+      "code": "DF_KITCHEN",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Single bedroom",
+      "code": "LT_SGLBRM",
+      "type": "Retail",
+      "popularity": 2,
+      "selection": 11
+    },
+    {
+      "name": "Bedroom",
+      "code": "LT_BED",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Carriage house",
+      "code": "LO_LODGE",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 3
+    },
+    {
+      "name": "Vestibule",
+      "code": "LT_VESTIBULE",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 2
+    },
+    {
+      "name": "Double bed",
+      "code": "BD_DB",
+      "type": "Retail",
+      "popularity": 3,
+      "selection": 13
+    },
+    {
+      "name": "Large bathroom",
+      "code": "BR_LARGE",
+      "type": "Retail",
+      "popularity": 4,
+      "selection": 7
+    },
+    {
+      "name": "Suite",
+      "code": "LT_SUITE",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "High ceiling",
+      "code": "LT_HIGH_CEILING",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 2
+    },
+    {
+      "name": "Size 1",
+      "code": "SP_SIZE_1",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Loggia",
+      "code": "LT_LOGGIA",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "XXL - size",
+      "code": "SP_XXL",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Flower theme",
+      "code": "DF_FLOWER_THEME",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Second floor",
+      "code": "LO_MIDFLOOR",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Surrounded by nature",
+      "code": "LO_FT",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Studio",
+      "code": "LT_STUDIO",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Hayloft House",
+      "code": "LO_HAYLOFT",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Bathtub",
+      "code": "BR_BT",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Single Sofa Bed",
+      "code": "BD_SGLSOFABED",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Riding Week",
+      "code": "DF_RIVER",
+      "type": "Retail",
+      "popularity": 5,
+      "selection": 0
+    },
+    {
+      "name": "Historic building",
+      "code": "LO_HISBUILDING",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Oversized single",
+      "code": "BD_OVERSIZED",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 7
+    },
+    {
+      "name": "Alcove bed",
+      "code": "BD_FOOTBOARD",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 2
+    },
+    {
+      "name": "Allergic friendly",
+      "code": "DF_ALLERGIC",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Extra entrance area",
+      "code": "DF_EEA",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Dining table",
+      "code": "DF_DINING",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 1
+    },
+    {
+      "name": "Barn House",
+      "code": "LO_BARN",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Working desk",
+      "code": "DF_WD",
+      "type": "Retail",
+      "popularity": 2,
+      "selection": 0
+    },
+    {
+      "name": "M/L - size",
+      "code": "SP_ML",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Family & Friends",
+      "code": "LT_FMLBRM",
+      "type": "Retail",
+      "popularity": 2,
+      "selection": 0
+    },
+    {
+      "name": "Bathroom with window",
+      "code": "BR_BWW",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 22
+    },
+    {
+      "name": "Thickness oak",
+      "code": "LO_SECOND_ROW",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Horse Stable",
+      "code": "LT_HRSSTBL",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Outdoor Fireplace",
+      "code": "OS_FP",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Garden View",
+      "code": "VW_PARK",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Dogs allowed",
+      "code": "DF_DA",
+      "type": "Retail",
+      "popularity": 2,
+      "selection": 5
+    },
+    {
+      "name": "Interconnecting",
+      "code": "LT_CONN",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Elevator access",
+      "code": "LO_EA",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Maisonette",
+      "code": "LT_MAISONETTE",
+      "type": "Retail",
+      "popularity": 5,
+      "selection": 2
+    },
+    {
+      "name": "Store",
+      "code": "LO_FRONT_ROW",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Corner bedroom",
+      "code": "LT_CORNER",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Courtyard access",
+      "code": "OS_COURTA",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Garden access",
+      "code": "OS_GA",
+      "type": "Retail",
+      "popularity": 3,
+      "selection": 7
+    },
+    {
+      "name": "Second Floor",
+      "code": "LO_FOURTH_ROW",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Large windows",
+      "code": "DF_WINFTC",
+      "type": "Retail",
+      "popularity": 3,
+      "selection": 4
+    },
+    {
+      "name": "Clay construction",
+      "code": "DF_THEMED_DESIGN_6",
+      "type": "Retail",
+      "popularity": 4,
+      "selection": 5
+    },
+    {
+      "name": "Themed Events",
+      "code": "DF_THEMED_DESIGN_8",
+      "type": "Retail",
+      "popularity": 5,
+      "selection": 0
+    },
+    {
+      "name": "Panoramic Window",
+      "code": "DF_THEMED_DESIGN_9",
+      "type": "Retail",
+      "popularity": 5,
+      "selection": 0
+    },
+    {
+      "name": "Themed design 02",
+      "code": "DF_THEMED_DESIGN_2",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Country House",
+      "code": "LT_LODGE",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Full body mirror",
+      "code": "DF_THEMED_DESIGN_3",
+      "type": "Retail",
+      "popularity": 2,
+      "selection": 11
+    },
+    {
+      "name": "Bunk bed",
+      "code": "BD_BB",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Hide-away",
+      "code": "DF_THEMED_DESIGN_5",
+      "type": "Retail",
+      "popularity": 2,
+      "selection": 0
+    },
+    {
+      "name": "Cooking facilities",
+      "code": "DF_CF",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 1
+    },
+    {
+      "name": "Infrared cabin",
+      "code": "BR_IC",
+      "type": "Retail",
+      "popularity": 2,
+      "selection": 0
+    },
+    {
+      "name": "XL - size",
+      "code": "SP_XL",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "View towards meadow",
+      "code": "VW_GARDEN",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 10
+    },
+    {
+      "name": "Wellness Bathroom",
+      "code": "BR_PRIVATE_BATHROOM",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Panoramic Window",
+      "code": "V_PV",
+      "type": "Retail",
+      "popularity": 2,
+      "selection": 0
+    },
+    {
+      "name": "Terrace",
+      "code": "OS_TER",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "XS - size",
+      "code": "SP_XS",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 12
+    },
+    {
+      "name": "Ensuite bathroom",
+      "code": "BR_ENSUITE",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 7
+    },
+    {
+      "name": "Delete feature",
+      "code": "DF_THEMED_DESIGN",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Family Weekend",
+      "code": "DF_FOREST_THEME",
+      "type": "Retail",
+      "popularity": 5,
+      "selection": 0
+    },
+    {
+      "name": "King bed",
+      "code": "BD_KING",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Thickness oak buidling",
+      "code": "LO_FARM_BUILDING",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 10
+    },
+    {
+      "name": "Living room",
+      "code": "DF_LR",
+      "type": "Retail",
+      "popularity": 2,
+      "selection": 0
+    },
+    {
+      "name": "Barn",
+      "code": "LO_FIFTH_ROW",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Room",
+      "code": "SPT_HOTEL",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "OTA Product",
+      "code": "DF_YOB",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Close to elevator",
+      "code": "LO_LIFT",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Smoker",
+      "code": "DF_SMOKING",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 3
+    },
+    {
+      "name": "First Floor",
+      "code": "LO_2F",
+      "type": "Retail",
+      "popularity": 3,
+      "selection": 19
+    },
+    {
+      "name": "Front View",
+      "code": "V_SV",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Cottage",
+      "code": "LO_GUEST_HOUSE",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Oposite of Farmhouse",
+      "code": "LO_RIGHT_BUID",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 3
+    },
+    {
+      "name": "S/M - size",
+      "code": "SP_SM",
+      "type": "Retail",
+      "popularity": 5,
+      "selection": 0
+    },
+    {
+      "name": "French bed",
+      "code": "BD_FRENCH",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 1
+    },
+    {
+      "name": "L- size",
+      "code": "SP_L",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 1
+    },
+    {
+      "name": "M - size",
+      "code": "SP_M",
+      "type": "Retail",
+      "popularity": 2,
+      "selection": 12
+    },
+    {
+      "name": "Single or Double Bed",
+      "code": "BD_TODB",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Special Design bathroom",
+      "code": "BR_SPECIAL",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Queen or Double Bed",
+      "code": "BD_CKB",
+      "type": "Retail",
+      "popularity": 2,
+      "selection": 0
+    },
+    {
+      "name": "S - size",
+      "code": "SP_S",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 9
+    },
+    {
+      "name": "Staircase in the room",
+      "code": "LO_SA",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Owl House",
+      "code": "LO_THIRD_ROW",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Walk-in shower",
+      "code": "BR_WS",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 27
+    },
+    {
+      "name": "Country House",
+      "code": "LO_COTTAGE",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Deluxe",
+      "code": "LT_LOFT",
+      "type": "Retail",
+      "popularity": 3,
+      "selection": 0
+    },
+    {
+      "name": "Baby Crib",
+      "code": "BD_BABY_CRIB",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Kitchen",
+      "code": "DF_KC",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "California Double",
+      "code": "BD_OCK",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Toilet separated",
+      "code": "BR_GT",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    },
+    {
+      "name": "Barrier free",
+      "code": "DF_BF",
+      "type": "Retail",
+      "popularity": 1,
+      "selection": 0
+    }
+  ],
+  "availableRoomProductList": [
+    {
+      "name": "Remise Holiday Home | 2 bedroom | Indoor fireplace",
+      "code": "ERFC055",
+      "type": "ERFC",
+      "basePrice": 225,
+      "isRestricted": false,
+      "allocationType": "ALL",
+      "availableToSell": 1,
+      "availableRoomIds": [
+        "02346403-dae8-4473-9abc-f8a7f54f58eb"
+      ],
+      "capacity": {
+        "maximum": 4,
+        "adults": 4,
+        "children": 3,
+        "pets": 0
+      },
+      "extraCapacity": {
+        "maximum": 0,
+        "adults": 0,
+        "children": 0,
+        "pets": 0
+      },
+      "featureList": [
+        "XL - size",
+        "Maisonette",
+        "House",
+        "Dining table",
+        "Double Bedroom",
+        "Fridge",
+        "Garden access",
+        "Oposite of Farmhouse",
+        "Queen bed",
+        "Seating area",
+        "Holiday Home",
+        "Walk-in shower",
+        "Bathroom with window",
+        "Cooking facilities",
+        "Carriage house",
+        "Indoor fireplace"
+      ],
+      "spaceTypeList": [
+        "SPT_HOUSE"
+      ]
+    },
+    {
+      "name": "Country House | Luxurious fireplace oasis",
+      "code": "RFC020",
+      "type": "RFC",
+      "basePrice": 361,
+      "isRestricted": true,
+      "allocationType": "DEDUCT",
+      "availableToSell": 1,
+      "availableRoomIds": [
+        "9ec5621e-5898-4046-ac5a-9275c1d52d01"
+      ],
+      "capacity": {
+        "maximum": 10,
+        "adults": 10,
+        "children": 9,
+        "pets": 0
+      },
+      "extraCapacity": {
+        "maximum": 0,
+        "adults": 0,
+        "children": 0,
+        "pets": 0
+      },
+      "featureList": [
+        "XXL - size",
+        "Full body mirror",
+        "Living room",
+        "Clay construction",
+        "Fridge",
+        "Large windows",
+        "Garden access",
+        "Coffee and Tea station",
+        "Oposite of Farmhouse",
+        "Country House",
+        "Garden View",
+        "Holiday Home",
+        "View towards meadow",
+        "Walk-in shower",
+        "Indoor fireplace",
+        "Outdoor Fireplace",
+        "Large Single bed",
+        "Entrance area",
+        "House",
+        "Dining table",
+        "Vestibule",
+        "Terrace",
+        "Family & Friends",
+        "Kitchen",
+        "Queen bed",
+        "Bathroom with window",
+        "Cooking facilities"
+      ],
+      "spaceTypeList": [
+        "SPT_HOUSE"
+      ]
+    },
+    {
+      "name": "Country House | Family and Friends",
+      "code": "ERFC056",
+      "type": "ERFC",
+      "basePrice": 361,
+      "isRestricted": true,
+      "allocationType": "DEDUCT",
+      "availableToSell": 1,
+      "availableRoomIds": [
+        "9ec5621e-5898-4046-ac5a-9275c1d52d01"
+      ],
+      "capacity": {
+        "maximum": 10,
+        "adults": 10,
+        "children": 9,
+        "pets": 0
+      },
+      "extraCapacity": {
+        "maximum": 0,
+        "adults": 0,
+        "children": 0,
+        "pets": 0
+      },
+      "featureList": [
+        "XXL - size",
+        "Outdoor Fireplace",
+        "Large Single bed",
+        "Living room",
+        "House",
+        "Dining table",
+        "Fridge",
+        "Oposite of Farmhouse",
+        "Family & Friends",
+        "Country House",
+        "Kitchen",
+        "Double bed",
+        "Holiday Home",
+        "Walk-in shower",
+        "Bathroom with window",
+        "Indoor fireplace"
+      ],
+      "spaceTypeList": [
+        "SPT_HOUSE"
+      ]
+    },
+    {
+      "name": "Coachman´s House | with horse stable",
+      "code": "ERFC132",
+      "type": "ERFC",
+      "basePrice": 208,
+      "isRestricted": true,
+      "allocationType": "ALL",
+      "availableToSell": 1,
+      "availableRoomIds": [
+        "9602615a-061a-4286-9664-c42e39dfffe4",
+        "b76c1b86-e647-43bd-8cb8-d3054dddd85c"
+      ],
+      "capacity": {
+        "maximum": 2,
+        "adults": 2,
+        "children": 1,
+        "pets": 0
+      },
+      "extraCapacity": {
+        "maximum": 0,
+        "adults": 0,
+        "children": 0,
+        "pets": 0
+      },
+      "featureList": [
+        "House",
+        "Dining table",
+        "Fridge",
+        "Double Bedroom",
+        "Garden access",
+        "Coffee and Tea station",
+        "Oposite of Farmhouse",
+        "Seating area",
+        "Queen bed",
+        "Holiday Home",
+        "View towards meadow",
+        "Walk-in shower",
+        "Bathroom with window",
+        "Horse Stable",
+        "L- size",
+        "Cooking facilities"
+      ],
+      "spaceTypeList": [
+        "SPT_HOUSE"
+      ]
+    },
+    {
+      "name": "Coachmans`s House",
+      "code": "RFC008",
+      "type": "RFC",
+      "basePrice": 183,
+      "isRestricted": true,
+      "allocationType": "DEDUCT",
+      "availableToSell": 1,
+      "availableRoomIds": [
+        "9602615a-061a-4286-9664-c42e39dfffe4"
+      ],
+      "capacity": {
+        "maximum": 2,
+        "adults": 2,
+        "children": 1,
+        "pets": 0
+      },
+      "extraCapacity": {
+        "maximum": 0,
+        "adults": 0,
+        "children": 0,
+        "pets": 0
+      },
+      "featureList": [
+        "House",
+        "Dining table",
+        "Fridge",
+        "Double Bedroom",
+        "Clay construction",
+        "Coffee and Tea station",
+        "Garden access",
+        "Oposite of Farmhouse",
+        "Kitchen",
+        "Queen bed",
+        "Seating area",
+        "Holiday Home",
+        "Walk-in shower",
+        "View towards meadow",
+        "Bathroom with window",
+        "L- size",
+        "Cooking facilities"
+      ],
+      "spaceTypeList": [
+        "SPT_HOUSE"
+      ]
+    },
+    {
+      "name": "Remise Holiday Home | with horse stable",
+      "code": "ERFC064",
+      "type": "ERFC",
+      "basePrice": 323,
+      "isRestricted": true,
+      "allocationType": "ALL",
+      "availableToSell": 1,
+      "availableRoomIds": [
+        "02346403-dae8-4473-9abc-f8a7f54f58eb",
+        "b76c1b86-e647-43bd-8cb8-d3054dddd85c"
+      ],
+      "capacity": {
+        "maximum": 4,
+        "adults": 4,
+        "children": 3,
+        "pets": 0
+      },
+      "extraCapacity": {
+        "maximum": 0,
+        "adults": 0,
+        "children": 0,
+        "pets": 0
+      },
+      "featureList": [
+        "House",
+        "Dining table",
+        "Double Bedroom",
+        "Fridge",
+        "Garden access",
+        "Oposite of Farmhouse",
+        "Queen bed",
+        "Seating area",
+        "Holiday Home",
+        "Walk-in shower",
+        "Bathroom with window",
+        "Horse Stable",
+        "Cooking facilities",
+        "L- size",
+        "Carriage house",
+        "Indoor fireplace"
+      ],
+      "spaceTypeList": [
+        "SPT_HOUSE"
+      ]
+    },
+    {
+      "name": "Country House | Stay longer",
+      "code": "ERFC036",
+      "type": "ERFC",
+      "basePrice": 353,
+      "isRestricted": true,
+      "allocationType": "DEDUCT",
+      "availableToSell": 1,
+      "availableRoomIds": [
+        "9ec5621e-5898-4046-ac5a-9275c1d52d01"
+      ],
+      "capacity": {
+        "maximum": 10,
+        "adults": 10,
+        "children": 9,
+        "pets": 0
+      },
+      "extraCapacity": {
+        "maximum": 0,
+        "adults": 0,
+        "children": 0,
+        "pets": 0
+      },
+      "featureList": [
+        "XXL - size",
+        "Outdoor Fireplace",
+        "Living room",
+        "Large Single bed",
+        "House",
+        "Dining table",
+        "Fridge",
+        "Oposite of Farmhouse",
+        "Family & Friends",
+        "Country House",
+        "Kitchen",
+        "Double bed",
+        "Holiday Home",
+        "Walk-in shower",
+        "Bathroom with window",
+        "Indoor fireplace"
+      ],
+      "spaceTypeList": [
+        "SPT_HOUSE"
+      ]
+    },
+    {
+      "name": "Country House | with Horse Stable",
+      "code": "ERFC063",
+      "type": "ERFC",
+      "basePrice": 388,
+      "isRestricted": true,
+      "allocationType": "ALL",
+      "availableToSell": 1,
+      "availableRoomIds": [
+        "b76c1b86-e647-43bd-8cb8-d3054dddd85c",
+        "9ec5621e-5898-4046-ac5a-9275c1d52d01"
+      ],
+      "capacity": {
+        "maximum": 10,
+        "adults": 10,
+        "children": 9,
+        "pets": 0
+      },
+      "extraCapacity": {
+        "maximum": 0,
+        "adults": 0,
+        "children": 0,
+        "pets": 0
+      },
+      "featureList": [
+        "XXL - size",
+        "Outdoor Fireplace",
+        "Living room",
+        "Large Single bed",
+        "House",
+        "Dining table",
+        "Fridge",
+        "Oposite of Farmhouse",
+        "Family & Friends",
+        "Country House",
+        "Kitchen",
+        "Double bed",
+        "Holiday Home",
+        "Walk-in shower",
+        "Bathroom with window",
+        "Horse Stable",
+        "Indoor fireplace"
+      ],
+      "spaceTypeList": [
+        "SPT_HOUSE"
+      ]
+    }
+  ],
+  "mrfcAvailabilityList": [
+    {
+      "code": "MRFC006",
+      "availableToSell": 0,
+      "assignedRoomIds": [
+        "0d55d582-4aa5-4965-8ff1-705a1ad442c0",
+        "40307d96-75f6-489a-bce2-7db919302568",
+        "fe7fa3b2-0010-406d-a931-91065873f0be"
+      ],
+      "basePrice": 114
+    },
+    {
+      "code": "MRFC002",
+      "availableToSell": 7,
+      "assignedRoomIds": [
+        "ed2d4b16-0b4c-41bc-8482-88f1cc398e23",
+        "006c788a-7d61-4129-84ba-d157cea4bbc4",
+        "fa31bf47-7f2c-4fdb-a281-2b705f0b5c18",
+        "d057cb21-0f59-4e01-ba47-e3dc8bf11517",
+        "5184f494-94b3-4cfc-8c42-d1b9d00cb66b",
+        "1f79ab2b-6a65-43d9-b4ac-29b3fa179f50",
+        "4fb27931-a4a6-4757-8b43-12dbec6e1293"
+      ],
+      "basePrice": 107.57
+    },
+    {
+      "code": "MRFC005",
+      "availableToSell": 3,
+      "assignedRoomIds": [
+        "02346403-dae8-4473-9abc-f8a7f54f58eb",
+        "9602615a-061a-4286-9664-c42e39dfffe4",
+        "9ec5621e-5898-4046-ac5a-9275c1d52d01"
+      ],
+      "basePrice": 256.33
+    },
+    {
+      "code": "MRFC001",
+      "availableToSell": 0,
+      "assignedRoomIds": [
+        "f008db54-146a-44cf-b4ba-f1a2d87a25b9",
+        "6172d21c-bdd1-4546-a9f0-37ccf0ec822d",
+        "129dcd76-9c16-484e-b8eb-8158429a145e",
+        "a9a0a941-197b-4cbe-8ac7-fbc35fa4bded",
+        "aeff9624-7cf7-4c21-a08c-4917212f09b3",
+        "2966072a-7803-4373-92a4-b4b1139fcc1d",
+        "18b091ea-2a82-48be-ae2c-74542ae10a13",
+        "0922a36d-4fa5-4975-bf0a-177fc9541e53",
+        "433a699d-733b-45ad-85c8-22f9681148fe",
+        "f6817855-88a7-472b-b7a4-1ee1d56cd2c3",
+        "bd4b6c0b-cd1d-46c9-956d-08c54194abdf",
+        "2342b709-294a-49fe-8927-bc0de7fd4411",
+        "aebee000-9ed3-4b92-a199-d7edb05ffdae",
+        "3d406f50-53bb-40b2-a2cc-253a40410a75",
+        "cc805bfe-51d0-4b30-a83a-ea79f4aa53ec",
+        "3c55d65f-9152-4e6d-9c96-b99920f38fd4",
+        "6c722717-303c-4ed1-86ef-e5277b22771c"
+      ],
+      "basePrice": 128.64
+    },
+    {
+      "code": "MRFC003",
+      "availableToSell": 0,
+      "assignedRoomIds": [
+        "8056fc76-cac4-4255-adf7-0ecded495183",
+        "635848f1-61a2-4147-b172-2102c5eecf56",
+        "05aaff24-890e-4fc4-a484-dbbefd300068",
+        "08a9b0e3-7052-4c29-9622-0bf1e94fc57a",
+        "844956bb-d0df-423d-bfa0-9f7925295139",
+        "a0596f0a-2807-499e-be31-adb55a33bc81",
+        "8d12a082-a8d3-412d-a828-a3e2e8962acf",
+        "355a0743-2f93-41a5-bb0b-dd82120d3f45"
+      ],
+      "basePrice": 114.33
+    },
+    {
+      "code": "MRFC007",
+      "availableToSell": 1,
+      "assignedRoomIds": [
+        "c0f9e0ce-e577-4199-bd84-ae916a8fedb2",
+        "296f2a58-09a9-4717-b77e-4b170f34f755",
+        "1ad703b8-7488-4b90-bd67-057f678bcafc",
+        "f03e2cb8-1f96-4a4c-8d6c-dd9bb62eb6bc"
+      ],
+      "basePrice": 163.5
+    },
+    {
+      "code": "MRFC066",
+      "availableToSell": 2,
+      "assignedRoomIds": [
+        "478bf770-53d5-4db7-97c0-55e73072dd9e",
+        "89155c3d-5413-4683-9a43-a585297cec96",
+        "f2b2046d-7c78-4c33-98a3-4a840c446e72",
+        "374cdcbf-e72f-423b-b374-38fe0767a421",
+        "d8330ec1-8bb8-4748-9cc8-cc6bcc29a576"
+      ],
+      "basePrice": 195.5
+    },
+    {
+      "code": "MRFC064",
+      "availableToSell": 1,
+      "assignedRoomIds": [
+        "b76c1b86-e647-43bd-8cb8-d3054dddd85c"
+      ],
+      "basePrice": 35
+    }
+  ],
+  "spaceTypeRequestList": [
+    "SPT_HOUSE"
+  ],
+  "salesStrategy": {
+    "mostPopular": [
+      "RFC",
+      "ERFC"
+    ],
+    "ourTip": [
+      "RFC",
+      "ERFC"
+    ],
+    "direct": [
+      "RFC",
+      "ERFC"
+    ]
+  },
+  "bookingHistoryList": [],
+  "lowestPriceList": [
+    "ERFC122"
+  ]
+}

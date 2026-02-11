@@ -1,0 +1,260 @@
+<!-- <div class="pb-[16px] px-[24px] bg-background-secondary-color rounded-b-[16px]">
+  <ng-container *ngIf="isInclusive; else tplTotalPaymentExclusive">
+    <div class="">
+      <div class="flex items-center justify-between">
+        <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+          {{ 'SUB_TOTAL' | translate | async }}
+        </div>
+        <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+          {{ subTotalPrice }}
+        </div>
+      </div>
+
+      <ng-container *ngIf="serviceChargeAmount > 0">
+        <div class="flex items-center justify-between">
+          <div
+            class="text-[14px] font-light leading-[140%] text-secondary-color"
+          >
+            {{ 'INCLUDES_TAX' | translate | async }}:
+            {{ 'SERVICE_CHARGE' | translate | async }}
+          </div>
+          <div
+            class="text-[14px] font-light leading-[140%] text-secondary-color"
+          >
+            {{ serviceCharge }}
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container
+        *ngIf="cityTaxList?.length > 0 || bookingTaxList?.length > 0"
+      >
+        <div class="flex items-start gap-[8px]">
+          <div
+            class="text-[14px] font-light leading-[140%] text-secondary-color"
+          >
+            {{ 'INCLUDES_TAX' | translate | async }}:
+          </div>
+          <div class="mt-[2px] px-4 included_tax__list">
+            <ng-container *ngIf="bookingTaxList?.length > 0">
+              <ng-container *ngFor="let tax of bookingTaxList">
+                <div
+                  class="text-[12px] font-light leading-[140%] text-secondary-color included_tax__item"
+                >
+                  {{ tax?.name }} ({{
+                    tax?.amount
+                      | currencyRate: currencyRate
+                      | myCurrency: currencyCode : 'symbol' : '1.2'
+                  }})
+                </div>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="cityTaxAmount > 0">
+              <ng-container *ngIf="cityTaxList?.length > 0">
+                <ng-container *ngFor="let tax of cityTaxList">
+                  <div
+                    class="text-[12px] font-light leading-[140%] text-secondary-color included_tax__item"
+                  >
+                    {{ tax?.name }} ({{
+                      tax?.amount
+                        | currencyRate: currencyRate
+                        | myCurrency: currencyCode : 'symbol' : '1.2'
+                    }})
+                  </div>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="h-[1px] w-full bg-border-color my-[12px]"></div>
+
+    <div class="flex items-center justify-between">
+      <div
+        class="text-[20px] font-medium leading-[120%] text-primary-color sm:text-[17px]"
+      >
+        {{ 'TOTAL' | translate | async }}
+      </div>
+      <div
+        class="text-[24px] font-medium leading-[120%] text-hotel-primary-color"
+      >
+        {{ totalPrice }}
+      </div>
+    </div>
+  </ng-container>
+</div> -->
+<div
+  class="bg-background-secondary-color rounded-[16px] py-[16px] px-[24px] mt-[12px]"
+>
+  <ng-container *ngIf="payOnConfirmationAmount > 0">
+    <div class="flex items-start justify-between mb-[2px]">
+      <div class="max-w-[80%]">
+        <div
+          class="text-[14px] font-medium leading-[140%] text-primary-color mb-[2px]"
+        >
+          {{ 'PAYABLE_NOW' | translate | async }}
+        </div>
+      </div>
+      <div
+        class="text-[17px] font-medium leading-[140%] text-primary-color whitespace-nowrap"
+      >
+        {{ payOnConfirmation }}
+      </div>
+    </div>
+    <div class="flex items-start justify-between mb-[12px] sm:max-w-full">
+      <div
+        class="text-[14px] font-light leading-[140%] text-secondary-color flex items-start gap-[2px]"
+        *ngIf="payOnConfirmationDescription"
+      >
+        <div
+          class="text-primary-color sm:font-light"
+          [innerHTML]="payOnConfirmationDescription"
+        ></div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="payAtHotelAmount > 0">
+    <div class="flex items-start justify-between">
+      <div class="max-w-[80%]">
+        <div
+          class="text-[14px] font-medium leading-[140%] text-primary-color mb-[2px]"
+        >
+          {{ 'PAYABLE_ON_ARRIVAL' | translate | async }}
+        </div>
+      </div>
+      <div
+        class="text-[17px] font-medium leading-[140%] text-primary-color whitespace-nowrap"
+      >
+        {{ payAtHotel }}
+      </div>
+    </div>
+    <div class="flex items-start justify-between mt-[2px]">
+      <div
+        class="text-[14px] font-light leading-[140%] text-secondary-color flex items-start gap-[2px]"
+        *ngIf="payAtHotelDescription"
+      >
+        <div
+          class="text-primary-color sm:font-light"
+          [innerHTML]="payAtHotelDescription"
+        ></div>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- policy -->
+  <div class="h-[1px] w-full bg-border-color my-[12px]"></div>
+  <div
+    class="text-[14px] font-medium leading-[140%] text-primary-color mb-[2px]"
+  >
+    {{ 'CANCELLATION_POLICY' | translate | async }}
+  </div>
+  <div
+    class="text-[14px] font-light leading-[140%] text-primary-color"
+    [innerHTML]="cancellationPolicy || '--'"
+  ></div>
+  <!-- end policy -->
+
+  <ng-container
+    *ngIf="
+      (taxInformationConfig | getTaxInformationConfigByLocale: locale) ||
+      taxInformation?.length > 0
+    "
+  >
+    <div class="h-[1px] w-full bg-border-color my-[12px]"></div>
+    <div
+      class="text-[14px] font-medium leading-[140%] text-primary-color mb-[2px]"
+    >
+      {{ 'TAX_INFORMATION' | translate | async }}
+    </div>
+    <div class="">
+      <div class="text-[14px] font-light leading-[140%] text-primary-color">
+        {{ taxInformationConfig | getTaxInformationConfigByLocale: locale }}
+      </div>
+      <ng-container *ngFor="let tax of taxInformation">
+        <div
+          *ngIf="tax | getTaxInformation: locale"
+          class="mt-2 mb-1 text-[14px] font-medium leading-[140%] text-primary-color"
+        >
+          {{ tax | getTaxName: locale : false }}
+        </div>
+        <div
+          class="text-[14px] font-light leading-[140%] text-primary-color"
+          [innerHTML]="tax | getTaxInformation: locale"
+        ></div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #tplTotalPaymentExclusive>
+  <div class="flex items-center justify-between mb-[16px]">
+    <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+      {{ 'SUB_TOTAL' | translate | async }}
+    </div>
+    <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+      {{ subTotalPrice }}
+    </div>
+  </div>
+  <ng-container *ngIf="serviceChargeAmount > 0">
+    <div class="flex items-center justify-between mb-[16px]">
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+        {{ 'SERVICE_CHARGE' | translate | async }}
+      </div>
+      <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+        {{ serviceCharge }}
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="bookingTaxList?.length > 0">
+    <ng-container *ngFor="let tax of bookingTaxList">
+      <div class="flex items-center justify-between">
+        <div
+          class="text-[14px] font-light leading-[140%] text-primary-color max-w-[70%]"
+        >
+          {{ tax?.name }}
+        </div>
+        <div class="text-[14px] font-light leading-[140%] text-primary-color">
+          {{
+            tax?.amount
+              | currencyRate: currencyRate
+              | myCurrency: currencyCode : 'symbol' : '1.2'
+          }}
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="cityTaxList?.length > 0">
+    <ng-container *ngFor="let tax of cityTaxList">
+      <div class="flex items-center justify-between">
+        <div
+          class="text-[14px] font-light leading-[140%] text-primary-color max-w-[70%]"
+        >
+          {{ tax?.name }}
+        </div>
+        <div class="text-[14px] font-light leading-[140%] text-primary-color">
+          {{
+            tax?.amount
+              | currencyRate: currencyRate
+              | myCurrency: currencyCode : 'symbol' : '1.2'
+          }}
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <div class="h-[1px] w-full bg-border-color my-[12px]"></div>
+
+  <div class="flex items-center justify-between">
+    <div class="text-[20px] font-medium leading-[120%] text-primary-color">
+      {{ 'TOTAL' | translate | async }}
+    </div>
+    <div
+      class="text-[24px] font-medium leading-[120%] text-hotel-primary-color"
+    >
+      {{ totalPrice }}
+    </div>
+  </div>
+</ng-template>

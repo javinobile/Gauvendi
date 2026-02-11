@@ -1,0 +1,22 @@
+<div
+  class="flex w-full cursor-pointer items-center justify-between mb-[8px] rounded-[8px] text-primary-color gap-[16px] text-[14px] bg-configurator-category-hover-background-color p-[12px] hover:opacity-80 sm:flex-col sm:items-stretch md:flex-col md:mb-0 md:gap-[12px]"
+  (click)="selectedFeature.emit()"
+>
+  <div class="text-[12px] max-w-[104px] line-clamp-2 font-[400] leading-[120%] sm:order-2 sm:max-w-none sm:text-center md:order-2 md:max-w-[136px] md:text-center">{{ title }}</div>
+  <div class="flex gap-[8px] sm:order-1 sm:justify-center md:order-1 md:justify-center">
+    <ng-container *ngIf="feature?.length <= 3">
+      <ng-container *ngFor="let item of feature">
+        <img loading="lazy" class="text-center h-[28px] w-[24px]" [src]="item?.retailFeatureImageList[0]?.imageUrl" appFilterSvg [color]="colorPrimary" alt="" />
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="feature?.length > 3">
+      <ng-container *ngFor="let item of feature | slice: 0 : 2">
+        <img loading="lazy" class="text-center h-[28px] w-[24px]" [src]="item?.retailFeatureImageList[0]?.imageUrl" appFilterSvg [color]="colorPrimary" alt="" />
+      </ng-container>
+      <div class="relative overflow-hidden h-[28px] w-[24px]">
+        <img loading="lazy" src="assets/icons/hexagon-count.svg" appFilterSvg [color]="colorPrimary" class="text-button-background" alt="''" width="24" height="28" />
+        <span class="absolute top-0 left-0 flex h-full w-full items-center justify-center z-[2] text-button-text text-[12px]">+{{ feature?.length - 2 }}</span>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,108 @@
+<div class="mt-[12px] p-[24px] bg-background-secondary-color rounded-[24px] sm:p-[16px]">
+  <div class="text-[17px] font-medium leading-[140%] text-primary-color mb-[12px]">{{ 'PAYMENT_METHODS' | translate | async }}</div>
+  <div class="flex flex-col gap-[8px]">
+    <ng-container *ngFor="let paymentMode of availablePaymentMethodList">
+      <ng-container *ngIf="!(paymentMode.paymentMethodCode | getPaymentModeStatus: summaryBooking?.payOnConfirmationAmount)">
+        <div
+          class="py-[16px] rounded-[16px] px-[20px] bg-background-primary-color relative sm:px-[16px]"
+          [ngClass]="{ 'border border-hotel-primary-color': selectedPaymentMethodCode === paymentMode.paymentMethodCode }"
+          (click)="onPaymentMethodChange(paymentMode?.paymentMethodCode)"
+        >
+          <div class="absolute ltr:right-[20px] rtl:left-[20px] top-[20px]">
+            <mat-icon class="text-hotel-primary-color">
+              {{ selectedPaymentMethodCode === paymentMode.paymentMethodCode ? 'check_circle' : 'radio_button_unchecked' }}
+            </mat-icon>
+          </div>
+          <div class="flex items-center gap-[16px]">
+            <div class="py-[8px] px-[10px] w-[46px] h-[32px] border border-border-color rounded-[8px] flex items-center justify-center">
+              <img loading="lazy" [src]="paymentMode?.paymentMethodCode | getPaymentMethodIcon" alt="" class="h-[20px]" />
+            </div>
+            <ng-container *ngIf="paymentMode?.paymentMethodCode === hotelPaymentModeCode?.Pmdoth"> </ng-container>
+            <div class="text-[14px] font-medium leading-[140%] text-primary-color">
+              {{
+                paymentMode?.paymentMethodCode === hotelPaymentModeCode?.Pmdoth
+                  ? paymentMode?.paymentMethodDetailsList?.[0]?.metadata?.metadata?.['customName']
+                  : (paymentMode?.paymentMethodCode | parsePaymentMethodName: +summaryBooking?.payOnConfirmationAmount | translate | async)
+              }}
+            </div>
+          </div>
+          <mat-expansion-panel [expanded]="selectedPaymentMethodCode === paymentMode.paymentMethodCode" class="payment-content">
+            <ng-container [ngSwitch]="paymentMode.paymentMethodCode">
+              <ng-container *ngSwitchDefault>
+                <ng-container *ngTemplateOutlet="tplDefaultGuarantee; context: { $implicit: paymentMode }"></ng-container>
+              </ng-container>
+            </ng-container>
+          </mat-expansion-panel>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<div class="mt-[40px] sm:mt-[16px] flex items-center gap-[12px] sm:flex-col sm:items-start md:flex-col lg:flex-col">
+  <div class="flex items-start gap-[8px] mb-[12px]">
+    <app-checkbox-c [formControl]="termCtrl"> </app-checkbox-c>
+    <div class="text-[14px] font-normal leading-[140%] text-primary-color">
+      <span style="line-height: 1.5em">
+        {{ 'MESSAGE_CONFIRM_PAYMENT_CERTIFY' | translate | async }}
+        <a class="text-hotel-primary-color underline cursor-pointer font-medium" [href]="hotelTerm | parseMetadataConfig: locale" target="_blank">
+          {{ 'MESSAGE_CONFIRM_PAYMENT_TERMS_OF_USE' | translate | async }}
+        </a>
+        {{ 'AND' | translate | async }}
+        <a class="text-hotel-primary-color underline cursor-pointer font-medium" [href]="hotelPrivacy | parseMetadataConfig: locale" target="_blank">
+          {{ 'MESSAGE_CONFIRM_PAYMENT_PRIVACY_STATEMENT' | translate | async }}
+        </a>
+        {{ 'MESSAGE_CONFIRM_PAYMENT_RATE_DESCRIPTION_RULE' | translate | async }}
+      </span>
+    </div>
+  </div>
+  <div class="flex items-center justify-end sm:mt-[16px] sm:w-full">
+    <ng-container *ngIf="selectedPaymentMethodCode !== hotelPaymentModeCode.Paypal">
+      <ng-container *ngIf="(isLockSubmitPayment$ | async) === false; else tplLoading">
+        <button
+          class="h-[44px] text-[14px] font-medium leading-[140%] whitespace-nowrap sm:items-center text-button-normal-color bg-button-normal-background-color rounded-[12px] sm:w-full sm:flex sm:justify-center px-[24px] hover:opacity-80"
+          [disabled]="!summaryBooking || !termCtrl?.value"
+          [ngClass]="{ '!bg-disabled-color !cursor-not-allowed': !summaryBooking || !termCtrl?.value }"
+          (click)="submitConfirmPayment()"
+        >
+          {{ 'CONFIRM_BOOKING' | translate | async }}
+        </button>
+      </ng-container>
+    </ng-container>
+
+    <div
+      id="paypal-button-container"
+      class="w-[200px] paypal-button-container"
+      [class.hidden]="selectedPaymentMethodCode !== hotelPaymentModeCode.Paypal || +summaryBooking?.payOnConfirmationAmount <= 0"
+    ></div>
+  </div>
+</div>
+
+<div class="error-message sm:px-[20px] sm:mt-[12px]" *ngIf="paymentErrorMessage$ | async as paymentErrorMessage">
+  <p>
+    {{ paymentErrorMessage | translate | async }}
+  </p>
+  <p *ngIf="paymentErrorMessageDraw$ | async">{{ paymentErrorMessageDraw$ | async }}</p>
+</div>
+
+<div class="error-message sm:px-[20px] sm:mt-[12px]" *ngIf="!(guestInformationValid && additionalGuestValid)">
+  <p *ngIf="validationErrorMessage$ | async">
+    {{ validationErrorMessage$ | async | translate | async }}
+  </p>
+</div>
+
+<ng-template #tplDefaultGuarantee let-mode>
+  <div
+    class="mt-[16px] text-[14px] font-normal leading-[120%] text-primary-color"
+    [innerHTML]="mode?.paymentMethodDetailsList[0]?.metadata?.value || mode?.paymentMethodDetailsList[0]?.metadata?.metadata?.description"
+  ></div>
+</ng-template>
+
+<ng-template #tplLoading>
+  <button
+    class="h-[44px] text-[14px] font-medium leading-[140%] whitespace-nowrap text-button-normal-color bg-border-color sm:w-full sm:flex sm:justify-center rounded-[12px] px-[24px] cursor-not-allowed flex items-center justify-center"
+  >
+    <span class="loader block"></span>
+    <span>{{ 'PROCESSING' | translate | async }}</span>
+  </button>
+</ng-template>

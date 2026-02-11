@@ -1,0 +1,44 @@
+<span *ngIf="label" class="mb-3 text-[14px] leading-[120%] tracking-[0.01em]">{{ label }} <span class="text-error" *ngIf="isRequired">*</span></span>
+<div *ngIf="label" class="mb-2"></div>
+<div class="h-[40px] relative">
+  <div
+    class="flex w-full cursor-pointer items-center justify-between border border-white bg-background-primary-color pe-3 ps-4 rounded-[10px] h-[40px] gap-[7px]"
+    [class]="customClass"
+    (click)="openMatSelect(selectElem)"
+    [class.disabled]="isDisabled"
+    [class.cursor-not-allowed]="isDisabled"
+  >
+    <div class="text-[14px] leading-[24px] font-[400] truncate">
+      <span *ngIf="selectElem?.value?.['flag']" [class]="'fi fi-' + selectElem?.value?.['flag']"></span> {{ selectElem?.value?.code ? selectElem?.value?.label || null : null }}
+    </div>
+    <mat-icon>expand_more</mat-icon>
+  </div>
+  <mat-select
+    #selectElem
+    (closed)="searchInput.value = null; closeMatSelect()"
+    (opened)="searchInput.focus()"
+    (valueChange)="selectItem($event)"
+    [value]="value"
+    class="dropdown-position !w-full absolute top-[25px] left-0 right-0 bottom-0"
+    disableOptionCentering
+    [panelClass]="'!shadow-ml !overflow-hidden !rounded-[16px]'"
+  >
+    <input
+      #searchInput
+      (input)="filterSearch($event)"
+      [class.hidden]="!hasSearch"
+      placeholder="Search..."
+      type="text"
+      class="w-[calc(100%-16px)] ml-[8px] !outline-none text-[14px] leading-[24px] !shadow-m border border-border-color rounded-[8px] focus:border-primary-color"
+      style="padding-inline: 16px !important; height: 40px"
+    />
+    <div class="overflow-y-auto h-[calc(100%-46px)]">
+      <mat-option *ngFor="let item of allItems | filterDropdown: filter" class="mat-option-custom" [value]="item">
+        <span *ngIf="item?.flag" [class]="'me-3 fi fi-' + item?.flag"></span>{{ item.label }}
+      </mat-option>
+    </div>
+  </mat-select>
+</div>
+<div class="w-full">
+  <ng-content></ng-content>
+</div>

@@ -1,0 +1,12 @@
+mutation GenerateTransaction($input: GenerateTransactionInput) {
+  response: generateTransaction(input: $input) {
+    code
+    status
+    message
+    data {
+      ... on Transaction {
+        transactionId
+      }
+    }
+  }
+}

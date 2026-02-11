@@ -1,0 +1,18 @@
+query PropertyMainFontInformation($filter: PropertyMainFontFilter) {
+  response: propertyMainFontInformation(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on PropertyMainFont {
+        fontName
+        isCustomFont
+        fontWeightDetailsList {
+          url
+          originalName
+          contentType
+          type
+        }
+      }
+    }
+  }
+}

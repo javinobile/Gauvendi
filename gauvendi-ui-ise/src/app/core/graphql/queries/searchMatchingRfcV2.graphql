@@ -1,0 +1,92 @@
+query SearchMatchingRfcV2($filter: SearchMatchingRfcFilter) {
+  response: searchMatchingRfcV2(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on Rfc {
+        numberOfBedrooms
+        space
+        id
+        name
+        code
+        description
+        capacityDefault
+        capacityExtra
+        matchingPercentage
+        rfcType
+        allocatedAdultCount
+        allocatedChildCount
+        allocatedExtraBedAdultCount
+        allocatedExtraBedChildCount
+        allocatedPetCount
+        rfcImageList {
+          imageUrl
+          displaySequence
+          description
+        }
+        layoutFeatureList {
+          name
+          code
+        }
+        retailFeatureList {
+          name
+          code
+          matched
+          quantity
+          description
+          hotelRetailCategory {
+            name
+            code
+          }
+          measurementUnit
+        }
+        additionalFeatureList {
+          name
+          code
+          matched
+          quantity
+          description
+          measurementUnit
+        }
+        standardFeatureList {
+          name
+          code
+          description
+          iconImageUrl
+        }
+        rfcRatePlanList {
+          name
+          code
+          averageDailyRate
+          totalBaseAmount
+          totalGrossAmount
+          totalSellingRate
+          totalBaseAmountBeforeAdjustment
+          totalGrossAmountBeforeAdjustment
+          shouldShowStrikeThrough
+          adjustmentPercentage
+          ratePlan {
+            code
+            name
+            description
+            IsPromoted
+            includedHotelExtrasList {
+              id
+              code
+              name
+              description
+              pricingUnit
+              includedDates
+            }
+          }
+        }
+        restrictionValidationList {
+          code
+          value
+          fromDate
+          toDate
+        }
+      }
+    }
+  }
+}

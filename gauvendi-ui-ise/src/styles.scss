@@ -1,0 +1,392 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '@angular/cdk/overlay-prebuilt.css';
+@import 'flag-icons/css/flag-icons.min.css';
+
+@import 'sass/animation';
+@import 'sass/feature';
+@import 'sass/font';
+@import 'sass/language.direction';
+@import 'sass/layout.square';
+@import 'sass/loader';
+@import 'sass/material';
+@import 'sass/media';
+@import 'sass/scrollbar';
+@import 'sass/skeleton.loading';
+@import 'sass/text';
+@import 'sass/widget.external';
+@import 'sass/responsive';
+@import 'sass/select';
+
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+:root {
+  --color-disabled: rgba(138, 140, 140, 0.6);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  touch-action: auto;
+  zoom: 1;
+}
+
+html,
+body {
+  min-height: 100%;
+  background-color: var(--color-background-primary);
+  margin: 0;
+}
+
+strong {
+  font-weight: 600 !important;
+}
+
+ol {
+  list-style: decimal;
+  margin-left: 12px;
+}
+
+ul {
+  list-style: disc;
+  margin-left: 12px;
+}
+
+.custom-dialog {
+  &.top-left {
+    .dialog-content:after,
+    .dialog-content:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 10%;
+      top: -10px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      transform: translateY(-50%) rotate(270deg);
+    }
+
+    .dialog-content:after {
+      top: -9px;
+      border-color: transparent transparent transparent
+        var(--color-popover-background);
+      border-width: 10px;
+    }
+
+    .dialog-content:before {
+      top: -10px;
+      border-color: transparent transparent transparent
+        var(--color-popover-background);
+      border-width: 10px;
+    }
+  }
+
+  &.left-center {
+    .dialog-content:after,
+    .dialog-content:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      -ms-transform: rotate(90deg);
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    .dialog-content:after {
+      bottom: -19px;
+      border-color: transparent transparent transparent
+        var(--color-popover-background);
+      border-width: 10px;
+    }
+
+    .dialog-content:before {
+      bottom: -20px;
+      border-color: transparent transparent transparent
+        var(--color-popover-background);
+      border-width: 10px;
+    }
+  }
+
+  &.right-center {
+    .dialog-content:after,
+    .dialog-content:before {
+      content: '';
+      display: block;
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      transform: translateY(-50%);
+    }
+
+    .dialog-content:after {
+      right: -19px;
+      border-color: transparent transparent transparent
+        var(--color-popover-background);
+      border-width: 10px;
+    }
+
+    .dialog-content:before {
+      right: -20px;
+      border-color: transparent transparent transparent
+        var(--color-popover-background);
+      border-width: 10px;
+    }
+  }
+
+  &.top-center {
+    .dialog-content:after,
+    .dialog-content:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      bottom: -30px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      transform: translateY(-50%) rotate(90deg);
+    }
+
+    .dialog-content:after {
+      bottom: -29px;
+      border-color: transparent transparent transparent #ffffff;
+      border-width: 10px;
+    }
+
+    .dialog-content:before {
+      bottom: -30px;
+      border-color: transparent transparent transparent #ffffff;
+      border-width: 10px;
+    }
+  }
+
+  &.bottom-center {
+    .dialog-content:after,
+    .dialog-content:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: -10px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      transform: translateY(-50%) rotate(270deg);
+    }
+
+    .dialog-content:after {
+      top: -9px;
+      border-color: transparent transparent transparent
+        var(--color-popover-background);
+      border-width: 10px;
+    }
+
+    .dialog-content:before {
+      top: -10px;
+      border-color: transparent transparent transparent
+        var(--color-popover-background);
+      border-width: 10px;
+    }
+  }
+
+  &.bottom-right {
+    .dialog-content:after,
+    .dialog-content:before {
+      content: '';
+      display: block;
+      position: absolute;
+      right: 25px;
+      top: -20px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      transform: rotate(270deg);
+    }
+
+    .dialog-content:after {
+      top: -20px;
+      border-color: transparent transparent transparent
+        var(--color-popover-background);
+      border-width: 10px;
+    }
+
+    .dialog-content:before {
+      top: -20px;
+      border-color: transparent transparent transparent
+        var(--color-popover-background);
+      border-width: 10px;
+    }
+  }
+}
+
+.custom-overlay {
+  &.bottom-center {
+    .dialog-content:after,
+    .dialog-content:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: -10px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      transform: translateY(-50%) rotate(270deg);
+    }
+
+    .dialog-content:after {
+      top: -9px;
+      border-color: transparent transparent transparent
+        var(--color-popover-background);
+      border-width: 10px;
+    }
+
+    .dialog-content:before {
+      top: -10px;
+      border-color: transparent transparent transparent
+        var(--color-popover-background);
+      border-width: 10px;
+    }
+  }
+}
+
+.children-age-menu {
+  .mat-mdc-menu-content {
+    background-color: var(--color-popover-background);
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+
+    .mat-mdc-menu-item {
+      color: var(--color-text-primary);
+      background-color: var(--color-popover-background);
+      border-bottom: 1px solid var(--color-border);
+      border-radius: 0;
+      font-size: 12px;
+      line-height: 140%;
+      padding: 0 16px !important;
+
+      &:hover {
+        background-color: var(--color-button-normal-background);
+        color: var(--color-button-normal-text);
+      }
+    }
+  }
+}
+
+.tooltip-overlay {
+  &.top-center {
+    .tooltip-content:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      transform: translateX(-50%) rotate(90deg);
+      bottom: -8px;
+      border-color: transparent transparent transparent #ffffff;
+      border-width: 8px;
+    }
+  }
+
+  &.bottom-center {
+    .tooltip-content:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      transform: translateX(-50%) rotate(-90deg);
+      top: -16px;
+      border-color: transparent transparent transparent #ffffff;
+      border-width: 8px;
+    }
+  }
+
+  &.top-left {
+    .tooltip-content:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 20px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      transform: rotate(90deg);
+      bottom: -8px;
+      border-color: transparent transparent transparent #ffffff;
+      border-width: 8px;
+    }
+  }
+
+  &.bottom-left {
+    .tooltip-content:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 20px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      transform: translateX(-50%) rotate(-90deg);
+      top: -12px;
+      border-color: transparent transparent transparent #ffffff;
+      border-width: 8px;
+    }
+  }
+
+  &.bottom-right {
+    .tooltip-content:before {
+      content: '';
+      display: block;
+      position: absolute;
+      right: 35px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      transform: translateX(-50%) rotate(-90deg);
+      top: -16px;
+      border-color: transparent transparent transparent #ffffff;
+      border-width: 8px;
+    }
+  }
+
+  &.top-right {
+    .tooltip-content:before {
+      content: '';
+      display: block;
+      position: absolute;
+      right: 35px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      transform: rotate(90deg);
+      bottom: -8px;
+      border-color: transparent transparent transparent #ffffff;
+      border-width: 8px;
+    }
+  }
+}
+
+.dynamic-color-icon {
+  mask-image: var(--image-url);
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center;
+}

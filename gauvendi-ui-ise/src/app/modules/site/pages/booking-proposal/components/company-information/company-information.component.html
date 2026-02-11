@@ -1,0 +1,128 @@
+<div [formGroup]="rf">
+  <div class="flex items-start justify-between">
+    <div class='text-[17px] font-medium leading-[140%] text-primary-color'>
+      {{'COMPANY_INFORMATION' | translate | async}}
+    </div>
+    <div class="cursor-pointer" (click)="expansionPanel?.toggle()">
+      <mat-icon
+        class="text-primary-color">{{expansionPanel?._getExpandedState() === 'expanded' ? 'expand_less' : 'expand_more'}}</mat-icon>
+    </div>
+  </div>
+
+  <mat-expansion-panel #expansionPanel [expanded]="false">
+
+    <div class='flex items-center gap-[12px] mb-[12px] sm:flex-col'>
+      <div class='flex-1 sm:w-full'>
+        <div
+          class='text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]'>
+          {{'TAX_ID' | translate | async}}
+        </div>
+        <div class=''>
+          <app-input
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            [control]="rf?.get('taxId')"
+            formControlName='taxId'
+            type='text'
+          >
+          </app-input>
+        </div>
+      </div>
+      <div class='flex-1 sm:w-full'>
+        <div
+          class='text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]'>
+          {{'COMPANY_NAME' | translate | async}}
+        </div>
+        <div class=''>
+          <app-input
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            [control]="rf?.get('lastName')"
+            formControlName='companyName'
+            type='text'
+          >
+          </app-input>
+        </div>
+      </div>
+    </div>
+
+    <div class='flex items-center gap-[12px] mb-[12px] sm:flex-col'>
+      <div class='flex-1 sm:w-full'>
+        <div
+          class='text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]'>
+          {{'COMPANY_EMAIL' | translate | async}}
+        </div>
+        <div class=''>
+          <app-input
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            [control]="rf?.get('companyEmail')"
+            formControlName='companyEmail'
+            type='email'
+          >
+            <app-form-error *ngIf="rf?.get('companyEmail').hasError('emailPattern') && rf?.get('companyEmail').touched">
+              {{'EMAIL' | translate | async}} {{'IS_NOT_VALID' | translate | async}}
+            </app-form-error>
+          </app-input>
+        </div>
+      </div>
+      <div class='flex-1'></div>
+    </div>
+
+    <div class='flex items-center gap-[12px] mb-[12px] sm:flex-col'>
+      <div class='flex-1 sm:w-full'>
+        <div
+          class='text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]'>{{'ADDRESS' | translate | async}}</div>
+        <div class=''>
+          <app-input
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            [control]="rf?.get('address')"
+            formControlName='address'
+            type='text'
+          >
+          </app-input>
+        </div>
+      </div>
+      <div class='flex-1 sm:w-full'>
+        <div class='text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]'>
+          {{'CITY_OR_TOWN' | translate | async}}
+        </div>
+        <div class=''>
+          <app-input
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            [control]="rf?.get('city')"
+            formControlName='city'
+            type='text'
+          ></app-input>
+        </div>
+      </div>
+    </div>
+
+    <div class='flex items-center gap-[12px] mb-[12px] sm:flex-col'>
+      <div class='flex-1 sm:w-full'>
+        <div
+          class='text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]'>{{'COUNTRY' | translate | async}}</div>
+        <div class=''>
+          <app-select-single-control-country
+            [allItems]='countriesParse$ | async'
+            [control]="rf?.get('country')"
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            formControlName='country'
+          >
+          </app-select-single-control-country>
+        </div>
+      </div>
+      <div class='flex-1 sm:w-full'>
+        <div class='text-[14px] font-medium leading-[150%] text-primary-color mb-[6px]'>
+          {{'POSTAL_CODE' | translate | async}}
+        </div>
+        <div class=''>
+          <app-input
+            [customClass]="'!h-[40px] !rounded-[10px] border border-border-color text-primary-color'"
+            [control]="rf?.get('postalCode')"
+            formControlName='postalCode'
+            type='text'
+          >
+          </app-input>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</div>

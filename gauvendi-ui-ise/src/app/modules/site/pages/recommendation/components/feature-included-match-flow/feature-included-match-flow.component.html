@@ -1,0 +1,244 @@
+<!-- Grid -->
+<ng-container *ngIf="displayMode === EDisplayMode.Grid || displayMode === EDisplayMode.Tiles">
+  <div class="flex items-center gap-[4px] mb-[4px]">
+    <div class="text-12 font-medium text-primary-color">{{ 'MATCHED' | translate | async }}:</div>
+    <div class="grid gap-[4px]" [class]="'grid-cols-' + (matchFeatures?.length <= 3 ? matchFeatures?.length : 4)" [ngClass]="{ '!flex': matchFeatures?.length < 3 }">
+      <ng-container *ngFor="let feature of matchFeatures | slice: 0 : 3">
+        <div class="flex items-center gap-[4px] max-w-[140px]">
+          <img loading="lazy" [src]="'assets/icons/checked.svg'" alt="checked" appFilterSvg [color]="hotelPrimaryColor$ | async" />
+          <div
+            class="font-light text-[12px] leading-[140%] text-primary-color truncate"
+            #featureEl
+            appFeatureDescriptionTooltip
+            [isDisabled]="isMobile"
+            [featureName]="feature?.name"
+            [featureCode]="feature?.metadata?.code"
+            [featureDescription]="feature?.metadata?.description"
+            [ngClass]="{ 'line-through': !feature?.matched }"
+          >
+            {{ feature?.name }}
+          </div>
+          <div class="py-[2px] px-[3px] border border-border-color rounded-[4px] text-[11px] leading-[12px] text-primary-color" *ngIf="feature?.metadata?.quantity > 1">
+            x{{ feature?.metadata?.quantity }}
+          </div>
+        </div>
+      </ng-container>
+      <div class="flex flex-wrap gap-[4px]">
+        <div *ngIf="matchFeatures?.length > 3">
+          <div class="flex items-center gap-[4px]">
+            <!-- <div class="w-[8px]"></div> -->
+            <div
+              class="cursor-pointer font-medium text-[12px] leading-[140%] text-primary-color hover:underline"
+              (click)="moreClicked.emit()"
+              appFeatureTooltip
+              [data]="matchFeatures | slice: 3"
+              [isDisabled]="isMobile"
+            >
+              +{{ matchFeatures?.length - 3 }} {{ 'MORE' | translate | async }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Not a match: -->
+  @if (notMatchFeatures?.length) {
+    <div class="flex items-center gap-[4px] mb-[4px]">
+      <div class="text-12 font-medium text-primary-color whitespace-nowrap">{{ 'NOT_A_MATCH' | translate | async }}:</div>
+      <div class="grid gap-[4px]" [class]="'grid-cols-' + (notMatchFeatures?.length <= 3 ? notMatchFeatures?.length : 4)" [ngClass]="{ '!flex': notMatchFeatures?.length < 3 }">
+        <ng-container *ngFor="let feature of notMatchFeatures | slice: 0 : 3">
+          <div class="flex items-center gap-[4px] max-w-[140px]">
+            <img loading="lazy" [src]="'assets/icons/unchecked.svg'" alt="unchecked" />
+            <div
+              class="font-light text-[12px] leading-[140%] text-primary-color truncate"
+              #featureEl
+              appFeatureDescriptionTooltip
+              [isDisabled]="isMobile"
+              [featureName]="feature?.name"
+              [featureCode]="feature?.metadata?.code"
+              [featureDescription]="feature?.metadata?.description"
+              [ngClass]="{ 'line-through': !feature?.matched }"
+            >
+              {{ feature?.name }}
+            </div>
+            <div class="py-[2px] px-[3px] border border-border-color rounded-[4px] text-[11px] leading-[12px] text-primary-color" *ngIf="feature?.metadata?.quantity > 1">
+              x{{ feature?.metadata?.quantity }}
+            </div>
+          </div>
+        </ng-container>
+        <div class="flex flex-wrap gap-[4px]">
+          <div *ngIf="notMatchFeatures?.length > 3">
+            <div class="flex items-center gap-[4px]">
+              <!-- <div class="w-[8px]"></div> -->
+              <div
+                class="cursor-pointer font-medium text-[12px] leading-[140%] text-primary-color hover:underline"
+                (click)="moreClicked.emit()"
+                appFeatureTooltip
+                [data]="notMatchFeatures | slice: 3"
+                [isDisabled]="isMobile"
+              >
+                +{{ notMatchFeatures?.length - 3 }} {{ 'MORE' | translate | async }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- anotherFeatures -->
+  <div class="flex items-center gap-[4px] mb-[4px]">
+    <div class="text-12 font-medium text-primary-color">{{ 'OTHER' | translate | async }}:</div>
+    <div class="grid gap-[4px]" [class]="'grid-cols-' + (displayedAnotherFeatures()?.length <= 3 ? displayedAnotherFeatures()?.length : 4)" [ngClass]="{ '!flex': displayedAnotherFeatures()?.length < 3 }">
+      <ng-container *ngFor="let feature of displayedAnotherFeatures() | slice: 0 : 3">
+        <div class="flex items-center gap-[4px] max-w-[140px]">
+          <img loading="lazy" [src]="'assets/icons/plus.svg'" alt="checked" appFilterSvg [color]="colorText$ | async" />
+          <div
+            class="font-light text-[12px] leading-[140%] text-primary-color truncate"
+            #featureEl
+            appFeatureDescriptionTooltip
+            [isDisabled]="isMobile"
+            [featureName]="feature?.name"
+            [featureCode]="feature?.metadata?.code"
+            [featureDescription]="feature?.metadata?.description"
+            [ngClass]="{ 'line-through': !feature?.matched }"
+          >
+            {{ feature?.name }}
+          </div>
+          <div class="py-[2px] px-[3px] border border-border-color rounded-[4px] text-[11px] leading-[12px] text-primary-color" *ngIf="feature?.metadata?.quantity > 1">
+            x{{ feature?.metadata?.quantity }}
+          </div>
+        </div>
+      </ng-container>
+      <div class="flex flex-wrap gap-[4px]">
+        <div *ngIf="displayedAnotherFeatures()?.length > 3">
+          <div class="flex items-center gap-[4px]">
+            <!-- <div class="w-[8px]"></div> -->
+            <div
+              class="cursor-pointer font-medium text-[12px] leading-[140%] text-primary-color hover:underline"
+              (click)="moreClicked.emit()"
+              appFeatureTooltip
+              [data]="displayedAnotherFeatures() | slice: 3"
+              [isDisabled]="isMobile"
+              [isOtherFeature]="true"
+            >
+              +{{ displayedAnotherFeatures()?.length - 3 }} {{ 'MORE' | translate | async }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<!-- Titles -->
+<!-- <ng-container *ngIf="displayMode === EDisplayMode.Tiles">
+  <div class="grid grid-cols-2 gap-x-[24px] gap-y-[6px] mb-[12px]">
+    <ng-container *ngFor="let feature of features | slice : 0 : maxFeatureShowed">
+      <div class="flex items-center gap-[4px]">
+        <ng-container *ngIf="feature?.matched">
+          <img loading="lazy" [src]="'assets/icons/checked.svg'" alt="checked" appFilterSvg [color]="hotelPrimaryColor$ | async" />
+        </ng-container>
+        <ng-container *ngIf="!feature?.matched">
+          <img loading="lazy" [src]="'assets/icons/unchecked.svg'" alt="unchecked" />
+        </ng-container>
+        <div
+          appFeatureDescriptionTooltip
+          [isDisabled]="isMobile"
+          [featureName]="feature?.name"
+          [featureCode]="feature?.metadata?.code"
+          [featureDescription]="feature?.metadata?.description"
+          class="font-light text-[12px] leading-[140%] text-primary-color line-clamp-1"
+          [ngClass]="{ 'line-through': !feature?.matched }"
+        >
+          {{ feature?.name }}
+        </div>
+        <div class="py-[2px] px-[3px] border border-border-color rounded-[4px] text-[11px] leading-[12px] text-primary-color" *ngIf="feature?.metadata?.quantity > 1">
+          x{{ feature?.metadata?.quantity }}
+        </div>
+      </div>
+    </ng-container>
+    <div *ngIf="features?.length > maxFeatureShowed">
+      <div class="flex items-center gap-[4px]">
+        <div class="w-[8px]"></div>
+        <div class="cursor-pointer font-medium text-[12px] leading-[140%] text-primary-color hover:underline" (click)="moreClicked.emit()">
+          +{{ features?.length - maxFeatureShowed }} {{ "MORE" | translate | async }}
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container> -->
+
+<!-- List -->
+<ng-container *ngIf="displayMode === EDisplayMode.List">
+  <ng-container *ngIf="matchFeatures?.length > 0">
+    <div class="font-medium text-[14px] leading-[140%] mb-[8px] text-primary-color sm:text-[14px]">{{ 'MATCHED_FEATURES' | translate | async }}</div>
+    <div class="grid grid-cols-3 gap-x-[24px] gap-y-[6px] mb-[12px] sm:grid-cols-2">
+      <ng-container *ngFor="let feature of matchFeatures">
+        <div class="flex items-center gap-[4px]">
+          <img loading="lazy" [src]="'assets/icons/checked.svg'" alt="checked" appFilterSvg [color]="hotelPrimaryColor$ | async" />
+          <div
+            appFeatureDescriptionTooltip
+            [isDisabled]="isMobile"
+            [featureName]="feature?.name"
+            [featureCode]="feature?.metadata?.code"
+            [featureDescription]="feature?.metadata?.description"
+            class="font-light text-[12px] leading-[140%] text-primary-color line-clamp-1"
+          >
+            {{ feature?.name }}
+          </div>
+          <div class="py-[2px] px-[3px] border border-border-color rounded-[4px] text-[11px] leading-[12px] text-primary-color" *ngIf="feature?.metadata?.quantity > 1">
+            x{{ feature?.metadata?.quantity }}
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="notMatchFeatures?.length > 0">
+    <div class="font-medium text-[14px] leading-[140%] mb-[8px] text-primary-color sm:text-[14px]">{{ 'NOT_A_MATCH' | translate | async }}</div>
+    <div class="grid grid-cols-3 gap-x-[24px] gap-y-[6px] mb-[12px mb-[12px] sm:grid-cols-2">
+      <ng-container *ngFor="let feature of notMatchFeatures">
+        <div class="flex items-center gap-[4px]">
+          <img loading="lazy" [src]="'assets/icons/unchecked.svg'" alt="checked" />
+          <div
+            appFeatureDescriptionTooltip
+            [isDisabled]="isMobile"
+            [featureName]="feature?.name"
+            [featureCode]="feature?.metadata?.code"
+            [featureDescription]="feature?.metadata?.description"
+            class="font-light line-through text-[12px] leading-[140%] text-primary-color line-clamp-1"
+          >
+            {{ feature?.name }}
+          </div>
+          <div class="py-[2px] px-[3px] border border-border-color rounded-[4px] text-[11px] leading-[12px] text-primary-color" *ngIf="feature?.metadata?.quantity > 1">
+            x{{ feature?.metadata?.quantity }}
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="displayedAnotherFeatures()?.length > 0">
+    <div class="font-medium text-[14px] leading-[140%] mb-[8px] text-primary-color sm:text-[14px]">{{ 'OTHER_FEATURES_INCLUDED' | translate | async }}</div>
+    <div class="grid grid-cols-3 gap-x-[24px] gap-y-[6px] sm:grid-cols-2">
+      <ng-container *ngFor="let feature of displayedAnotherFeatures()">
+        <div class="flex items-center gap-[4px]">
+          <img loading="lazy" [src]="'assets/icons/plus.svg'" alt="checked" appFilterSvg [color]="colorText$ | async" />
+          <div
+            appFeatureDescriptionTooltip
+            [isDisabled]="isMobile"
+            [featureName]="feature?.name"
+            [featureCode]="feature?.metadata?.code"
+            [featureDescription]="feature?.metadata?.description"
+            class="font-light text-[12px] leading-[140%] text-primary-color line-clamp-1"
+          >
+            {{ feature?.name }}
+          </div>
+          <div class="py-[2px] px-[3px] border border-border-color rounded-[4px] text-[11px] leading-[12px] text-primary-color" *ngIf="feature?.metadata?.quantity > 1">
+            x{{ feature?.metadata?.quantity }}
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</ng-container>

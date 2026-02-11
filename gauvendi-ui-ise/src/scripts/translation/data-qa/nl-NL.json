@@ -1,0 +1,1537 @@
+{
+    "id": "28d9197f-73fc-11ef-83ad-0223397f383d",
+    "attribute": [
+        {
+            "key": "ADULT",
+            "value": "Volwassene"
+        },
+        {
+            "key": "ADULTS",
+            "value": "Volwassenen"
+        },
+        {
+            "key": "ROOM_AND_GUEST",
+            "value": "Accommodatie & Gasten"
+        },
+        {
+            "key": "ROOM",
+            "value": "Kamer"
+        },
+        {
+            "key": "ROOMS",
+            "value": "Kamers"
+        },
+        {
+            "key": "CHILDREN",
+            "value": "Kinderen"
+        },
+        {
+            "key": "CHILD",
+            "value": "Kind"
+        },
+        {
+            "key": "ADULT_POLICY",
+            "value": "Leeftijd 18 en ouder"
+        },
+        {
+            "key": "AGES",
+            "value": "Leeftijden"
+        },
+        {
+            "key": "CHILDREN_POLICY",
+            "value": "Leeftijd 0-17"
+        },
+        {
+            "key": "YEAR",
+            "value": "Jaar"
+        },
+        {
+            "key": "YEARS",
+            "value": "Jaren"
+        },
+        {
+            "key": "AGE_NEEDED",
+            "value": "Leeftijd vereist"
+        },
+        {
+            "key": "AGE_REQUIRED",
+            "value": "Om de juiste accommodatie te vinden, moeten we de leeftijden van de kinderen weten."
+        },
+        {
+            "key": "ADD_ROOM",
+            "value": "Kamer toevoegen"
+        },
+        {
+            "key": "APPLY",
+            "value": "Toepassen"
+        },
+        {
+            "key": "CHECK_IN",
+            "value": "Inchecken"
+        },
+        {
+            "key": "CHECK_OUT",
+            "value": "Uitchecken"
+        },
+        {
+            "key": "DONE",
+            "value": "Klaar"
+        },
+        {
+            "key": "PROMO",
+            "value": "Code toepassen"
+        },
+        {
+            "key": "SEARCH",
+            "value": "Zoeken"
+        },
+        {
+            "key": "CHECK_IN_DATE",
+            "value": "Incheckdatum"
+        },
+        {
+            "key": "CHECK_OUT_DATE",
+            "value": "Uitcheckdatum"
+        },
+        {
+            "key": "PROMOTION_CODE",
+            "value": "Voer hier in"
+        },
+        {
+            "key": "NIGHTS",
+            "value": "nachten"
+        },
+        {
+            "key": "NIGHT",
+            "value": "nacht"
+        },
+        {
+            "key": "STAY",
+            "value": "verblijf"
+        },
+        {
+            "key": "MON",
+            "value": "Ma"
+        },
+        {
+            "key": "TUE",
+            "value": "Di"
+        },
+        {
+            "key": "WED",
+            "value": "Wo"
+        },
+        {
+            "key": "THU",
+            "value": "Do"
+        },
+        {
+            "key": "FRI",
+            "value": "Vr"
+        },
+        {
+            "key": "SAT",
+            "value": "Za"
+        },
+        {
+            "key": "SUN",
+            "value": "Zo"
+        },
+        {
+            "key": "NOT_ALLOWED_CHECK_IN",
+            "value": "Geen inchecken "
+        },
+        {
+            "key": "HOTEL_OPERATION_VIOLATED_MESSAGE",
+            "value": "Reserveren is voor deze dag niet meer mogelijk."
+        },
+        {
+            "key": "STAY_IN_ONLY",
+            "value": "Alleen overnachten"
+        },
+        {
+            "key": "CTA_MESSAGE",
+            "value": "Alleen uitchecken"
+        },
+        {
+            "key": "CTD_MESSAGE",
+            "value": "Alleen inchecken"
+        },
+        {
+            "key": "NIGHT_MINIMUM",
+            "value": "Minimum aantal nachten"
+        },
+        {
+            "key": "SELECTED_FEATURED",
+            "value": "Geselecteerde kenmerken"
+        },
+        {
+            "key": "SUGGESTED_FOR",
+            "value": "Vaak gekozen door"
+        },
+        {
+            "key": "TRAVELLING_AS_GROUP",
+            "value": "groepsreizigers"
+        },
+        {
+            "key": "SOLO_TRAVELLER",
+            "value": "alleenreizende"
+        },
+        {
+            "key": "TWO_TRAVELLERS",
+            "value": "twee reizigers"
+        },
+        {
+            "key": "THREE_TRAVELLERS",
+            "value": "drie reizigers"
+        },
+        {
+            "key": "SMALL_GROUPS",
+            "value": "kleine groepen"
+        },
+        {
+            "key": "TRAVELLING_WITH_KIDS",
+            "value": "ouders "
+        },
+        {
+            "key": "FAMILY_TRIP",
+            "value": "gezinnen"
+        },
+        {
+            "key": "PERSONALIZE_YOUR_TRIP",
+            "value": "Personaliseer uw accommodatie"
+        },
+        {
+            "key": "NO_FEATURE_SELECTED",
+            "value": "Geen kenmerken geselecteerd"
+        },
+        {
+            "key": "CLEAR",
+            "value": "Wissen"
+        },
+        {
+            "key": "CLEAR_SELECTION",
+            "value": "Selectie wissen"
+        },
+        {
+            "key": "FIND_MATCH",
+            "value": "Match vinden"
+        },
+        {
+            "key": "YOUR_CHOICE",
+            "value": "Uw keuze"
+        },
+        {
+            "key": "MATCH",
+            "value": "Match"
+        },
+        {
+            "key": "LOWEST_PRICE",
+            "value": "Laagste prijs"
+        },
+        {
+            "key": "MOST_POPULAR",
+            "value": "Meest populair"
+        },
+        {
+            "key": "RECOMMENDED",
+            "value": "Onze tip"
+        },
+        {
+            "key": "RESTRICTION_AVAILABLE_FROM",
+            "value": "Deze kamer is alleen beschikbaar van"
+        },
+        {
+            "key": "TO",
+            "value": "tot"
+        },
+        {
+            "key": "RESTRICTION_LENGTH_OF_STAY",
+            "value": "Het minimale verblijf is"
+        },
+        {
+            "key": "RESTRICTION_CLOSE_TO_DEPARTURE",
+            "value": "Uitchecken op de geselecteerde datum is niet mogelijk."
+        },
+        {
+            "key": "RESTRICTION_CLOSE_TO_ARRIVAL",
+            "value": "Inchecken op de geselecteerde datum is niet mogelijk."
+        },
+        {
+            "key": "THROUGH",
+            "value": "tot en met"
+        },
+        {
+            "key": "RESTRICTION_MAX_LENGTH_OF_STAY",
+            "value": "U kunt maximaal"
+        },
+        {
+            "key": "NO_PREFERENCES_OR_FEATURES_GUARANTEED",
+            "value": "Geen voorkeuren"
+        },
+        {
+            "key": "YOUR_ROOM_WILL_BE_ASSIGNED_AS_PER_AVAILABILITY",
+            "value": "Kamers worden toegewezen op basis van beschikbaarheid."
+        },
+        {
+            "key": "MORE",
+            "value": "meer"
+        },
+        {
+            "key": "MATCHED_FEATURES",
+            "value": "Overeenkomende kenmerken"
+        },
+        {
+            "key": "NOT_A_MATCH",
+            "value": "Geen match"
+        },
+        {
+            "key": "OTHER_FEATURES_INCLUDED",
+            "value": "Andere kenmerken inbegrepen"
+        },
+        {
+            "key": "CHANGE_DATE",
+            "value": "Bevestig datum"
+        },
+        {
+            "key": "FROM",
+            "value": "Van"
+        },
+        {
+            "key": "INCLUDES",
+            "value": "inclusief"
+        },
+        {
+            "key": "EXCLUSIVE",
+            "value": "exclusief"
+        },
+        {
+            "key": "VIEW",
+            "value": "Selecteren"
+        },
+        {
+            "key": "SHOW_DETAILS",
+            "value": "Toon details"
+        },
+        {
+            "key": "DURING_STAY",
+            "value": "tijdens verblijf"
+        },
+        {
+            "key": "PER_STAY",
+            "value": "per verblijf"
+        },
+        {
+            "key": "KIDS",
+            "value": "kinderen"
+        },
+        {
+            "key": "KID",
+            "value": "kind"
+        },
+        {
+            "key": "FOR",
+            "value": "voor"
+        },
+        {
+            "key": "EVERYDAY",
+            "value": "elke dag"
+        },
+        {
+            "key": "EXCEPT",
+            "value": "behalve"
+        },
+        {
+            "key": "DAYS",
+            "value": "dagen"
+        },
+        {
+            "key": "DAY",
+            "value": "dag"
+        },
+        {
+            "key": "BEDROOMS",
+            "value": "Slaapkamers"
+        },
+        {
+            "key": "BEDROOM",
+            "value": "Slaapkamer"
+        },
+        {
+            "key": "ONLY",
+            "value": "alleen"
+        },
+        {
+            "key": "DAILY",
+            "value": "dagelijks"
+        },
+        {
+            "key": "PRICE_FOR",
+            "value": "Prijs voor"
+        },
+        {
+            "key": "ACCOMMODATION",
+            "value": "Accommodatie"
+        },
+        {
+            "key": "PER_NIGHT",
+            "value": "per nacht"
+        },
+        {
+            "key": "MESSAGE_NO_ROOM_OPTION_MATCH",
+            "value": "We ervaren hoge bezetting tijdens de gevraagde reisdata – probeer een andere datum."
+        },
+        {
+            "key": "MESSAGE_NO_ROOM_OPTION",
+            "value": "Sorry, er is geen kameroptie beschikbaar."
+        },
+        {
+            "key": "SELECT_PREFERENCE_FOR_MORE_OPTIONS",
+            "value": "Meer personalisatie"
+        },
+        {
+            "key": "ACCOMMODATION_OPTIONS",
+            "value": "Accommodatieoptie(s)"
+        },
+        {
+            "key": "MATCHES",
+            "value": "Overeenkomsten"
+        },
+        {
+            "key": "HOW_ARE_MATCHES_AND_PRICE_CALCULATED",
+            "value": "Hoe worden overeenkomsten en prijzen berekend?"
+        },
+        {
+            "key": "SHOW_PRICE_WITH_ALL_TAXES_AND_FEES",
+            "value": "Toon prijs inclusief alle belastingen en toeslagen"
+        },
+        {
+            "key": "ALTERNATIVE_OPTIONS",
+            "value": "Alternatieve opties"
+        },
+        {
+            "key": "PER_NIGHT_PRICE",
+            "value": "Prijs per nacht"
+        },
+        {
+            "key": "PRICE_PER_STAY",
+            "value": "Prijs per verblijf"
+        },
+        {
+            "key": "PRICE_VIEW",
+            "value": "Prijsweergave"
+        },
+        {
+            "key": "PRICE_RANGE",
+            "value": "Prijsklasse"
+        },
+        {
+            "key": "RESET",
+            "value": "Herstel"
+        },
+        {
+            "key": "CANCEL",
+            "value": "Annuleren"
+        },
+        {
+            "key": "OPTIONS_BASED_ON_SELECTED_PREFERENCES",
+            "value": "Opties op basis van geselecteerde voorkeuren en reisdatum."
+        },
+        {
+            "key": "NO",
+            "value": "Nee"
+        },
+        {
+            "key": "FEATURES_INCLUEDED",
+            "value": "Accommodatiekenmerken"
+        },
+        {
+            "key": "STANDARD_FEATURES",
+            "value": "Standaard kenmerken"
+        },
+        {
+            "key": "CANCELLATION_POLICY",
+            "value": "Annuleringsbeleid"
+        },
+        {
+            "key": "PAYMENT_TERM",
+            "value": "Betalingsvoorwaarden"
+        },
+        {
+            "key": "SELECT",
+            "value": "Selecteer"
+        },
+        {
+            "key": "ADD_SERVICES",
+            "value": "Voeg diensten toe"
+        },
+        {
+            "key": "YOU_ARE_SELECTING",
+            "value": "Huidige selectie:"
+        },
+        {
+            "key": "INCLUDES_TAXES_AND_FEES",
+            "value": "inclusief belastingen en toeslagen"
+        },
+        {
+            "key": "EXCLUSIVE_TAXES_AND_FEES",
+            "value": "exclusief belastingen en toeslagen"
+        },
+        {
+            "key": "FEATURES_INCLUDED",
+            "value": "Inbegrepen kenmerken"
+        },
+        {
+            "key": "BACK",
+            "value": "Terug"
+        },
+        {
+            "key": "ENHANCE_YOUR_STAY",
+            "value": "Verbeter uw verblijf"
+        },
+        {
+            "key": "SELECT_ADDITIONAL_EXTRAS_FOR",
+            "value": "Extra diensten selecteren voor"
+        },
+        {
+            "key": "MEAL_PLAN",
+            "value": "Culinaire keuzes"
+        },
+        {
+            "key": "HOTEL_SERVICES",
+            "value": "Aanvullende diensten"
+        },
+        {
+            "key": "EXTRAS",
+            "value": "Extra's"
+        },
+        {
+            "key": "INCLUDED",
+            "value": "Inbegrepen"
+        },
+        {
+            "key": "SELECTED",
+            "value": "Geselecteerd"
+        },
+        {
+            "key": "REMOVE",
+            "value": "Verwijderen"
+        },
+        {
+            "key": "TOTAL_PRICE_FOR",
+            "value": "Totale prijs voor"
+        },
+        {
+            "key": "COMPLETE_BOOKING",
+            "value": "Voltooi boeking"
+        },
+        {
+            "key": "BOOKING_REQUIRED_MESSAGE",
+            "value": "Goede keuze! Nu alleen nog de benodigde informatie invoeren."
+        },
+        {
+            "key": "BOOKING_INFORMATION",
+            "value": "Boekingsinformatie"
+        },
+        {
+            "key": "GUEST_INFORMATION",
+            "value": "Gastinformatie"
+        },
+        {
+            "key": "FIRST_NAME",
+            "value": "Voornaam"
+        },
+        {
+            "key": "LAST_NAME",
+            "value": "Achternaam"
+        },
+        {
+            "key": "EMAIL",
+            "value": "E-mail"
+        },
+        {
+            "key": "PHONE_NUMBER",
+            "value": "Mobiel nummer"
+        },
+        {
+            "key": "ADDRESS",
+            "value": "Adres"
+        },
+        {
+            "key": "CITY",
+            "value": "Stad"
+        },
+        {
+            "key": "STATE",
+            "value": "Provincie"
+        },
+        {
+            "key": "COUNTRY",
+            "value": "Land"
+        },
+        {
+            "key": "POSTAL_CODE",
+            "value": "Postcode"
+        },
+        {
+            "key": "ADDITIONAL_GUEST",
+            "value": "Extra gast"
+        },
+        {
+            "key": "SPECIAL_REQUEST",
+            "value": "Speciale verzoeken"
+        },
+        {
+            "key": "PAYMENT_METHODS",
+            "value": "Gewenste betaalmethode?"
+        },
+        {
+            "key": "RESERVE_WITHOUT_CREDIT_CARD",
+            "value": "Reserveren zonder betalingsgarantie"
+        },
+        {
+            "key": "PAY_WITH_CREDIT_CARD",
+            "value": "Garanderen met kaart"
+        },
+        {
+            "key": "GUARANTEE_WITH_CREDIT_CARD",
+            "value": "Garanderen met creditcard"
+        },
+        {
+            "key": "GUARANTEE_WITH_DEPOSIT",
+            "value": "Bankoverschrijving"
+        },
+        {
+            "key": "GUARANTEE_WITH_BITCOIN",
+            "value": "Betalen met Bitcoin"
+        },
+        {
+            "key": "GUARANTEE_WITH_E-PAY",
+            "value": "Betalen met ancv-connect betaling"
+        },
+        {
+            "key": "GUARANTEE_WITH_INVOICE",
+            "value": "Betalen met factuur"
+        },
+        {
+            "key": "TERM_OF_USE_BOOKING_MESSAGE",
+            "value": "Ik heb de Gebruiksvoorwaarden en het Privacybeleid gelezen en geaccepteerd en ik heb de tariefomschrijving en -regels voor mijn reservering gelezen en begrepen."
+        },
+        {
+            "key": "NEWSLETTERS_BOOKING_MESSAGE",
+            "value": "Door dit vakje aan te vinken, stemt u ermee in om periodieke nieuwsbrieven, updates en promotionele aanbiedingen te ontvangen op het door u opgegeven e-mailadres."
+        },
+        {
+            "key": "CONFIRM_BOOKING",
+            "value": "Bevestig boeking"
+        },
+        {
+            "key": "ACCEPTED",
+            "value": "Geaccepteerd"
+        },
+        {
+            "key": "CARD_NUMBER",
+            "value": "Kaartnummer"
+        },
+        {
+            "key": "EXPIRY_DATE",
+            "value": "Geldig tot"
+        },
+        {
+            "key": "CARDHOLDER_NAME",
+            "value": "Naam kaarthouder"
+        },
+        {
+            "key": "CVV",
+            "value": "CVV"
+        },
+        {
+            "key": "PROCESSING",
+            "value": "Verwerken"
+        },
+        {
+            "key": "DECLINE_BOOKING",
+            "value": "Voorstel afwijzen"
+        },
+        {
+            "key": "BOOKING_SUMMARY",
+            "value": "Boekingssamenvatting"
+        },
+        {
+            "key": "DATE",
+            "value": "Datum"
+        },
+        {
+            "key": "HIDE_DETAILS",
+            "value": "Verberg details"
+        },
+        {
+            "key": "ROOM_RATE",
+            "value": "Kamerprijs"
+        },
+        {
+            "key": "SUB_TOTAL",
+            "value": "Subtotaal"
+        },
+        {
+            "key": "INCLUDES_TAX",
+            "value": "Inclusief"
+        },
+        {
+            "key": "SERVICE_CHARGE",
+            "value": "Servicekosten"
+        },
+        {
+            "key": "TAX",
+            "value": "Belasting"
+        },
+        {
+            "key": "VAT",
+            "value": "BTW"
+        },
+        {
+            "key": "TOTAL",
+            "value": "Totaal"
+        },
+        {
+            "key": "PAYABLE_NOW",
+            "value": "Nu te betalen"
+        },
+        {
+            "key": "PAYABLE_ON_ARRIVAL",
+            "value": "Openstaand bedrag"
+        },
+        {
+            "key": "TAX_INFORMATION",
+            "value": "Belastinginformatie"
+        },
+        {
+            "key": "REQUEST_BOOKING_PAYMENT_FAILED",
+            "value": "We kunnen de betaling niet verwerken. Probeer het opnieuw."
+        },
+        {
+            "key": "GUEST_INFO_REQUIRED",
+            "value": "Gasteninformatie is vereist"
+        },
+        {
+            "key": "BOOKING_RFC_NOT_AVAILABLE",
+            "value": "De kamer is niet langer beschikbaar. Probeer een andere datum of selecteer een andere kamer."
+        },
+        {
+            "key": "REQUIRE_HOTEL_PAYMENT_MODE_CODE",
+            "value": "Betaalmethode is vereist. Probeer het later opnieuw!"
+        },
+        {
+            "key": "REQUEST_AFTER_OPERATION_CLOSING_TIME",
+            "value": "Deze boeking is na de operationele sluitingstijd!"
+        },
+        {
+            "key": "CARD_INFO_REQUIRED",
+            "value": "Voer alle vereiste creditcardgegevens in"
+        },
+        {
+            "key": "CHARGE_CREDIT_CARD_FAILED",
+            "value": "Creditcardbetaling mislukt. Probeer het later opnieuw!"
+        },
+        {
+            "key": "TOKENIZE_CARD_FAILED",
+            "value": "Het toevoegen van de kaarttoken is mislukt. Probeer het later opnieuw!"
+        },
+        {
+            "key": "CREATE_MEWS_CUSTOMER_FAILED",
+            "value": "Het aanmaken van een mews-klant is mislukt. Probeer het later opnieuw!"
+        },
+        {
+            "key": "REQUIRE_CARD_INFORMATION",
+            "value": "Ontbrekende kaartinformatie. Probeer het later opnieuw!"
+        },
+        {
+            "key": "BOOKING_NOT_AVAILABLE",
+            "value": "De kamer is niet langer beschikbaar. Probeer een andere datum of selecteer een andere kamer."
+        },
+        {
+            "key": "EXTRA_SERVICE",
+            "value": "Extra's"
+        },
+        {
+            "key": "BOOKING_SUCCESS_MESSAGE",
+            "value": "De boeking is geslaagd!"
+        },
+        {
+            "key": "BOOKING_CONFIRMATION",
+            "value": "Boekingsbevestiging"
+        },
+        {
+            "key": "BOOKING_NUMBER",
+            "value": "Boekingsnummer"
+        },
+        {
+            "key": "ARRIVAL",
+            "value": "Aankomst"
+        },
+        {
+            "key": "DEPARTURE",
+            "value": "Vertrek"
+        },
+        {
+            "key": "HOW_TO_REACH_US",
+            "value": "Hoe ons te bereiken"
+        },
+        {
+            "key": "MAIN_GUEST_INFORMATION",
+            "value": "Hoofd gastinformatie"
+        },
+        {
+            "key": "FULL_NAME",
+            "value": "Volledige naam"
+        },
+        {
+            "key": "EMAIL_ADDRESS",
+            "value": "E-mailadres"
+        },
+        {
+            "key": "PRICING_INFORMATION",
+            "value": "Prijsinformatie"
+        },
+        {
+            "key": "BACK_TO_HOMEPAGE",
+            "value": "Terug naar de homepage"
+        },
+        {
+            "key": "HOTEL_SERVICES_AND_ANCILLARIES",
+            "value": "Extra diensten"
+        },
+        {
+            "key": "BOOKER_INFORMATION",
+            "value": "Boekerinformatie"
+        },
+        {
+            "key": "SPECIAL_REQUEST_PLACEHOLDER",
+            "value": "Wij accepteren graag speciale verzoeken en zullen proberen deze waar mogelijk in te willigen."
+        },
+        {
+            "key": "PROPOSAL_EXPIRATION_MESSAGE",
+            "value": "Deze boeking is niet langer beschikbaar"
+        },
+        {
+            "key": "PROPOSAL_CONTACT_MESSAGE",
+            "value": "Neem contact met ons op om een nieuwe boeking te maken"
+        },
+        {
+            "key": "MAKE_ANOTHER_BOOKING",
+            "value": "Maak een andere boeking"
+        },
+        {
+            "key": "OR",
+            "value": "of"
+        },
+        {
+            "key": "PROPOSAL_DECLINED_MESSAGE",
+            "value": "U heeft deze boeking afgewezen op"
+        },
+        {
+            "key": "TERM_OF_USE",
+            "value": "Gebruiksvoorwaarden"
+        },
+        {
+            "key": "PRIVACY_STATEMENT",
+            "value": "Privacyverklaring"
+        },
+        {
+            "key": "POWER_BY",
+            "value": "aangedreven door"
+        },
+        {
+            "key": "YOU_GOT_A_DEAL",
+            "value": "DEAL boekbaar"
+        },
+        {
+            "key": "DEAL_AVAILABLE",
+            "value": "DEAL Beschikbaar"
+        },
+        {
+            "key": "DEAL_MESSAGE",
+            "value": "Moet minimaal verblijven"
+        },
+        {
+            "key": "DEAL_MAX_LOS_MESSAGE",
+            "value": "en maximaal"
+        },
+        {
+            "key": "AGE_OF_CHILD",
+            "value": "Leeftijd van kind"
+        },
+        {
+            "key": "MEAL_PLANS_AND_SERVICES",
+            "value": "Extra's"
+        },
+        {
+            "key": "FEATURE_CONFIGURATOR",
+            "value": "Kenmerkenconfigurator"
+        },
+        {
+            "key": "PRICE_SETTINGS",
+            "value": "Prijsinstellingen"
+        },
+        {
+            "key": "DECLINE",
+            "value": "Afwijzen"
+        },
+        {
+            "key": "INVALID_CAPACITY",
+            "value": "Ongeldige capaciteit aanvraag"
+        },
+        {
+            "key": "DISPLAY_TOTAL_PRICE",
+            "value": "Toon totale prijs"
+        },
+        {
+            "key": "ROOM_KEY",
+            "value": "Woonunit"
+        },
+        {
+            "key": "ROOM_SPACE",
+            "value": "Ruimte"
+        },
+        {
+            "key": "MESSAGE_CONFIRM_PAYMENT_CERTIFY",
+            "value": "Ik bevestig dat ik de"
+        },
+        {
+            "key": "MESSAGE_CONFIRM_PAYMENT_TERMS_OF_USE",
+            "value": "Gebruiksvoorwaarden"
+        },
+        {
+            "key": "MESSAGE_CONFIRM_PAYMENT_PRIVACY_STATEMENT",
+            "value": "Privacyverklaring"
+        },
+        {
+            "key": "MESSAGE_CONFIRM_PAYMENT_RATE_DESCRIPTION_RULE",
+            "value": "heb gelezen en begrijp de Tariefomschrijving en Tariefregels voor mijn reservering."
+        },
+        {
+            "key": "AND",
+            "value": "en"
+        },
+        {
+            "key": "TOOLTIP_HOW_DO_WE_CALCULATE_PERCENTAGE_MATCHES_LINE_1",
+            "value": "Opties en prijzen zijn net zo individueel als de voorkeuren van de gasten."
+        },
+        {
+            "key": "TOOLTIP_HOW_DO_WE_CALCULATE_PERCENTAGE_MATCHES_LINE_2",
+            "value": "Resultaten worden beïnvloed door functie-rangschikking en populariteit."
+        },
+        {
+            "key": "LANGUAGE",
+            "value": "Taal"
+        },
+        {
+            "key": "CURRENCY",
+            "value": "Munt"
+        },
+        {
+            "key": "LANGUAGE_AND_CURRENCY",
+            "value": "Taal & Munt"
+        },
+        {
+            "key": "NUMBER_OF_NIGHTS_STAY",
+            "value": "verblijf voor {{number_of_nights}} nacht(en)"
+        },
+        {
+            "key": "SELECT_RATE_SUITABLE",
+            "value": "Tariefopties"
+        },
+        {
+            "key": "COMBINATION_UNITS",
+            "value": "Combinatie van {{number_of_rooms}} eenheden"
+        },
+        {
+            "key": "PER_ROOM",
+            "value": "per kamer"
+        },
+        {
+            "key": "PER_PERSON_PER_NIGHT",
+            "value": "Per persoon / nacht"
+        },
+        {
+            "key": "PER_PERSON",
+            "value": "per persoon & verblijf"
+        },
+        {
+            "key": "NOT_ALLOW_CHECK_IN",
+            "value": "Geen check-in"
+        },
+        {
+            "key": "IS_REQUIRED",
+            "value": "is vereist"
+        },
+        {
+            "key": "IS_NOT_VALID",
+            "value": "is niet geldig"
+        },
+        {
+            "key": "RESTRICTION_LENGTH_OF_STAY_THROUGH",
+            "value": "Minimaal verblijf van {{number_of_night}} nachten vereist tijdens deze periode"
+        },
+        {
+            "key": "GO_TO_NEXT_ROOM",
+            "value": "Naar de volgende eenheid"
+        },
+        {
+            "key": "UNAVAILABLE",
+            "value": "Niet beschikbaar"
+        },
+        {
+            "key": "SELECT_AVAILABLE_DATE_ON_THE_RIGHT",
+            "value": "Selecteer de beschikbare datum aan de rechterkant"
+        },
+        {
+            "key": "RESIDENTIAL_UNITS",
+            "value": "woonunits"
+        },
+        {
+            "key": "NO_SERVICES",
+            "value": "Kan in de volgende stap worden geboekt."
+        },
+        {
+            "key": "SPECIAL_REQUEST_IS_NOT_VALID_MAX_LENGTH",
+            "value": "Speciale verzoek mag niet langer zijn dan 250 tekens"
+        },
+        {
+            "key": "PER_UNIT",
+            "value": "per eenheid"
+        },
+        {
+            "key": "ACCOMMODATION_LEFT",
+            "value": "Nu nog maar {{recommendation_count}} over"
+        },
+        {
+            "key": "SELECTED_ROOM",
+            "value": "Geselecteerde accommodatie"
+        },
+        {
+            "key": "SPECIAL_DEAL",
+            "value": "Speciale aanbieding"
+        },
+        {
+            "key": "SOLD_OUT",
+            "value": "Uitverkocht"
+        },
+        {
+            "key": "EXPLAIN",
+            "value": "Uitleg"
+        },
+        {
+            "key": "DESCRIPTION",
+            "value": "Beschrijving"
+        },
+        {
+            "key": "NIGHTS_MAXIMUM",
+            "value": "nachten maximaal"
+        },
+        {
+            "key": "SHOW_MORE_PRODUCTS",
+            "value": "Toon meer"
+        },
+        {
+            "key": "CARD_DECLINED",
+            "value": "Kaart geweigerd"
+        },
+        {
+            "key": "PAYMENT_FAILED_MSG",
+            "value": "Er is een fout opgetreden bij het verwerken van uw betaling."
+        },
+        {
+            "key": "PAYMENT_FAILED",
+            "value": "Betaling mislukt"
+        },
+        {
+            "key": "PER_ITEM",
+            "value": "per item"
+        },
+        {
+            "key": "GUARANTEE_WITH_DIGITAL_SYSTEM",
+            "value": "Betalen met digitaal gasten systeem"
+        },
+        {
+            "key": "THIS_IS_YOUR_PROPOSAL",
+            "value": "Dit is uw voorstel"
+        },
+        {
+            "key": "SAVE_CHANGE",
+            "value": "Wijziging opslaan"
+        },
+        {
+            "key": "COMPANY_INFORMATION",
+            "value": "Bedrijfsinformatie"
+        },
+        {
+            "key": "TAX_ID",
+            "value": "BTW-nummer"
+        },
+        {
+            "key": "COMPANY_NAME",
+            "value": "Bedrijfsnaam"
+        },
+        {
+            "key": "COMPANY_EMAIL",
+            "value": "Extra bedrijfs-e-mail"
+        },
+        {
+            "key": "CITY_OR_TOWN",
+            "value": "Stad/Dorp"
+        },
+        {
+            "key": "CONFIRM_YOUR_BOOKING",
+            "value": "Bevestig aanbod voor"
+        },
+        {
+            "key": "PROPOSAL_NUMBER",
+            "value": "Voorstelnummer"
+        },
+        {
+            "key": "BOOK_FOR_SOMEONE_ELSE",
+            "value": "Boeken voor iemand anders?"
+        },
+        {
+            "key": "ACCOMMODATIONS",
+            "value": "Accommodaties"
+        },
+        {
+            "key": "TRAVELLERS",
+            "value": "Reizigers"
+        },
+        {
+            "key": "TOTAL",
+            "value": "Totaal"
+        },
+        {
+            "key": "IMPRINT",
+            "value": "Impressum"
+        },
+        {
+            "key": "LEISURE",
+            "value": "Vrije tijd"
+        },
+        {
+            "key": "BUSINESS",
+            "value": "Zakelijk"
+        },
+        {
+            "key": "OTHERS",
+            "value": "Overig"
+        },
+        {
+            "key": "COLLAPSE",
+            "value": "Sluiten"
+        },
+        {
+            "key": "CLOSE",
+            "value": "Sluiten"
+        },
+        {
+            "key": "FEATURES_SELECTED_PRIORITY",
+            "value": "Kenmerken geselecteerd op prioriteit"
+        },
+        {
+            "key": "MORE_PERSONALIZATION",
+            "value": "Voeg meer voorkeuren toe"
+        },
+        {
+            "key": "ACCOMMODATION_RATES_FOR",
+            "value": "Accommodatieprijs voor"
+        },
+        {
+            "key": "EACH_ROOM_PER_NIGHT",
+            "value": "Per eenheid per nacht"
+        },
+        {
+            "key": "TOTAL_CHARGES",
+            "value": "Totaalprijs"
+        },
+        {
+            "key": "CONGRATULATION_YOU_SAVED",
+            "value": "U heeft bespaard"
+        },
+        {
+            "key": "BOOK_NOW",
+            "value": "BOEK NU"
+        },
+        {
+            "key": "TOTAL_PRICE_FOR_ALL_ROOMS",
+            "value": "Totale prijs voor alle eenheden"
+        },
+        {
+            "key": "TOTAL_PRICE_FOR",
+            "value": "Totale prijs voor:"
+        },
+        {
+            "key": "VIEW_DETAILS",
+            "value": "Bekijk Details"
+        },
+        {
+            "key": "TOTAL_CHARGES_FOR_ROOM",
+            "value": "Prijs voor "
+        },
+        {
+            "key": "TOTAL_CHARGES_FOR_ALL_ROOMS",
+            "value": "Totaalprijs"
+        },
+        {
+            "key": "PET",
+            "value": "huisdier"
+        },
+        {
+            "key": "PETS",
+            "value": "huisdieren"
+        },
+        {
+            "key": "ADDITIONAL_GUEST_LIST",
+            "value": "Andere gasten"
+        },
+        {
+            "key": "OPTIONAL",
+            "value": "optioneel"
+        },
+        {
+            "key": "REQUIRED",
+            "value": "vereist"
+        },
+        {
+            "key": "TRIP_PURPOSE_MSG",
+            "value": "Op zakenreis?"
+        },
+        {
+            "key": "SPECIAL_REQUEST_MSG",
+            "value": "Hebt u een boodschap?"
+        },
+        {
+            "key": "TOTAL_GUESTS",
+            "value": "Totaal Gasten"
+        },
+        {
+            "key": "TOTAL_AMOUNT",
+            "value": "Totaalbedrag"
+        },
+        {
+            "key": "EACH_ROOM_PER_NIGHT",
+            "value": "Elke kamer per nacht"
+        },
+        {
+            "key": "COMPANY_ADDRESS",
+            "value": "Bedrijfsadres"
+        },
+        {
+            "key": "TRIP_PURPOSE",
+            "value": "Reisdoel"
+        },
+        {
+            "key": "PAYMENT_METHOD",
+            "value": "Betaalmethode"
+        },
+        {
+            "key": "CREDIT_CARD",
+            "value": "Kredietkaart"
+        },
+        {
+            "key": "ACCOMMODATIONS_AND_GUESTS",
+            "value": "Verblijfseenheden en Gasten"
+        },
+        {
+            "key": "DESTINATION",
+            "value": "Bestemming"
+        },
+        {
+            "key": "PREPAID_AMOUNT",
+            "value": "Vooraf betaald bedrag"
+        },
+        {
+            "key": "TOTAL_AMOUNT_DUE",
+            "value": "Totaal te betalen bedrag"
+        },
+        {
+            "key": "SELECTED_FEATURED",
+            "value": "Geselecteerde kenmerken"
+        },
+        {
+            "key": "SELECT_FEATURES_TO_PERSONALISE_YOUR_STAY",
+            "value": "Selecteer kenmerken om uw verblijf te personaliseren"
+        },
+        {
+            "key": "TRIP_PURPOSE_MSG_OPT_1",
+            "value": "Ja, ik ben op zakenreis"
+        },
+        {
+            "key": "TRIP_PURPOSE_MSG_OPT_2",
+            "value": "Nee, dat ben ik niet"
+        },
+        {
+            "key": "ALTERNATIVE_ACCOMMODATION_OPTIONS",
+            "value": "Alternatieve accommodatieopties"
+        },
+        {
+            "key": "NO_AVAILABLE_ACCOMMODATION_FOR",
+            "value": "Er zijn geen opties beschikbaar voor:"
+        },
+        {
+            "key": "CHANGE_YOUR_SEARCH",
+            "value": "Wijzig uw zoekopdracht"
+        },
+        {
+            "key": "INPUT_ANOTHER_CODE",
+            "value": "Probeer een andere code in te voeren of te verwijderen"
+        },
+        {
+            "key": "NO_ROOM_OPTION_AVAILABLE",
+            "value": "Sorry, geen kameroptie beschikbaar"
+        },
+        {
+            "key": "PLEASE_CHOOSE_ANOTHER_DATE",
+            "value": "Kies een andere datum"
+        },
+        {
+            "key": "BOOK_ANOTHER_DATE",
+            "value": "Boek een andere datum"
+        },
+        {
+            "key": "MATCHED",
+            "value": "Overeenkomend"
+        },
+        {
+            "key": "OTHER",
+            "value": "Overige"
+        },
+        {
+            "key": "SHOW_LESS_PRODUCT",
+            "value": "Minder tonen"
+        },
+        {
+            "key": "BOOK",
+            "value": "Boek"
+        },
+        {
+            "key": "OPAQUE_TEXT",
+            "value": "Uw accommodatie wordt toegewezen zoals wij het gepast vinden. Geen voorkeuren worden in overweging genomen."
+        },
+        {
+            "key": "NO_MATCHED_AVAILABLE_LINE_1",
+            "value": "Er is geen {{space_type}} overeenkomende accommodatie beschikbaar"
+        },
+        {
+            "key": "NO_MATCHED_AVAILABLE_LINE_2",
+            "value": "U kunt een andere optie kiezen of kijken naar alternatieve opties"
+        },
+        {
+            "key": "NO_MATCHED_AVAILABLE_BUTTON",
+            "value": "Bekijk alternatieve optie - Geen overeenkomst"
+        },
+        {
+            "key": "STAY_UNIT",
+            "value": "Accommodatie"
+        },
+        {
+            "key": "STAY_UNITS",
+            "value": "Accommodaties"
+        },
+        {
+            "key": "EXTRA_SERVICES",
+            "value": "Extra diensten"
+        },
+        {
+            "key": "NIGHTS_MINIMUM",
+            "value": "Minimaal aantal nachten"
+        },
+        {
+            "key": "NIGHT_MAXIMUM",
+            "value": "Maximaal aantal nachten"
+        },
+        {
+            "key": "NOT_MATCH_BUT_AVAILABLE",
+            "value": "Beschikbaar tijdens uw geselecteerde data."
+        },
+        {
+            "key": "EXTRA_BED",
+            "value": "Extra bed"
+        },
+        {
+            "key": "EXTRA_BEDS",
+            "value": "Extra bedden"
+        },
+        {
+            "key": "FEATURES",
+            "value": "Kenmerken"
+        },
+        {
+            "key": "INCLUDED_SERVICES",
+            "value": "Inbegrepen diensten"
+        },
+        {
+            "key": "SPECIAL_ACCOMMODATION_FEATURES",
+            "value": "Speciale accommodatiekenmerken"
+        },
+        {
+            "key": "SPECIAL_FEATURES",
+            "value": "Speciale kenmerken"
+        },
+        {
+            "key": "VIEW_ALL_PHOTOS",
+            "value": "Bekijk alle foto's"
+        },
+        {
+            "key": "RATE",
+            "value": "Tarief"
+        },
+        {
+            "key": "ROOM_IMAGE",
+            "value": "Kamerafbeelding"
+        },
+        {
+            "key": "NO_FEATURE_GUARANTEED",
+            "value": "Geen garantie op kenmerken."
+        },
+        {
+            "key": "PER_STAY_UNIT_PER_NIGHT",
+            "value": "Per eenheid per nacht"
+        },
+        {
+            "key": "BOOKING_NOTES",
+            "value": "Boekingsnotities"
+        },
+        {
+            "key": "SELECT_YOUR_FEATURES",
+            "value": "Selecteer uw kenmerken"
+        },
+        {
+            "key": "YOUR_SELECTIONS",
+            "value": "Uw selecties"
+        },
+        {
+            "key": "EDIT_MY_SELECTIONS",
+            "value": "Wijzig mijn selecties"
+        },
+        {
+            "key": "CATEGORY_HOVERING_MESSAGE",
+            "value": "Selecteer {{feature_name}} en meer"
+        },
+        {
+            "key": "BOOKING_PROCESSING_TITLE",
+            "value": "Boeking wordt verwerkt!"
+        },
+        {
+            "key": "BOOKING_PROCESSING_INSTRUCTION",
+            "value": "Niet op ‘terug’ of ‘sluiten’ klikken en de browser niet vernieuwen."
+        },
+        {
+            "key": "BOOKING_PROCESSING_ERROR_TITLE",
+            "value": "Uw boeking kan niet worden voltooid!"
+        },
+        {
+            "key": "BOOKING_PROCESSING_ERROR_INSTRUCTION",
+            "value": "Uw boeking is niet voltooid. Probeer het opnieuw."
+        },
+        {
+            "key": "GUARANTEE_WITH_PAYPAL",
+            "value": "PayPal"
+        },
+        {
+            "key": "OTHER_PAYMENT",
+            "value": "Andere betaalmethode"
+        },
+        {
+            "key": "FIXED_FEE",
+            "value": "Vaste Toeslag"
+        },
+        {
+            "key": "FIND_YOUR_MATCH",
+            "value": "Vind je match"
+        },
+        {
+            "key": "CLEAR_ALL",
+            "value": "Alles wissen"
+        },
+        {
+            "key": "FIND_A_DIFFERENT_MATCH",
+            "value": "Andere optie vinden"
+        },
+        {
+            "key": "BOOKING_PREFERENCES_CHANGED",
+            "value": "De boekingsvoorkeuren zijn gewijzigd.\n Druk op '{0}' om toe te passen."
+        },
+        {
+            "key": "TOTAL_UNITS",
+            "value": "Totaal Eenheden"
+        },
+        {
+            "key": "TOTAL_PRICE",
+            "value": "Totale prijs"
+        },
+        {
+            "key": "PER_PET_PER_STAY",
+            "value": "Per huisdier / verblijf"
+        },
+        {
+            "key": "PER_PET_PER_NIGHT",
+            "value": "Per huisdier / nacht"
+        },
+        {
+            "key": "UNIT",
+            "value": "eenheid"
+        },
+        {
+            "key": "UNITS",
+            "value": "eenheden"
+        },
+        {
+            "key": "ADD_ACCOMMODATION",
+            "value": "Accommodatie toevoegen"
+        },
+        {
+            "key": "PER",
+            "value": "per"
+        },
+        {
+            "key": "TOTAL_REMAINING",
+            "value": "Totaal resterend"
+        },
+        {
+            "key": "ADD_UNIT",
+            "value": "Geen match beschikbaar"
+        },
+        {
+            "key": "FEATURE_SELECTED",
+            "value": "Kenmerken geselecteerd"
+        },
+        {
+            "key": "BOOKING_DETAILS",
+            "value": "Boekingsgegevens"
+        },
+        {
+            "key": "CUSTOMIZE",
+            "value": "Aanpassen"
+        },
+        {
+            "key": "PICK_FEATURES",
+            "value": "Kenmerken kiezen"
+        },
+        {
+            "key": "OPTION",
+            "value": "Optie"
+        },
+        {
+            "key": "OPTIONS",
+            "value": "Opties"
+        },
+        {
+            "key": "WHO_IS_COMING_AND_WHEN",
+            "value": "Wie komt wanneer?"
+        },
+        {
+            "key": "AVAILABLE_OPTIONS",
+            "value": "Beschikbare opties"
+        },
+        {
+            "key": "WHO_BOOKED_ALSO_CHOOSE",
+            "value": "{0} die de {1} hebben geboekt, kozen ook:"
+        }
+    ]
+}

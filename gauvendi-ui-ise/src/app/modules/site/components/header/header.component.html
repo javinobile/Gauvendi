@@ -1,0 +1,52 @@
+<div class="flex flex-col w-full px-6 mx-auto gvd-header sm:px-4 md:px-4 bg-configurator-background-color">
+  <div class="flex flex-wrap items-start justify-between w-full pt-2 gvd-header-container">
+    <div class="fixed inset-0 bg-[#000] bg-opacity-0 z-40" *ngIf="overlayBackgroundDisplayed()" (click)="collapseConfigurator()"></div>
+    <a [tabindex]="0" [href]="hotelUrl$ | async" class="mt-[12px] w-[9%] relative z-50 md:w-[14%] lg:w-[12%] sm:w-[28%] pb-2 order-1 gvd-header-logo-container">
+      <img loading="lazy" [src]="hotel?.iconImageUrl" alt="Hotel Logo" class="gvd-header-logo" />
+    </a>
+    <div [tabindex]="1" class="relative z-50 max-w-[1200px] mx-auto order-2 gvd-header-calendar mt-2 w-full">
+      <app-calendar></app-calendar>
+    </div>
+    @if (isMobile$ | async) {
+      <div
+        class="relative z-50 text-header-color flex items-center justify-end gap-[8px] w-[10%] lg:px-0 text-[14px] font-medium leading-[120%] cursor-pointer gvd-header-lang-currency"
+        appOverlayMobile
+        [component]="popUpComponent"
+        [data]="{
+          currencies: currencyList$ | async,
+          currencyCode: currency,
+          langList: localeList(),
+          langSelected: locale
+        }"
+      >
+        <mat-icon class="!text-header-color">language</mat-icon>
+        <div>{{ locale?.code | uppercase }}</div>
+        <div class="w-[2px] h-[17px]"></div>
+        <div>{{ currency }}</div>
+      </div>
+    } @else {
+      <div class="flex items-center justify-end gap-[8px] w-[9%] md:w-[14%] lg:w-[12%] sm:w-[28%] lg:px-0 text-[14px] leading-[120%] order-3 mt-4 gvd-header-lang-currency">
+        <button
+          [tabindex]="0"
+          #origin
+          class="font-medium relative z-50 text-header-color flex items-center justify-end gap-[8px] text-[14px] leading-[120%]"
+          appSelectLangAndCurrency
+          [component]="popUpComponent"
+          [origin]="origin"
+          [positions]="connectedPosition$ | async"
+          [data]="{
+            currencies: currencyList$ | async,
+            currencyCode: currency,
+            langList: localeList(),
+            langSelected: locale
+          }"
+        >
+          <mat-icon class="!text-header-color !text-[24px]">language</mat-icon>
+          <span class="inline-block">{{ locale?.code | uppercase }}</span>
+          <span class="inline-block w-[2px] h-[17px] bg-current"></span>
+          <span class="inline-block">{{ currency }}</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

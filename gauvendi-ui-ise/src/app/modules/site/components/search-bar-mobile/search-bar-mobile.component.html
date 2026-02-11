@@ -1,0 +1,40 @@
+<div class="shadow-search-bar-mobile border border-hotel-primary-color rounded-lg pl-4 pr-2 py-2 bg-entry-bar-background-color">
+  <div class="rounded-[16px] flex items-center justify-between">
+    <ng-container *ngIf="summary$ | async as summary">
+      <div
+        id="searchBarMobile"
+        class="md:w-[calc(100%-48px)] flex flex-col gap-1"
+        appOverlayMobile
+        [component]="popUpComponent"
+        [data]="{
+          defaultPax: +(defaultPax$ | async)
+        }"
+        (valueChange)="onSearch()"
+      >
+        <div class="text-[14px] font-semibold leading-[140%] text-primary-color">
+          <ng-container *ngIf="summary?.arrival; else tplCheckIn">
+            {{ summary?.arrival | dateWithLocale: (locale$ | async) : 'DD MMM, yyyy' : false }}
+          </ng-container>
+          -
+          <ng-container *ngIf="summary?.departure; else tplCheckOut">
+            {{ summary?.departure | dateWithLocale: (locale$ | async) : 'DD MMM, yyyy' : false }}
+          </ng-container>
+        </div>
+        <app-option-units-info [item]="unitInfo$()" [showTotalRoom]="true" [showText]="false"></app-option-units-info>
+      </div>
+      <div class="">
+        <button
+          (click)="onSearch()"
+          [disabled]="!summary?.arrival || !summary?.departure || summary?.totalRoom < 1"
+          [ngClass]="{ 'opacity-50 !cursor-not-allowed': !summary?.arrival || !summary?.departure || summary?.totalRoom < 1 }"
+          class="w-[36px] h-[36px] rounded-[100px] flex items-center justify-center gap-[8px] text-button-normal-color bg-button-normal-background-color"
+        >
+          <img [src]="'assets/icons/search.svg'" alt="search" width="16" height="16" appFilterSvg [color]="buttonTextColor$ | async" />
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #tplCheckIn>{{ 'CHECK_IN_DATE' | translate | async }}</ng-template>
+<ng-template #tplCheckOut>{{ 'CHECK_OUT_DATE' | translate | async }}</ng-template>

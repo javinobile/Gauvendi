@@ -1,0 +1,14 @@
+<div class="flex items-center justify-center">
+  <div class="flex items-center justify-between p-[8px] w-[84px] h-[36px] rounded-[8px] border border-hotel-primary-color" [class]="customClass">
+    <button [attr.aria-label]="'REMOVE' | translate | async" class="flex" [class.disabled]="value <= min" (click)="!(value <= min) && updateValue('subtract')">
+      <mat-icon class="!w-auto !h-auto text-[18px] cursor-pointer text-hotel-primary-color" [class]="customTextClass">remove </mat-icon>
+    </button>
+
+    <div class="">
+      <span class="text-[14px] font-normal leading-[140%] text-hotel-primary-color" [class]="customTextClass">{{ value || 0 }}</span>
+    </div>
+    <button [attr.aria-label]="'ADD' | translate | async" class="flex" [class.disabled]="value >= max" (click)="!(value >= max) && updateValue('add')">
+      <mat-icon class="!w-auto !h-auto text-[18px] cursor-pointer text-hotel-primary-color" [class]="customTextClass">add</mat-icon>
+    </button>
+  </div>
+</div>

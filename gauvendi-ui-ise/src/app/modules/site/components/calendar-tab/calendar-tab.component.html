@@ -1,0 +1,16 @@
+<div
+  (click)="changeTab.emit(index)"
+  class="min-h-[38px] calendar__header bg-background-secondary-color flex items-center w-fit px-3 py-2 rounded-tl-[0.75rem] rounded-tr-[0.75rem] cursor-pointer"
+  [ngClass]="{ calendar__add: selectedIndex !== index }"
+>
+  <img loading="lazy" alt="" src="assets/beta/key.svg" width="18" height="18" />
+  <div class="ml-1 text-xs font-normal">
+    @if (selectedIndex === index) {
+      {{ 'ACCOMMODATION' | translate | async }}
+    }
+    #{{ index + 1 }}
+  </div>
+  @if (selectedIndex === index && index > 0) {
+    <mat-icon class="!w-[18px] !h-[18px] text-[18px] ml-2" (click)="closeCurrentTab($event, index)">close</mat-icon>
+  }
+</div>

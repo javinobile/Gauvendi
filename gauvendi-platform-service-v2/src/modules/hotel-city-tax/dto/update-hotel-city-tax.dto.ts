@@ -1,0 +1,110 @@
+import { 
+  CityTaxChargeMethodEnum, 
+  CityTaxUnitEnum, 
+  CityTaxStatusEnum, 
+  LanguageCodeEnum 
+} from "@enums/common";
+import { 
+  IsString, 
+  IsNotEmpty, 
+  IsOptional, 
+  IsNumber, 
+  IsEnum, 
+  IsDateString, 
+  IsArray, 
+  ValidateNested 
+} from "class-validator";
+import { Type } from "class-transformer";
+
+export class HotelCityTaxTranslationUpdateDto {
+  @IsEnum(LanguageCodeEnum)
+  @IsNotEmpty()
+  languageCode: LanguageCodeEnum;
+
+  @IsString()
+  @IsOptional()
+  name?: string;
+
+  @IsString()
+  @IsOptional()
+  description?: string;
+
+  // Index signature to match Translation interface
+  [key: string]: any;
+}
+
+export class HotelCityTaxAgeGroupUpdateDto {
+  @IsNumber()
+  @IsOptional()
+  fromAge?: number;
+
+  @IsNumber()
+  @IsOptional()
+  toAge?: number;
+
+  @IsNumber()
+  @IsOptional()
+  value?: number;
+}
+
+export class UpdateHotelCityTaxDto {
+  @IsString()
+  @IsNotEmpty()
+  id: string;
+
+  @IsString()
+  @IsNotEmpty()
+  hotelCode: string;
+  
+  @IsString()
+  @IsOptional()
+  code?: string;
+  
+  @IsString()
+  @IsOptional()
+  name?: string;
+  
+  @IsEnum(CityTaxUnitEnum)
+  @IsOptional()
+  unit?: CityTaxUnitEnum;
+  
+  @IsNumber()
+  @IsOptional()
+  value?: number;
+  
+  @IsEnum(CityTaxChargeMethodEnum)
+  @IsOptional()
+  chargeMethod?: CityTaxChargeMethodEnum;
+  
+  @IsDateString()
+  @IsOptional()
+  validFrom?: string;
+  
+  @IsDateString()
+  @IsOptional()
+  validTo?: string;
+  
+  @IsEnum(CityTaxStatusEnum)
+  @IsOptional()
+  status?: CityTaxStatusEnum;
+  
+  @IsString()
+  @IsOptional()
+  description?: string;
+  
+  @IsString()
+  @IsOptional()
+  mappingPmsCityTaxCode?: string;
+
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => HotelCityTaxTranslationUpdateDto)
+  @IsOptional()
+  translationInputList?: HotelCityTaxTranslationUpdateDto[];
+
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => HotelCityTaxAgeGroupUpdateDto)
+  @IsOptional()
+  ageGroupInputList?: HotelCityTaxAgeGroupUpdateDto[];
+}

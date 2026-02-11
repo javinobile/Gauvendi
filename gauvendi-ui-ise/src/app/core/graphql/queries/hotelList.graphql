@@ -1,0 +1,83 @@
+query HotelList($filter: HotelFilter) {
+  response: hotelList(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on Hotel {
+        id
+        name
+        code
+        timeZone
+        iconImageUrl
+        iconSymbolUrl
+        state
+        city
+        address
+        phoneCode
+        phoneNumber
+        emailAddressList
+        postalCode
+        signature
+        backgroundCategoryImageUrl
+        customThemeImageUrl
+        lowestPriceImageUrl
+        measureMetric
+        addressDisplay
+        isCityTaxIncludedSellingPrice
+        brand {
+          name
+        }
+        country {
+          code
+          name
+          phoneCode
+          translationList {
+            languageCode
+            name
+          }
+        }
+        taxSetting
+        serviceChargeSetting
+        hotelPaymentModeList {
+          id
+          code
+          name
+          description
+        }
+        hotelConfigurationList {
+          configType
+          configValue {
+            minChildrenAge
+            maxChildrenAge
+            maxChildrenCapacity
+            colorCode
+            shortDescription
+            content
+            title
+            value
+            metadata
+          }
+        }
+        paymentAccount {
+          paymentId
+          publicKey
+          type
+          subMerchantId
+        }
+        baseCurrency {
+          code
+          currencyRateList {
+            rate
+            exchangeCurrency {
+              code
+            }
+          }
+        }
+        stayOptionBackgroundImageUrl
+        customizeStayOptionBackgroundImageUrl
+        stayOptionSuggestionImageUrl
+        signatureBackgroundImageUrl
+      }
+    }
+  }
+}

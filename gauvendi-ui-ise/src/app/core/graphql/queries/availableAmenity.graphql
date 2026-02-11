@@ -1,0 +1,29 @@
+query AvailableAmenity($filter: HotelAmenityFilter) {
+  response: availableAmenity(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on HotelAmenity {
+        id
+        name
+        code
+        description
+        amenityType
+        pricingUnit
+        iconImageUrl
+        totalBaseAmount
+        totalGrossAmount
+        baseRate
+        hotelAmenityPriceList {
+          hotelAgeCategory {
+            code
+            name
+            fromAge
+            toAge
+          }
+          price
+        }
+      }
+    }
+  }
+}

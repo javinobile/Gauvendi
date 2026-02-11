@@ -1,0 +1,638 @@
+<div class="bg-background-secondary-color rounded-t-[16px] px-[20px] py-[24px] sm:p-[16px] sm:w-full">
+  <div class="text-center text-[20px] font-medium leading-[24px] text-primary-color sm:text-[17px]">
+    {{ 'BOOKING_SUMMARY' | translate | async }}
+  </div>
+  <div class="text-center text-[14px] font-light leading-[19.6px] text-primary-color">{{ hotelName }}</div>
+
+  <!-- Stay guest info -->
+  <div class="mt-[20px] border border-border-color rounded-[12px] p-[12px]">
+    <div class="flex items-center sm:flex-col">
+      <div class="flex flex-col items-center border-e border-border-color sm:border-e-0 sm:border-b sm:px-0 sm:pb-[6px] sm:flex-row sm:justify-between sm:w-full pr-4">
+        <div class="text-[14px] font-normal leading-[19.6px] text-primary-color mb-[2px]">{{ 'TOTAL_GUESTS' | translate | async }}</div>
+        <app-option-units-info
+          [item]="roomSummary()"
+          [showSpace]="false"
+          [showText]="false"
+          [customClass]="'!gap-4'"
+          textClass="text-16 font-medium !text-primary-color"
+          iconClass="w-[20px] h-[20px]"
+        />
+      </div>
+      <div class="flex-1 flex flex-col items-center border-e border-border-color px-[8px] sm:border-e-0 sm:border-b sm:px-0 sm:py-[6px] sm:flex-row sm:justify-between sm:w-full">
+        <div class="text-[14px] font-normal leading-[19.6px] text-primary-color mb-[2px] flex items-center">
+          {{ 'TOTAL_UNITS' | translate | async }}
+        </div>
+        <div class="flex items-center gap-[16px]">
+          <div class="flex items-center gap-[8px]">
+            @for (
+              mappedItem of summaryBooking?.reservationPricingList
+                | groupArray: 'roomProduct.retailFeatureList' : 'hotelRetailCategory.code' : spaceTypeCategoryCode : 'code' : 'retailFeatureImageList[0].imageUrl' : 'name';
+              track mappedItem
+            ) {
+              <div class="flex items-end gap-[4px]">
+                @if (mappedItem.value; as imageUrl) {
+                  <img
+                    loading="lazy"
+                    [src]="imageUrl || 'assets/beta/room.svg'"
+                    [alt]="spaceTypeCategoryCode"
+                    width="22"
+                    height="22"
+                    appFilterSvg
+                    [color]="colorText"
+                    appCustomTooltip
+                    [tooltipMessage]="mappedItem.description"
+                  />
+                  <div class="text-[16px] font-medium leading-[1.2] text-primary-color">
+                    {{ mappedItem.count }}
+                  </div>
+                }
+              </div>
+            }
+          </div>
+          <!-- <div class="flex items-center gap-[4px]">
+              <img loading="lazy" src="assets/icons/bed.svg" width="16" height="16" appFilterSvg [color]="colorText"/>
+              <div class="text-[20px] font-normal leading-[24px] text-primary-color">
+                {{ summaryBooking?.reservationPricingList | totalBedrooms }}
+              </div>
+            </div> -->
+        </div>
+      </div>
+      <div class="flex flex-col items-center sm:flex-row sm:justify-between sm:w-full sm:pt-[6px]">
+        <div class="text-[14px] font-normal leading-[19.6px] text-primary-color mb-[2px]">{{ 'TOTAL_PRICE' | translate | async }}</div>
+        <div class="text-[20px] font-medium leading-[24px] text-hotel-primary-color">
+          {{ summaryBooking?.totalSellingRate | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2' }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reservation room -->
+  <ng-container *ngFor="let item of summaryBooking?.reservationPricingList; let index = index; let first = first">
+    <div
+      class="mt-[12px] border border-border-color py-[16px] px-[12px] rounded-[12px] overflow-hidden transition-all ease-in duration-500"
+      [ngClass]="{
+        'border-hotel-primary-color': openState?.includes(index)
+      }"
+    >
+      <ng-container
+        *ngIf="{
+          reservationAmenities: item?.amenityPricingList | sortExtraServices,
+          currentRatePlan: ratePlanList$ | async | getCurrentRatePlan: item?.roomProductSalesPlan?.ratePlan?.code,
+          guaranteeFeatures: item?.roomProduct?.retailFeatureList | getMatchingFeatures: index : isMatchedFlow
+        } as vm"
+      >
+        <div class="text-[17px] font-medium leading-[23.8px] text-primary-color sm:text-[12px]">
+          {{ arrivalDate | dateWithLocale: locale : 'ddd, DD MMM yyyy' : false }}
+          - {{ departureDate | dateWithLocale: locale : 'ddd, DD MMM yyyy' : false }} ({{ bookingDuration }} {{ (bookingDuration > 1 ? 'NIGHTS' : 'NIGHT') | translate | async }})
+        </div>
+        <app-room-summary-label
+          [roomSummary]="{
+            adults: item?.adults,
+            children: item?.childrenAgeList?.length,
+            pets: item?.allocatedPets
+          }"
+          labelClass="text-[14px] leading-[19.6px] font-light text-primary-color sm:text-[12px]"
+        />
+
+        <div class="w-full h-[1px] border-b border-border-color my-[12px]"></div>
+        <div>
+          <!-- Room name -->
+          <div class="flex items-center gap-[8px] text-[14px] font-medium leading-[19.6px] text-primary-color mb-[4px] sm:text-[12px]">
+            <span
+              class="px-[3px] py-[4px] rounded-[4px] text-[14px] font-normal sm:text-[12px]"
+              *ngIf="summaryBooking?.reservationPricingList?.length > 1"
+              [style.background-color]="colorPrimary | hexToRgba: 0.3"
+            >
+              #{{ index + 1 }}.
+            </span>
+
+            {{
+              !(roomsConfigurationCode && roomsConfigurationCode[index] === 'LOWEST_PRICE') || !isLowestPriceOpaque
+                ? item?.roomProduct?.name
+                : ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async)
+            }}
+          </div>
+
+          <!-- Room unit info -->
+          <div class="flex flex-wrap items-end gap-2">
+            <app-option-units-info
+              [item]="roomUnitInfoConfigs()[index]"
+              [prefixTemplate]="spaceTypeTemplate"
+              [showSpace]="true"
+              [showText]="openState?.includes(index)"
+              [full]="true"
+              [customClass]="'!gap-3'"
+            />
+            <ng-template #spaceTypeTemplate>
+              @if (item.roomProduct.retailFeatureList | groupArray: '' : 'hotelRetailCategory.code' : spaceTypeCategoryCode : 'code' : 'retailFeatureImageList[0].imageUrl' : 'name'; as mappedList) {
+                @if (mappedList?.[0]; as mappedItem) {
+                  <div class="flex items-end gap-1">
+                    <img
+                      *ngIf="mappedItem.value"
+                      loading="lazy"
+                      [src]="mappedItem.value"
+                      [alt]="spaceTypeCategoryCode"
+                      width="20"
+                      height="20"
+                      appFilterSvg
+                      [color]="colorText"
+                      appCustomTooltip
+                      [tooltipMessage]="mappedItem.description"
+                    />
+                    <span *ngIf="openState?.includes(index)" class="font-normal text-12 text-secondary-color">{{ mappedItem.description }}</span>
+                  </div>
+                }
+              }
+            </ng-template>
+          </div>
+        </div>
+
+        <!-- Room and services images -->
+        <div class="mt-[12px] flex items-center gap-[8px]">
+          <ng-container *ngIf="roomsConfigurationCode[index] === 'LOWEST_PRICE' && isLowestPriceOpaque">
+            <div
+              class="bg-no-repeat bg-cover h-[91px] sm:h-[62px] bg-center rounded-[8px] w-[calc(100%/4)] cursor-pointer"
+              [ngStyle]="{ 'background-image': lowestPriceImageUrl | parseImageUrl }"
+            ></div>
+            <ng-container *ngFor="let amenity of vm.reservationAmenities | slice: 0 : 3; let first = first; let last = last">
+              <div
+                class="amenity-image bg-no-repeat bg-cover h-[91px] sm:h-[62px] bg-center rounded-[8px] w-[calc(100%/4)] cursor-pointer sm:w-[calc(100%/3)] relative"
+                [class.first-amenity]="first"
+                [ngStyle]="{ 'background-image': amenity?.iconImageUrl | parseImageUrl }"
+                (click)="openGallery(item, index, roomsConfigurationCode[index] === 'LOWEST_PRICE' && isLowestPriceOpaque)"
+              >
+                <div
+                  class="absolute w-full h-full more-image-count flex items-center justify-center text-[#FFFFFF] text-center text-[14px] font-medium leading-[16.8px] rounded-[8px] sm:text-[12px] sm:leading-[14.4px]"
+                  *ngIf="vm.reservationAmenities?.length > 3 && last"
+                >
+                  {{ 'VIEW_ALL_PHOTOS' | translate | async }}
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="item?.roomProduct?.rfcImageList?.length > 0 && (roomsConfigurationCode[index] !== 'LOWEST_PRICE' || !isLowestPriceOpaque)">
+            <ng-container *ngFor="let image of item?.roomProduct?.rfcImageList | slice: 0 : (vm.reservationAmenities?.length > 0 ? 3 : 4); let i = index; let last = last">
+              <div
+                class="bg-no-repeat bg-cover h-[91px] sm:h-[62px] bg-center rounded-[8px] w-[calc(100%/4)] cursor-pointer sm:w-[calc(100%/3)] relative"
+                [ngStyle]="{ 'background-image': image?.imageUrl | parseImageUrl }"
+                (click)="openGallery(item, index, roomsConfigurationCode[i] === 'LOWEST_PRICE' && isLowestPriceOpaque)"
+              >
+                <div
+                  class="absolute w-full h-full more-image-count flex items-center justify-center text-center text-[#FFFFFF] text-[14px] font-medium leading-[16.8px] rounded-[8px] sm:text-[12px] sm:leading-[14.4px]"
+                  *ngIf="!(vm.reservationAmenities?.length > 0) && item?.roomProduct?.rfcImageList?.length - 4 > 0 && last"
+                >
+                  {{ 'VIEW_ALL_PHOTOS' | translate | async }}
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="vm?.reservationAmenities?.length > 0">
+              <ng-container *ngFor="let amenity of vm.reservationAmenities | slice: 0 : 1; let first = first; let last = last">
+                <div
+                  class="amenity-image bg-no-repeat bg-cover h-[91px] sm:h-[62px] bg-center rounded-[8px] w-[calc(100%/4)] cursor-pointer sm:w-[calc(100%/3)] relative"
+                  [class.first-amenity]="first"
+                  [ngStyle]="{ 'background-image': amenity?.iconImageUrl | parseImageUrl }"
+                  (click)="openGallery(item, index, roomsConfigurationCode[index] === 'LOWEST_PRICE' && isLowestPriceOpaque)"
+                >
+                  <div
+                    class="absolute w-full h-full more-image-count flex items-center justify-center text-center text-[#FFFFFF] text-[14px] font-medium leading-[16.8px] rounded-[8px] sm:text-[12px] sm:leading-[14.4px]"
+                    *ngIf="vm?.reservationAmenities?.length > 1 && last"
+                  >
+                    {{ 'VIEW_ALL_PHOTOS' | translate | async }}
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </div>
+
+        <ng-container *ngIf="openState?.includes(index)">
+          <!-- Product description -->
+          @if (item?.roomProduct?.description; as description) {
+            <div class="w-full h-[1px] bg-border-color my-[12px]"></div>
+            <div class="flex items-center justify-between mb-[6px] cursor-pointer" (click)="toggleProductDescription = !toggleProductDescription">
+              <div class="text-[14px] font-medium leading-[19.6px] text-primary-color sm:text-[12px]">{{ 'DESCRIPTION' | translate | async }}</div>
+              <mat-icon gvdHideElement [conditionElement]="descRef" class="text-primary-color">{{ toggleProductDescription ? 'expand_less' : 'expand_more' }} </mat-icon>
+            </div>
+            <div #descRef class="text-[12px] font-light text-primary-color mt-[4px]" [class.line-clamp-2]="!toggleProductDescription" [innerHTML]="description"></div>
+          }
+          <!-- Retail features -->
+          <div class="w-full h-[1px] bg-border-color my-[12px]"></div>
+          <ng-container *ngIf="!(roomsConfigurationCode && roomsConfigurationCode[index] === 'LOWEST_PRICE') || !isLowestPriceOpaque; else tplNoFeatureGuaranteeDetail">
+            <div class="flex items-center justify-between mb-[6px] cursor-pointer" (click)="retailFeaturesToggle.toggle()">
+              <div class="text-[14px] font-medium leading-[19.6px] text-primary-color sm:text-[12px]">
+                {{ 'SPECIAL_FEATURES' | translate | async }}
+              </div>
+              <mat-icon class="text-primary-color">
+                {{ retailFeaturesToggle?._getExpandedState() === 'expanded' ? 'expand_less' : 'expand_more' }}
+              </mat-icon>
+            </div>
+
+            <div class="grid grid-cols-2 gap-y-2 gap-x-1">
+              <ng-container *ngFor="let feature of vm.guaranteeFeatures | slice: 0 : 4">
+                <div class="flex items-center col-span-1">
+                  <div class="!w-[16px] !h-[16px] flex items-center">
+                    <mat-icon class="text-hotel-primary-color !text-[20px]">done</mat-icon>
+                  </div>
+                  <div
+                    class="ml-[4px] text-[12px] font-light leading-[16.8px] text-primary-color line-clamp-2 sm:break-words"
+                    appFeatureDescriptionTooltip
+                    [isDisabled]="isMobile"
+                    [featureName]="feature?.name"
+                    [featureCode]="feature?.code"
+                    [featureDescription]="feature?.description"
+                    [featureIcon]="feature?.retailFeatureImageList?.[0]?.imageUrl"
+                  >
+                    {{ feature?.name }}
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+
+            <mat-expansion-panel hideToggle #retailFeaturesToggle>
+              <div class="grid grid-cols-2 mt-2 gap-y-2 gap-x-1">
+                <ng-container *ngFor="let feature of vm.guaranteeFeatures | slice: 4">
+                  <div class="flex items-center col-span-1">
+                    <div class="!w-[16px] !h-[16px] flex items-center">
+                      <mat-icon class="text-hotel-primary-color !text-[20px]">done</mat-icon>
+                    </div>
+                    <div
+                      class="ml-[4px] text-[12px] font-light leading-[16.8px] text-primary-color line-clamp-2 sm:break-words"
+                      appFeatureDescriptionTooltip
+                      [isDisabled]="isMobile"
+                      [featureName]="feature?.name"
+                      [featureCode]="feature?.code"
+                      [featureDescription]="feature?.description"
+                      [featureIcon]="feature?.retailFeatureImageList?.[0]?.imageUrl"
+                    >
+                      {{ feature?.name }}
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </mat-expansion-panel>
+          </ng-container>
+
+          <!-- Standard features -->
+          <div class="w-full h-[1px] bg-border-color my-[12px]"></div>
+          <div class="flex items-center justify-between mb-[6px] cursor-pointer" (click)="standardFeaturesToggle.toggle()">
+            <div class="text-[14px] font-medium leading-[19.6px] text-primary-color sm:text-[12px]">{{ 'STANDARD_FEATURES' | translate | async }}</div>
+            <mat-icon class="text-primary-color">{{ standardFeaturesToggle?._getExpandedState() === 'expanded' ? 'expand_less' : 'expand_more' }} </mat-icon>
+          </div>
+          <div class="grid grid-cols-2 gap-y-2 gap-x-1">
+            <ng-container *ngFor="let feature of item?.roomProduct?.standardFeatureList | slice: 0 : 4">
+              <div class="flex items-center col-span-1">
+                <img loading="lazy" [src]="feature?.iconImageUrl" appFilterSvg [color]="colorText" width="16" alt="Feature" />
+                <div class="ml-[4px] text-[12px] font-light leading-[16.8px] text-primary-color line-clamp-2 sm:break-words">
+                  {{ feature?.name }}
+                </div>
+              </div>
+            </ng-container>
+          </div>
+          <mat-expansion-panel hideToggle #standardFeaturesToggle>
+            <div class="grid grid-cols-2 mt-2 gap-y-2 gap-x-1">
+              <ng-container *ngFor="let feature of item?.roomProduct?.standardFeatureList | slice: 4">
+                <div class="flex items-center col-span-1">
+                  <img loading="lazy" [src]="feature?.iconImageUrl" appFilterSvg [color]="colorText" width="16" alt="Feature" />
+                  <div class="ml-[4px] text-[12px] font-light leading-[16.8px] text-primary-color line-clamp-2 sm:break-words">
+                    {{ feature?.name }}
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </mat-expansion-panel>
+          <!-- Rate information -->
+          <div class="w-full h-[1px] bg-border-color my-[12px]"></div>
+          <div class="flex items-center justify-between mb-[6px] cursor-pointer" (click)="toggleRatePlanDescription = !toggleRatePlanDescription">
+            <div class="text-[14px] font-medium leading-[19.6px] text-primary-color sm:text-[12px]">{{ 'RATE' | translate | async }} : {{ item?.roomProductSalesPlan?.ratePlan?.name }}</div>
+            <mat-icon class="text-primary-color">{{ toggleRatePlanDescription ? 'expand_less' : 'expand_more' }} </mat-icon>
+          </div>
+          <div
+            class="text-[12px] font-light leading-[16.8px] text-primary-color"
+            [innerHTML]="item?.roomProductSalesPlan?.ratePlan?.description"
+            [ngClass]="{
+              'line-clamp-2': !toggleRatePlanDescription
+            }"
+          ></div>
+          <ng-container *ngIf="toggleRatePlanDescription">
+            <!--            <ng-container *ngIf="item?.roomProductSalesPlan?.ratePlan?.includedHotelExtrasList?.length > 0">-->
+            <!--              <div class="mt-[8px]">-->
+            <!--                <div class="flex items-center gap-[8px] mb-[4px]">-->
+            <!--                  <div class="w-[8px] h-[8px] rounded-[50%] bg-hotel-primary-color"></div>-->
+            <!--                  <div-->
+            <!--                    class="text-[12px] font-medium leading-[16.8px] text-primary-color">-->
+            <!--                    {{ "MEAL_PLANS_AND_SERVICES" | translate | async }}-->
+            <!--                  </div>-->
+            <!--                </div>-->
+            <!--                <div class="ps-[15px] grid grid-cols-2 gap-[8px]">-->
+            <!--                  <ng-container *ngFor="let extra of item?.roomProductSalesPlan?.ratePlan?.includedHotelExtrasList">-->
+            <!--                    <div class="col-span-1">-->
+            <!--                      <div-->
+            <!--                        class="font-normal text-[12px] leading-[16.8px] text-primary-color">{{ extra.name }}-->
+            <!--                      </div>-->
+            <!--                      <div class="font-light text-secondary-color text-[12px] leading-[16.8px]">-->
+            <!--                        {{-->
+            <!--                          summary?.adult-->
+            <!--                            | displayIncludedServiceDesc-->
+            <!--                            : summary?.children-->
+            <!--                              : item?.roomProduct?.numberOfBedrooms-->
+            <!--                              : extra?.includedDates-->
+            <!--                              : bookingDuration-->
+            <!--                              : extra?.pricingUnit-->
+            <!--                              : ""-->
+            <!--                              : checkInDate-->
+            <!--                            | async-->
+            <!--                        }}-->
+            <!--                      </div>-->
+            <!--                    </div>-->
+            <!--                  </ng-container>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </ng-container>-->
+            <div class="mt-[8px]">
+              <div class="flex items-center gap-[8px] mb-[4px]">
+                <div class="w-[8px] h-[8px] rounded-[50%] bg-hotel-primary-color"></div>
+                <div class="text-[12px] font-medium leading-[16.8px] text-primary-color">{{ 'CANCELLATION_POLICY' | translate | async }}</div>
+              </div>
+              <div class="text-[12px] font-normal leading-[16.8px] text-primary-color ps-[15px]" [innerHTML]="vm.currentRatePlan?.strongestCxlPolicy?.description"></div>
+            </div>
+            <div class="mt-[8px]">
+              <div class="flex items-center gap-[8px] mb-[4px]">
+                <div class="w-[8px] h-[8px] rounded-[50%] bg-hotel-primary-color"></div>
+                <div class="text-[12px] font-medium leading-[16.8px] text-primary-color">{{ 'PAYMENT_TERM' | translate | async }}</div>
+              </div>
+              <div class="text-[12px] font-normal leading-[16.8px] text-primary-color ps-[15px]" [innerHTML]="vm.currentRatePlan?.strongestPaymentTerms?.description"></div>
+            </div>
+          </ng-container>
+
+          <!-- Rate breakdown -->
+          <div class="py-[12px] mt-[12px] mx-[-12px] mb-[-16px]" [style.background-color]="colorPrimary | hexToRgba: 0.2">
+            <div class="px-[12px] flex items-center justify-between">
+              <div class="text-[17px] font-medium leading-[23.8px] text-primary-color sm:text-[12px]">
+                {{ 'PRICE_FOR' | translate | async }} {{ bookingDuration }} {{ (bookingDuration > 1 ? 'NIGHTS' : 'NIGHT') | translate | async }}
+              </div>
+              <div class="text-[17px] font-medium leading-[23.8px] text-primary-color sm:text-[12px]">
+                {{ item?.totalAccommodationAmountBySetting | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2' }}
+              </div>
+            </div>
+
+            <div class="px-[12px] flex items-center justify-between">
+              <div class="text-[14px] font-light leading-[19.6px] text-secondary-color sm:text-[12px]">
+                {{ 'PER_NIGHT' | translate | async | titlecase }}
+              </div>
+              <div class="text-[14px] font-light leading-[19.6px] text-secondary-color sm:text-[12px]">
+                {{ item?.roomProductSalesPlan?.totalSellingRate / bookingDuration | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2' }}
+              </div>
+            </div>
+
+            <div class="px-[12px] mt-[8px] flex items-center justify-between">
+              <div class="text-[17px] font-medium leading-[23.8px] text-primary-color sm:text-[12px]">{{ 'EXTRAS' | translate | async }}</div>
+              <div class="text-[17px] font-medium leading-[23.8px] text-primary-color sm:text-[12px]">
+                {{ item?.amenityPricingList | totalAmenity | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2' }}
+              </div>
+            </div>
+            <ng-container *ngFor="let amenity of item?.amenityPricingList">
+              <ng-container *ngIf="amenity?.hotelAmenity?.pricingUnit === pricingUnit.Person || amenity?.hotelAmenity?.pricingUnit === pricingUnit.PerPersonPerRoom; else tplShowAmenityWithoutAge">
+                <ng-container *ngIf="!(item | isIncludedService: amenity?.hotelAmenity?.code : amenity?.isSalesPlanIncluded); else tmplIncludedService">
+                  <div class="px-[12px]">
+                    <ng-container *ngFor="let amenityReservation of amenity?.ageCategoryPricingList">
+                      <div class="flex items-center justify-between">
+                        <div class="font-medium text-[14px] leading-[19.6px] text-primary-color flex items-center gap-[4px] line-clamp-1 sm:text-[12px] sm:leading-[16.8px]">
+                          <span class="font-medium whitespace-nowrap">{{ amenityReservation?.count }} x</span>
+                          <span class="text-secondary-color">
+                            {{ amenity?.hotelAmenity?.name }}
+                            @if (amenity?.hotelAmenity?.code !== amenityCodeEnum.PET_SURCHARGE) {
+                              ({{
+                                amenityReservation?.ageCategoryCode === 'DEFAULT'
+                                  ? ('ADULT' | translate | async)
+                                  : (item?.childrenAgeList | getChildrenAge: amenityReservation : ('CHILD' | translate | async) : ('YEARS' | translate | async))
+                              }})
+                            }
+                          </span>
+                        </div>
+
+                        <div class="font-light text-[17px] leading-[23.8px] text-secondary-color sm:text-[12px] sm:leading-[16.8px]">
+                          {{
+                            !(item | isIncludedService: amenity?.hotelAmenity?.code)
+                              ? (amenityReservation?.totalSellingRate | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2')
+                              : ('INCLUDED' | translate | async)
+                          }}
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </ng-container>
+
+                <!-- included amenity -->
+                <ng-template #tmplIncludedService>
+                  @if (amenity?.ageCategoryPricingList | getAmenityCountByAge; as adultCount) {
+                    <div class="flex items-center justify-between px-[12px]">
+                      <div class="font-medium text-[14px] leading-[19.6px] text-primary-color flex items-center gap-[4px] line-clamp-1 sm:text-[12px] sm:leading-[16.8px]">
+                        <span class="font-medium whitespace-nowrap"> {{ amenity?.ageCategoryPricingList | getAmenityCountByAge }} x</span>
+                        <span class="text-secondary-color">
+                          {{ amenity?.hotelAmenity?.name }}
+                          @if (amenity?.hotelAmenity?.code !== amenityCodeEnum.PET_SURCHARGE) {
+                            ({{ 'ADULT' | translate | async }})
+                          }
+                        </span>
+                      </div>
+                      <div class="font-light text-[17px] leading-[23.8px] text-secondary-color sm:text-[12px] sm:leading-[16.8px]">{{ 'INCLUDED' | translate | async }}</div>
+                    </div>
+                  }
+
+                  <ng-container *ngIf="item?.childrenAgeList?.length > 0">
+                    @if (amenity?.ageCategoryPricingList | getAmenityCountByAge: false; as childrenCount) {
+                      <div class="flex items-center justify-between px-[12px]">
+                        <div class="font-medium text-[14px] leading-[19.6px] text-primary-color flex items-center gap-[4px] line-clamp-1 sm:text-[12px] sm:leading-[16.8px]">
+                          <span class="font-medium whitespace-nowrap"> {{ childrenCount }} x</span>
+                          <span class="text-secondary-color"
+                            >{{ amenity?.hotelAmenity?.name }} ({{ item?.childrenAgeList | getChildrenAgeIncluded: ('YEARS' | translate | async) : ('CHILD' | translate | async) }})</span
+                          >
+                        </div>
+                        <div class="font-light text-[17px] leading-[23.8px] text-secondary-color sm:text-[12px] sm:leading-[16.8px]">{{ 'INCLUDED' | translate | async }}</div>
+                      </div>
+                    }
+                  </ng-container>
+                </ng-template>
+              </ng-container>
+
+              <!-- amenity list without age -->
+              <ng-template #tplShowAmenityWithoutAge>
+                <div class="flex items-center justify-between px-[12px]">
+                  <div class="font-medium text-[14px] leading-[19.6px] text-primary-color flex items-center gap-[4px] line-clamp-1 sm:text-[12px] sm:leading-[16.8px]">
+                    <span class="font-medium whitespace-nowrap">{{ amenity?.count }} x</span>
+                    <span class="text-secondary-color">{{ amenity?.hotelAmenity?.name }}</span>
+                  </div>
+                  <div class="font-light text-[17px] leading-[23.8px] text-secondary-color sm:text-[12px] sm:leading-[16.8px]">
+                    {{ !amenity?.isSalesPlanIncluded ? (amenity?.totalSellingRate | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2') : ('INCLUDED' | translate | async) }}
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+
+            <!-- Action -->
+            <div class="mt-[16px] flex items-center justify-between px-[12px]">
+              <div
+                (click)="collapse(index)"
+                class="text-[14px] font-medium leading-[21px] text-hotel-primary-color underline underline-offset-1 flex items-center gap-[4px] cursor-pointer sm:text-[12px] sm:leading-[18px]"
+              >
+                <mat-icon>expand_less</mat-icon>
+                <div class="">{{ 'HIDE_DETAILS' | translate | async }}</div>
+              </div>
+              <div class="text-[24px] font-medium leading-[28.8px] text-hotel-primary-color sm:text-[20px] sm:leading-[24px]">
+                {{ item?.totalSellingRateBySetting | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2' }}
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!openState?.includes(index)">
+          @if (item?.roomProduct?.description; as description) {
+            <div class="flex items-center gap-[12px] mt-3 mb-1 sm:items-start sm:mb-1.5">
+              <div class="text-[12px] font-medium leading-[16.8px] text-primary-color sm:min-w-[36%] sm:w-[36%]">{{ 'DESCRIPTION' | translate | async }}</div>
+              <div class="text-[12px] font-light leading-[16.8px] text-primary-color line-clamp-1" [innerHTML]="description"></div>
+            </div>
+          }
+
+          <!-- Sort info: Features, Included services and Extra services -->
+          <div class="flex items-center gap-[12px] mb-1 sm:items-start sm:mb-1.5" [ngClass]="{ 'mt-3': !item?.roomProduct?.description }">
+            <div class="text-[12px] font-medium leading-[16.8px] text-primary-color sm:min-w-[36%] sm:w-[36%]">{{ 'FEATURES' | translate | async }}</div>
+            <ng-container *ngIf="!(roomsConfigurationCode && roomsConfigurationCode[index] === 'LOWEST_PRICE') || !isLowestPriceOpaque">
+              <div
+                class="flex flex-wrap items-end text-[12px] font-light leading-[16.8px] text-primary-color"
+                *ngIf="vm.guaranteeFeatures | maxFeaturesDisplay as featureCount; else tplNoFeatureGuarantee"
+              >
+                <ng-container *ngIf="vm.guaranteeFeatures | slice: 0 : featureCount as featureList">
+                  <ng-container *ngFor="let item of featureList; let last = last"> {{ item?.name }} <span *ngIf="!last" class="mx-[6px] text-primary-color">|</span> </ng-container>
+                  <span
+                    (click)="expanseFeatures = !expanseFeatures"
+                    class="text-[12px] font-medium leading-[18px] text-primary-color ml-[6px]"
+                    *ngIf="featureCount < vm.guaranteeFeatures?.length && !expanseFeatures"
+                    >+ {{ vm.guaranteeFeatures?.length - featureCount }} {{ 'MORE' | translate | async }}</span
+                  >
+                </ng-container>
+                <ng-container *ngIf="expanseFeatures">
+                  <ng-container *ngFor="let item of vm.guaranteeFeatures | slice: featureCount; let last = last">
+                    {{ item?.name }} <span *ngIf="!last" class="mx-[6px] text-primary-color">|</span>
+                  </ng-container>
+                  <span (click)="expanseFeatures = !expanseFeatures" class="text-[12px] font-medium leading-[18px] text-primary-color ml-[6px]" *ngIf="expanseFeatures"> Show less </span>
+                </ng-container>
+              </div>
+            </ng-container>
+          </div>
+
+          <ng-container *ngIf="item?.amenityPricingList | maxServicesDisplay: true as serviceInfo">
+            <ng-container *ngIf="serviceInfo?.filterAmenities?.length > 0">
+              <div class="flex items-center gap-[12px] mb-[4px] sm:items-start sm:mb-1.5">
+                <div class="text-[12px] font-medium leading-[16.8px] text-primary-color sm:min-w-[36%] sm:w-[36%]">{{ 'INCLUDED_SERVICES' | translate | async }}</div>
+                <div class="flex flex-wrap items-end text-[12px] font-light leading-[16.8px] text-primary-color">
+                  <ng-container *ngIf="serviceInfo?.filterAmenities | slice: 0 : serviceInfo?.maxDisplay as serviceList">
+                    <ng-container *ngFor="let item of serviceList; let last = last"> {{ item?.name }} <span *ngIf="!last" class="mx-[6px] text-primary-color">|</span> </ng-container>
+                    <span
+                      (click)="expanseIncludeService = !expanseIncludeService"
+                      class="text-[12px] font-medium leading-[18px] text-primary-color ml-[6px]"
+                      *ngIf="serviceInfo?.maxDisplay < serviceInfo?.filterAmenities?.length"
+                    >
+                      + {{ serviceInfo?.filterAmenities?.length - serviceInfo?.maxDisplay }} {{ 'MORE' | translate | async }}
+                    </span>
+                  </ng-container>
+                  <ng-container *ngIf="expanseIncludeService">
+                    <ng-container *ngFor="let item of serviceInfo?.filterAmenities | slice: serviceInfo?.maxDisplay; let last = last">
+                      {{ item?.name }} <span *ngIf="!last" class="mx-[6px] text-primary-color">|</span>
+                    </ng-container>
+                    <span (click)="expanseIncludeService = !expanseIncludeService" class="text-[12px] font-medium leading-[18px] text-primary-color ml-[6px]" *ngIf="expanseIncludeService">
+                      Show less
+                    </span>
+                  </ng-container>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+
+          <ng-container *ngIf="item?.amenityPricingList | maxServicesDisplay as serviceInfo">
+            <ng-container *ngIf="serviceInfo?.filterAmenities?.length > 0">
+              <div class="flex items-center gap-[12px] mb-1 sm:items-start sm:mb-1.5">
+                <div class="text-[12px] font-medium leading-[16.8px] text-primary-color sm:min-w-[36%] sm:w-[36%]">{{ 'EXTRA_SERVICES' | translate | async }}</div>
+                <div class="flex flex-wrap items-end text-[12px] font-light leading-[16.8px] text-primary-color">
+                  <ng-container *ngIf="serviceInfo?.filterAmenities | slice: 0 : serviceInfo?.maxDisplay as serviceList">
+                    <ng-container *ngFor="let item of serviceList; let last = last"> {{ item?.name }} <span *ngIf="!last" class="mx-[6px] text-primary-color">|</span> </ng-container>
+                    <span
+                      (click)="expanseExtraService = !expanseExtraService"
+                      class="text-[12px] font-medium leading-[18px] text-primary-color ml-[6px]"
+                      *ngIf="serviceInfo?.maxDisplay < serviceInfo?.filterAmenities?.length"
+                    >
+                      + {{ serviceInfo?.filterAmenities?.length - serviceInfo?.maxDisplay }} {{ 'MORE' | translate | async }}
+                    </span>
+                  </ng-container>
+
+                  <ng-container *ngIf="expanseExtraService">
+                    <ng-container *ngFor="let item of serviceInfo?.filterAmenities | slice: serviceInfo?.maxDisplay; let last = last">
+                      {{ item?.name }} <span *ngIf="!last" class="mx-[6px] text-primary-color">|</span>
+                    </ng-container>
+                    <span (click)="expanseExtraService = !expanseExtraService" class="text-[12px] font-medium leading-[18px] text-primary-color ml-[6px]" *ngIf="expanseExtraService"> Show less </span>
+                  </ng-container>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+
+          <div class="flex items-center gap-[12px] sm:items-start sm:mb-1.5">
+            <div class="text-[12px] font-medium leading-[16.8px] text-primary-color sm:min-w-[36%] sm:w-[36%]">{{ 'RATE' | translate | async }}</div>
+            <div class="text-[12px] font-light leading-[16.8px] text-primary-color">{{ item?.roomProductSalesPlan?.ratePlan?.name }} | {{ item?.hotelCxlPolicy?.name }}</div>
+          </div>
+
+          <div class="mt-[12px] flex items-center justify-between">
+            <div
+              (click)="expand(index)"
+              class="text-[14px] font-medium leading-[21px] text-hotel-primary-color underline underline-offset-1 flex items-center gap-[4px] cursor-pointer sm:text-[12px] sm:leading-[18px]"
+            >
+              <mat-icon>expand_more</mat-icon>
+              <div class="">{{ 'VIEW_DETAILS' | translate | async }}</div>
+            </div>
+            <div class="text-[24px] font-medium leading-[28.8px] text-primary-color sm:text-[20px] sm:leading-[24px]">
+              {{ item?.totalSellingRateBySetting | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2' }}
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+<app-booking-total-payment
+  [bookingTaxList]="summaryBooking?.bookingTaxList"
+  [cancellationPolicy]="cancellationPolicy"
+  [cityTaxAmount]="summaryBooking?.cityTaxAmount"
+  [cityTaxList]="summaryBooking?.bookingCityTaxList | mapCityTaxList: summaryBooking?.bookingCityTaxList"
+  [colorText]="colorText"
+  [currencyCode]="currencyCode"
+  [currencyRate]="currencyRate"
+  [hotelCountry]="hotelCountry"
+  [isInclusive]="isHotelInclusive"
+  [locale]="locale"
+  [payAtHotel]="summaryBooking?.payAtHotelAmount | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2'"
+  [payAtHotelAmount]="summaryBooking?.payAtHotelAmount"
+  [payAtHotelDescription]="summaryBooking?.reservationPricingList?.[0]?.hotelPaymentTerm?.payAtHotelDescription"
+  [payOnConfirmation]="summaryBooking?.payOnConfirmationAmount | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2'"
+  [payOnConfirmationAmount]="summaryBooking?.payOnConfirmationAmount"
+  [payOnConfirmationDescription]="summaryBooking?.reservationPricingList?.[0]?.hotelPaymentTerm?.payOnConfirmationDescription"
+  [reservationList]="summaryBooking?.reservationPricingList"
+  [subTotalPrice]="summaryBooking?.totalSellingRate | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2'"
+  [taxInformation]="summaryBooking?.bookingCityTaxList"
+  [taxInformationConfig]="hotelTaxInformationSetting"
+  [totalGrossAmount]="summaryBooking?.totalGrossAmount"
+  [totalPrice]="summaryBooking?.totalGrossAmount | currencyRate: currencyRate | myCurrency: currencyCode : 'symbol' : '1.2'"
+></app-booking-total-payment>
+
+<ng-template #tplNoFeatureGuarantee>
+  <div class="text-[12px] font-light leading-[16.8px] text-primary-color">
+    {{ 'NO_FEATURE_GUARANTEED' | translate | async }}
+  </div>
+</ng-template>
+
+<ng-template #tplNoFeatureGuaranteeDetail>
+  <div class="text-[14px] font-medium leading-[19.6px] mb-[6px] text-primary-color sm:text-[12px]">
+    {{ 'SPECIAL_FEATURES' | translate | async }}
+  </div>
+  <div class="text-[12px] font-light leading-[16.8px] text-primary-color">
+    {{ 'NO_FEATURE_GUARANTEED' | translate | async }}
+  </div>
+</ng-template>

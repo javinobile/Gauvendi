@@ -1,0 +1,29 @@
+query RatePlanList($filter: HotelRatePlanFilter) {
+  response: ratePlanList(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on RatePlan {
+        id
+        code
+        name
+        description
+        strongestPaymentTermsCode
+        strongestPaymentTerms {
+          description
+          name
+        }
+        strongestCxlPolicyCode
+        strongestCxlPolicy {
+          description
+          name
+        }
+        mandatoryHotelExtrasIdList
+        mandatoryHotelExtrasList {
+          id
+          code
+        }
+      }
+    }
+  }
+}

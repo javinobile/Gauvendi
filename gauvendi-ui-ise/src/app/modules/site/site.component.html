@@ -1,0 +1,32 @@
+<div class="flex flex-col min-h-[100vh] relative">
+  <ng-container *ngIf="{ branding: branding$ | async, faviconImageUrl: faviconImageUrl$ | async, font: font$ | async, hotel: hotel$ | async, locations: locations$ | async } as vm">
+    <div class="fixed inset-0 bg-[#000] bg-opacity-30 z-40" *ngIf="overlayBackgroundDisplayed()" (click)="collapseConfigurator()"></div>
+    @if (showHeader()) {
+      <div class="relative z-40">
+        <app-header [currency]="currency$$()" [hotel]="vm.hotel" [locale]="locale$$()"></app-header>
+      </div>
+    }
+    <div class="flex-1">
+      <router-outlet></router-outlet>
+      <ng-container *ngIf="activeSection$ | async">
+        <div class="overlay-backdrop absolute left-0 right-0 bottom-0 top-0 z-[1000]" style="background: rgba(0, 0, 0, 0.5)" (click)="closeBackdrop()"></div>
+      </ng-container>
+    </div>
+    <app-footer
+      [address]="vm.hotel.address"
+      [addressDisplay]="vm.hotel.addressDisplay"
+      [city]="vm.hotel.city"
+      [country]="vm.hotel.country"
+      [hotelImpressum]="impressum$ | async"
+      [hotelName]="vm.hotel.name"
+      [iconSymbolUrl]="gvLogo$ | async | parseGauvendiLogo"
+      [isWhitelabel]="isWhitelabel$ | async"
+      [lang]="locale$$()"
+      [phoneNumber]="phoneNumber$ | async"
+      [postalCode]="vm.hotel.postalCode"
+      [privacy]="privacy$ | async"
+      [state]="vm.hotel.state"
+      [termOfUse]="termOfUse$ | async"
+    ></app-footer>
+  </ng-container>
+</div>

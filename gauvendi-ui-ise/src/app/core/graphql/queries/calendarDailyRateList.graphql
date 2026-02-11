@@ -1,0 +1,25 @@
+query CalendarDailyRateList($filter: CalendarDailyRateFilter) {
+  response: calendarDailyRateList(filter: $filter) {
+    count
+    totalPage
+    data {
+      ... on CalendarDailyRate {
+        date
+        priceOptionList {
+          price
+          salesPlanId
+          roomProductId
+          label
+          status
+          roomOnlyPrice
+          netPrice
+          grossPrice
+          restrictionList {
+            restrictionCode
+            restrictionValue
+          }
+        }
+      }
+    }
+  }
+}

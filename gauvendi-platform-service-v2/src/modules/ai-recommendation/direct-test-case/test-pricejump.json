@@ -1,0 +1,1293 @@
+{
+    "priceJump": true,
+    "roomRequestList": [
+        {
+            "index": "0",
+            "adults": 1,
+            "children": 0,
+            "pets": 0
+        },
+        {
+            "index": "1",
+            "adults": 2,
+            "children": 0,
+            "pets": 0
+        }
+    ],
+    "bookingPeriod": {
+        "arrival": "2025-08-20",
+        "departure": "2025-08-21"
+    },
+    "stayOptionRecommendationNumber": 11,
+    "featureRecommendationNumber": 3,
+    "eventFeatureList": [],
+    "featureList": [
+        {
+            "name": "Twin beds",
+            "code": "BD_TWIN",
+            "type": "Retail",
+            "popularity": 2,
+            "selection": 1
+        },
+        {
+            "name": "Room for the dog",
+            "code": "DF_DA",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Seating area",
+            "code": "DF_SEATING",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Apartment",
+            "code": "LT_APART",
+            "type": "Retail",
+            "popularity": 3,
+            "selection": 0
+        },
+        {
+            "name": "Interconnecting",
+            "code": "LT_CONN",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Dorm",
+            "code": "SPT_DORM",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "City view",
+            "code": "VW_CITY",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 1
+        },
+        {
+            "name": "Studio",
+            "code": "SPT_STUDIO",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Corner bedroom",
+            "code": "LT_CORNER",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Hostel bed",
+            "code": "SPT_HOSTEL",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Sleeper chair",
+            "code": "BD_SLEEPER_CHAIR",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Fitness equipment",
+            "code": "DF_FITNESS",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "View to the alps",
+            "code": "VW_MOUNT",
+            "type": "Retail",
+            "popularity": 5,
+            "selection": 0
+        },
+        {
+            "name": "Thermal Tickets",
+            "code": "DF_THEMED_DESIGN_5",
+            "type": "Retail",
+            "popularity": 5,
+            "selection": 0
+        },
+        {
+            "name": "Sleep stool",
+            "code": "BD_SLEEP_STOOL",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "XL - size",
+            "code": "SP_XL",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Queen bed",
+            "code": "BD_QUEEN",
+            "type": "Retail",
+            "popularity": 5,
+            "selection": 1
+        },
+        {
+            "name": "Shower",
+            "code": "BR_SHOW",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 2
+        },
+        {
+            "name": "Long Stay",
+            "code": "DF_TELEPHONE",
+            "type": "Retail",
+            "popularity": 3,
+            "selection": 0
+        },
+        {
+            "name": "Wheel chair access",
+            "code": "DF_WCA",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Package",
+            "code": "DF_THEMED_DESIGN_16",
+            "type": "Retail",
+            "popularity": 5,
+            "selection": 0
+        },
+        {
+            "name": "Handicap accessible",
+            "code": "DF_HANDICAP",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Fridge",
+            "code": "DF_FRIDGE",
+            "type": "Retail",
+            "popularity": 2,
+            "selection": 0
+        },
+        {
+            "name": "Ensuite bathroom",
+            "code": "BR_ENSUITE",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 1
+        },
+        {
+            "name": "Tent Pad",
+            "code": "SPT_TENTPAD",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Saison Special",
+            "code": "DF_THEMED_DESIGN",
+            "type": "Retail",
+            "popularity": 5,
+            "selection": 0
+        },
+        {
+            "name": "Backside view",
+            "code": "VW_BACKSIDE",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Sofa bed 2 Persons",
+            "code": "BD_SOFA",
+            "type": "Retail",
+            "popularity": 3,
+            "selection": 0
+        },
+        {
+            "name": "Double Bedroom",
+            "code": "LT_DBLBRM",
+            "type": "Retail",
+            "popularity": 3,
+            "selection": 2
+        },
+        {
+            "name": "Skyline view",
+            "code": "VW_SKY",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "King bed",
+            "code": "BD_KING",
+            "type": "Retail",
+            "popularity": 4,
+            "selection": 0
+        },
+        {
+            "name": "Extra quiet located",
+            "code": "LO_EQ",
+            "type": "Retail",
+            "popularity": 4,
+            "selection": 0
+        },
+        {
+            "name": "Living room",
+            "code": "DF_LR",
+            "type": "Retail",
+            "popularity": 0,
+            "selection": 0
+        },
+        {
+            "name": "Room",
+            "code": "SPT_HOTEL",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Random room assignment",
+            "code": "DF_RANDOM_ROOM_ASSIGNMENT",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Close to elevator",
+            "code": "LO_LIFT",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 1
+        },
+        {
+            "name": "Pitch",
+            "code": "SPT_CARAVAN",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Apartment",
+            "code": "SPT_APARTMENT",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Kitchenette",
+            "code": "DF_KITCHEN",
+            "type": "Retail",
+            "popularity": 2,
+            "selection": 0
+        },
+        {
+            "name": "S/M - size",
+            "code": "SP_SM",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "L- size",
+            "code": "SP_L",
+            "type": "Retail",
+            "popularity": 4,
+            "selection": 0
+        },
+        {
+            "name": "Single bedroom",
+            "code": "LT_SGLBRM",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Facing to the market place ",
+            "code": "LO_SEF",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 1
+        },
+        {
+            "name": "M - size",
+            "code": "SP_M",
+            "type": "Retail",
+            "popularity": 4,
+            "selection": 0
+        },
+        {
+            "name": "Twin or double bed",
+            "code": "BD_TODB",
+            "type": "Retail",
+            "popularity": 2,
+            "selection": 0
+        },
+        {
+            "name": "Bedroom",
+            "code": "LT_BED",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "S - size",
+            "code": "SP_S",
+            "type": "Retail",
+            "popularity": 2,
+            "selection": 2
+        },
+        {
+            "name": "Microwave",
+            "code": "DF_MW",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Double bed",
+            "code": "BD_DB",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Studio",
+            "code": "LT_STUDIO",
+            "type": "Retail",
+            "popularity": 3,
+            "selection": 0
+        },
+        {
+            "name": "High floor",
+            "code": "LO_HIGHFL",
+            "type": "Retail",
+            "popularity": 4,
+            "selection": 3
+        },
+        {
+            "name": "Low floor",
+            "code": "LO_LOWFL",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Facing the railway station",
+            "code": "LO_BACKSIDE",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Bathtub",
+            "code": "BR_BT",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Kitchen",
+            "code": "DF_KC",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Oversized single bed",
+            "code": "BD_OVERSIZED",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Dining table",
+            "code": "DF_DINING",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "M/L - size",
+            "code": "SP_ML",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        },
+        {
+            "name": "Top floor",
+            "code": "LO_TF",
+            "type": "Retail",
+            "popularity": 4,
+            "selection": 0
+        },
+        {
+            "name": "Barrier free",
+            "code": "DF_BF",
+            "type": "Retail",
+            "popularity": 1,
+            "selection": 0
+        }
+    ],
+    "availableRoomProductList": [
+        {
+            "name": "Studio | high floor",
+            "code": "RFC022",
+            "type": "RFC",
+            "basePrice": 97.0,
+            "isRestricted": false,
+            "allocationType": "DEDUCT",
+            "availableToSell": 2,
+            "availableRoomIds": [
+                "548838b4-1516-46b2-b3eb-c84443b8f1e5",
+                "2ea4d14f-03c8-4b2f-bdcf-0475fec48a8d"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 1,
+                "pets": 0
+            },
+            "extraCapacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 2,
+                "pets": 0
+            },
+            "featureList": [
+                "Backside view",
+                "Kitchenette",
+                "M - size",
+                "Sleeper chair",
+                "Queen bed",
+                "Facing the railway station",
+                "Shower",
+                "High floor",
+                "Studio",
+                "Room"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "Apartment | high floor & pet friendly",
+            "code": "RFC121",
+            "type": "RFC",
+            "basePrice": 97.0,
+            "isRestricted": false,
+            "allocationType": "DEDUCT",
+            "availableToSell": 1,
+            "availableRoomIds": [
+                "b86b7d72-5604-404e-af6c-a0579d05342a"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 1,
+                "pets": 2
+            },
+            "extraCapacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 2,
+                "pets": 0
+            },
+            "featureList": [
+                "Facing the railway station",
+                "XL - size",
+                "High floor",
+                "Dining table",
+                "Apartment",
+                "Backside view",
+                "Kitchenette",
+                "Sofa bed 2 Persons",
+                "Room for the dog",
+                "Queen bed",
+                "Double bed",
+                "Shower",
+                "Bathtub",
+                "Top floor",
+                "Room"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "1-Bedroom Apartment | Long Stay",
+            "code": "ERFC066",
+            "type": "ERFC",
+            "basePrice": 181.0,
+            "isRestricted": true,
+            "allocationType": "ALL",
+            "availableToSell": 1,
+            "availableRoomIds": [
+                "ede6fe92-c6d4-4213-9564-5645469a2018",
+                "83bd2e9f-dc35-48d2-ac4b-b1f7333180da"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 1,
+                "pets": 0
+            },
+            "extraCapacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 2,
+                "pets": 0
+            },
+            "featureList": [
+                "Living room",
+                "High floor",
+                "Apartment",
+                "Dining table",
+                "Kitchenette",
+                "Long Stay",
+                "Sofa bed 2 Persons",
+                "Corner bedroom",
+                "View to the alps",
+                "Bathtub",
+                "L- size",
+                "Top floor",
+                "Room",
+                "Twin beds"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "Standard | view to the alps",
+            "code": "RFC059",
+            "type": "RFC",
+            "basePrice": 197.0,
+            "isRestricted": false,
+            "allocationType": "DEDUCT",
+            "availableToSell": 2,
+            "availableRoomIds": [
+                "3a8ecb5b-c402-4f7f-84b2-ade70908a08f",
+                "b82c7aae-b9b8-428d-ac07-8ab96dbb7b9c"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 1,
+                "pets": 0
+            },
+            "extraCapacity": {
+                "maximum": 0,
+                "adults": 0,
+                "children": 0,
+                "pets": 0
+            },
+            "featureList": [
+                "Room for the dog",
+                "Facing to the market place ",
+                "Double bed",
+                "Shower",
+                "S - size",
+                "View to the alps",
+                "High floor",
+                "Room",
+                "Top floor",
+                "Extra quiet located",
+                "Double Bedroom"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "Studio | mountain view & queen bed",
+            "code": "RFC047",
+            "type": "RFC",
+            "basePrice": 119.0,
+            "isRestricted": false,
+            "allocationType": "DEDUCT",
+            "availableToSell": 1,
+            "availableRoomIds": [
+                "ac523cf6-8843-4386-a569-8ed9fb47b1e5"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 1,
+                "pets": 0
+            },
+            "extraCapacity": {
+                "maximum": 1,
+                "adults": 1,
+                "children": 0,
+                "pets": 0
+            },
+            "featureList": [
+                "Kitchenette",
+                "M - size",
+                "Sleeper chair",
+                "Close to elevator",
+                "Double bed",
+                "Facing to the market place ",
+                "View to the alps",
+                "Shower",
+                "High floor",
+                "Room",
+                "Top floor",
+                "Studio"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "Standard Single | cozy with queen bed",
+            "code": "ERFC092",
+            "type": "ERFC",
+            "basePrice": 96,
+            "isRestricted": true,
+            "allocationType": "DEDUCT",
+            "availableToSell": 4,
+            "availableRoomIds": [
+                "18c049fe-2c9b-40a5-825f-f9f8d4fb20d8",
+                "78cab42d-cbb6-4289-b784-c90626987485",
+                "928a125e-a7f4-4d75-887d-f1931ca74406",
+                "576fef7e-5fa2-4366-bc1b-6ed06e0aac08"
+            ],
+            "capacity": {
+                "maximum": 1,
+                "adults": 1,
+                "children": 0,
+                "pets": 0
+            },
+            "extraCapacity": {
+                "maximum": 0,
+                "adults": 0,
+                "children": 0,
+                "pets": 0
+            },
+            "featureList": [
+                "Queen bed",
+                "Single bedroom",
+                "Shower",
+                "S - size",
+                "Room"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "Studio | large corner room - fitness equipment",
+            "code": "RFC011",
+            "type": "RFC",
+            "basePrice": 121.0,
+            "isRestricted": false,
+            "allocationType": "DEDUCT",
+            "availableToSell": 1,
+            "availableRoomIds": [
+                "563d99ac-e486-4068-8acf-fac229d49743"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 0,
+                "pets": 0
+            },
+            "extraCapacity": {
+                "maximum": 2,
+                "adults": 1,
+                "children": 0,
+                "pets": 0
+            },
+            "featureList": [
+                "M/L - size",
+                "Room for the dog",
+                "Sleeper chair",
+                "Corner bedroom",
+                "Fitness equipment",
+                "Facing to the market place ",
+                "Double bed",
+                "Shower",
+                "Studio",
+                "Room"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "Standard | Pet friendly and southeast facing",
+            "code": "ERFC117",
+            "type": "ERFC",
+            "basePrice": 94.00,
+            "isRestricted": false,
+            "allocationType": "DEDUCT",
+            "availableToSell": 4,
+            "availableRoomIds": [
+                "b1c8c421-de46-41a8-95e4-e943863d1bbd",
+                "45f978c2-4b3a-4c5d-bf09-2bf4cb3e8278",
+                "9073aa04-a96f-4f6a-8234-1378af7c54da",
+                "d9ee6984-6970-4e0d-a760-ab5a0bb1e8c7"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 1,
+                "pets": 2
+            },
+            "extraCapacity": {
+                "maximum": 0,
+                "adults": 0,
+                "children": 0,
+                "pets": 0
+            },
+            "featureList": [
+                "City view",
+                "Facing to the market place ",
+                "Double bed",
+                "S - size",
+                "Shower",
+                "High floor",
+                "Room",
+                "Extra quiet located",
+                "Double Bedroom"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "Standard | corner room ",
+            "code": "RFC052",
+            "type": "RFC",
+            "basePrice": 97.0,
+            "isRestricted": false,
+            "allocationType": "DEDUCT",
+            "availableToSell": 1,
+            "availableRoomIds": [
+                "18c049fe-2c9b-40a5-825f-f9f8d4fb20d8"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 1,
+                "pets": 1
+            },
+            "extraCapacity": {
+                "maximum": 0,
+                "adults": 0,
+                "children": 0,
+                "pets": 0
+            },
+            "featureList": [
+                "Room for the dog",
+                "Queen bed",
+                "Corner bedroom",
+                "Facing to the market place ",
+                "View to the alps",
+                "Shower",
+                "S - size",
+                "High floor",
+                "Top floor",
+                "Room",
+                "Double Bedroom",
+                "Extra quiet located"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "1-bedroom-Apartment | Extra Quiet - Mountain View - Longstay",
+            "code": "ERFC106",
+            "type": "ERFC",
+            "basePrice": 462.0,
+            "isRestricted": true,
+            "allocationType": "ALL",
+            "availableToSell": 1,
+            "availableRoomIds": [
+                "5fb6c06c-f5d7-4da8-83b7-fc8e66004acf",
+                "fc7fc27e-c27e-4c31-acf7-179e3351abb0"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 1,
+                "pets": 0
+            },
+            "extraCapacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 2,
+                "pets": 0
+            },
+            "featureList": [
+                "High floor",
+                "Dining table",
+                "Apartment",
+                "Extra quiet located",
+                "Kitchenette",
+                "Long Stay",
+                "Sofa bed 2 Persons",
+                "Double bed",
+                "Facing to the market place ",
+                "View to the alps",
+                "Bathtub",
+                "L- size",
+                "Top floor",
+                "Room"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "Apartment | Pet Friendly - Long Stay",
+            "code": "ERFC101",
+            "type": "ERFC",
+            "basePrice": 282.0,
+            "isRestricted": true,
+            "allocationType": "ALL",
+            "availableToSell": 1,
+            "availableRoomIds": [
+                "cd17048d-d80c-48ac-a871-9dc03a836a68",
+                "d9e9eda6-8e1a-495b-b76c-398365a311a3"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 1,
+                "pets": 2
+            },
+            "extraCapacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 2,
+                "pets": 0
+            },
+            "featureList": [
+                "Facing the railway station",
+                "High floor",
+                "Dining table",
+                "Apartment",
+                "Kitchenette",
+                "Backside view",
+                "Long Stay",
+                "Room for the dog",
+                "Sofa bed 2 Persons",
+                "Double bed",
+                "Bathtub",
+                "L- size",
+                "Top floor",
+                "Room"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "Standard | backside facing corner room ",
+            "code": "RFC060",
+            "type": "RFC",
+            "basePrice": 95.0,
+            "isRestricted": false,
+            "allocationType": "DEDUCT",
+            "availableToSell": 1,
+            "availableRoomIds": [
+                "5df7e21e-f144-4e62-aa59-73315156a2f3"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 1,
+                "pets": 0
+            },
+            "extraCapacity": {
+                "maximum": 0,
+                "adults": 0,
+                "children": 0,
+                "pets": 0
+            },
+            "featureList": [
+                "Backside view",
+                "Room for the dog",
+                "Queen bed",
+                "Corner bedroom",
+                "Facing the railway station",
+                "S - size",
+                "Shower",
+                "Room",
+                "Double Bedroom"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "Studio | spacious with city view",
+            "code": "RFC016",
+            "type": "RFC",
+            "basePrice": 75.0,
+            "isRestricted": false,
+            "allocationType": "DEDUCT",
+            "availableToSell": 2,
+            "availableRoomIds": [
+                "3e2f4a46-feba-4d4e-9f19-38e963efc971",
+                "c77d58a9-a11a-4202-8495-153a28117e3d"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 1,
+                "pets": 0
+            },
+            "extraCapacity": {
+                "maximum": 1,
+                "adults": 1,
+                "children": 1,
+                "pets": 0
+            },
+            "featureList": [
+                "Kitchenette",
+                "M - size",
+                "Sleeper chair",
+                "Queen bed",
+                "Facing to the market place ",
+                "Shower",
+                "Studio",
+                "Room",
+                "Extra quiet located"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "Large Corner Bedroom - With Dining Table",
+            "code": "RFC038",
+            "type": "RFC",
+            "basePrice": 120.0,
+            "isRestricted": false,
+            "allocationType": "DEDUCT",
+            "availableToSell": 1,
+            "availableRoomIds": [
+                "dbf63c0f-b88a-4275-af37-f54a5c6af7d7"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 0,
+                "pets": 0
+            },
+            "extraCapacity": {
+                "maximum": 2,
+                "adults": 1,
+                "children": 0,
+                "pets": 0
+            },
+            "featureList": [
+                "Backside view",
+                "Kitchenette",
+                "M/L - size",
+                "Room for the dog",
+                "Sofa bed 2 Persons",
+                "Corner bedroom",
+                "Facing the railway station",
+                "Double bed",
+                "Bathtub",
+                "Room",
+                "Studio"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "Standard | southeast facing with city view",
+            "code": "RFC094",
+            "type": "RFC",
+            "basePrice": 165.0,
+            "isRestricted": false,
+            "allocationType": "DEDUCT",
+            "availableToSell": 4,
+            "availableRoomIds": [
+                "b1c8c421-de46-41a8-95e4-e943863d1bbd",
+                "45f978c2-4b3a-4c5d-bf09-2bf4cb3e8278",
+                "9073aa04-a96f-4f6a-8234-1378af7c54da",
+                "d9ee6984-6970-4e0d-a760-ab5a0bb1e8c7"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 1,
+                "pets": 0
+            },
+            "extraCapacity": {
+                "maximum": 0,
+                "adults": 0,
+                "children": 0,
+                "pets": 0
+            },
+            "featureList": [
+                "City view",
+                "Double bed",
+                "Facing to the market place ",
+                "Shower",
+                "S - size",
+                "High floor",
+                "Room",
+                "Double Bedroom",
+                "Extra quiet located"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        },
+        {
+            "name": "Large Studio - High Floor",
+            "code": "RFC027",
+            "type": "RFC",
+            "basePrice": 121.0,
+            "isRestricted": false,
+            "allocationType": "DEDUCT",
+            "availableToSell": 1,
+            "availableRoomIds": [
+                "14971d5d-b9e0-4dda-9235-8c3abab6bc7d"
+            ],
+            "capacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 1,
+                "pets": 0
+            },
+            "extraCapacity": {
+                "maximum": 2,
+                "adults": 2,
+                "children": 2,
+                "pets": 0
+            },
+            "featureList": [
+                "M/L - size",
+                "Kitchenette",
+                "Backside view",
+                "Room for the dog",
+                "Sofa bed 2 Persons",
+                "Corner bedroom",
+                "Double bed",
+                "Facing the railway station",
+                "High floor",
+                "Bathtub",
+                "Room",
+                "Studio"
+            ],
+            "spaceTypeList": [
+                "SPT_HOTEL"
+            ]
+        }
+    ],
+    "mrfcAvailabilityList": [
+        {
+            "code": "MRFC070",
+            "availableToSell": 100,
+            "assignedRoomIds": [
+                "e3a74ad7-aced-4255-83dc-a2d77ef4dfb6",
+                "5df7e21e-f144-4e62-aa59-73315156a2f3",
+                "d8ff4f29-df95-40de-90fe-df443ef8395c",
+                "18c049fe-2c9b-40a5-825f-f9f8d4fb20d8",
+                "bcdff4ba-684d-483f-bc51-284a4265e26d",
+                "706d6eeb-67e4-428b-9c59-aa88bff977c6",
+                "79ef568f-a8a7-469e-abf2-5fe2942d6e63",
+                "d0dc9780-1d19-4bca-96b6-523fcbf66e7a",
+                "7ad354ce-a703-4dee-b7c9-5f5de15e1d36",
+                "53019044-8177-4c8e-91db-8cf4814581da",
+                "6a2d6eb9-febe-4ab4-9b74-7160dd75636e",
+                "9d93f1f7-fada-46d7-8502-25783770b372",
+                "c686839c-b8de-4603-9293-4300fab90cfe",
+                "5dc2f1e7-83ca-47be-9ab2-6abeaf25f0ec",
+                "de2b6ff0-c2fc-4811-a14c-120502084d60",
+                "9073aa04-a96f-4f6a-8234-1378af7c54da",
+                "b39b8e57-da5c-442e-bb08-f3e1153faa73",
+                "90498dfc-263c-43c1-b382-f1e6f3ed0f5d",
+                "576fef7e-5fa2-4366-bc1b-6ed06e0aac08",
+                "e1712d1c-126e-4f98-b579-f984d3490930",
+                "979513a6-aebd-4398-928b-d65638c3c528",
+                "b1c8c421-de46-41a8-95e4-e943863d1bbd",
+                "e7087b8b-e6ef-4c41-aa4e-4265d7ddb67b",
+                "167dfc2f-afff-4cba-86d3-dffb23188206",
+                "31073e60-c51b-43c5-ac00-d733ef33b99c",
+                "abcdd873-52cf-4563-a923-f9fe3d81fde8",
+                "ca2259cb-b315-44ea-a900-8f52e47ce01f",
+                "8383c6d8-8bef-474b-a352-927f729f02e6",
+                "b82c7aae-b9b8-428d-ac07-8ab96dbb7b9c",
+                "679ced23-f708-41ae-b112-60558d02ebf2",
+                "91ad8b8c-63b1-4516-8d1a-2d309d3734b5",
+                "25a57a4e-5fa0-45dc-baf2-c588107db2a1",
+                "ca6025a9-6230-46c9-9d5e-d41fc9c7b003",
+                "fc2bfe6c-b4ae-487e-9e7d-6c5648ecfe66",
+                "ef6cbb56-5580-41c5-a5f8-3a0322f18ccd",
+                "1e4fce01-17b0-4197-9591-0b37eb74bb81",
+                "dc2a1fb4-a49f-47ab-8d20-722c3fef21f2",
+                "29e856db-506a-4bf5-abf2-f8f961886b13",
+                "a68f051a-982b-475c-af34-8b4e4e28a40d",
+                "3c8f77f3-fe23-4df8-ba4d-991ffa4c04f9",
+                "500a4f24-9784-435f-aaa3-064a9d1162cc",
+                "83c95348-bc07-4210-8e8b-5c00d5998ac6",
+                "e1b110c2-d54e-414a-889e-616eb73a1cf9",
+                "233a67f5-db04-4741-b57a-b92d054ee756",
+                "c4ee0cac-26c0-4302-86dd-ecee31e19f94",
+                "395bbb67-d757-4c62-8efc-252a233d7325",
+                "1887e536-6d0c-4c2f-b635-0685e5fed697",
+                "e448d108-77bf-41f9-93ff-391ed8060aad",
+                "5a15cf01-46ae-4cca-bee1-45a0849317ee",
+                "6e3e9399-235d-46e7-92db-5f8fb1b38436",
+                "2794878e-a601-44de-b154-ada04e7b0d87",
+                "dfd77c61-ab4d-4b80-8bd2-f2b8dde9e7b7",
+                "6e91591f-5f2d-4c57-8dae-6abae5cdc8fd",
+                "72b61573-50e9-4f19-9bf1-6f199632a33b",
+                "4c851f42-a471-4960-8f9c-548e2079d0e9",
+                "c7455371-3455-4b2d-a9b8-6909297eb3d4",
+                "42f6a727-08c5-495d-b2b8-1c684e5ff39f",
+                "d9ee6984-6970-4e0d-a760-ab5a0bb1e8c7",
+                "b017c4f1-ee4a-4ecc-91ac-4558792f6ce5",
+                "f0018815-0576-46a5-aecb-20f0a61e873d",
+                "3f04218a-44cf-443e-a538-7f2b7edd0d6e",
+                "8851d696-2844-41a9-abf3-1f4b77600391",
+                "eb682185-07b1-438e-85f2-5e0da23084f9",
+                "45f978c2-4b3a-4c5d-bf09-2bf4cb3e8278",
+                "ef3b9fc6-46b0-4c2f-8e30-dfce13373fc2",
+                "361f1ca0-3273-4f20-b92d-22ac0d5410d0",
+                "a058402d-85ab-421f-afb4-fcbcb99139b3",
+                "f382af7d-ce14-490c-8434-31730a8fa3c4",
+                "f5c9d2ff-f0d0-402f-99fb-bced8356c565",
+                "9bcea586-5c49-4e1b-9119-a6bb103a5bef",
+                "fb34d129-abfb-40af-b23a-56f5b703d3f5",
+                "e2fd4a1e-ad65-42eb-b457-2a495bc58d46",
+                "68ff0d15-06f6-4a8b-9cca-0f6c9a1b105b",
+                "c10da10a-8a8e-4841-8f7e-d5b5cb16f5e6",
+                "349d9c7d-964f-43ca-b24e-21a79584eb7c",
+                "660eec8e-89b9-4201-bd41-099c1e3b2fab",
+                "3a8ecb5b-c402-4f7f-84b2-ade70908a08f",
+                "27c252c9-b369-425f-a55e-5b137ce3cce9",
+                "f495d5f3-aab4-4ad1-8e41-c13ec1628164",
+                "d2147cdc-937b-4d4d-97b9-96bc36e1fee4",
+                "8fcc8ff1-d23c-4c01-b49d-2a3a9cb673ee"
+            ],
+            "basePrice": 93.44
+        },
+        {
+            "code": "MRFC071",
+            "availableToSell": 100,
+            "assignedRoomIds": [
+                "78cab42d-cbb6-4289-b784-c90626987485",
+                "928a125e-a7f4-4d75-887d-f1931ca74406"
+            ],
+            "basePrice": 92.00
+        },
+        {
+            "code": "MRFC077",
+            "availableToSell": 100,
+            "assignedRoomIds": [
+                "2aaba387-cf92-47c8-9d0c-d729a6e29e95",
+                "4361304f-f59b-4093-a5ea-82dcbcbae2cc",
+                "b86b7d72-5604-404e-af6c-a0579d05342a"
+            ],
+            "basePrice": 179.33
+        },
+        {
+            "code": "MRFC073",
+            "availableToSell": 100,
+            "assignedRoomIds": [
+                "14971d5d-b9e0-4dda-9235-8c3abab6bc7d",
+                "563d99ac-e486-4068-8acf-fac229d49743",
+                "dbf63c0f-b88a-4275-af37-f54a5c6af7d7",
+                "f4df77af-c5d4-4e84-be36-bf28a804e58c",
+                "c2e7af09-9cf1-4462-9d6d-8a2a2e4a461c",
+                "d2bffcf5-7b89-4cd6-9d5d-9718c3eaec37"
+            ],
+            "basePrice": 120.00
+        },
+        {
+            "code": "MRFC069",
+            "availableToSell": 100,
+            "assignedRoomIds": [
+                "e1d1c0aa-1748-401a-af05-787f9537a7a4",
+                "8ddd7834-9e31-4632-8c6f-98745dcc709c",
+                "80fe703d-661b-4585-925d-200b73a6608e",
+                "01147ef4-2a89-407b-822a-4f71e830aadc",
+                "548838b4-1516-46b2-b3eb-c84443b8f1e5",
+                "8e0e38b5-623b-433e-9c6d-aa842c5f4945",
+                "56057be7-a370-4785-902f-924e8b111e88",
+                "c77d58a9-a11a-4202-8495-153a28117e3d",
+                "ee2b9e4b-10d7-4d45-94a1-ed45110d6aeb",
+                "ed2780dc-866b-4873-974c-ae83931bc806",
+                "3e2f4a46-feba-4d4e-9f19-38e963efc971",
+                "ac523cf6-8843-4386-a569-8ed9fb47b1e5",
+                "c3aa4463-d81f-4d18-a8ca-0a2f087bf9e4",
+                "6fb846c0-1fe6-4f31-8f9d-fdf33c4b33ff",
+                "82f6fc63-0077-4940-9710-191f2981799a",
+                "9c32f0a7-d278-4ac8-91bc-debf6c730b6d",
+                "dfaa92d8-6ed2-417a-bc56-68fbd6a975a2",
+                "4f01842b-07bc-4016-87ac-ded59865bc21",
+                "53d72820-71e0-41f7-91fa-3714addb4088",
+                "70c297ae-d976-4ec4-9c63-79d0fdf55726",
+                "2ea4d14f-03c8-4b2f-bdcf-0475fec48a8d"
+            ],
+            "basePrice": 116.53
+        },
+        {
+            "code": "MRFC074",
+            "availableToSell": 100,
+            "assignedRoomIds": [
+                "d9e9eda6-8e1a-495b-b76c-398365a311a3",
+                "88b4e649-cf7c-4726-a1d1-cb9f31f88590",
+                "83bd2e9f-dc35-48d2-ac4b-b1f7333180da",
+                "5fb6c06c-f5d7-4da8-83b7-fc8e66004acf",
+                "dd1ee816-c4bf-4e9d-8179-08f1c46b85dc",
+                "3b43e164-f113-4cf8-94d1-f87103551ad1",
+                "f08eb4ec-5069-4046-8968-f9e35d3af866",
+                "e6b44ec1-43de-4931-9408-11ecfc6ae7de"
+            ],
+            "basePrice": 176.83
+        }
+    ],
+    "salesStrategy": {
+        "mostPopular": [
+            "RFC",
+            "ERFC",
+            "MRFC"
+        ],
+        "ourTip": [
+            "RFC",
+            "ERFC",
+            "MRFC"
+        ],
+        "direct": [
+            "MRFC",
+            "RFC",
+            "ERFC"
+        ]
+    },
+    "bookingHistoryList": [],
+    "lowestPriceList": [
+        "MRFC070",
+        "MRFC070",
+        "MRFC070",
+        "MRFC070",
+        "MRFC069"
+    ]
+}

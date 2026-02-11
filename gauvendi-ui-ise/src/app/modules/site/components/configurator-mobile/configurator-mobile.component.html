@@ -1,0 +1,195 @@
+<div
+  id="iseConfiguratorElementMobile"
+  class="bg-configurator-background-color py-[8px] px-[16px] w-full"
+>
+  <ng-container *ngIf="{
+  hotelPrimaryColor: hotelPrimaryColor$ | async,
+  categoryDefaultText: categoryDefaultText$ | async,
+  categoryDefaultBg: categoryDefaultBg$ | async,
+  featureDefaultIcon: featureDefaultIcon$ | async,
+  featureHoverIcon: featureHoverIcon$ | async,
+  buttonTextColor: buttonTextColor$ | async
+  } as vm">
+    @if (eventFeatureRecommendationList && hotelRetailCategoryList && hotelRetailFeatureList) {
+      <!-- Features Recommendation -->
+      <div
+        class="rounded-[12px] border border-hotel-primary-color px-[16px] bg-configurator-background-color relative"
+        [style.padding-top.px]="(featureRankings()?.length > 0) ? 12 : (24 + 46)"
+        [class]="(featureRankings()?.length > 0) ? 'mb-[12px] pb-[12px]' : 'pb-[16px] '"
+      >
+        <!-- tag -->
+        <div
+          #tagEle
+          class="bg-hotel-primary-color absolute z-[2] top-[14px] left-[-8px] px-[24px] py-[4px] flex items-center gap-[12px] rounded-r-[8px] sm:max-w-[90%]"
+          [class]="(featureRankings()?.length > 0) ? 'opacity-0 invisible' : 'opacity-100 visible'"
+        >
+          <img
+            class="sm:max-w-[24px]"
+            src="assets/icons/star-event.svg"
+            alt="" />
+          <div class="flex flex-wrap">
+            @for (item of eventFeatureRecommendationList?.event?.split('\n')?.[0]?.split(' '); track $index) {
+              <div class="text-[14px] leading-[19px] font-medium !text-lowest-price-color whitespace-nowrap">{{ item }}&nbsp;</div>
+            }
+            @if (eventFeatureRecommendationList?.event?.split('\n')?.[1]; as text) {
+              <div class="text-[14px] leading-[19px] font-medium !text-lowest-price-color whitespace-nowrap">
+                {{ text }}
+              </div>
+            }
+          </div>
+        </div>
+        @if (!(featureRankings()?.length > 0)) {
+          <img class="absolute top-[10px] left-[-8px] z-1"
+               appFilterSvg [color]="vm.hotelPrimaryColor"
+               src="assets/icons/mask-tag.svg" alt="mask" />
+          <!-- end tag -->
+          <div class="grid grid-cols-2 gap-[12px]">
+            @if (eventFeatureRecommendationList?.event && hotelRetailCategoryList) {
+              @for (featureRecommendation of eventFeatureRecommendationList?.popularRetailFeatureList;
+                track featureRecommendation.id) {
+                <div
+                  class="col-span-1 cursor-pointer hover:bg-configurator-feature-hover-background-color px-[16px] py-[12px] rounded-[16px] bg-configurator-category-default-background-color"
+                  (click)="addSuggestFeature(featureRecommendation?.code)"
+                  appOverlayMobile
+                  [component]="popUpComponent"
+                >
+                  <div class="flex justify-between mb-[12px] items-start">
+                    <app-image-hovering
+                      [src]="featureRecommendation?.retailFeatureImageList[0]?.imageUrl"
+                      [color]="vm.featureDefaultIcon"
+                      [colorHovering]="vm.featureHoverIcon"
+                      [defaultClass]="'h-[45.75px] w-[40px] group-hover:!hidden'"
+                      [hoveringClass]="'h-[45.75px] w-[40px] group-hover:!block'"
+                    />
+                    <app-image-hovering
+                      [src]="'assets/icons/plus-circle.svg'"
+                      [color]="vm.featureDefaultIcon"
+                      [colorHovering]="vm.featureHoverIcon"
+                      [defaultClass]="'w-[24px] group-hover:!hidden'"
+                      [hoveringClass]="'w-[24px] group-hover:!block'"
+                    />
+                  </div>
+                  <div class="text-primary-color line-clamp-1 text-14 leading-[19.6px]">
+                    {{ featureRecommendation?.name }}
+                  </div>
+                </div>
+              }
+            }
+            <div
+              appOverlayMobile
+              (click)="selectCategory(hotelRetailCategoryList[0])"
+              [component]="popUpComponent"
+              class="bg-configurator-category-hover-background-color rounded-[16px] p-[16px] transition-all cursor-pointer h-full flex flex-col justify-between"
+            >
+              <div
+                class="text-20 font-light text-primary-color sm:text-[14px] sm:leading-[19.6px]">{{ "MORE_PERSONALIZATION" | translate | async }}
+              </div>
+              <div class="text-14 font-[600] text-button-hover-color underline underline-offset-2">
+                {{ "SELECT_YOUR_FEATURES" | translate | async }}
+              </div>
+            </div>
+          </div>
+        } @else {
+          <div class="flex items-center justify-start gap-[12px]">
+            <img
+              src="assets/icons/star-outline-2.svg"
+              appFilterSvg
+              [color]="vm.hotelPrimaryColor" alt="star.svg" />
+            <div class="text-14 text-primary-color font-medium">
+              {{ "PERSONALIZE_YOUR_TRIP" | translate | async }}
+            </div>
+          </div>
+
+          <div class="mt-[16px] flex items-center justify-between">
+            <div class="text-14 text-primary-color font-medium">
+              {{ "YOUR_SELECTIONS" | translate | async }}
+            </div>
+
+            <button
+              appOverlayMobile
+              (click)="selectCategory(hotelRetailCategoryList[0])"
+              [component]="popUpComponent"
+              class="text-primary-color underline text-14 font-semibold cursor-pointer hover:opacity-80">
+              {{ "EDIT_MY_SELECTIONS" | translate | async }}
+            </button>
+          </div>
+
+          <div class="mt-[16px] grid-cols-1 grid gap-[8px]">
+            @if ((hotelRetailFeatureList | filterRetailFeatureSelected: featureSelected()); as b) {
+              @for (featureRanking of featureRankings()?.slice(0, 3); track featureRanking) {
+                <div
+                  class="col-span-1 border border-hotel-primary-color rounded-[12px] p-[4px] flex justify-start items-center gap-[8px]">
+                  <div
+                    class="flex items-center justify-center bg-configurator-category-hover-background-color w-[34px] cursor-pointer hover:opacity-80 h-[34px] rounded-[5px]">
+                    <img class="h-[18px] w-[16px]" [src]="featureRanking?.category?.iconImageUrl" appFilterSvg
+                         [color]="vm.hotelPrimaryColor" [alt]="featureRanking?.category?.name" />
+                  </div>
+
+                  <div class="line-clamp-2 text-primary-color flex-1 text-14">
+                    @for (feat of featureRanking?.features; track feat; let last = $last) {
+                      {{ feat?.name }}@if (!last) {
+                        ,&nbsp;
+                      }
+                    }
+                  </div>
+                </div>
+              }
+              @if (featureRankings()?.length > 3) {
+                <div class="flex w-full justify-end">
+                     <span
+                       class="text-primary-color text-14 font-semibold cursor-pointer hover:opacity-80"
+                       appOverlayMobile
+                       (click)="selectCategory(hotelRetailCategoryList[0])"
+                       [component]="popUpComponent"
+                     >
+                      + {{ featureRankings()?.length - 3 }} {{ "MORE" | translate | async }}
+                    </span>
+                </div>
+              }
+            }
+          </div>
+        }
+      </div>
+      <!-- End Features Recommendation -->
+    } @else {
+      <div
+        class="rounded-[12px] border border-hotel-primary-color px-[16px] py-[16px] bg-configurator-background-color relative"
+      >
+        <div class="grid-cols-2 gap-[12px] grid">
+          <!-- Case [] or null -->
+          <div class="max-h-[121px] rounded-[16px] px-[16px] py-[12px] sm:max-h-[101.34px]">
+            <div
+              class="h-[61px] w-[54px] skeleton-ln rounded-[8px] mb-[12px] sm:w-[40px] sm:h-[45.75px] sm:mb-[8px]"></div>
+            <div class="h-[24px] w-[85%] skeleton-ln rounded-[8px]"></div>
+          </div>
+          <div class="max-h-[121px] rounded-[16px] px-[16px] py-[12px] sm:max-h-[101.34px]">
+            <div
+              class="h-[61px] w-[54px] skeleton-ln rounded-[8px] mb-[12px] sm:w-[40px] sm:h-[45.75px] sm:mb-[8px]"></div>
+            <div class="h-[24px] w-[85%] skeleton-ln rounded-[8px]"></div>
+          </div>
+        </div>
+      </div>
+    }
+  </ng-container>
+</div>
+
+<ng-template #tplLoadingSuggested>
+
+</ng-template>
+
+<ng-template #tplLoadingFeature>
+  <div class="w-full gap-[24px] md:hidden grid grid-cols-6">
+    <div class="col-span-1 w-[40px] h-[40px] rounded-[8px] skeleton-ln"></div>
+    <div class="col-span-1 w-[40px] h-[40px] rounded-[8px] skeleton-ln"></div>
+    <div class="col-span-1 w-[40px] h-[40px] rounded-[8px] skeleton-ln"></div>
+    <div class="col-span-1 w-[40px] h-[40px] rounded-[8px] skeleton-ln"></div>
+    <div class="col-span-1 w-[40px] h-[40px] rounded-[8px] skeleton-ln"></div>
+    <div class="col-span-1 w-[40px] h-[40px] rounded-[8px] skeleton-ln"></div>
+  </div>
+  <div class="w-full gap-[12px] hidden md:grid grid-cols-4">
+    <div class="col-span-1 w-[72px] h-[65px] rounded-[8px] skeleton-ln"></div>
+    <div class="col-span-1 w-[72px] h-[65px] rounded-[8px] skeleton-ln"></div>
+    <div class="col-span-1 w-[72px] h-[65px] rounded-[8px] skeleton-ln"></div>
+    <div class="col-span-1 w-[72px] h-[65px] rounded-[8px] skeleton-ln"></div>
+  </div>
+</ng-template>

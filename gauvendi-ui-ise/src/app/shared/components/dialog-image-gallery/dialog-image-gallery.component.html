@@ -1,0 +1,41 @@
+<div class="wrapper">
+  <div class="header sm:gap-[4px]">
+    <div class="title">
+      #{{data?.roomIndex + 1}} - {{data?.isLowestPrice ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) : data?.roomName}}
+    </div>
+    <mat-icon class="sm:!w-[14px] sm:!h-[14px] sm:!text-[16px]" mat-dialog-close>close</mat-icon>
+  </div>
+  <div class="content">
+    <div class="main-image" [ngStyle]="{ 'background-image': selectedImageUrl | parseImageUrl}">
+      <div class="index">{{selectedImageIndex + 1}}/{{data?.imageList?.length}}</div>
+      <div class="image-type">
+        {{data?.type === 'ROOM' ? (data?.type | translate | async) : data?.amenityName && data?.amenityName[selectedImageIndex]}}
+      </div>
+    </div>
+    <div class="thumbnail-list">
+      <div class="navigation navigation__left pointer" *ngIf="data?.imageList?.length > 3">
+        <mat-icon>chevron_left</mat-icon>
+      </div>
+      <swiper
+        [config]="config"
+        class="thumb-carousel"
+      >
+        <ng-container
+          *ngFor="let item of data?.imageList; index as i"
+        >
+          <ng-template swiperSlide>
+            <div
+              class="thumb-image"
+              [class.active]="i === selectedImageIndex"
+              [ngStyle]="{ 'background-image': item?.imageUrl | parseImageUrl}"
+              (click)="selectImage(item, i)"
+            ></div>
+          </ng-template>
+        </ng-container>
+      </swiper>
+      <div class="navigation navigation__right pointer" *ngIf="data?.imageList?.length > 3">
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+.event-label {
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 8px;
+    background-color: var(--color-button-normal-background);
+    filter: brightness(0.7);
+    transform: translateY(-8px);
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  }
+}
+
+.hexagon {
+  width: 100%;
+  padding-bottom: 115.47%; /* Padding is calculated as 2 * (sqrt(3)/2 * width) */
+  position: absolute;
+  background-color: #fff; /* Change the color as needed */
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+
+  &.hexagon {
+    background: var(--color-configurator-category-hover-background);
+
+    &:hover {
+      background: var(--color-feature-background);
+    }
+  }
+}
+
+:host {
+  ::ng-deep {
+    .swiper {
+      width: 100%;
+      height: 100%;
+      
+      .swiper-wrapper {
+        display: flex;
+      }
+      
+      .swiper-slide {
+        width: auto !important;
+        flex-shrink: 0;
+      }
+    }
+  }
+}

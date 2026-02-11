@@ -1,0 +1,7 @@
+export enum HotelAmenityEnum {
+  PERSON = 'PERSON', // PER PERSON PER NIGHT
+  ROOM = 'ROOM', // PER ROOM
+  ITEM = 'ITEM', // PER ITEM
+  NIGHT = 'NIGHT', // PER NIGHT
+  PER_PERSON_PER_ROOM = 'PER_PERSON_PER_ROOM' // PER PERSON
+}

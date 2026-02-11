@@ -1,0 +1,543 @@
+<ng-container
+  *ngIf="{
+    imageSpacing: displayMode === EDisplayMode.Grid ? 24 : 74,
+    imageSpacingCollapsed: 66,
+    noFeatures: isLowestPriceOpaque && item()?.tag === BookingFlow.LowestPrice,
+    includeTax: includeTax$ | async,
+    colorText: colorText$ | async,
+    promoCode: promoCode$ | async,
+    isPromoted:
+      (item()?.items?.[0]?.baseOption?.availableRfcRatePlanList?.length > 0 ? item()?.items?.[0]?.baseOption?.availableRfcRatePlanList : item()?.items?.[0]?.baseOption?.unavailableRfcRatePlanList)
+      | checkOptionPromoted
+  } as vm"
+>
+  <div class="relative transition-all duration-500 pb-[16px] md:pb-[20px]">
+    <!-- ================================= NORMAL STATE  =================================-->
+    <div class="hidden h-full" [class.!block]="!isSelected && !collapsed">
+      <!-- label tag + units-info-->
+      <div class="absolute top-[12px] ltr:left-[-8px] rtl:right-[-8px] max-w-full sm:flex-col z-50">
+        <div class="flex">
+          <app-option-item-tag *ngIf="!isSelected" class="min-w-fit" [tag]="item()?.tag" [data]="roomSummary()" />
+          <div
+            *ngIf="!vm.noFeatures && displayMode === EDisplayMode.Tiles"
+            [ngClass]="{
+              'ps-[12px]': (item()?.tag | tagColor)?.length,
+              'ps-[24px]': !(item()?.tag | tagColor)?.length
+            }"
+          >
+            <div class="text-17 font-medium text-primary-color line-clamp-1">
+              {{ vm.noFeatures ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) : (item()?.title | renderCombinationTitle: ('COMBINATION_UNITS' | translate | async)) }}
+            </div>
+            <app-option-units-info [item]="item()" [showSpace]="false" />
+          </div>
+        </div>
+
+        <div
+          *ngIf="!vm.noFeatures && displayMode === EDisplayMode.Grid"
+          class="flex-1 px-[24px] sm:gap-[2px] sm:pt-[8px]"
+          [ngClass]="{
+            'pt-[8px]': (item()?.tag | tagColor)?.length,
+            'pt-[4px]': !(item()?.tag | tagColor)?.length
+          }"
+        >
+          <div class="text-17 font-medium text-primary-color line-clamp-1">
+            {{ vm.noFeatures ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) : (item()?.title | renderCombinationTitle: ('COMBINATION_UNITS' | translate | async)) }}
+          </div>
+          <app-option-units-info [item]="item()" [showSpace]="false" />
+        </div>
+      </div>
+
+      <div
+        *ngIf="!item()?.isLocked"
+        class="absolute sm:top-[45px] top-[58px] left-0 z-[30]"
+        [ngClass]="{
+          'sm:!top-[85px]': (item()?.tag | tagColor)?.length > 0 && vm.isPromoted,
+          '!top-[35px]': displayMode === EDisplayMode.List && !tag.includes(item()?.tag) && vm.isPromoted,
+          '!top-[70px]': displayMode === EDisplayMode.List && showMatch && vm.isPromoted
+        }"
+      ></div>
+      <!-- end label tag + units-info-->
+
+      <!-- promo tag -->
+      <ng-container *ngIf="vm.isPromoted && !isSelected && !item()?.isLocked">
+        <div
+          class="absolute z-[22]"
+          [ngClass]="{
+            'top-[8px] ltr:right-[8px] rtl:left-[8px] sm:top-[12px]': displayMode === EDisplayMode.Grid,
+            'top-[63px] ltr:left-[8px] rtl:right-[8px]': displayMode === EDisplayMode.Tiles,
+            'top-[64px] ltr:left-[8px] rtl:right-[8px]': displayMode === EDisplayMode.List,
+            '!top-[8px]': displayMode === EDisplayMode.List && !(item()?.tag | tagColor)?.length
+          }"
+        >
+          <div class="w-fit rounded-[8px] flex items-center px-[8px] py-[4px] bg-[#E6F6F4] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.08)] max-w-[120px]">
+            <img loading="lazy" appFilterSvg [color]="'#00A991'" src="assets/icons/promotion.svg" width="16" height="16" alt="" />
+            <div class="ms-[5px] text-14 leading-[140%] text-[#00A991] truncate">
+              {{ vm.promoCode }}
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <!-- end promo tag -->
+
+      <ng-container *ngIf="displayMode !== EDisplayMode.List">
+        <!-- locked layer -->
+        @if (item()?.isLocked) {
+          <ng-container [ngTemplateOutlet]="restrictionTpl" [ngTemplateOutletContext]="{ bottom: bottomBarHeight() + (displayMode === EDisplayMode.Grid ? 38 : 20) }" />
+        }
+        <!-- end locked -->
+
+        <!-- Combination CARD -->
+        <ng-container *ngIf="!vm.noFeatures">
+          <div
+            class="flex flex-col justify-between bg-product-background-color rounded-[16px] pb-[16px] shadow-option-item"
+            [ngClass]="{
+              '!pt-[125px] sm:!pt-[155px]': (item()?.tag | tagColor)?.length > 0 && vm.isPromoted,
+              '!pt-[115px]': vm.isPromoted && !tag.includes(item()?.tag),
+              'pt-[120px] sm:!pt-[135px]': displayMode === EDisplayMode.Grid && !(item()?.tag | tagColor)?.length,
+              'pt-[140px] sm:!pt-[155px]': displayMode === EDisplayMode.Grid && (item()?.tag | tagColor)?.length,
+              '!pt-[64px]': displayMode === EDisplayMode.Tiles,
+              'shadow-option-item': !isSelected
+            }"
+            [style.height.px]="displayMode === EDisplayMode.Grid ? 468 : 280"
+          >
+            <div class="flex items-center justify-center transition-all duration-500">
+              <div
+                class="relative transition-all duration-500 ease-linear animated"
+                [ngClass]="{
+                  'h-[185px] w-[240px]': displayMode === EDisplayMode.Grid,
+                  'h-[120px] w-[160px]': displayMode === EDisplayMode.Tiles
+                }"
+                appCombinationHover
+                [ngStyle]="{
+                  left: direction() === 'ltr' && (-(isMouseHover ? vm.imageSpacing + 5 : vm.imageSpacing) * item()?.items?.length) / 2 + vm.imageSpacing / 2 + 'px',
+                  right: direction() === 'rtl' && (-(isMouseHover ? vm.imageSpacing + 5 : vm.imageSpacing) * item()?.items?.length) / 2 + vm.imageSpacing / 2 + 'px'
+                }"
+                (mouseHover)="isMouseHover = $event"
+              >
+                <ng-container *ngFor="let singleOption of item()?.items; index as optionIdx">
+                  <div
+                    (click)="viewDetail()"
+                    class="absolute top-0 cursor-pointer rounded-[16px] shadow-unit bg-popover-background-color me-[16px] transition-all duration-500 ease-linear"
+                    [style.zIndex]="item()?.items?.length - optionIdx + 22"
+                    [ngStyle]="{
+                      left: direction() === 'ltr' && item()?.items?.length + optionIdx * (isMouseHover ? vm.imageSpacing + 5 : vm.imageSpacing) + 'px',
+                      right: direction() === 'rtl' && item()?.items?.length + optionIdx * (isMouseHover ? vm.imageSpacing + 5 : vm.imageSpacing) + 'px'
+                    }"
+                    [style]="'transform: rotate(' + (optionIdx % 2 ? (isMouseHover ? '10deg' : '8deg') : isMouseHover ? '-10deg' : '-8deg') + ')'"
+                    [ngClass]="{
+                      'h-[185px] w-[240px]': displayMode === EDisplayMode.Grid,
+                      'h-[120px] w-[160px]': displayMode === EDisplayMode.Tiles
+                    }"
+                  >
+                    <ng-container [ngTemplateOutlet]="optionMiniTpl" [ngTemplateOutletContext]="{ $implicit: { singleOption, index: optionIdx, showIndex: true } }"></ng-container>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+            <ng-container [ngTemplateOutlet]="bottomBarTpl" />
+          </div>
+        </ng-container>
+        <!-- End CARD -->
+
+        <!--  No room preferences  CARD -->
+        <ng-container *ngIf="vm.noFeatures">
+          <div
+            class="flex flex-col justify-between bg-popover-background-color rounded-[16px] pb-[16px] h-[468px]"
+            [ngClass]="{
+              '!h-[280px]': displayMode === EDisplayMode.Tiles
+            }"
+          >
+            <div>
+              <div
+                class="bg-cover bg-center bg-no-repeat rounded-t-[16px] h-[220px]"
+                [style.backgroundImage]="lowestPriceImageUrl | parseImageUrl"
+                alt="option-img"
+                [ngClass]="{
+                  '!h-[128px]': displayMode === EDisplayMode.Tiles
+                }"
+              ></div>
+              <div class="pt-[16px] px-[16px]">
+                <div class="font-medium text-[14px] leading-[19px] text-primary-color line-clamp-1">
+                  {{ vm.noFeatures ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) : (item()?.title | renderCombinationTitle: ('COMBINATION_UNITS' | translate | async)) }}
+                </div>
+                <app-option-units-info [item]="item()" [showSpace]="false" [noFeatures]="vm.noFeatures" />
+              </div>
+            </div>
+            <ng-container [ngTemplateOutlet]="bottomBarTpl" />
+          </div>
+        </ng-container>
+        <!-- END No room preferences  CARD -->
+
+        <ng-template #bottomBarTpl>
+          <div #bottomEl class="px-[16px]">
+            <div class="flex items-end justify-between">
+              <ng-container [ngTemplateOutlet]="optionPriceTpl"></ng-container>
+              <button
+                *ngIf="!item()?.isLocked"
+                class="rounded-[12px] md:hidden sm:hidden h-[36px] px-[35px] bg-button-hover-background-color text-button-hover-color text-[12px] font-medium leading-[140%] hover:bg-button-normal-background-color hover:text-button-normal-color transition-all duration-500"
+                (click)="viewDetail()"
+                appCustomTooltip
+                [tooltipMessage]="'SEARCH_CHANGES'"
+                [component]="'SEARCH_CHANGES'"
+                [isDisabled]="!isSearchChanged()"
+              >
+                {{ 'VIEW' | translate | async }}
+              </button>
+              <button
+                *ngIf="!item()?.isLocked"
+                class="rounded-[12px] hidden sm:block md:block h-[36px] px-[35px] bg-button-hover-background-color text-button-hover-color text-[12px] font-medium leading-[140%] hover:bg-button-normal-background-color hover:text-button-normal-color transition-all duration-500"
+                appCustomTooltip
+                [tooltipMessage]="'SEARCH_CHANGES'"
+                [component]="'SEARCH_CHANGES'"
+                (click)="onTrack()"
+              >
+                {{ 'VIEW' | translate | async }}
+              </button>
+              <button *ngIf="item()?.isLocked" class="rounded-[12px] h-[32px] px-[35px] bg-disabled-color" [disabled]="true">
+                <img loading="lazy" src="assets/icons/locked.svg" alt="" />
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+
+      <!-- List View -->
+      <ng-container *ngIf="displayMode === EDisplayMode.List">
+        <div class="pb-0 bg-product-background-color rounded-[16px] shadow-option-item relative">
+          @if (item()?.isLocked) {
+            <div class="absolute top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.36)] z-[40] rounded-[16px]"></div>
+          }
+          <div *ngIf="isDetails" class="bg-button-normal-background-color h-[48px] flex items-center justify-center rounded-t-[16px]">
+            <ng-container *ngIf="!vm.noFeatures">
+              <span class="text-button-normal-color text-[17px] font-normal leading-[23.8px] pr-[12px]">
+                {{ 'YOU_ARE_SELECTING' | translate | async }}
+              </span>
+              <span class="text-button-normal-color text-[20px] font-medium leading-[24px]">
+                {{ item()?.title | renderCombinationTitle: ('COMBINATION_UNITS' | translate | async) }}
+              </span>
+            </ng-container>
+            <ng-container *ngIf="vm.noFeatures">
+              <span class="text-button-normal-color text-[20px] font-medium leading-[24px]">
+                {{ 'OPAQUE_TEXT' | translate | async }}
+              </span>
+            </ng-container>
+          </div>
+          <div class="p-[16px]">
+            <div class="relative h-[300px]">
+              <ng-container *ngFor="let singleOption of item()?.items; index as index">
+                <div
+                  class="absolute top-0 transition-all duration-500 bg-popover-background-color shadow-combination-item rounded-[16px]"
+                  [ngClass]="{
+                    'translate-x-1/2': activeIndex === index && direction() === 'ltr',
+                    '-translate-x-1/2': activeIndex === index && direction() === 'rtl',
+                    'cursor-pointer top-1/2 -translate-y-1/2 hover:shadow-unit': activeIndex !== index,
+                    'hover:rotate-[8deg]': activeIndex < index && direction() !== 'rtl',
+                    'hover:rotate-[-8deg]': activeIndex > index && direction() !== 'rtl',
+                    'hover:-rotate-[8deg]': activeIndex < index && direction() === 'rtl',
+                    'hover:-rotate-[-8deg]': activeIndex > index && direction() === 'rtl'
+                  }"
+                  [style]="activeIndex | combinationOptionCarouselItemStyle: index : item()?.items?.length : EDeviceType.Desktop : direction()"
+                  (click)="setActiveIndex(index)"
+                >
+                  <ng-container *ngIf="activeIndex === index">
+                    <div class="relative flex w-full">
+                      <div class="absolute top-[12px] ltr:left-[-8px] rtl:right-[-8px] z-10">
+                        <app-matching-percent-tag *ngIf="item()?.matched" [matchPercent]="item()?.items?.[activeIndex].matchPercent" />
+                      </div>
+                      <div class="relative w-[45%]">
+                        <app-option-swiper
+                          [imgUrls]="vm?.noFeatures ? [lowestPriceImageUrl] : item()?.items?.[activeIndex]?.imgUrls"
+                          [customClass]="'h-[300px] rounded-s-[16px]'"
+                          [optionIconUrls]="combinationSpaceTypeUrls()?.[activeIndex] || []"
+                        />
+                        @if (item()?.isLocked) {
+                          <div class="absolute right-0 bottom-0 left-0 flex items-center justify-center h-[36px] bg-popover-background-color z-[10] text-[14px] rounded-bl-[16px]">
+                            <app-room-restriction [restriction]="restrictionValidationList" />
+                          </div>
+                          <!-- <div class="absolute top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.25)] z-[11] rounded-l-[16px]"></div> -->
+                        } @else {
+                          <!-- zoom -->
+                          <div
+                            class="absolute bottom-[16px] ltr:right-[8px] rtl:left-[8px] z-10 rounded-full bg-[rgba(0,0,0,0.4)] p-[4px] cursor-zoom-in hover:scale-[1.01] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.24)]"
+                            (click)="zoomIn(item()?.items?.[activeIndex]?.imgUrls, vm.noFeatures)"
+                          >
+                            <img loading="lazy" src="assets/icons/zoom-in.svg" alt="" width="20" height="20" />
+                          </div>
+                          <!-- end zoom -->
+                        }
+                      </div>
+                      <div class="flex flex-col justify-between w-[55%] p-[16px] mb-[4px] max-h-[300px]">
+                        <div class="flex gap-[4px] items-center">
+                          <div class="bg-button-secondary-fill rounded-[8px] px-[4px] text-[14px] font-medium leading-[19px] text-primary-color">#{{ index + 1 }}</div>
+                          <div class="font-medium text-[17px] leading-[19px] text-primary-color line-clamp-1">
+                            {{ vm.noFeatures ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) : item()?.items?.[activeIndex]?.title }}
+                          </div>
+                        </div>
+                        <app-option-units-info [item]="item()?.items?.[activeIndex]" [showSpace]="true" [full]="true" />
+                        @if (item()?.items?.[activeIndex]?.metadata?.description; as description) {
+                          <div class="text-[12px] font-light text-primary-color mt-[12px] min-h-[20px] overflow-auto" [innerHTML]="description"></div>
+                        }
+                        <div class="overflow-auto max-h-[160px] mt-[12px]">
+                          <ng-container *ngIf="!vm.noFeatures">
+                            <app-feature-included-match-flow
+                              *ngIf="showMatch"
+                              [matchFeatures]="item()?.items?.[activeIndex]?.matchFeatures"
+                              [notMatchFeatures]="item()?.items?.[activeIndex]?.notMatchFeatures"
+                              [anotherFeatures]="item()?.items?.[activeIndex]?.features"
+                              [maxFeatureShowed]="999"
+                              [displayMode]="displayMode"
+                            />
+                            <app-feature-included
+                              *ngIf="!showMatch"
+                              [features]="item()?.items?.[activeIndex]?.features"
+                              [maxFeatureShowed]="999"
+                              [displayMode]="EDisplayMode.List"
+                              [isAlternativeOption]="isAlternativeOption"
+                            />
+                            <div class="mb-[12px]"></div>
+                            <app-standard-features [standardFeatures]="item()?.items?.[activeIndex]?.standardFeatures" [maxFeatureShowed]="9999" />
+                          </ng-container>
+                        </div>
+                        <div>
+                          <app-option-price
+                            [price]="item() | calUnitCombinationOptionPrice: activeIndex : priceView : vm.includeTax : isFromMatchingRfc"
+                            [priceView]="priceView"
+                            [parentClass]="'!text-[12px]'"
+                            [rooms]="1"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+
+                  <ng-container
+                    *ngIf="activeIndex !== index"
+                    [ngTemplateOutlet]="optionMiniTpl"
+                    [ngTemplateOutletContext]="{ $implicit: { singleOption, index: index, showIndex: true } }"
+                  ></ng-container>
+                </div>
+              </ng-container>
+            </div>
+            <!-- pagination for slides -->
+            <div class="flex items-center justify-center m-[14px]">
+              <img
+                loading="lazy"
+                class="cursor-pointer hover:scale-105 dir-mat-icon"
+                appFilterSvg
+                [color]="vm.colorText"
+                (click)="setActiveIndex(activeIndex - 1 >= 0 ? activeIndex - 1 : item()?.items?.length - 1)"
+                src="assets/icons/arrow-left.svg"
+                alt=""
+              />
+              <div class="bg-button-secondary-fill rounded-[8px] px-[12px] py-[2px] text-[14px] font-medium leading-[19px] text-primary-color">{{ activeIndex + 1 }}/{{ item()?.items?.length }}</div>
+              <img
+                loading="lazy"
+                class="cursor-pointer hover:scale-105 ltr:rotate-180 rtl:rotate-0"
+                appFilterSvg
+                [color]="vm.colorText"
+                (click)="setActiveIndex(activeIndex + 1 <= item()?.items?.length - 1 ? activeIndex + 1 : 0)"
+                src="assets/icons/arrow-left.svg"
+                alt=""
+              />
+            </div>
+            <!-- END -  pagination for slides -->
+            <!-- rfc-rate list -->
+            @if (isFromMatchingRfc ? item()?.items?.[activeIndex]?.rfcRatePlanList : item()?.metadata?.availableRfcRatePlanList; as list) {
+              <div class="flex flex-col gap-[12px]">
+                <ng-container *ngFor="let rfcRatePlan of list; index as i">
+                  <app-rfc-rate-plan
+                    (selectRatePlan)="selectRatePlan.emit($event)"
+                    [bedRooms]="item()?.items[0]?.bedRooms"
+                    [dealCode]="list | getDealCode"
+                    [displayMode]="displayMode"
+                    [isBook]="isHighLight"
+                    [isCombination]="true"
+                    [isFromMatchingRfc]="isFromMatchingRfc"
+                    [isIncludedTax]="vm.includeTax"
+                    [item]="rfcRatePlan"
+                    [name]="item()?.items?.[activeIndex]?.title"
+                    [priceView]="priceView"
+                    [promoCode]="vm.promoCode"
+                    [roomProduct]="isFromMatchingRfc ? item()?.items?.[activeIndex]?.baseOption?.availableRfcList?.[0] : item()?.metadata?.availableRfcList?.[0]"
+                    [rooms]="item()?.items?.length"
+                  />
+                </ng-container>
+              </div>
+            }
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <!-- ================================= END NORMAL STATE  =================================-->
+
+    <!--  ================================= SELECTED STATE =================================-->
+    <div class="hidden" [class.!block]="isSelected">
+      <div class="border-button-normal-background-color bg-button-hover-background-color border-[12px] rounded-[16px]">
+        <div class="h-[calc(145px-24px)] rounded-[12px] flex flex-col items-center justify-center gap-[12px]">
+          <ng-container *ngIf="vm.noFeatures">
+            <div class="text-[17px] leading-[23.8px] text-primary-color font-medium text-center line-clamp-1">
+              {{ 'NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async }}
+            </div>
+          </ng-container>
+          <ng-container *ngIf="!vm.noFeatures">
+            <div class="text-[17px] leading-[23.8px] text-primary-color font-medium text-center line-clamp-1">
+              {{ item()?.title | renderCombinationTitle: ('COMBINATION_UNITS' | translate | async) }}
+            </div>
+            <div class="flex justify-center">
+              <ng-container [ngTemplateOutlet]="optionPriceTpl" />
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <!--  ================================= END SELECTED STATE =================================-->
+
+    <!-- ================================= COLLAPSED STATE ================================= -->
+    <div class="hidden" [class.!block]="collapsed && !isSelected">
+      <div class="bg-product-background-color rounded-[16px] overflow-hidden transition-all duration-500 shadow-option-item h-[145px] relative">
+        <div class="p-[16px]">
+          <ng-container *ngIf="vm.noFeatures">
+            <div class="text-[17px] leading-[23.8px] text-primary-color font-medium line-clamp-1">
+              {{ 'NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async }}
+            </div>
+          </ng-container>
+          <ng-container *ngIf="!vm.noFeatures">
+            <div class="text-[17px] leading-[23.8px] text-primary-color font-medium line-clamp-1">
+              {{ item()?.title | renderCombinationTitle: ('COMBINATION_UNITS' | translate | async) }}
+            </div>
+            <app-option-units-info [item]="item()" [showSpace]="false" [noFeatures]="vm.noFeatures" />
+
+            <!-- card -->
+            <div class="pt-[16px]"></div>
+            <div class="flex items-center justify-center transition-all duration-500">
+              <div
+                class="relative transition-all duration-500 ease-linear animated h-[54px] w-[70px]"
+                [ngStyle]="{
+                  left: direction() === 'ltr' && (-(isMouseHover ? vm.imageSpacingCollapsed + 5 : vm.imageSpacingCollapsed) * item()?.items?.length) / 2 + vm.imageSpacingCollapsed / 2 + 'px',
+                  right: direction() === 'rtl' && (-(isMouseHover ? vm.imageSpacingCollapsed + 5 : vm.imageSpacingCollapsed) * item()?.items?.length) / 2 + vm.imageSpacingCollapsed / 2 + 'px'
+                }"
+              >
+                <ng-container *ngFor="let singleOption of item()?.items; index as optionIdx">
+                  <div
+                    class="absolute top-0 cursor-pointer rounded-[4.65px] shadow-unit bg-popover-background-color me-[16px] h-[54px] w-[70px]"
+                    [style.zIndex]="item()?.items?.length - optionIdx + 22"
+                    [ngStyle]="{
+                      left: direction() === 'ltr' && item()?.items?.length + optionIdx * (isMouseHover ? vm.imageSpacingCollapsed + 5 : vm.imageSpacingCollapsed) + 'px',
+                      right: direction() === 'rtl' && item()?.items?.length + optionIdx * (isMouseHover ? vm.imageSpacingCollapsed + 5 : vm.imageSpacingCollapsed) + 'px'
+                    }"
+                    [style]="'transform: rotate(' + (optionIdx % 2 ? (isMouseHover ? '10deg' : '8deg') : isMouseHover ? '-10deg' : '-8deg') + ')'"
+                  >
+                    <app-image-custom
+                      [src]="isLowestPriceOpaque && item()?.tag === BookingFlow.LowestPrice ? lowestPriceImageUrl : singleOption?.imgUrls[0]"
+                      [customClass]="'w-full bg-cover bg-center bg-no-repeat rounded-[4.65px] h-[54px]'"
+                      alt="option-img"
+                    />
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <!-- locked layer -->
+        @if (item()?.isLocked) {
+          <ng-container [ngTemplateOutlet]="restrictionTpl" [ngTemplateOutletContext]="{ bottom: 0 }" />
+        }
+        <!-- end locked -->
+      </div>
+    </div>
+    <!-- ================================= COLLAPSED STATE ================================= -->
+  </div>
+
+  <!-- ================================= TEMPLATES FOR REUSE ================================= -->
+  <!-- Option price Tpl -->
+  <ng-template #optionPriceTpl>
+    <app-option-price
+      [price]="
+        item()?.items[0]?.rfcRatePlan?.totalGrossAmount
+          | calculatePriceWithTax: item()?.items[0]?.rfcRatePlan?.totalBaseAmount : (priceView === EPriceView.PerNight ? 'averageDailyRate' : 'totalSellingRate') : vm.includeTax
+      "
+      [priceView]="priceView"
+      [parentClass]="'!text-[12px]'"
+      [rooms]="item()?.items?.length"
+      [isDeal]="(item()?.items?.[0]?.rfcRatePlanList | getDealCode) === item()?.items[0]?.rfcRatePlan?.ratePlan?.code"
+      [shouldShowStrikeThrough]="item()?.items?.[0]?.rfcRatePlan?.shouldShowStrikeThrough"
+      [originalPrice]="item()?.items[0]?.rfcRatePlan?.totalGrossAmountBeforeAdjustment | calculateFullPriceWithTax: item()?.items[0]?.rfcRatePlan?.totalBaseAmountBeforeAdjustment : vm.includeTax"
+      [adjustmentPercentage]="item()?.items?.[0]?.rfcRatePlan?.adjustmentPercentage"
+      [displayMode]="displayMode"
+      [isCombination]="true"
+    />
+  </ng-template>
+  <!-- End Option price Tpl -->
+  <!-- Restriction Tpl -->
+  <ng-template #restrictionTpl let-bottom="bottom">
+    <div class="absolute top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.1)] z-[9] rounded-t-[16px]" [style.bottom.px]="bottom || 0"></div>
+    <div
+      class="absolute bottom-0 left-0 right-0 h-[36px] bg-popover-background-color z-[10] flex items-center justify-center text-[14px] text-primary-color"
+      [class.px-2]="displayMode === EDisplayMode.Tiles"
+      [style.bottom.px]="bottom || 0"
+    >
+      <app-room-restriction [restriction]="restrictionValidationList" />
+    </div>
+    <div class="absolute top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.25)] z-[11] rounded-t-[16px]" [style.bottom.px]="bottom || 0"></div>
+  </ng-template>
+  <!-- end Restriction Tpl -->
+  <!-- ================================= TEMPLATES FOR REUSE ================================= -->
+</ng-container>
+
+<ng-template #optionMiniTpl let-implicit>
+  <div class="relative">
+    <div class="absolute top-0 ltr:left-0 rtl:right-0" [ngClass]="{ '!top-[12px] ltr:!left-[-8px] rtl:!right-[-8px]': displayMode === EDisplayMode.List }">
+      <app-matching-percent-tag *ngIf="showMatch && item()?.matched" [matchPercent]="implicit?.singleOption.matchPercent" [useOldVersion]="displayMode !== EDisplayMode.List" />
+    </div>
+    <div class="relative">
+      <app-image-custom
+        [src]="isLowestPriceOpaque && item()?.tag === BookingFlow.LowestPrice ? lowestPriceImageUrl : implicit?.singleOption?.imgUrls[0]"
+        [customClass]="displayMode === EDisplayMode.Tiles ? 'w-full bg-cover bg-center bg-no-repeat rounded-t-[16px] h-[72px]' : 'w-full bg-cover bg-center bg-no-repeat rounded-t-[16px] h-[120px]'"
+        alt="option-img"
+      />
+      @if (combinationSpaceTypeUrls() && hotelRetailFeatureList$ | async) {
+        <div class="flex gap-1 absolute z-10 w-fit bottom-3 left-3">
+          @if (combinationSpaceTypeUrls()[implicit?.index]?.length) {
+            @for (item of combinationSpaceTypeUrls()[implicit?.index]; track $index) {
+              <div class="option-space-type rounded-[4px] p-[4px] backdrop-blur-[5px] backdrop-grayscale-[30%]">
+                @if (item) {
+                  <div class="option-space-type-img w-[26px] h-[26px]" style="--image-url: url({{ item.url }})" appCustomTooltip [tooltipMessage]="item.title | titlecase"></div>
+                }
+              </div>
+            }
+          }
+        </div>
+      }
+    </div>
+
+    <div
+      [ngClass]="{
+        'p-[12px]': displayMode !== EDisplayMode.Tiles,
+        'px-[8px] py-[4px]': displayMode === EDisplayMode.Tiles
+      }"
+    >
+      <div class="flex gap-[4px] items-center">
+        <div *ngIf="implicit?.showIndex" class="bg-button-secondary-fill rounded-[8px] px-[4px] text-[14px] font-medium leading-[19px] text-primary-color">#{{ implicit?.index + 1 }}</div>
+        <div class="flex gap-1 truncate font-medium text-[14px] text-primary-color">
+          {{ isLowestPriceOpaque && item()?.tag === BookingFlow.LowestPrice ? ('NO_PREFERENCES_OR_FEATURES_GUARANTEED' | translate | async) : implicit?.singleOption?.title }}
+          @if (item()?.items?.[implicit?.index]?.metadata?.description; as description) {
+            <img
+              class="h-[14px]"
+              loading="lazy"
+              appFilterSvg
+              [color]="'#727272'"
+              src="assets/icons/infov2.svg"
+              width="14"
+              height="14"
+              alt="description"
+              appCustomTooltip
+              [tooltipMessage]="description"
+            />
+          }
+        </div>
+      </div>
+      <app-option-units-info [item]="implicit?.singleOption" [showText]="false" />
+    </div>
+  </div>
+</ng-template>

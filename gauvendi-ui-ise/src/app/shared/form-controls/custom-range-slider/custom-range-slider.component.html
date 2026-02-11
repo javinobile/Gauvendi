@@ -1,0 +1,11 @@
+<div class="relative h-[16px]">
+  <!-- Progress bar -->
+  @if (maxDrag() || minDrag()) {
+    <mat-slider discrete [displayWith]="formatLabel" [max]="maxDrag()" [min]="minDrag()" [step]="1">
+      <input matSliderStartThumb (ngModelChange)="changeMin($event)" [(ngModel)]="value.min" />
+      <input matSliderEndThumb (ngModelChange)="changeMax($event)" [(ngModel)]="value.max" />
+    </mat-slider>
+  }
+
+  <!-- End Progress bar -->
+</div>

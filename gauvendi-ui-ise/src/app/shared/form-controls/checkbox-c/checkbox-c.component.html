@@ -1,0 +1,31 @@
+<div
+  class="flex w-fit cursor-pointer items-center gap-2"
+  [ngClass]="{
+    'opacity-40 pointer-events-none': isDisabled
+  }"
+  (click)="changeState()"
+>
+  <ng-content select="'.__checkbox_prefix'"></ng-content>
+
+  <ng-container *ngIf="indeterminate">
+    <div class="flex items-center justify-center w-[16px] h-[16px] rounded-[4px] bg-hotel-primary-color" [class]="customClass">
+      <div class="w-2 bg-[#fff] h-[2px]"></div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!indeterminate">
+    <ng-container *ngIf="value; else tplRect">
+      <div class="flex items-center justify-center w-[16px] h-[16px] rounded-[4px] bg-hotel-primary-color" [class]="customClass">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="14" height="14" rx="3" fill="#000000" stroke="#000000" stroke-width="2" />
+          <path d="M12 5L6.5 10.5L4 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+    </ng-container>
+  </ng-container>
+  <ng-content></ng-content>
+</div>
+
+<ng-template #tplRect>
+  <div class="border-[2px] w-[16px] h-[16px] rounded-[4px] border-hotel-primary-color"></div>
+</ng-template>

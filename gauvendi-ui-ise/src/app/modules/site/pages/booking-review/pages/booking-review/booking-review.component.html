@@ -1,0 +1,150 @@
+<div class="pt-[40px] max-w-[1200px] mx-auto mb-[52px] sm:pt-[70px] sm:px-[16px] md:pt-[100px] md:px-[20px]">
+  <ng-container
+    *ngIf="{
+      bookingInformation: bookingInformation$ | async,
+      countries: countries$ | async,
+      hotelName: hotelName$ | async,
+      locale: locale$ | async,
+      currencyCode: currencyCode$ | async,
+      currencyRate: currencyRate$ | async,
+      isLowestPriceOpaque: isLowestPriceOpaque$ | async,
+      lowestPriceImageUrl: lowestPriceImageUrl$ | async,
+      isHotelInclusive: isHotelInclusive$ | async,
+      hotelCountry: hotelCountry$ | async,
+      hotelTaxInformationSetting: hotelTaxInformationSetting$ | async,
+      colorText: colorText$ | async,
+      hotelTerms: hotelTerms$ | async,
+      hotelPrivacy: hotelPrivacy$ | async,
+      timezone: timezone$ | async,
+      colorPrimary: colorPrimary$ | async,
+      colorSecondaryText: colorSecondaryText$ | async
+    } as vm"
+  >
+    <div class="flex items-start gap-[24px] sm:flex-col-reverse sm:mt-[16px] md:flex-col-reverse md:mt-[16px]">
+      <div class="w-[60%] sm:w-full md:w-full">
+        <ng-container *ngIf="vm.bookingInformation; else tplLoadingBookingInformation">
+          <div class="p-[28px] bg-background-secondary-color rounded-[24px] sm:p-[16px]">
+            <div class="text-[20px] font-medium leading-[120%] text-primary-color text-center">
+              {{ 'BOOKING_INFORMATION' | translate | async }}
+            </div>
+            <div class="my-[28px] border-b border-border-color sm:my-[16px]"></div>
+            <app-booker-review [booker]="vm.bookingInformation?.booker" [countries]="vm.countries"></app-booker-review>
+            <div class="my-[28px] border-b border-border-color sm:my-[16px]"></div>
+            <app-guest-review
+              [additionalGuest]="vm.bookingInformation?.guestList && vm.bookingInformation?.guestList | slice: 1"
+              [mainGuestInfo]="vm.bookingInformation?.guestList && vm.bookingInformation?.guestList[0]"
+              [countries]="vm.countries"
+            ></app-guest-review>
+            <ng-container *ngIf="vm.bookingInformation | checkInfoCompany">
+              <div class="my-[28px] border-b border-border-color sm:my-[16px]"></div>
+              <app-company-review [booker]="vm.bookingInformation?.booker"></app-company-review>
+            </ng-container>
+
+            <ng-container *ngIf="vm.bookingInformation?.specialRequest?.length > 0">
+              <div class="my-[28px] border-b border-border-color sm:my-[16px]"></div>
+              <div class="text-[17px] font-medium leading-[140%] text-primary-color mb-[8px]">
+                {{ 'BOOKING_NOTES' | translate | async }}
+              </div>
+              <div class="text-[14px] font-light leading-[140%] text-primary-color">
+                {{ vm.bookingInformation?.specialRequest }}
+              </div>
+            </ng-container>
+          </div>
+
+          <div class="mt-[40px]">
+            <div class="flex items-start gap-[8px] mb-[12px]">
+              <app-checkbox-c [formControl]="termCtrl"> </app-checkbox-c>
+              <div class="text-[14px] font-normal leading-[140%] text-primary-color">
+                <span style="line-height: 1.5em">
+                  {{ 'MESSAGE_CONFIRM_PAYMENT_CERTIFY' | translate | async }}
+                  <a class="text-hotel-primary-color underline cursor-pointer font-medium" [href]="vm.hotelTerms | parseMetadataConfig: vm.locale" target="_blank">
+                    {{ 'MESSAGE_CONFIRM_PAYMENT_TERMS_OF_USE' | translate | async }}
+                  </a>
+                  {{ 'AND' | translate | async }}
+                  <a class="text-hotel-primary-color underline cursor-pointer font-medium" [href]="vm.hotelPrivacy | parseMetadataConfig: vm.locale" target="_blank">
+                    {{ 'MESSAGE_CONFIRM_PAYMENT_PRIVACY_STATEMENT' | translate | async }}
+                  </a>
+                  {{ 'MESSAGE_CONFIRM_PAYMENT_RATE_DESCRIPTION_RULE' | translate | async }}
+                </span>
+              </div>
+            </div>
+            <div class="flex items-center justify-end sm:mt-[16px]">
+              <ng-container *ngIf="(isLockSubmitPayment$ | async) === false; else tplLoading">
+                <button
+                  class="h-[44px] text-[14px] font-medium leading-[140%] text-button-normal-color bg-button-normal-background-color sm:w-full sm:flex sm:justify-center sm:items-center rounded-[12px] px-[24px] hover:opacity-80"
+                  [disabled]="!vm.bookingInformation || !termCtrl?.value"
+                  [ngClass]="{ '!bg-disabled-color !cursor-not-allowed': !vm.bookingInformation || !termCtrl?.value }"
+                  (click)="submitConfirmPayment()"
+                >
+                  {{ 'CONFIRM_BOOKING' | translate | async }}
+                </button>
+              </ng-container>
+            </div>
+
+            <div class="error-message" *ngIf="hasErrorPayment$ | async">
+              <p>{{ paymentErrorMessage$ | async }}</p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="flex-1 sticky right-0 top-0 h-fit sm:relative sm:w-full md:relative md:w-full">
+        <ng-container *ngIf="vm.bookingInformation; else tplLoadingBookingInformationPanel">
+          <app-booking-summary-panel
+            [hotelName]="vm.hotelName"
+            [bookingInformation]="vm.bookingInformation"
+            [locale]="vm.locale"
+            [isLowestPriceOpaque]="vm.isLowestPriceOpaque"
+            [currencyCode]="vm.currencyCode"
+            [currencyRate]="vm.currencyRate"
+            [lowestPriceImageUrl]="vm.lowestPriceImageUrl"
+            [colorText]="vm.colorText"
+            [timezone]="vm.timezone"
+            [isReadonlySpecialRequest]="true"
+            [colorPrimary]="vm.colorPrimary"
+            [colorSecondaryText]="vm.colorSecondaryText"
+          >
+          </app-booking-summary-panel>
+          <app-payment-confirmation-total
+            [isInclusive]="vm.isHotelInclusive"
+            [subTotalPrice]="vm.bookingInformation?.totalSellingRate | currencyRate: vm.currencyRate | myCurrency: vm.currencyCode : 'symbol' : '1.2'"
+            [totalPrice]="vm.bookingInformation?.totalGrossAmount | currencyRate: vm.currencyRate | myCurrency: vm.currencyCode : 'symbol' : '1.2'"
+            [serviceChargeAmount]="vm.bookingInformation?.serviceChargeAmount"
+            [serviceCharge]="vm.bookingInformation?.serviceChargeAmount | currencyRate: vm.currencyRate | myCurrency: vm.currencyCode : 'symbol' : '1.2'"
+            [hotelCountry]="vm.hotelCountry"
+            [cityTaxList]="vm.bookingInformation?.cityTaxList"
+            [currencyCode]="vm.currencyCode"
+            [currencyRate]="vm.currencyRate"
+            [payAtHotelAmount]="vm.bookingInformation?.payAtHotelAmount"
+            [payAtHotel]="vm.bookingInformation.payAtHotelAmount | currencyRate: vm.currencyRate | myCurrency: vm.currencyCode : 'symbol' : '1.2'"
+            [payOnConfirmationAmount]="vm.bookingInformation?.payOnConfirmationAmount"
+            [payOnConfirmation]="vm.bookingInformation?.payOnConfirmationAmount | currencyRate: vm.currencyRate | myCurrency: vm.currencyCode : 'symbol' : '1.2'"
+            [payOnConfirmationDescription]="vm?.bookingInformation?.reservationList?.[0]?.paymentTerm?.payOnConfirmationDescription"
+            [payAtHotelDescription]="vm?.bookingInformation?.reservationList?.[0]?.paymentTerm?.payAtHotelDescription"
+            [taxInformation]="vm.bookingInformation?.cityTaxList"
+            [locale]="vm.locale"
+            [taxInformationConfig]="vm.hotelTaxInformationSetting"
+            [colorText]="vm.colorText"
+            [bookingTaxList]="vm.bookingInformation?.bookingTaxList"
+          ></app-payment-confirmation-total>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #tplLoading>
+  <button
+    class="h-[44px] text-[14px] font-medium leading-[140%] text-button-normal-color sm:w-full sm:flex sm:justify-center sm:items-center bg-border-color rounded-[12px] px-[24px] cursor-not-allowed flex items-center justify-center"
+  >
+    <span class="loader block"></span>
+    <span>{{ 'PROCESSING' | translate | async }}</span>
+  </button>
+</ng-template>
+
+<ng-template #tplLoadingBookingInformation>
+  <app-booking-information-loading></app-booking-information-loading>
+</ng-template>
+
+<ng-template #tplLoadingBookingInformationPanel>
+  <app-booking-information-panel-loading></app-booking-information-panel-loading>
+</ng-template>

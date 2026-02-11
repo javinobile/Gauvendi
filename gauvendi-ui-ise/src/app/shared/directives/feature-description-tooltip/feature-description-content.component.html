@@ -1,0 +1,31 @@
+<ng-container *ngIf="{
+  hotelPrimaryColor: hotelPrimaryColor$ | async,
+  hotelRetailFeatureList: hotelRetailFeatureList$ | async,
+  dir: dir$ | async
+} as vm">
+  <div
+    [@tooltip]
+    [style.--max-width]="maxWidth"
+    class="flex items-center tooltip-content gap-[16px] rounded-[8px]"
+    [dir]="vm.dir"
+  >
+    <ng-container *ngIf="isDisplayIcon">
+      <ng-container *ngIf="(isStandard ? featureIcon : (vm.hotelRetailFeatureList | featureIcon: featureCode)) as image">
+        <img
+          [src]="image"
+          width="32"
+          height="36"
+          [alt]="featureName"
+          appFilterSvg [color]="vm.hotelPrimaryColor"
+        />
+      </ng-container>
+    </ng-container>
+    <div class="">
+      <div class="font-medium text-[#000] text-[12px] leading-[120%]">{{featureName}}</div>
+      <div
+        *ngIf="featureDescription || (vm.hotelRetailFeatureList | featureDescription: featureCode) as description"
+        class="font-light pt-[4px] text-[12px] leading-[120%] text-[#000]"
+      >{{featureDescription || description}}</div>
+    </div>
+  </div>
+</ng-container>
