@@ -45,8 +45,7 @@ import { TravelOverlayComponent } from '../travel-overlay/travel-overlay.compone
   template: ''
 })
 export abstract class SearchBarAbstractComponent
-  implements OnInit, AfterViewInit
-{
+  implements OnInit, AfterViewInit {
   protected bookingTransactionService = inject(BookingTransactionService);
   protected route = inject(ActivatedRoute);
   protected store = inject(Store);
@@ -201,11 +200,11 @@ export abstract class SearchBarAbstractComponent
 
     const isChanged =
       (queryParams[RouteKeyQueryParams.checkInDate] || '') !==
-        (dateSelected?.from || '') ||
+      (dateSelected?.from || '') ||
       (queryParams[RouteKeyQueryParams.checkOutDate] || '') !==
-        (dateSelected?.to || '') ||
+      (dateSelected?.to || '') ||
       (queryParams[RouteKeyQueryParams.numberOfRoom] || '') !==
-        (travelerSelected || '') ||
+      (travelerSelected || '') ||
       (queryParams[RouteKeyQueryParams.promoCode] || '') !== (promoCode || '');
 
     this.isRoomSummaryChanged.set(isChanged);
@@ -252,13 +251,15 @@ export abstract class SearchBarAbstractComponent
           )
           .subscribe((data) => {
             this.bookingTransactionService.dateSelected$.next(null);
-            const { arrival, departure } = data[0];
-            const checkIn = moment(DateUtils.safeDate(arrival));
-            const checkOut = moment(DateUtils.safeDate(departure));
-            this.setDateDefault(
-              checkIn?.format('DD-MM-yyyy'),
-              checkOut?.format('DD-MM-yyyy')
-            );
+            if (data?.length > 0) {
+              const { arrival, departure } = data[0];
+              const checkIn = moment(DateUtils.safeDate(arrival));
+              const checkOut = moment(DateUtils.safeDate(departure));
+              this.setDateDefault(
+                checkIn?.format('DD-MM-yyyy'),
+                checkOut?.format('DD-MM-yyyy')
+              );
+            }
           });
       } else {
         this.bookingTransactionService.dateSelected$.next({
@@ -274,13 +275,15 @@ export abstract class SearchBarAbstractComponent
         )
         .subscribe((data) => {
           this.bookingTransactionService.dateSelected$.next(null);
-          const { arrival, departure } = data[0];
-          const checkIn = moment(DateUtils.safeDate(arrival));
-          const checkOut = moment(DateUtils.safeDate(departure));
-          this.setDateDefault(
-            checkIn?.format('DD-MM-yyyy'),
-            checkOut?.format('DD-MM-yyyy')
-          );
+          if (data?.length > 0) {
+            const { arrival, departure } = data[0];
+            const checkIn = moment(DateUtils.safeDate(arrival));
+            const checkOut = moment(DateUtils.safeDate(departure));
+            this.setDateDefault(
+              checkIn?.format('DD-MM-yyyy'),
+              checkOut?.format('DD-MM-yyyy')
+            );
+          }
         });
     }
   }
